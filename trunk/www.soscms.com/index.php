@@ -12,7 +12,8 @@
 define('SOSCMS_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 //-----定义公用函数库路径
 define('SOSCMS_FUN', SOSCMS_ROOT.'/data/data_cache/function.public.php');
-
+//输出页面字符集
+header('Content-type: text/html; charset=gbk');
 //-----载入框架类
 include SOSCMS_ROOT.'/class/Routing.class.php';
 

@@ -22,6 +22,10 @@ class Routing
 	//----初始话应用程序
 	function creat_app()
 	{
+		//-----加载公共函数库
+		$this->cache_funs();
+		//-----加载公共类
+		include SOSCMS_ROOT.'/class/cookie.class.php';
 		/**
 		 *  判断URL模式，
 		 *  @ ?m=**&c=**&... GET第一种模式
@@ -30,13 +34,13 @@ class Routing
 		 */
 		if (!empty($this->url['query']) && ($this->url['path'] == '/' || $this->url['path'] == '/index.php'))
 		{
-			print_r($this->url_get());
+			$this->include_model($this->url_get());
 		}
 		else
 		{
-			print_r($this->url_mvc());
+			$this->include_model($this->url_mvc());
 		}
-		$this->cache_funs();
+		
 	}
 	//-----GET模式转换成数组
 	function url_get()
@@ -74,6 +78,59 @@ class Routing
 		unset($this->url);
 		return $url;
 	}
+	/**
+	 * 加载模块类
+	 * @ array 数组,根据URL映射方法转换而成的数组
+	 */
+	function include_model($array)
+	{
+		$array['m'] = empty($array['m'])?'index':$array['m']=='index.php'?'index':$array['m'];
+		
+		$array['c'] = empty($array['c'])?'index':$array['c'];
+		
+		$model_file = SOSCMS_ROOT.'/soscms/'.$array['m'].'/'.$array['m'].'_model.class.php';
+		
+		//-----判断类是否存在,如果不存在类，则返回错误信息
+		if (!file_exists($model_file))
+		{
+			$this->showmsg('不存在模型..'.$array['m']);
+		}
+		
+		//-----加载模块类
+		include $model_file;
+		
+		//-----检查方法是否存在
+		if (!method_exists($array['m'],$array['c']))
+		{
+			$this->showmsg('不存在此方法..');
+		}
+		
+		//-----实例化该模块类，并调用该方法
+		$this->model = new $array['m']();
+		$this->model->$array['c']();
+		
+		unset($model_file);
+		//----加载模块模版
+		$tpl_file = SOSCMS_ROOT.'/soscms/'.$array['m'].'/template/'.$array['m'].'_'.$array['c'].'.html'; 
+		
+		//----判断模版是否存在
+		if (!file_exists($tpl_file))
+		{
+			$this->showmsg('没有该模块和方法对应的模版...');
+		}
+		
+		//-----载入模版
+		include $tpl_file;
+	}
+	//-----主框架提示信息
+	function showmsg($title='',$url='/')
+	{
+		$this->msg['title'] = $title;
+		$this->msg['url'] = $url;
+		
+		include SOSCMS_ROOT.'/data/common/template/soscms.showmsg.html';
+		exit;
+	}
 	//-----载入公共函数库
 	function cache_funs()
 	{
@@ -87,8 +144,11 @@ class Routing
 			$conent = '<?php'."\n";
 			while (false != ($file = readdir($handle)))
 			{
-				$h = trim(substr(strrchr($file,'.'),1,100)); //--------取的文件的后缀
-				if ($file != "." && $file != ".." && $file != ".DS_Store")
+				//--------取的文件的后缀
+				$h = trim(substr(strrchr($file,'.'),1,100)); 
+				
+				//--------如果是文件则包含
+				if (is_file(SOSCMS_ROOT.'/function/'.$file))
 				{ 
 					$conent .= 'require_once(SOSCMS_ROOT.\'/function/'.$file.'\');'."\n";
 				}
