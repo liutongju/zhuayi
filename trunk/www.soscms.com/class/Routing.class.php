@@ -25,16 +25,21 @@ class Routing
 		//-----加载公共函数库
 		$this->cache_funs();
 		//-----加载公共类
-		include SOSCMS_ROOT.'/class/cookie.class.php';
+		//include SOSCMS_ROOT.'/class/cookie.class.php';
 		/**
 		 *  判断URL模式，
 		 *  @ ?m=**&c=**&... GET第一种模式
 		 *  @ /m/c/...   MVC第二种模式
+		 *  @ api.php?m=**&...  插件形式
 		 *  如果empty($this->url['query'] && $this->url['path'] 则是第一种模式
 		 */
 		if (!empty($this->url['query']) && ($this->url['path'] == '/' || $this->url['path'] == '/index.php'))
 		{
 			$this->include_model($this->url_get());
+		}
+		elseif ($this->url['path'] == '/api.php')
+		{
+			$this->include_api();
 		}
 		else
 		{
@@ -77,6 +82,27 @@ class Routing
 		}
 		unset($this->url);
 		return $url;
+	}
+	//------插件函数
+	function include_api()
+	{
+		//------判断是否有REQUEST['m']值
+		if (empty($_REQUEST['m']))
+		{
+			$this->showmsg('插件方法错误...');
+		}
+		
+		//------根据m的值引入插件文件
+		$file = SOSCMS_ROOT.'/api/'.$_REQUEST['m'].'.php';
+		
+		//------判断文件是否存在,不存在则提示没有此插件
+		if (!file_exists($file))
+		{
+			$this->showmsg('不存在插件..'.$_REQUEST['m']);
+		}
+		
+		//------引入插件文件
+		include $file;
 	}
 	/**
 	 * 加载模块类
@@ -122,14 +148,37 @@ class Routing
 		//-----载入模版
 		include $tpl_file;
 	}
-	//-----主框架提示信息
-	function showmsg($title='',$url='/')
+	/**
+	 * 主框架提示信息
+	 * @ title 提示性文字
+	 * @ url   跳转地址
+	 */
+	function showmsg($title='',$url='/',$time=1250)
 	{
 		$this->msg['title'] = $title;
+		if ($url == '-1')
+		{
+			$url = 'javascript:history.go(-1)';
+		}
+		else
+		{
+			$url = "window.location.href='".$url."'";
+		}
 		$this->msg['url'] = $url;
+		//----跳转URL
 		
-		include SOSCMS_ROOT.'/data/common/template/soscms.showmsg.html';
+		header("Location: /api.php?m=showmsg&title=".$title."&url=".base64_encode($url).'&time='.$time); 
 		exit;
+	}
+	/**
+	 * 加载类
+	 * @ file 文件名
+	 */
+	function load_class($file)
+	{
+		include SOSCMS_ROOT.'/class/'.$file.'.class.php';
+		return new $file;
+		
 	}
 	//-----载入公共函数库
 	function cache_funs()

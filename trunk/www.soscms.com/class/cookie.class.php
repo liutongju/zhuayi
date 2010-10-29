@@ -12,6 +12,7 @@
 class cookie
 {
 
+	private $cookievarpre = 'sos_';
 	/**
 	 * 设置COOKIE
 	 * @var COOKIE键值
@@ -19,7 +20,7 @@ class cookie
 	 */
 	function set_cookie($var,$val)
 	{
-		return setcookie('sos_'.$var,$val,0,'/',$_SERVER['HTTP_HOST']);
+		return setcookie($this->cookievarpre.$var,$val,0,'/',$_SERVER['HTTP_HOST']);
 	}
 	
 	/**
@@ -28,8 +29,8 @@ class cookie
 	 */
 	function ret_cookie($var)
 	{
-		if (!empty($_COOKIE['sos_'.$var]))
-		return $_COOKIE['sos_'.$var];
+		if (!empty($_COOKIE[$this->cookievarpre.$var]))
+		return $_COOKIE[$this->cookievarpre.$var];
 		else
 		return '';
 	}
@@ -41,7 +42,7 @@ class cookie
 	 */
 	function verify_admin($key)
 	{
-		if (empty($_COOKIE['sos_'.$key]))
+		if (empty($_COOKIE[$this->cookievarpre.$key]))
 		{
 			Routing::showmsg('您还没有登录，或者登录超时','/index.php?m=admin&c=login');
 		}
