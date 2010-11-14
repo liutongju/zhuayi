@@ -1,0 +1,43 @@
+{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#service").formValidator({onshow:"请输入网关地址",onfocus:"请输入网关地址"}).inputValidator({min:2,onerror:"网关地址不能为空"});
+	$("#number").formValidator({onshow:"请输入序列号",onfocus:"请输入序列号"}).inputValidator({min:2,onerror:"序列号不能为空"});
+	$("#password").formValidator({onshow:"请输入密码",onfocus:"请输入密码"}).inputValidator({min:2,onerror:"密码不能为空"});
+	$("#timeout").formValidator({onshow:"请输入超时时间",onfocus:"请输入超时时间"}).inputValidator({min:1,onerror:"超时时间不能为空"});
+	
+	
+})
+//-->
+</script>
+<form action="?m=sms&c=config_info&a=init" method="post" id="myform">
+<fieldset>
+	<legend>{zhuayi:echo.$pagename/}</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">网关地址：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="sms_config[service]" id="service" value="{zhuayi:echo.$service/}" size="30" /></td>
+		</tr>
+		<tr>
+			<th>序列号：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="sms_config[number]" id="number" value="{zhuayi:echo.$number/}" size="30" /></td>
+		</tr>
+		<tr>
+			<th>密码：</th>
+			<td class="y-bg"><input type="password" class="input-text" name="sms_config[password]" id="password" value="{zhuayi:echo.$password/}" size="30" /></td>
+		</tr>
+		<tr>
+			<th>超时时间：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="sms_config[timeout]" id="timeout" value="{zhuayi:echo.$timeout/}" size="30" /></td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="filename" value="sms_config"/>
+<input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="提交" />
+</form>
+
+
+{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}

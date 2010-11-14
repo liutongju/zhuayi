@@ -1,0 +1,64 @@
+<form action="?c=info" method="post" id="myform">
+<fieldset>
+	<legend>Zcms数据库安装</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">数据库地址：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="zcms_config[dbhost]" id="dbhost" value="<?php echo$dbhost ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>数据库帐号：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="zcms_config[dbuser]" id="dbuser" value="<?php echo$dbuser ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>数据库密码：</th>
+			<td class="y-bg"><input type="password" class="input-text" name="zcms_config[dbpw]" id="dbpw" value="<?php echo$dbpw ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>数据库名称：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="zcms_config[dbname]" id="dbname" value="<?php echo$dbname ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>数据表前缀：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="zcms_config[cookievarpre]" id="cookievarpre" value="<?php echo$cookievarpre ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>分页显示数：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="zcms_config[perpagenum]" id="perpagenum" value="<?php echo$perpagenum ;?>" size="30" /></td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<fieldset>
+	<legend>网站配置</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">网站名称：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[webname]" id="webname" value="<?php echo $webname ;?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>网站域名：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="<?php echo $weburl ;?>" size="30" /></td>
+		</tr>
+
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<fieldset id="fieldset">
+	<legend>修改个人信息</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">管理帐号：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="admin[username]" id="username" /></td>
+		</tr>
+		<tr>
+			<th>登录密码：</th>
+			<td class="y-bg"><input type="password" class="input-text" name="admin[pass]" id="pass"  /></td>
+		</tr>
+	</table>
+</fieldset>
+<input type="hidden" name="filename[]" value="zcms_config"/>
+<input type="hidden" name="filename[]" value="web_config"/>
+<input type="hidden" name="action" value="web"/>
+<input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="安装" />
+</form>

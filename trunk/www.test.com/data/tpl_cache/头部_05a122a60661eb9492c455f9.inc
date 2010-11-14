@@ -1,0 +1,47 @@
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>SOSCMS - 后台管理中心</title>
+<link href="<?php echo model_url('admin','admin'); ?>css/reset.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo model_url('admin','admin'); ?>css/system.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo model_url('admin','admin'); ?>css/table_form.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?php echo model_url('admin','admin'); ?>css/styles2.css" title="styles1" media="screen" />
+<script language="javascript" type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/admin_common.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/styleswitch.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/formvalidator.js" charset="UTF-8"></script>
+<script language="javascript" type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/formvalidatorregex.js" charset="UTF-8"></script>
+<script type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/thickbox/thickbox.js"></script>
+<link href="<?php echo model_url('admin','admin'); ?>js/thickbox/thickbox.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?php echo model_url('admin','admin'); ?>js/calendar/calendar-blue.css"/>
+<script type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/calendar/calendar.js"></script>
+</head>
+<body>
+<?php if (isset($menu) && is_array($menu)){?>
+<div class="subnav">
+    <div class="content-menu ib-a blue line-x">
+	<?php 
+		
+		foreach ($menu as $val){?>
+        <a href="?m=<?php echo $_REQUEST['m']; ?>&c=<?php echo $val[1]; ?>&a=init<?php if (!empty($val[3])){echo $val[3];}?>" class="<?php if ($_REQUEST['c']==$val[1]){echo 'on';} if (!empty($val[2])){echo ' thickbox';}?>"><em><?php echo $val['0']; ?></em></a><span>|</span>
+	<?php }
+		
+	?>
+	</div>
+</div>
+<?php }else{?>
+<div class="bk10"></div>
+<?php }?>
+<div class="pad_10">
+	<?php if (isset($tips)){?>
+	<div class="explain-col">
+		温馨提示：<?php echo $tips; ?>
+	</div>
+
+	<?php }?>
+<div class="bk10"></div>

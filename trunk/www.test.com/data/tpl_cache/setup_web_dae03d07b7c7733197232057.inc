@@ -1,0 +1,46 @@
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+ include $this->CompilerInclude("/zcms/admin/template/admin/头部.html");
+ ?>
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#webname").formValidator({onshow:"请输入站点名称",onfocus:"请输入站点名称"}).inputValidator({min:1,onerror:"请输入站点名"});
+	$("#weburl").formValidator({onshow:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",onfocus:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",tipcss:{width:'300px'},empty:false}).inputValidator({onerror:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’"}).regexValidator({regexp:"http:\/\/(.+)$",onerror:"格式应该为http://www.zcms.cn，末尾不要带‘/’"});
+
+	
+	
+})
+//-->
+</script>
+<form action="?m=setup&c=info&a=init" method="post" id="myform">
+<fieldset>
+	<legend><?php echo $pagename; ?></legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">网站名称：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[webname]" id="webname" value="<?php echo $webname; ?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>网站域名：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="<?php echo $weburl; ?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>启用后台管理操作日志：</th>
+			<td class="y-bg">
+				<input name="web_config[admin_log]" value="1" type="radio" <?php if ($admin_log==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="web_config[admin_log]" value="0" type="radio"  <?php if ($admin_log==0){echo ' checked';}?>> 否     
+			</td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="filename" value="web_config"/>
+<input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="提交" />
+</form>
+
+
+<?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
+ ?>

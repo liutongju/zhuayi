@@ -1,0 +1,7 @@
+{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}<form name="myform" action="/index.php?m=order&c=method&a=init" method="post"><div class="table-list">	<table width="100%" cellspacing="0" >		<thead>			<tr>				<th width="150">配送方式名称</th>				<th width="60%">配送方式描述</th>				<th>货到付款？</th>				<th >操作</th>			</tr>		</thead>		<tbody>		{zhuayi:order_method_list}			<tr>				<td align='center'>{zhuayi:echo.$fields['title']/}</td>
+				<td align='center'>{zhuayi:echo.strlens($fields['miaoshu'],0,100)/}...</td>
+				<td align='center'>{zhuayi:echo.$fields['cash']/}</td>
+				<td align='center' >					<a href="/index.php?m=order&c=method_edit&a=init&id={zhuayi:echo.$fields['id']/}" class="thickbox">修改</a> | 					<a href="/index.php?m=order&c=method_del&a=init&id={zhuayi:echo.$fields['id']/}">删除</a>				</td>
+			</tr>		{/zhuayi:order_method_list}
+		</tbody>
+	</table></div></form>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}

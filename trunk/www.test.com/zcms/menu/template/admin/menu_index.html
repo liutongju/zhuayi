@@ -1,0 +1,8 @@
+{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}<form name="myform" action="/index.php?m=menu&c=info&a=init" method="post"><div class="table-list">	<table width="100%" cellspacing="0" >		<thead>			<tr>				<th width="30">序号</th>				<th width="30">排序</th>				<th >菜单名称</th>				<th >管理操作</th>			</tr>		</thead>		<tbody>		<?php 		foreach ($list as $key=>$val){		?>			<tr>				<td align='center'><input type="checkbox" value="{zhuayi:echo.$val['id']/}" name="id[]" class="check"/></td>
+				<td align='center'><input name='orders[]' type='text' size='3' value='{zhuayi:echo.$val['orders']/}' class='input-text-c'></td>
+				<td >{zhuayi:echo.$val['title']/}</td>
+				<td align='center' >					<a href="/index.php?m=menu&c=edit&a=init&parent_id={zhuayi:echo.$val['id']/}" class="thickbox">添加子菜单</a> | 					<a href="/index.php?m=menu&c=edit&a=init&id={zhuayi:echo.$val['id']/}" class="thickbox">修改</a> | 					<a href="/index.php?m=menu&c=del&a=init&id={zhuayi:echo.$val['id']/}">删除</a>				</td>
+			</tr>		<?php }?>
+		</tbody>
+	</table>
+	<div class="btn">		<input type="submit" class="button" name="dosubmit" value="排序" onclick='$(".check").attr("checked",true)'/>	</div></div></form>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}
