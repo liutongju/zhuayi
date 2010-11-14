@@ -93,8 +93,8 @@
 				$fielst = handie($val.'/function',1);
 				foreach ($fielst as $vas)
 				{
+					if (is_file($vas))
 					$conent .= 'require_once(ZCMS_ROOT.\''.str_replace(ZCMS_ROOT,'',$vas).'\');'."\n";
-					//$files[] = $vas;
 				}
 			}
 		}
