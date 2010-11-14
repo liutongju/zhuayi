@@ -43,7 +43,7 @@ margin-left:-280px;position:absolute;width:560px; overflow:visible;}
 
      </form> 
     </div> 
-    <div class="cr">CopyRight 2006-2010  <a href="http://www.zcms.cn" target="_blank">ZCMS TEAM</a> </div> 
+    <div class="cr">CopyRight 2006-2010  <a href="http://www.zcms.cc" target="_blank">ZCMS TEAM</a> </div> 
 </div>
 
 </body> 

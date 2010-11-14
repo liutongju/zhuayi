@@ -60,7 +60,7 @@ $fields = array();
 			您好！<?php echo $info['username']; ?>
 			[<?php echo $info['groupname']; ?>]
 			<span>|</span>
-			<a href="?m=admin&c=logout&a=init">[退出]</a>
+			<a href="/?m=admin&c=logout&a=init">[退出]</a>
 			<span>|</span>
     		<a href="/" target="_blank" id="site_homepage">站点首页</a><span>|</span>
 			登录时间: <?php echo dtime($info['login_time']); ?>
