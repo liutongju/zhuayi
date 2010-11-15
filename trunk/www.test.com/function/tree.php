@@ -15,7 +15,7 @@
  * @gap          树枝间隔，一般用全角空格代替，这个根据页面自行设定
  * @branches     树杈，这个好理解吧
  */
-function tree($array,$parent,$f=0,$gap='　',$branches='├─')
+function tree($array,$parent,$f=0,$gap='　',$branches='├─',$fields='title')
 {
 	$ge = '└─';
 	//-----如果传入通配符，那么把所有间隔负设置为空
@@ -34,9 +34,9 @@ function tree($array,$parent,$f=0,$gap='　',$branches='├─')
 	{
 		if ($val[$parent] == $f)
 		{
-			$val['title'] = $gap.$branches.$val['title'];
+			$val[$fields] = $gap.$branches.$val[$fields];
 			$tree[] = $val;			
-			$tree_f = tree($array,$parent,$val['id'],$gap.$gap,$ge);
+			$tree_f = tree($array,$parent,$val['id'],$gap.$gap,$ge,$fields);
 			if (is_array($tree_f))
 			{
 				foreach ($tree_f as $vals)

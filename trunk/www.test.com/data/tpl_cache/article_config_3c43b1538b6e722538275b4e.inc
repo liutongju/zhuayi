@@ -1,0 +1,56 @@
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+ include $this->CompilerInclude("/zcms/admin/template/admin/头部.html");
+ ?>
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#class_tpl").formValidator({onshow:"请输入默认模版,必须以根目录开始",onfocus:"请输入默认模版,必须以根目录开始"})
+	$("#path").formValidator({onshow:"请输入静态页存放地址,请以\"/\"开头、以\"/\"结尾(非必须,不生成则不必填写)",onfocus:"请输入静态页存放地址(非必须,不生成则不必填写)"})
+	$("#html").formValidator({onshow:"请选择是否生成HTML",onfocus:"请选择是否生成HTML"})
+	$("#class_url").formValidator({onshow:"请输入默认URL,可用标签{id},替换为直投ID",onfocus:"请输入默认URL,可用标签{id}"}).inputValidator({min:2,onerror:"请输入默认URL,可用标签{id}"});
+})
+//-->
+</script>
+<form action="?m=article&c=config_info&a=init" method="post" id="myform">
+<fieldset>
+	<legend>基本配置</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">静态页存放地址：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[path]" id="path" value="<?php echo $path; ?>" size="30" /> 
+			</td>
+		</tr>
+	</table>
+</fieldset>
+<fieldset>
+	<legend>文章栏目配置</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">默认栏目生成Html：</th>
+			<td class="y-bg">
+				<input name="article_config[html]" value="1" type="radio" <?php if ($html==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[html]" value="0" type="radio"  <?php if ($html==0){echo ' checked';}?>> 否  
+			</td>
+		</tr>
+		<tr>
+			<th width="150">默认模版：：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="article_config[class_tpl]" id="class_tpl" value="<?php echo $class_tpl; ?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th width="150">默认URL地址：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="article_config[class_url]" id="class_url" value="<?php echo $class_url; ?>" size="30" /></td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="filename" value="article_config"/>
+<input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="提交" />
+</form>
+
+
+<?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
+ ?>
