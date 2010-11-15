@@ -15,7 +15,7 @@ foreach( $blockValue as $key=>$fields )
 ?>			<tr>				<td align='center'><input type="checkbox" value="<?php echo $fields['id']; ?>" name="id[]" class="check" /></td>
 				<td align='center'><?php echo $fields['username']; ?></td>
 				<td><?php echo $fields['groupname']; ?></td>				<td align="center"><?php echo $fields['login_ip']; ?></td>				<td align="center"><?php echo dtime($fields['login_time']); ?></td>
-				<td align='center' >					<a href="/index.php?m=admin&c=edit&a=init&id=<?php echo $fields['id']; ?>" class="thickbox">ÐÞ¸Ä</a> |					<a href="/index.php?m=log&c=del&a=init&id=<?php echo $fields['id']; ?>">É¾³ý</a>				</td>
+				<td align='center' >					<a href="/index.php?m=admin&c=edit&a=init&id=<?php echo $fields['id']; ?>" class="thickbox">ÐÞ¸Ä</a> |					<a href="/index.php?m=admin&c=del&a=init&id=<?php echo $fields['id']; ?>">É¾³ý</a>				</td>
 			</tr>		<?php
 }
 }
