@@ -20,6 +20,7 @@ if ($_REQUEST['if'] == 1)
 	$caches[] = '';
 	$caches[] = array('tpl_cache','模版缓存');
 	$caches[] = array('data_cache','数据缓存');
+	$caches[] = array('install_cache','模块安装缓存');
 	
 	$body = '<script>window.parent.document.getElementById(\'file\').innerHTML +="<li>';
 	
