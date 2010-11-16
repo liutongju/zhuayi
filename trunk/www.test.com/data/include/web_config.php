@@ -1,4 +1,5 @@
 <?php
 $webname = "zcms¹Ù·½²âÊÔÕ¾";
 $weburl = "http://www.test.com";
+$admin_log = "1";
 ?>

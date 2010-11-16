@@ -16,6 +16,8 @@
 		$this->cache_funs();
 	
 		$this->zcmsfun();
+		
+		$this->zcmstpl();
 	}
 	//-----载入公共函数库
 	function cache_funs()
@@ -102,5 +104,35 @@
 		
 		$this->write($filepath, $conent);
 		include_once($filepath);
+	}
+	
+	/**
+	 * 生成前台模版缓存
+	 *
+	 */
+	function zcmstpl()
+	{
+		//---------复制函数库路径
+		$filepath = ZCMS_ROOT.'/data/data_cache/tpl.cache.php';
+		if (file_exists($filepath))
+		{
+			return false;
+		}
+		
+		$file = handie(ZCMS_ROOT.'/zcms',1);
+		foreach ($file as $key=>$val)
+		{
+			if (is_dir($val.'/template/'))
+			{
+				$fielst = handie($val.'/template',1);
+				foreach ($fielst as $vas)
+				{
+					if (is_file($vas))
+					$conent[]= $vas;
+				}
+			}
+		}
+		$conent = serialize($conent);
+		$this->write($filepath, $conent);
 	}
  }

@@ -37,12 +37,19 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
-			<th width="150">默认模版：：</th>
-			<td class="y-bg"><input type="text" class="input-text" name="article_config[class_tpl]" id="class_tpl" value="<?php echo $class_tpl; ?>" size="30" /></td>
-		</tr>
-		<tr>
 			<th width="150">默认URL地址：</th>
 			<td class="y-bg"><input type="text" class="input-text" name="article_config[class_url]" id="class_url" value="<?php echo $class_url; ?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th width="150">默认模版：：</th>
+			<td class="y-bg">
+				<select name="article_config[class_tpl]" id="class_tpl">
+					<option>==请选择模版===</option>
+					<?php foreach ($tpl_cache as $val){?>
+					<option value="<?php echo $val; ?>" <?php if ($class_tpl == $val){echo 'selected';}?>><?php echo str_replace(ZCMS_ROOT.'/zcms','',$val);?></option>
+					<?php } ?>
+				</select>
+			</td>
 		</tr>
 	</table>
 </fieldset>

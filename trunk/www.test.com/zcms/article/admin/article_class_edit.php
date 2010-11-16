@@ -28,9 +28,7 @@ else
 	
 	$info['html'] = $html;
 	$info['tpl'] = $class_tpl;
-	
 	$seo['url'] = $class_url;
-	
-}
+}
 
 ?>

@@ -9,6 +9,16 @@
  * @QQ			 2179942
  */
 
-Header("Location:/index.php?m=checkcode&c=edit"); 
-exit;
+if (!empty($_REQUEST['id']))
+{
+	$pagename = "验证码添加";
+	$info = $query->one_array("select * from ".T."checkcode where id =".$_REQUEST['id']);
+	$info['rule'] = unserialize($info['rule']);
+}
+else
+{
+	$pagename = "验证码编辑";
+;
+}
+
 ?>

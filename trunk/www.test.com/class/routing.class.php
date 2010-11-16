@@ -20,7 +20,6 @@ class routing
 		$this->url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
 		
 		$this->seo();
-		
 		//----格式化URL
 		$this->url = parse_url($this->url);
 		$this->url_res();
@@ -125,9 +124,9 @@ class routing
 		{
 
 			//----删除当前URL，如果是模糊匹配的话不删除则会多出很多GET参数
-			$this->url = $info['request_url'].str_replace($info['url'],'',$this->url,$info['request_url']);
-			$this->url = str_replace("//",'/',$this->url);
+			$this->url = str_replace($info['url'],$info['request_url'],$this->url);
 		}
+
 	}
 }
 

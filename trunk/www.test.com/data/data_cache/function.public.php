@@ -7,6 +7,7 @@ include_once(ZCMS_ROOT.'/function/get_ip.php');
 include_once(ZCMS_ROOT.'/function/handie.php');
 include_once(ZCMS_ROOT.'/function/model_url.php');
 include_once(ZCMS_ROOT.'/function/mymd5.php');
+include_once(ZCMS_ROOT.'/function/pinyin.php');
 include_once(ZCMS_ROOT.'/function/ret_cookie.php');
 include_once(ZCMS_ROOT.'/function/seo.php');
 include_once(ZCMS_ROOT.'/function/set_cookie.php');

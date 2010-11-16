@@ -2,8 +2,8 @@
 function article_class_url($id)
 {
 	//-------ÔØÈëÅäÖÃÎÄ¼þ
-	include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
-	global $class_url;
-	return str_replace('{id}',$id,$class_url);
+	//include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
+	//global $class_url;
+	return '/article/class/cid/'.$id;
 }
 ?>
