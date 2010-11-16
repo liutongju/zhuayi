@@ -66,6 +66,13 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
+			<th width="150">自动下载文章图片：</th>
+			<td class="y-bg">
+				<input name="article_config[downfile]" value="1" type="radio" <?php if ($downfile==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[downfile]" value="0" type="radio"  <?php if ($downfile==0){echo ' checked';}?>> 否  
+			</td>
+		</tr>
+		<tr>
 			<th>文章来源：</th>
 			<td colspan="2" class="y-bg">
 				<textarea name="article_config[source]" id="source" style="width:50%;height:50px;"><?php echo $source; ?></textarea>

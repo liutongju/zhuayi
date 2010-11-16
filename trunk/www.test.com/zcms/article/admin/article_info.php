@@ -11,13 +11,44 @@
 
 //-------验证登录
 verify_admin('admin_username');
- 
+
+
+//----处理上传文件
+include_once ZCMS_ROOT.'/class/upload.class.php';
+$upload = new upload($_FILES['file1']);
+$upload->request = $_POST['litpic'];
+$upload->copy('article/litpic',time());
+$_POST['litpic'] = $upload->breviary($article_width);
+
 $_POST['dtime'] = strtotime($_POST['dtime']);
 //-----判断是否自动提取文章摘要
 if ($abstract ==1)
 {
 	$_POST['abstract'] = trim(str_replace('	','',preg_replace('/\r|\n/', '',strlens($_POST['body'],0,250))));
 }
+
+//----提取第一张图为缩略图
+$_POST['body'] = stripslashes($_POST['body']);
+preg_match_all("/<img(.*)src=\"([^\"]+)\"[^>]+>/isU",$_POST['body'],$array);
+
+//------去除重复地址$pic = array_flip(array_flip($array[2]));
+
+//----下载第一个图为缩略图
+
+if (empty($_POST['litpic']))
+$_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"),$article_width);
+
+//----判断是否要下载文章内容里的图片
+if ($downfile == 1)
+{	//------循环下载图片
+	foreach ($pic as $key=>$val)
+	{
+		$picbody = downfile($val,'article/edit/'.date("Y-m-d"));
+		if (!empty($picbody))
+		$_POST['body'] = str_replace($val,$picbody,$_POST['body']);
+	}
+	}
+$_POST['body'] = addslashes($_POST['body']);
 if (!empty($_REQUEST['jump']))
 {
 	$_POST['url'] = $_REQUEST['jump'];

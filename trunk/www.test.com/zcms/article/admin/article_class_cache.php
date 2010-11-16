@@ -21,7 +21,7 @@ while ($row = $query->fetch_array($reset))
 	$article_class_cache_js .='arrSorts['.$i.'] = ["'.$row['id'].'", "'.$row['classname'].'", "'.$row['parent_id'].'","'.$row['id'].'"];';
 	if (empty($row['url']))
 	$row['url'] = article_class_url($row['id']);
-	$row['maxnum'] = 0;
+	$row['maxnum'] = $query->maxnum("select count(*) from ".T."article where cid=".$row['id']);
 	$list[] = $row;
 	$i++;
 }

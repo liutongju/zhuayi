@@ -37,7 +37,7 @@ else
 		$query->save("article_class",$_POST,' id = '.$_POST['id']);
 		if (!empty($_POST['url']))
 		{
-			$_POST['request_url'] = article_class_url($_POST['id']);  //项目原始url，自定义url时使用
+			$_POST['request_url'] = article_class_url($_POST['id']);  //原始url，自定义url时使用
 		}
 
 		//---------写入SEO表

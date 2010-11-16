@@ -35,7 +35,7 @@ $(function(){
 })
 //-->
 </script>
-<form action="?m=article&c=info&a=init" method="post" id="myform">
+<form action="?m=article&c=info&a=init" method="post" id="myform" enctype="multipart/form-data">
 <fieldset>
 	<legend>基本信息</legend>
 	<table width="100%"  class="table_form">
@@ -51,7 +51,7 @@ $(function(){
 			</td>
 			<td width="321" rowspan="4" align="center">
 			<img src="<?php echo $info['litpic']; ?>" width="<?php echo $article_width; ?>" height="<?php echo $article_height; ?>" class="litpic" />
-			<span><br>尺寸<?php echo $article_width; ?>*<?php echo $article_height; ?>  <a href="" target="_blank"/>看原图</a></span>
+			<span><br>尺寸<?php echo $article_width; ?>*<?php echo $article_height; ?>  <a href="<?php echo $info['litpic']; ?>" target="_blank"/>看原图</a></span>
 			</td>
 		</tr>
 		<tr>
@@ -72,7 +72,7 @@ $(function(){
 			<th>转向连接：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="jump" id="jump" value="<?php echo $info['jump']; ?>" size="30" <?php if (empty($info['jump'])){echo 'disabled="disabled" ';}?>/>
-				<input type="checkbox" class="jumo_but"> <font color=red>转向链接</font>
+				<input type="checkbox" class="jumo_but" <?php if (!empty($info['jump'])){echo 'checked="checked" ';}?>> <font color=red>转向链接</font>
 			</td>
 	    </tr>
 		<tr>

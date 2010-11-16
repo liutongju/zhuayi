@@ -3878,7 +3878,7 @@ KE.plugin['image'] = {
 				try {
 					data = KE.util.parseJson(uploadDoc.body.innerHTML);
 				} catch(e) {
-					alert(KE.lang.invalidJson);
+					alert(KE.lang.invalidJson+uploadDoc.body.innerHTML);
 				}
 				if (typeof data === 'object' && 'error' in data) {
 					if (data.error === 0) {
