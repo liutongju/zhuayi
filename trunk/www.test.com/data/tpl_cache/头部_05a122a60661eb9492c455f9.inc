@@ -20,6 +20,13 @@ $fields = array();
 <link href="<?php echo model_url('admin','admin'); ?>js/thickbox/thickbox.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo model_url('admin','admin'); ?>js/calendar/calendar-blue.css"/>
 <script type="text/javascript" src="<?php echo model_url('admin','admin'); ?>js/calendar/calendar.js"></script>
+<script>
+$(function(){
+	$('[name=checkbox]:checkbox').click(function(){
+		$('.check').attr('checked',$('[name=checkbox]:checkbox').attr('checked'));
+	})
+})
+</script>
 </head>
 <body>
 <?php if (isset($menu) && is_array($menu)){?>

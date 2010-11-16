@@ -34,8 +34,8 @@ margin-left:-280px;position:absolute;width:560px; overflow:visible;}
 		<label>验证码：</label>
 		<input name="code" type="text" class="ipt ipt_reg" onfocus="document.getElementById('yzm').style.display='block'" /> 
 		<div id="yzm" class="yzm">
-			<img id='code_img' onclick='this.src=this.src+"&"+Math.random()' src='/index.php?m=checkcode&c=show'><br />
-			<a href="javascript:document.getElementById('code_img').src='/index.php?m=checkcode&c=show&time='+Math.random();void(0);">单击更换验证码</a>
+			<img id='code_img' onclick='this.src=this.src+"&"+Math.random()' src='/index.php?m=checkcode&c=show&a=init'><br />
+			<a href="javascript:document.getElementById('code_img').src='/index.php?m=checkcode&c=show&a=init&time='+Math.random();void(0);">单击更换验证码</a>
 		</div>
 
      </form> 

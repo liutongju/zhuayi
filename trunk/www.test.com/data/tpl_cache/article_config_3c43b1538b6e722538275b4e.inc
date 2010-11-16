@@ -26,6 +26,7 @@ $(function(){
 		</tr>
 	</table>
 </fieldset>
+<div class="bk15"></div>
 <fieldset>
 	<legend>文章栏目配置</legend>
 	<table width="100%"  class="table_form">
@@ -49,6 +50,32 @@ $(function(){
 					<option value="<?php echo $val; ?>" <?php if ($class_tpl == $val){echo 'selected';}?>><?php echo str_replace(ZCMS_ROOT.'/zcms','',$val);?></option>
 					<?php } ?>
 				</select>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<fieldset>
+	<legend>内容页配置</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">自动提取文章摘要：</th>
+			<td class="y-bg">
+				<input name="article_config[abstract]" value="1" type="radio" <?php if ($abstract==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[abstract]" value="0" type="radio"  <?php if ($abstract==0){echo ' checked';}?>> 否  
+			</td>
+		</tr>
+		<tr>
+			<th>文章来源：</th>
+			<td colspan="2" class="y-bg">
+				<textarea name="article_config[source]" id="source" style="width:50%;height:50px;"><?php echo $source; ?></textarea>
+				<span><br>格式：来源名称1|来源名称2|来源名称3...</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">文章缩略图大小：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_width]" id="article_width" value="<?php echo $article_width; ?>" size="10" />  - <input type="text" class="input-text" name="article_config[article_height]" id="article_height" value="<?php echo $article_height; ?>" size="10" />
 			</td>
 		</tr>
 	</table>

@@ -3,6 +3,7 @@ include_once(ZCMS_ROOT.'/function/admin_log.php');
 include_once(ZCMS_ROOT.'/function/dtime.php');
 include_once(ZCMS_ROOT.'/function/email.php');
 include_once(ZCMS_ROOT.'/function/GetCurUrl.php');
+include_once(ZCMS_ROOT.'/function/Geteditor.php');
 include_once(ZCMS_ROOT.'/function/get_ip.php');
 include_once(ZCMS_ROOT.'/function/handie.php');
 include_once(ZCMS_ROOT.'/function/model_url.php');

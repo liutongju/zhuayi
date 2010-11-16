@@ -14,7 +14,9 @@ $menu = array(
 			'0'=>array('文章配置','config'),
 			'1'=>array('管理栏目','class'),
 			'2'=>array('添加栏目','class_edit'),
-			'3'=>array('更新栏目缓存','class_cache')
+			'3'=>array('更新栏目缓存','class_cache'),
+			'4'=>array('管理文章','index'),
+			'5'=>array('发布文章','edit')
 			);
 //-------设置模块提示
 $tips = '请在添加、修改、排序栏目全部完成后，更新栏目缓存';
