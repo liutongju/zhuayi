@@ -20,6 +20,8 @@ class routing
 		$this->url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
 		
 		$this->seo();
+		
+		
 		//----¸ñÊ½»¯URL
 		$this->url = parse_url($this->url);
 		$this->url_res();
@@ -119,7 +121,7 @@ class routing
 	function seo()
 	{
 		global $query;
-		$info = $query->one_array("select * from ".T."seo where (instr('".$this->url."',url)  and parameter = 1) or (url ='".$this->url."' and parameter = 0)");
+		$info = $query->one_array("select * from ".T."seo where ((instr('".$this->url."',url)  and parameter = 1) or (url ='".$this->url."' and parameter = 0)) && url<>''");
 		if (!empty($info['request_url']))
 		{
 

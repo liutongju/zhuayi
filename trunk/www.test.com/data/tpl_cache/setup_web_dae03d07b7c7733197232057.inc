@@ -28,6 +28,14 @@ $(function(){
 			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="<?php echo $weburl; ?>" size="30" /></td>
 		</tr>
 		<tr>
+			<th>网站版权：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[powerby]" id="powerby" value="<?php echo $powerby; ?>" size="60" /></td>
+		</tr>
+		<tr>
+			<th>备案编号：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="web_config[beian]" id="powerby" value="<?php echo $beian; ?>" size="30" /></td>
+		</tr>
+		<tr>
 			<th>启用后台管理操作日志：</th>
 			<td class="y-bg">
 				<input name="web_config[admin_log]" value="1" type="radio" <?php if ($admin_log==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;

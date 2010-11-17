@@ -17,8 +17,16 @@ function article_list($atts)
 	else
 	$startnum =  ($page-1)*$limit;
 	$search = ' where a.id >0';
-
 	
+	if (!empty($related))
+	{
+		$search .= " and a.title regexp '".$related."'";
+	}
+	
+	if (!empty($flag))
+	{
+		$search .= " and a.flag regexp '".$flag."'";
+	}
 	
 	$search .= " order by a.id desc";
 	$sql = "select a.*,b.url,c.classname,d.url as classurl from ".T."article as a left join ".T."seo as b on a.id = b.aid and b.tables='article' left join ".T."article_class as c on a.cid = c.id left join ".T."seo as d on c.id = d.aid and d.tables = 'article_class'".$search."  limit $startnum , $limit";

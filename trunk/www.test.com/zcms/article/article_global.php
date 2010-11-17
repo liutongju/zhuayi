@@ -24,6 +24,8 @@ $tips = '请在添加、修改、排序栏目全部完成后，更新栏目缓存';
 //-------载入文章文件
 include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
 
+//-------序列化推送位
+$flag = explode(chr(13),$flag);
 
 //-------载入模版缓存文件
 $tpl_cache =  ZCMS_ROOT.'/data/data_cache/tpl.cache.php';

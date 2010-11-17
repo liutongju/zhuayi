@@ -12,6 +12,8 @@
 //-------验证登录
 verify_admin('admin_username');
 
+//-------序列化推送位
+$_POST['flag'] = implode('|',$_POST['flag']);
 
 //----处理上传文件
 include_once ZCMS_ROOT.'/class/upload.class.php';

@@ -24,6 +24,28 @@ $(function(){
 				<input type="text" class="input-text" name="article_config[path]" id="path" value="<?php echo $path; ?>" size="30" /> 
 			</td>
 		</tr>
+		<tr>
+			<th>推送位：</th>
+			<td colspan="2" class="y-bg">
+				<textarea name="article_config[flag]" id="flag" style="width:50%;height:50px;"><?php echo implode(chr(13),$flag); ?></textarea>
+				<span><br>格式：推送位名|标识符 例如：推荐|tuijian (一行一个,可多个)</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">模版风格：</th>
+			<td class="y-bg">
+				<table width="90%" class="radio-label">
+					<tr>
+					<?php foreach ($tpllist as $key=>$val){?>
+						<td align="center";>
+							<img src="<?php echo str_replace(ZCMS_ROOT,'',$val); ?>/preview.png"/><br>
+							<input class="radio_style" name="article_config[article_tpl]" value="<?php echo $val; ?>" type="radio" <?php if ($article_tpl == $val){echo 'checked="checked"';}?>>
+						</td>
+					<?php }?>
+					</tr>
+				</table>
+			</td>
+		</tr>
 	</table>
 </fieldset>
 <div class="bk15"></div>
@@ -40,17 +62,6 @@ $(function(){
 		<tr>
 			<th width="150">默认URL地址：</th>
 			<td class="y-bg"><input type="text" class="input-text" name="article_config[class_url]" id="class_url" value="<?php echo $class_url; ?>" size="30" /></td>
-		</tr>
-		<tr>
-			<th width="150">默认模版：：</th>
-			<td class="y-bg">
-				<select name="article_config[class_tpl]" id="class_tpl">
-					<option>==请选择模版===</option>
-					<?php foreach ($tpl_cache as $val){?>
-					<option value="<?php echo $val; ?>" <?php if ($class_tpl == $val){echo 'selected';}?>><?php echo str_replace(ZCMS_ROOT.'/zcms','',$val);?></option>
-					<?php } ?>
-				</select>
-			</td>
 		</tr>
 	</table>
 </fieldset>

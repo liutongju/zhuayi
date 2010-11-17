@@ -13,6 +13,7 @@ $(function(){
 	$("#title").formValidator({onshow:"请输入文章标题",onfocus:"请输入文章标题"}).inputValidator({min:2,max:80,onerror:"请输入文章标题,不能超过80个字符"});
 	$("#tags").formValidator({onshow:"多关键词之间用空格或者“,”隔开",onfocus:"多关键词之间用空格或者“,”隔开"});
 	$("#jump").formValidator({onshow:"开启转向连接，则会直接跳转,请以”http://“开头",onfocus:"开启转向连接，则会直接跳转,请以”http://“开头"});
+	$("#related").formValidator({onshow:"多个关键词请用 “|” 隔开",onfocus:"多个关键词请用 “|” 隔开"});
 	$("#parameter").attr('checked',true);
 	Calendar.setup({inputField:"dtime",ifFormat:"%Y-%m-%d %H:%M:%S",showsTime:true,timeFormat:"24"});
 	$("#file1").click(function(){
@@ -88,6 +89,16 @@ $(function(){
 			</td>
 	    </tr>
 		<tr>
+			<th>文章推送：</th>
+			<td class="y-bg" colspan="2">
+				<?php foreach ($flag as $val){
+					$val = explode('|',$val);
+				?>
+				<input type="checkbox" name="flag[]" value="<?php echo $val[1]; ?>" <?php if(strpos('$$'.$info['flag'],$val[1])){ echo "checked='checked'";}?> /> <?php echo $val[0]; ?>&nbsp;
+				<?php }?>
+			</td>
+	    </tr>
+		<tr>
 			<th>Tags：</th>
 			<td class="y-bg" colspan="2">
 				<input type="text" class="input-text" name="tags" id="tags" value="<?php echo $info['tags']; ?>" size="30" />
@@ -119,14 +130,9 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
-			<th>内容页模板：</th>
+			<th>相关文章关键词：</th>
 			<td colspan="2" class="y-bg">
-				<select name="tpl" id="tpl">
-					<option>==请选择模版===</option>
-					<?php foreach ($tpl_cache as $val){?>
-					<option value="<?php echo $val; ?>" <?php if ($info['tpl'] == $val){echo 'selected';}?>><?php echo str_replace(ZCMS_ROOT.'/zcms','',$val);?></option>
-					<?php } ?>
-				</select>
+				<input type="text" name="related" id="related" value="<?php echo $info['related']; ?>" size="50">
 			</td>
 		</tr>
 	</table>
