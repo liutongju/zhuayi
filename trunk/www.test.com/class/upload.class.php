@@ -296,7 +296,8 @@ class upload
 		}
 		imagealphablending($ground,true);
 		
-		if ($ground_type==3)
+
+		if ($water_type==3)
 		imagecopy($ground, $water, $posX, $posY, 0, 0, $water_w,$water_h);//拷贝水印到目标文件
 		else
 		imagecopymerge($ground, $water, $posX, $posY, 0, 0, $water_w,$water_h,WATERMARK_PCT);//拷贝水印到目标文件
