@@ -16,6 +16,9 @@ verify_admin('admin_username');
 if (empty($_REQUEST['id']) && !is_array($_REQUEST['orders']))
 {
 	$pagename = 'Ìí¼ÓÀ¸Ä¿';
+	echo '<pre>';
+	print_r($_POST);
+	exit;
 	$_POST['id'] = $query->save("article_class",$_POST);
 }
 else

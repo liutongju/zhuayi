@@ -2,8 +2,8 @@
 //------下载远程附件
 function downfile($file,$path,$width='',$height='')
 {
-	global $upload,$weburl;
-	
+	global $upload,$weburl,$i;
+	$i++;
 	if (!empty($file) && substr($file,0,1)== '/' && substr($file,0,strlen($weburl))== $weburl)
 	{
 		return $file;
@@ -12,11 +12,12 @@ function downfile($file,$path,$width='',$height='')
 	{
 		include_once ZCMS_ROOT.'/class/upload.class.php';
 		$upload = new upload();
+		
 	}
-
+	$upload->request = $file;
 	//----得到文件名
 	$h = strtolower(trim(substr(strrchr($file,'.'),1,100)));
-	$filename = ZCMS_ROOT.UPLOAD_PATH.$path.'/'.time().'.'.$h;
+	$filename = ZCMS_ROOT.UPLOAD_PATH.$path.'/'.time().$i.'.'.$h;
 	
 	//----远程获取
 	$picbody = file_get_contents($file);
@@ -31,6 +32,7 @@ function downfile($file,$path,$width='',$height='')
 	}
 	else
 	{
+		
 		if (!empty($width) || !empty($height))
 		{
 			return $upload->breviary($width,$height,$filename);

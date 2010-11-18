@@ -12,6 +12,7 @@ $fields = array();
 <meta name="keywords" content="<?php echo $seo['seo_keywords']; ?>">
 <meta name="description" content="<?php echo $seo['seo_description']; ?>">
 <script src="<?php echo $path; ?>js/chinaz.js" type="text/javascript"></script>
+<link href="<?php echo $path; ?>images/2008/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
@@ -32,12 +33,13 @@ $fields = array();
 $atts = array();
 $atts['tagname'] = 'article_class_list';
 $atts['parent_id'] = '0';
+$atts['nav'] = '1';
 $blockValue = MakePublicTag($atts,$this->refObj,$fields); 
 if(is_array($blockValue) && count($blockValue) > 0){
 foreach( $blockValue as $key=>$fields )
 {
 ?>
-  <li><a href="<?php echo $fields['url']; ?>" id="nav_1" onmouseover="showMenu('nav_1','subnav1')" class="current"><?php echo $fields['classname']; ?></a>
+  <li><a href="<?php echo $fields['url']; ?>" id="nav_<?php echo $key;?>" onmouseover="showMenu('nav_<?php echo $key;?>','subnav<?php echo $key;?>')" class=><?php echo $fields['classname']; ?></a>
   </li>
   <?php
 }

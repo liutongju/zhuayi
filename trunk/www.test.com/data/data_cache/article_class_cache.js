@@ -1,1 +1,1 @@
-<script>var arrSorts = new Array();arrSorts[0] = ["2", "北京新闻", "1","2"];arrSorts[1] = ["1", "国内新闻", "0","1"];</script>
+<script>var arrSorts = new Array();arrSorts[0] = ["1", "国内新闻", "0","1"];arrSorts[1] = ["2", "北京新闻", "1","2"];arrSorts[2] = ["11", "国际新闻", "0","11"];arrSorts[3] = ["12", "社会新闻", "0","12"];arrSorts[4] = ["13", "军事新闻", "0","13"];</script>

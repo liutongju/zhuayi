@@ -24,8 +24,12 @@ function article_class_list($atts)
 		$search .= ' and a.parent_id ='.$parent_id;
 	}
 	
+	if ($nav !='')
+	{
+		$search .= ' and a.nav ='.$nav;
+	}
 	
-	$search .= " order by a.id desc";
+	$search .= " order by a.orders asc";
 	$sql = "select a.*,b.url from ".T."article_class as a left join ".T."seo as b on a.id = b.aid and b.tables='article_class'".$search."  limit $startnum , $limit";
 	$reset = $query->query($sql);
 	while ($row = $query->fetch_array($reset))

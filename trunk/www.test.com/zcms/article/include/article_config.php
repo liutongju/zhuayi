@@ -2,7 +2,8 @@
 $path = "/html/";
 $flag = "Õ∆ºˆ|tuijian
 »»√≈|remen
-”“≤‡|youce";
+”“≤‡|youce
+ª√µ∆∆¨|huandengpian";
 $article_tpl = "D:/web/vhosts/www.test.com/zcms/article/template/down/chinaz";
 $html = "0";
 $class_url = "/class/{id}";

@@ -12,5 +12,22 @@ verify_admin('admin_username');
 //-------ÉèÖÃ·µ»ØURL
 set_cookie("backurl",GetCurUrl(),0);
 
-$maxnum = $query->maxnum("select count(*) from ".T."article ");
+if (!empty($_REQUEST['title'])){	$search .= " and a.title like '%".$_REQUEST['title']."%'";}
+
+if (!empty($_REQUEST['flag']))
+{
+	$_REQUEST['flag'] = implode('|',$_REQUEST['flag']);
+	$search .= " and a.flag regexp '".$_REQUEST['flag']."'";
+}
+
+
+if (!empty($_REQUEST['cid']))
+{
+	$search .= " and a.cid = '".$_REQUEST['cid']."'";
+}
+else
+{
+	$_REQUEST['cid'] = 0;
+}
+$maxnum = $query->maxnum("select count(*) from ".T."article as a where a.id > 0 ".$search);
 ?>

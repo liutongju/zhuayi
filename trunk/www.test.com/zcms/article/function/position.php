@@ -5,7 +5,7 @@ function position($id)
 {
 	global $query,$position;
 	$position++;
-	$info[$position] = $query->one_array("select a.classname,parent_id,a.id,b.url from ".T."article_class as a left join ".T."seo as b on a.id = b.aid and b.tables = 'article_class' where a.id = ".$id);
+	$info[$position] = $query->one_array("select a.classname,parent_id,a.id,b.url from ".T."article_class as a left join ".T."seo as b on a.id = b.aid and b.tables = 'article_class' where a.id = ".$id." limit 0,1");
 	if (empty($info[$position]['url']))
 	{
 		$info[$position]['url'] = article_class_url($info[$position]['id']);
@@ -22,10 +22,12 @@ function parent_parent_id($id)
 {
 	global $query;
 
-	$info = $query->one_array("select * from ".T."article_class where parent_id =".$id);
-	if (!empty($info['id']) && $query->maxnum("select count(*) from ".T."article_class where parent_id=".$info['id'])!=0)
+	$info = $query->one_array("select * from ".T."article_class where parent_id =".$id." limit 0,1");
+	$infopre = $query->maxnum("select id from ".T."article_class where parent_id=".$id." limit 0,1");
+	if (!empty($info['id']) && !empty($infopre['id']))
 	{
-		$info['id'] .= ','.$id.','.parent_parent_id($info['id']);
+		
+		$info['id'] = $id.','.parent_parent_id($infopre['id']);
 	}
 	else
 	{
