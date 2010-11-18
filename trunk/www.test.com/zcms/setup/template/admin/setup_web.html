@@ -4,6 +4,7 @@
 $(function(){
 	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
 	$("#webname").formValidator({onshow:"请输入站点名称",onfocus:"请输入站点名称"}).inputValidator({min:1,onerror:"请输入站点名"});
+	$("#logo").formValidator({onshow:"LOGO默认存放地址/data/logo.gif",onfocus:"LOGO默认存放地址/data/logo.gif"}).inputValidator({min:1,onerror:"LOGO默认存放地址/data/logo.gif"});
 	$("#weburl").formValidator({onshow:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",onfocus:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",tipcss:{width:'300px'},empty:false}).inputValidator({onerror:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’"}).regexValidator({regexp:"http:\/\/(.+)$",onerror:"格式应该为http://www.zcms.cn，末尾不要带‘/’"});
 
 	
@@ -11,7 +12,7 @@ $(function(){
 })
 //-->
 </script>
-<form action="?m=setup&c=info&a=init" method="post" id="myform">
+<form action="?m=setup&c=info&a=init" method="post" id="myform" enctype="multipart/form-data">
 <fieldset>
 	<legend>{zhuayi:echo.$pagename/}</legend>
 	<table width="100%"  class="table_form">
@@ -22,6 +23,12 @@ $(function(){
 		<tr>
 			<th>网站域名：</th>
 			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="{zhuayi:echo.$weburl/}" size="30" /></td>
+		</tr>
+		<tr>
+			<th>网站LOGO：</th>
+			<td class="y-bg">
+			<input type="text" class="input-text" name="web_config[logo]" id="logo" value="{zhuayi:echo.$logo/}" size="60" />
+			</td>
 		</tr>
 		<tr>
 			<th>网站版权：</th>

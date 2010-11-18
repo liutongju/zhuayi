@@ -15,7 +15,7 @@ $(function(){
 })
 //-->
 </script>
-<form action="?m=setup&c=info&a=init" method="post" id="myform">
+<form action="?m=setup&c=info&a=init" method="post" id="myform" enctype="multipart/form-data">
 <fieldset>
 	<legend><?php echo $pagename; ?></legend>
 	<table width="100%"  class="table_form">
@@ -26,6 +26,12 @@ $(function(){
 		<tr>
 			<th>ÍøÕ¾ÓòÃû£º</th>
 			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="<?php echo $weburl; ?>" size="30" /></td>
+		</tr>
+		<tr>
+			<th>ÍøÕ¾LOGO£º</th>
+			<td class="y-bg">
+			<input type="text" class="input-text" name="web_config[logo]" id="logo" value="<?php echo $logo; ?>" size="60" />
+			</td>
 		</tr>
 		<tr>
 			<th>ÍøÕ¾°æÈ¨£º</th>

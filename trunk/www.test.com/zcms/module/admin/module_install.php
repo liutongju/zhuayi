@@ -57,12 +57,13 @@ else
 		//----打开SQL文件
 		$content = file_get_contents($val);
 		//------转换为数组
-		$content = explode(";".chr(13),$content);
+		$content = explode(";",$content);
+
 		//------安装数据库
 		foreach ($content as $vals)
 		{
 			if (!empty($vals))
-			$query->query(str_replace('{%z%}',$cookievarpre,$vals));
+			$query->query(str_replace('{%z%}',$cookievarpre,siconv($vals)));
 		}
 	}
 	//-------更新模块已安装

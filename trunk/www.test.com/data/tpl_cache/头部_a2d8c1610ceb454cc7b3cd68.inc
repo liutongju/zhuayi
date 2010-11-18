@@ -20,7 +20,7 @@ $fields = array();
 <div class="clearfix header">
   <div class="brand">
   <h1 class="site-name"><?php echo $weburl; ?> - <?php echo $webname; ?></h1>
-  <a class="site-logo" href="<?php echo $weburl; ?>" title="<?php echo $webname; ?>" rel="home"><img src="<?php echo $path; ?>images/logo.gif" alt="Chinaz logo" width="165" height="60" /></a>
+  <a class="site-logo" href="<?php echo $weburl; ?>" title="<?php echo $webname; ?>" rel="home"><img src="<?php echo $logo; ?>" alt="Chinaz logo" width="165" height="60" /></a>
   </div>
   
 </div>
