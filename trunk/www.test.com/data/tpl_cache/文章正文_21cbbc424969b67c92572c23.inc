@@ -1,23 +1,9 @@
 <?php
 if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
 $fields = array();
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<meta http-equiv="X-UA-Compatible" content="IE=7">
-<title><?php echo $seo['seo_title']; ?> - <?php echo $webname; ?></title>
-<link href="<?php echo $path; ?>style/style.css" type="text/css" rel="stylesheet" type="text/css" />
-<meta name="keywords" content="<?php echo $seo['seo_keywords']; ?>">
-<meta name="description" content="<?php echo $seo['seo_description']; ?>">
-<script src="<?php echo $path; ?>js/chinaz.js" type="text/javascript"></script>
-</head>
-<body>
-<div class="container">
-<?php include $this->CompilerInclude("头部.html");
+ include $this->CompilerInclude("头部.html");
  ?>
 <!-- /header -->
-
 	<div class="weizhi">
 		<b>您的位置</b>：
 		<?php foreach ($info['position'] as $val){?>
@@ -78,77 +64,12 @@ foreach( $blockValue as $key=>$fields )
 			
 		</div>
 	</div>
-
 	<div class="col2">
-        <div class="right_box right_bot f14">
-            <div class="right_title">推荐文章</div>
-            <ul>
-			<?php
-$atts = array();
-$atts['tagname'] = 'article_list';
-$atts['limit'] = '15';
-$atts['flag'] = 'tuijian';
-$blockValue = MakePublicTag($atts,$this->refObj,$fields); 
-if(is_array($blockValue) && count($blockValue) > 0){
-foreach( $blockValue as $key=>$fields )
-{
-?>
-				<li><a href="<?php echo $fields['url']; ?>" target="_blank"><?php echo $fields['title']; ?></a></li>
-		    <?php
-}
-}
-?>
-            </ul>
-        </div>
-		<div class="right_box right_bot f14">
-            <div class="right_title">热门文章</div>
-            <ul>
-			<?php
-$atts = array();
-$atts['tagname'] = 'article_list';
-$atts['limit'] = '15';
-$atts['flag'] = 'remen';
-$blockValue = MakePublicTag($atts,$this->refObj,$fields); 
-if(is_array($blockValue) && count($blockValue) > 0){
-foreach( $blockValue as $key=>$fields )
-{
-?>
-				<li><a href="<?php echo $fields['url']; ?>" target="_blank"><?php echo $fields['title']; ?></a></li>
-		    <?php
-}
-}
-?>
-            </ul>
-        </div>
-		<div class="right_box right_bot f14">
-            <div class="right_title">最新更新</div>
-            <ul>
-			<?php
-$atts = array();
-$atts['tagname'] = 'article_list';
-$atts['limit'] = '15';
-$blockValue = MakePublicTag($atts,$this->refObj,$fields); 
-if(is_array($blockValue) && count($blockValue) > 0){
-foreach( $blockValue as $key=>$fields )
-{
-?>
-				<li><a href="<?php echo $fields['url']; ?>" target="_blank"><?php echo $fields['title']; ?></a></li>
-		    <?php
-}
-}
-?>
-            </ul>
-        </div>
+		<?php include $this->CompilerInclude("文章右侧.html");
+ ?>
 	</div>
-       
-
-  </div>
 </div>
-
-<!--底部:开始-->
 <?php include $this->CompilerInclude("底部.html");
  ?>
-<!--底部:结束-->
-</div>
 </body>
 </html>

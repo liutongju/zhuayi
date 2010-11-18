@@ -1,0 +1,26 @@
+
+	<div class="right_box right_bot f14">
+		<div class="right_title">推荐文章</div>
+		<ul>
+			{zhuayi:article_list limit=15 flag=tuijian}
+		<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+		{/zhuayi:article_list}
+		</ul>
+	</div>
+	<div class="right_box right_bot f14">
+			<div class="right_title">热门文章</div>
+			<ul>
+			{zhuayi:article_list limit=15 flag=remen}
+				<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+			{/zhuayi:article_list}
+			</ul>
+	</div>
+
+	<div class="right_box right_bot f14">
+		<div class="right_title">最新更新</div>
+		<ul>
+		{zhuayi:article_list limit=15}
+			<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+		{/zhuayi:article_list}
+		</ul>
+	</div>

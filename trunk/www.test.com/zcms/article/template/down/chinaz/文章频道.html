@@ -1,0 +1,38 @@
+{zhuayi:include file="头部.html"/}
+<!-- /header -->
+  <form action="/plus/search.php" name="formsearch">
+<div class="weizhi"><span><b>搜索:</b>
+				<input type="hidden" name="kwtype" value="0" /> <input class="searchtxt" id="keyword" name="keyword" /> <select id="searchtype" name="select">
+				<option value="titlekeyword">智能搜索</option>
+				<option value="title" selected="selected">搜索标题</option>
+				</select> <input type="image" src="{zhuayi:echo.$path/}images/topsearch_submit.gif" />
+			</span><b>您的位置</b>：
+			<?php foreach ($info['position'] as $val){?>
+			<a href="{zhuayi:echo.$val['url']/}">{zhuayi:echo.$val['classname']/}</a> > 
+			<?php }?>
+			</div>
+</form>
+
+<!--列表左边:开始-->
+<div class="clearfix wrap layout-cols2">
+	<div class="col1">
+	{zhuayi:article_class_list parent_id=$info['id']}
+        <div id="news_sort">
+			<div class="news_title"><span><a href="{zhuayi:echo.$fields['url']/}">更多</a>>></span>{zhuayi:echo.$fields['classname']/}</div>
+			<ul>
+				{zhuayi:article_list limit=10 cid=$fields['id']}
+				<li><span>{zhuayi:echo.dtime($fields['dtime'],3)/}</span><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+			</ul>
+        </div>
+	{/zhuayi:article_class_list}
+  </div>
+<!--列表左边:结束-->
+<!--列表右边:开始--> 
+	<div class="col2">
+		{zhuayi:include file="文章右侧.html"/}
+	</div>
+</div>
+{zhuayi:include file="底部.html"/}
+</body>
+</html>

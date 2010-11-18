@@ -1,3 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
+<link href="{zhuayi:echo.$path/}style/style.css" type="text/css" rel="stylesheet" />
+<link rel="icon" href="favicon.gif" type="image/gif" >
+<meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
+<meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
+<script src="{zhuayi:echo.$path/}js/chinaz.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+
 <div class="clearfix header">
   <div class="brand">
   <h1 class="site-name">{zhuayi:echo.$weburl/} - {zhuayi:echo.$webname/}</h1>
@@ -10,8 +25,8 @@
 <div class="navinner">
   <ul class="navlist">
   <li><a href="/">首页</a></li>
-  {zhuayi:article_class_list parent_id=1}
-  <li><a href="/html/News/Index.html" id="nav_1" onmouseover="showMenu('nav_1','subnav1')" class="current">{zhuayi:echo.$fields['classname']/}</a>
+  {zhuayi:article_class_list parent_id=0}
+  <li><a href="{zhuayi:echo.$fields['url']/}" id="nav_1" onmouseover="showMenu('nav_1','subnav1')" class="current">{zhuayi:echo.$fields['classname']/}</a>
   </li>
   {/zhuayi:article_class_list}
   </ul>

@@ -712,6 +712,7 @@ a.menu_gg:link, a.menu_gg:visited {
 /* Sitemap Footer
 ==========================================================*/
 .sitemap {
+	overflow:hidden;
     height: 2.5em;
     line-height: 2.5;
     color: #275c91;
@@ -1497,3 +1498,11 @@ h1{
 .accesslink li.hover .dropdownmenu-wrap{visibility:visible;}
 
 .topbar-hiddencontents{display:none;}
+
+
+/*·ÖÒ³*/
+.page{text-align:right;}
+.page1{ padding:3px; background:#4e6a81; color:#fff; padding:4px 8px 4px 8px; font-weight:bold;}
+.page2,.page3{ border:1px #eeeeee solid;  padding:4px 8px 4px 8px;}
+.page2{ color:#075cb1;}
+.page3{color:#666;}

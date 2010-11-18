@@ -12,4 +12,5 @@ verify_admin('admin_username');
 //-------ÉèÖÃ·µ»ØURL
 set_cookie("backurl",GetCurUrl(),0);
 
+$maxnum = $query->maxnum("select count(*) from ".T."article ");
 ?>

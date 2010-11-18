@@ -37,7 +37,7 @@ $_POST['body'] = stripslashes($_POST['body']);
 
 //----下载第一个图为缩略图
 
-if (empty($_POST['litpic']))
+if (empty($_POST['litpic']) && !empty($pic[0]))
 $_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"),$article_width);
 
 //----判断是否要下载文章内容里的图片
@@ -57,6 +57,7 @@ if (!empty($_REQUEST['jump']))
 }
 if (empty($_REQUEST['id']))
 {
+	$_POST['dtime'] = time();
 	$pagename = '添加文章';
 	$_POST['id'] = $query->save("article",$_POST);
 }

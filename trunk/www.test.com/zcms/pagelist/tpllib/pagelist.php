@@ -53,8 +53,8 @@ function pagelist($atts)
 		$url .= "page/{page}";
 	}
 	$totalPage      = ceil($maxnum/$perpagenum);
-	if ($totalPage>1)
-	return  page( $totalPage , $page , $url,5,$maxnum);
+	//if ($totalPage>1)
+	return  page( $totalPage , $page , $url,3,$maxnum);
 
 }
 

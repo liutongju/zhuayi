@@ -1,7 +1,22 @@
 <?php
 if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
 $fields = array();
-?><div class="clearfix header">
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title><?php echo $seo['seo_title']; ?> - <?php echo $webname; ?></title>
+<link href="<?php echo $path; ?>style/style.css" type="text/css" rel="stylesheet" />
+<link rel="icon" href="favicon.gif" type="image/gif" >
+<meta name="keywords" content="<?php echo $seo['seo_keywords']; ?>">
+<meta name="description" content="<?php echo $seo['seo_description']; ?>">
+<script src="<?php echo $path; ?>js/chinaz.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="clearfix header">
   <div class="brand">
   <h1 class="site-name"><?php echo $weburl; ?> - <?php echo $webname; ?></h1>
   <a class="site-logo" href="<?php echo $weburl; ?>" title="<?php echo $webname; ?>" rel="home"><img src="<?php echo $path; ?>images/logo.gif" alt="Chinaz logo" width="165" height="60" /></a>
@@ -16,13 +31,13 @@ $fields = array();
   <?php
 $atts = array();
 $atts['tagname'] = 'article_class_list';
-$atts['parent_id'] = '1';
+$atts['parent_id'] = '0';
 $blockValue = MakePublicTag($atts,$this->refObj,$fields); 
 if(is_array($blockValue) && count($blockValue) > 0){
 foreach( $blockValue as $key=>$fields )
 {
 ?>
-  <li><a href="/html/News/Index.html" id="nav_1" onmouseover="showMenu('nav_1','subnav1')" class="current"><?php echo $fields['classname']; ?></a>
+  <li><a href="<?php echo $fields['url']; ?>" id="nav_1" onmouseover="showMenu('nav_1','subnav1')" class="current"><?php echo $fields['classname']; ?></a>
   </li>
   <?php
 }

@@ -5,6 +5,7 @@ $fields = array();
  ?><form name="myform" action="/index.php?m=article&c=class_info&a=init" method="post"><div class="table-list">	<table width="100%" cellspacing="0" >		<thead>			<tr>				<th width="30"><input type="checkbox" name="checkbox" class="check"/></th>				<th width="30">序号</th>				<th align="left">标题</th>				<th align="left">所属栏目</th>				<th align="left">点击量</th>				<th align="left">更新时间</th>				<th width="180">操作</th>			</tr>		</thead>		<tbody>		<?php
 $atts = array();
 $atts['tagname'] = 'article_list';
+$atts['page'] = $_REQUEST['page'];
 $blockValue = MakePublicTag($atts,$this->refObj,$fields); 
 if(is_array($blockValue) && count($blockValue) > 0){
 foreach( $blockValue as $key=>$fields )
@@ -19,5 +20,12 @@ foreach( $blockValue as $key=>$fields )
 ?>
 		</tbody>
 	</table>
-	<div class="btn">		<input type="submit" class="button" name="dosubmit" value="排序" onclick='$(".check").attr("checked",true)'/>	</div></div></form><?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
+	<div class="btn">		<div style="float:left">			<a href="javascript:" onClick="javascript:$('input[type=checkbox]').attr('checked', true)">全选</a>/<a href="javascript:" onClick="javascript:$('input[type=checkbox]').attr('checked', false)">取消</a>			<input type="submit" class="button" name="dosubmit" value="删除选中"/>		</div>		<?php
+$atts = array();
+$atts['tagname'] = 'pagelist';
+$atts['maxnum'] = $maxnum;
+$atts['page'] = $_REQUEST['page'];
+ echo  MakePublicTag($atts,$this->refObj,$fields); 
+?>
+	</div></div></form><?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
  ?>

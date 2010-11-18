@@ -1,5 +1,5 @@
 @charset "gb2312";
-@import url(file:///R|/Temporary Internet Files/Content.IE5/67H91B3M/code.css);
+@import url(code.css);
 
 body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, 
 h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, 
@@ -30,7 +30,7 @@ caption, th {
 
 body {
     color: #333;
-    background: url(/templets/chinaz/images/body_bg.jpg) repeat-x #deebf3;
+    background: url(../images/body_bg.jpg) repeat-x #deebf3;
     text-align: center;
     font: 12px/1.5 Tahoma, Helvetica, Arial, sans-serif;
 }
@@ -38,13 +38,13 @@ body {
 /*
 body {
     color: #333;
-    background: url(/templets/chinaz/images/body_bg2.jpg) repeat-x #FFFAD2; /*#deebf3*/
+    background: url(../images/body_bg2.jpg) repeat-x #FFFAD2; /*#deebf3*/
     text-align: center;
     font: 12px/1.5 Tahoma, Helvetica, Arial, sans-serif;
 }
 */
 .cztopbg{
-	background-image: url(/templets/chinaz/images/cztopbg.jpg);
+	background-image: url(../images/cztopbg.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
 	padding-top: 50px;
@@ -174,7 +174,7 @@ html, body {
 	color:#275c91;
 }
 .box_bt {
-	background: url(/templets/chinaz/images/title_icon.gif) no-repeat 10px 12px  #f6f6f6;
+	background: url(../images/title_icon.gif) no-repeat 10px 12px  #f6f6f6;
 	padding:4px;
 	padding-left:24px;
 	font-size:14px;
@@ -197,12 +197,12 @@ html, body {
 	text-indent:24px;
 	line-height:21px;
 	margin:0px 7px;
-	background:url(/templets/chinaz/images/title_bg.gif) repeat-x bottom;
+	background:url(../images/title_bg.gif) repeat-x bottom;
 	padding-bottom:6px;
 }
 .box_title{
-	background:url(/templets/chinaz/images/news_bg.gif);
-    position: relative;
+	background:url(../images/news_bg.gif);
+   
     height: 28px;
 }
 .box_title h3 {
@@ -223,7 +223,7 @@ html, body {
 	line-height:24px;
 }
 .box .hot_box li{
-	background:url(/templets/chinaz/images/nav_icon.gif) no-repeat 5px 10px;
+	background:url(../images/nav_icon.gif) no-repeat 5px 10px;
 	padding-left:14px;
 	line-height:27px;
 }
@@ -287,7 +287,7 @@ html, body {
 	margin-bottom:10px;
 }
 .box .cy_box li{
-	background:url(/templets/chinaz/images/title_bg.gif) repeat-x bottom;
+	background:url(../images/title_bg.gif) repeat-x bottom;
 	padding:10px 5px;
 }
 .box .cy_box li h4{
@@ -307,7 +307,7 @@ html, body {
 	text-decoration:underline;
 }
 .box .sc_box li{
-	background:url(/templets/chinaz/images/title_bg.gif) repeat-x bottom;
+	background:url(../images/title_bg.gif) repeat-x bottom;
 	padding:10px 5px 10px 5px;
 	line-height:21px;
 }
@@ -428,24 +428,24 @@ a:link, a:visited {
 .nav {
     position: relative;
     margin: 0 10px 10px;
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 0 -36px;
+    background: url(../images/nav_bg.png) no-repeat 0 -36px;
 }
 .navinner {
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 100% -72px;
+    background: url(../images/nav_bg.png) no-repeat 100% -72px;
 }
 .navlist {
     height: 36px;
     line-height: 36px;
     overflow: hidden;
     margin: 0 10px;
-    background: url(/templets/chinaz/images/nav_bg.png) repeat-x 0 0;
+    background: url(../images/nav_bg.png) repeat-x 0 0;
 }
 .nav li {
     float: left;
     display: inline;
     margin: 0 0 0 -2px;
     padding: 0 4px 0 6px;
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 0 -108px;
+    background: url(../images/nav_bg.png) no-repeat 0 -108px;
 }
 .nav a {
     display: block;
@@ -459,7 +459,7 @@ a:link, a:visited {
 .nav a.current, .nav a:hover, .nav a:active {
     color: #fff;
     font-weight: bold;
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 50% -144px;
+    background: url(../images/nav_bg.png) no-repeat 50% -144px;
 }
 .subnav {
     position: absolute;
@@ -469,18 +469,18 @@ a:link, a:visited {
     height: 27px;
     line-height: 27px;
     white-space: nowrap;
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 0 -180px;
+    background: url(../images/nav_bg.png) no-repeat 0 -180px;
 }
 * html .subnav {
     margin: 0 10px 0 -10px; /* IE 6 and below */
 }
 .subnav p {
     padding: 0 10px;
-    background: url(/templets/chinaz/images/nav_bg.png) no-repeat 100% -234px;
+    background: url(../images/nav_bg.png) no-repeat 100% -234px;
 }
 .subnav p span {
     display: block;
-    background: url(/templets/chinaz/images/nav_bg.png) repeat-x 0 -207px;
+    background: url(../images/nav_bg.png) repeat-x 0 -207px;
 }
 .subnav p.pointer {
     position: absolute;
@@ -491,7 +491,7 @@ a:link, a:visited {
     padding: 0;
     margin-left: 20px;
     text-indent: -999em;
-    background: url(/templets/chinaz/images/nav_bg.png) repeat-x 0 -261px;
+    background: url(../images/nav_bg.png) repeat-x 0 -261px;
 }
 .subnav a {
     display: inline;
@@ -596,7 +596,7 @@ a:link, a:visited {
 	position:relative; margin-bottom:-1px;left:13px;
 	height:5px; width:7px;
 	overflow:hidden;
-	background:url(/templets/chinaz/images/icon_1.gif) no-repeat;
+	background:url(../images/icon_1.gif) no-repeat;
 }
 .menu_2{
 	left:51px;
@@ -645,7 +645,7 @@ a.menu_gg:link, a.menu_gg:visited {
 	
 .btn_sc{
 	border:none;
-	background:url(/templets/chinaz/images/btn.gif);
+	background:url(../images/btn.gif);
 	width:76px;
 	height:23px;
 	color:#FFFFFF;
@@ -657,7 +657,7 @@ a.menu_gg:link, a.menu_gg:visited {
     height: 106px;
     margin-bottom: 10px;
     overflow: hidden;
-    background: url(/templets/chinaz/images/bg.png) no-repeat 0 -30px;
+    background: url(../images/bg.png) no-repeat 0 -30px;
 }
 .topinfo h3 {
     color: #275c91;
@@ -810,10 +810,10 @@ a.v_red:hover{
 	float:left;
 }
 .ding_bg{
-	background:url(/templets/chinaz/images/ding_bg.gif);
+	background:url(../images/ding_bg.gif);
 }
 .back_bg{
-	background:url(/templets/chinaz/images/back_bg.gif);
+	background:url(../images/back_bg.gif);
 }
 .ding b{
 	color:#FFFFFF;
@@ -849,7 +849,7 @@ a.v_red:hover{
 	margin-bottom:10px;
 }
 #news_sort .news_title{
-	background:url(/templets/chinaz/images/news_bg.gif) repeat-x;
+	background:url(../images/news_bg.gif) repeat-x;
 	height:28px;
 	line-height:28px;
 	padding-left:15px;
@@ -939,7 +939,7 @@ h1{
 	padding-right:15px;
 	font-size:14px;
 	font-weight:bold;
-	background:url(/templets/chinaz/images/pl_bg.gif) repeat-x;
+	background:url(../images/pl_bg.gif) repeat-x;
 }
 .pl_title span{
 	float:right;
@@ -992,7 +992,7 @@ h1{
 }
 .btn{
 	color:#FFFFFF;
-	background:url(/templets/chinaz/images/btn_bg.gif) repeat-x #5D8BBA;
+	background:url(../images/btn_bg.gif) repeat-x #5D8BBA;
 	height:22px;
 	text-align:center;
 	line-height:22px;
@@ -1012,7 +1012,7 @@ h1{
 .news_list ul .list_title{
 	color:#204E7D;
 	font-weight:bold;
-	background:url(/templets/chinaz/images/list_title.gif) no-repeat 7px 7px;
+	background:url(../images/list_title.gif) no-repeat 7px 7px;
 	padding-left:23px;
 	font-size:14px;
 }
@@ -1138,7 +1138,7 @@ h1{
     line-height: 30px;
     margin: 1px 1px 0;
     color: #fff;
-    background: url(/templets/chinaz/images/nav.png) repeat-x 0 -390px;
+    background: url(../images/nav.png) repeat-x 0 -390px;
 }	
 	
 
@@ -1249,7 +1249,7 @@ h1{
 	display:block;
 	float:left;
 	width:50%;
-	background:url(/templets/chinaz/images/xg_bg.gif) no-repeat 5px 9px;
+	background:url(../images/xg_bg.gif) no-repeat 5px 9px;
 	*width:49%;
 	text-indent:12px;
 	height:24px;
@@ -1529,7 +1529,7 @@ h1{
 .dropdownmenu-inner{padding:1px;border:1px solid #dcdcdc;zoom:1;}
 
 .accesslink a.item-expand,
-.accesslink a.item-expand span{background:url(/templets/chinaz/images/toolbar_arrow.gif) no-repeat;}
+.accesslink a.item-expand span{background:url(../images/toolbar_arrow.gif) no-repeat;}
 
 .accesslink{float:left;margin:0;padding:0;list-style:none;height:28px;line-height:26px;white-space:nowrap;}
 .accesslink li{float:left;position:relative;}

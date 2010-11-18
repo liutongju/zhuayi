@@ -21,7 +21,6 @@ class routing
 		
 		$this->seo();
 		
-		
 		//----¸ñÊ½»¯URL
 		$this->url = parse_url($this->url);
 		$this->url_res();

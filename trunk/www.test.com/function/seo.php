@@ -9,8 +9,10 @@ function seo($table,$aid,$action='')
 	//----如果为空则不入库
 	if ($action=='')
 	{
+		
 		if ($query->maxnum("select count(*) from ".T."seo where tables ='".$table."' and aid=".$aid)==0)
 		{
+
 			if (empty($_POST['request_url']))
 			return;
 			$query->save("seo",$_POST);
