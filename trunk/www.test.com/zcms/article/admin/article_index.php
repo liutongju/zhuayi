@@ -20,7 +20,8 @@ if (!empty($_REQUEST['flag']))
 	$search .= " and a.flag regexp '".$_REQUEST['flag']."'";
 }
 
-
+if ($_REQUEST['generate']!=''){	$search .= " and  a.generate=".$_REQUEST['generate'];}
+	
 if (!empty($_REQUEST['cid']))
 {
 	$search .= " and a.cid = '".$_REQUEST['cid']."'";

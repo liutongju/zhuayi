@@ -11,6 +11,23 @@ $(function(){
 	$("#path").formValidator({onshow:"请输入静态页存放地址,请以\"/\"开头、以\"/\"结尾(非必须,不生成则不必填写)",onfocus:"请输入静态页存放地址(非必须,不生成则不必填写)"})
 	$("#html").formValidator({onshow:"请选择是否生成HTML",onfocus:"请选择是否生成HTML"})
 	$("#class_url").formValidator({onshow:"请输入默认URL,可用标签{id},替换为直投ID",onfocus:"请输入默认URL,可用标签{id}"}).inputValidator({min:2,onerror:"请输入默认URL,可用标签{id}"});
+	
+	//----
+	if ($("input[name='article_config[article_generate]']:checked").val()==0)
+	{
+		$("#article_generate_path").css("display",'none');
+	}
+	else
+	{
+		$("#article_generate_path").css("display",'');
+	}
+	$(".article_generate").click(function(){
+		if ($(this).val()==0)
+		$("#article_generate_path").css("display",'none');
+		else
+		$("#article_generate_path").css("display",'');
+	})
+	
 })
 //-->
 </script>
@@ -91,6 +108,20 @@ $(function(){
 			<th width="150">文章缩略图大小：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="article_config[article_width]" id="article_width" value="<?php echo $article_width; ?>" size="10" />  - <input type="text" class="input-text" name="article_config[article_height]" id="article_height" value="<?php echo $article_height; ?>" size="10" />
+			</td>
+		</tr>
+		<tr>
+			<th width="150">是否生成HTML：</th>
+			<td class="y-bg">
+				<input name="article_config[article_generate]" value="1" type="radio" class="article_generate" <?php if ($article_generate==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[article_generate]" value="0" type="radio" class="article_generate" <?php if ($article_generate==0){echo ' checked';}?>> 否  
+			</td>
+		</tr>
+		<tr id="article_generate_path">
+			<th width="150">HTML存放地址：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_generate_path]"  value="<?php echo $article_generate_path; ?>" size="60" />
+				<span><br>可用标签{catdir}==>栏目路径、{Y}==>年、{M}==>月、{D}==>日、{id}==>文章ID</span>
 			</td>
 		</tr>
 	</table>

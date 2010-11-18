@@ -6,7 +6,7 @@ $fields = array();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>SOSCMS - 后台管理中心</title>
+<title>ZCMS - 后台管理中心</title>
 <link href="<?php echo model_url('admin','admin'); ?>css/reset.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo model_url('admin','admin'); ?>css/system.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo model_url('admin','admin'); ?>css/table_form.css" rel="stylesheet" type="text/css" />
@@ -33,7 +33,6 @@ $(function(){
 <div class="subnav">
     <div class="content-menu ib-a blue line-x">
 	<?php 
-		
 		foreach ($menu as $val){?>
         <a href="?m=<?php echo $_REQUEST['m']; ?>&c=<?php echo $val[1]; ?>&a=init<?php if (!empty($val[3])){echo $val[3];}?>" class="<?php if ($_REQUEST['c']==$val[1]){echo 'on';} if (!empty($val[2])){echo ' thickbox';}?>"><em><?php echo $val['0']; ?></em></a><span>|</span>
 	<?php }

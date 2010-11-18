@@ -16,13 +16,19 @@ $menu = array(
 			'2'=>array('添加栏目','class_edit'),
 			'3'=>array('更新栏目缓存','class_cache'),
 			'4'=>array('管理文章','index'),
-			'5'=>array('发布文章','edit')
+			'5'=>array('发布文章','edit'),
+			'6'=>array('生成全部文章','generate')
 			);
+
+
 //-------设置模块提示
 $tips = '请在添加、修改、排序栏目全部完成后，更新栏目缓存';
 
 //-------载入文章文件
 include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
+
+if ($article_generate == 0)
+unset($menu[5]);
 
 //-------序列化推送位
 $flag = explode(chr(13),$flag);

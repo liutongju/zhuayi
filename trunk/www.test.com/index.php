@@ -69,6 +69,9 @@ if(file_exists($_REQUEST['g_file']))
 {
 	include_once $_REQUEST['g_file'];
 }
+//------载入模版
+require ZCMS_ROOT.'/class/template.class.php';
+$tpl = new DedeTemplate();
 
 //-----载入模型文件
 if(file_exists($_REQUEST['m_file']))
@@ -76,9 +79,6 @@ if(file_exists($_REQUEST['m_file']))
 	include_once $_REQUEST['m_file'];
 }
 
-//------载入模版
-require ZCMS_ROOT.'/class/template.class.php';
-$tpl = new DedeTemplate();
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
 ?>
