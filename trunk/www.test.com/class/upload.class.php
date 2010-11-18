@@ -293,7 +293,12 @@ class upload
 			$posX = rand(0,($ground_w - $water_w)); 
 			$posY = rand(0,($ground_h - $water_h)); 
 			break;   
-		}	
+		}
+		imagealphablending($ground,true);
+		
+		if ($ground_type==3)
+		imagecopy($ground, $water, $posX, $posY, 0, 0, $water_w,$water_h);//拷贝水印到目标文件
+		else
 		imagecopymerge($ground, $water, $posX, $posY, 0, 0, $water_w,$water_h,WATERMARK_PCT);//拷贝水印到目标文件
 		
 		imagejpeg($ground, $this->path, WATERMARK_QUALITY);
