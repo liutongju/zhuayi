@@ -29,6 +29,7 @@ $flag = explode(chr(13),$flag);
 
 //-------载入模版缓存文件
 $tpl_cache =  ZCMS_ROOT.'/data/data_cache/tpl.cache.php';
+
 if (file_exists($tpl_cache))
 {
 	$tpl_cache = file_get_contents($tpl_cache);

@@ -16,9 +16,6 @@ verify_admin('admin_username');
 if (empty($_REQUEST['id']) && !is_array($_REQUEST['orders']))
 {
 	$pagename = '添加栏目';
-	echo '<pre>';
-	print_r($_POST);
-	exit;
 	$_POST['id'] = $query->save("article_class",$_POST);
 }
 else
@@ -50,5 +47,5 @@ else
 
 //---------写入日志
 admin_log("article_class",$_POST['id'],'classname',$pagename);
-showmsg('恭喜您,操作成功',ret_cookie('backurl'));
+showmsg('恭喜您,操作成功..现在去生成缓存','/index.php?m=article&c=class_cache&a=init',1000);
 ?>
