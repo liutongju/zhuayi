@@ -18,10 +18,11 @@ if (!is_array($_REQUEST['id']))
 }
 $_REQUEST['id'] = implode(',',$_REQUEST['id']);
 
+
 if ($_REQUEST['action'] == 'flag')
 $query->query("update ".T."article set flag = concat(replace(flag,'".$_REQUEST['tuisong']."',''),',".$_REQUEST['tuisong']."') where id in (".$_REQUEST['id'].")");
 elseif ($_REQUEST['action'] == 'cid')
-$query->query("update ".T."article set cid = '".$_REQUEST['tuisong']."' where id in (".$_REQUEST['id'].")");
+$query->query("update ".T."article set cid = '".$_REQUEST['yidong']."' where id in (".$_REQUEST['id'].")");
 
 showmsg('¹§Ï²Äã£¬²Ù×÷³É¹¦',ret_cookie('backurl'));
 ?>
