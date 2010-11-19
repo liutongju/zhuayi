@@ -42,4 +42,14 @@ if (file_exists($tpl_cache))
 	$tpl_cache = file_get_contents($tpl_cache);
 	$tpl_cache = unserialize($tpl_cache);
 }
+
+//----ÆµµÀURL
+if ($article_index_generate==1)
+{
+	$article_url = $article_index_path;
+}
+else
+{
+	$article_url = $article_index_url;
+}
 ?>

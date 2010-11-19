@@ -15,7 +15,7 @@ $info = $query->one_array("select * from ".T."article_class where id ='".$_REQUE
 if (!empty($info['catdir']))
 $info['catdir'] = $info['catdir'];
 else
-$info['catdir'] = $path;
+$info['catdir'] = $article_index_path;
 echo $info['catdir'].pinyin(urldecode($_REQUEST['title'])).'/';
 exit;
 ?>

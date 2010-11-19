@@ -8,8 +8,22 @@ $(function(){
 	$("#html").formValidator({onshow:"请选择是否生成HTML",onfocus:"请选择是否生成HTML"})
 	$("#class_url").formValidator({onshow:"请输入默认URL,可用标签{id},替换为直投ID",onfocus:"请输入默认URL,可用标签{id}"}).inputValidator({min:2,onerror:"请输入默认URL,可用标签{id}"});
 	$("#article_generate_time").formValidator({onshow:"静态页自动更新间隔时间，单位秒",onfocus:"静态页自动更新间隔时间，单位秒"}).inputValidator({min:2,onerror:"静态页自动更新间隔时间，单位秒"});
+	$("#article_index_path").formValidator({onshow:"请以“/”开头结尾，不允许添加后缀，只填写目录名",onfocus:"请以“/”开头结尾，不允许添加后缀，只填写目录名"}).inputValidator({min:2,onerror:"请以“/”开头结尾，不允许添加后缀，只填写目录名"});
+	$("#article_index_url").formValidator({onshow:"系统强制此功能和自定义URL一样",onfocus:"系统强制此功能和自定义URL一样"}).inputValidator({min:2,onerror:"系统强制此功能和自定义URL一样"});
 	
 	//----
+	
+	if ($("input[name='article_config[article_index_generate]']:checked").val()==0)
+	{
+		$(".article_index_path").css("display",'none');
+		$(".article_index_url").css("display",'');
+	}
+	else
+	{
+		$(".article_index_path").css("display",'');
+		$(".article_index_url").css("display",'none');
+	}
+	
 	if ($("input[name='article_config[article_generate]']:checked").val()==0)
 	{
 		$(".article_generate_path").css("display",'none');
@@ -66,7 +80,29 @@ $(function(){
 			});
 		}
 	})
+	$(".article_index_generate").click(function(){
+		if ($(this).val()==0)
+		{
+			$(".article_index_path").fadeOut("slow",function(){
+				$(".article_index_url").fadeIn("slow");
+			});
+			
+		}
+		else
+		{
+			
+			$(".article_index_url").fadeOut("slow",function(){
+				$(".article_index_path").fadeIn("slow");
+			});
+		}
+	})
 	
+	$("#article_index_url").blur(function(){
+		$("#url").val($(this).val())
+	})
+	$("#url").blur(function(){
+		$("#article_index_url").val($(this).val())
+	})
 })
 //-->
 </script>
@@ -75,9 +111,22 @@ $(function(){
 	<legend>基本配置</legend>
 	<table width="100%"  class="table_form">
 		<tr>
-			<th width="150">静态页存放地址：</th>
+			<th width="150">模块静态化：</th>
 			<td class="y-bg">
-				<input type="text" class="input-text" name="article_config[path]" id="path" value="{zhuayi:echo.$path/}" size="30" /> 
+				<input name="article_config[article_index_generate]" value="1" type="radio" <?php if ($article_index_generate==1){echo ' checked';}?> class="article_index_generate"> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[article_index_generate]" value="0" type="radio"  <?php if ($article_index_generate==0){echo ' checked';}?> class="article_index_generate"> 否  
+			</td>
+		</tr>
+		<tr class="article_index_url">
+			<th width="150">动态URL规则：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_index_url]"  value="{zhuayi:echo.$article_index_url/}" size="60" id="article_index_url">
+			</td>
+		</tr>
+		<tr class="article_index_path">
+			<th width="150">HTML存放地址：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_index_path]"  value="{zhuayi:echo.$article_index_path/}" size="60" id="article_index_path"/>
 			</td>
 		</tr>
 		<tr>

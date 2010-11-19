@@ -28,7 +28,7 @@ $fields = array();
 <div class="nav">
 <div class="navinner">
   <ul class="navlist">
-  <li><a href="/">首页</a></li>
+  <li><a href="<?php echo $article_url; ?>">首页</a></li>
   <?php
 $atts = array();
 $atts['tagname'] = 'article_class_list';
@@ -51,6 +51,6 @@ foreach( $blockValue as $key=>$fields )
 
 <div class="note"><span>
   <a href="http://www.chinaz.com/rss.php"><img src="<?php echo $path; ?>images/rss.gif" align="absbottom" /> RSS订阅</a></span>
-  <b>站长资讯通告:</b><script language="javascript" src="http://www.chinaz.com/Js/Hot_Announce.js"></script>
+  <b>站长资讯通告:</b><script language="javascript" src=""></script>
 
 </div>
