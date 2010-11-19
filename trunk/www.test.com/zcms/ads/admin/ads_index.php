@@ -12,4 +12,5 @@
 set_cookie("backurl",GetCurUrl(),0);
 $pagename = '广告管理';
 $maxnum = $query->maxnum("select count(*) from ".T."ads ");
+
 ?>

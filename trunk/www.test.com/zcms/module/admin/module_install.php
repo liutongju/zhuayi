@@ -21,7 +21,8 @@ else
 	$file = ZCMS_ROOT.'/zcms/'.$info['mark'].'/install/';
 	//----打开模型菜单文件安装菜单
 	$menus = file_get_contents($file.'menu.php');
-	$menus = unserialize($menus);
+	$menus = unserialize(trim($menus));
+
 	if ($info['type'] == 0)
 	{
 		$menus[0]['parent_id'] = 0;

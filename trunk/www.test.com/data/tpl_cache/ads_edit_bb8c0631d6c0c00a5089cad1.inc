@@ -8,7 +8,6 @@ $(function(){
 	$("#title").formValidator({onshow:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中",onfocus:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中"}).inputValidator({min:2,onerror:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中"});
 	$("#type").formValidator({onshow:"(更改时,更换类型,不会清空表单里的内容)",onfocus:"(更改时,更换类型,不会清空表单里的内容)"}).inputValidator({min:1,onerror:"(更改时,更换类型,不会清空表单里的内容)"});
 	
-	$("#color").css('background',);
 })
 function ads(id,str)
 {
