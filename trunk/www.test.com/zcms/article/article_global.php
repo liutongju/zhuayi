@@ -17,7 +17,8 @@ $menu = array(
 			'3'=>array('更新栏目缓存','class_cache'),
 			'4'=>array('管理文章','index'),
 			'5'=>array('发布文章','edit'),
-			'6'=>array('生成全部文章','generate')
+			'6'=>array('生成全部文章','generate&act=show'),
+			'7'=>array('生成全部栏目','generate&act=class')
 			);
 
 

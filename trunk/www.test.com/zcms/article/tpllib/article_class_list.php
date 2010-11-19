@@ -34,7 +34,11 @@ function article_class_list($atts)
 	$reset = $query->query($sql);
 	while ($row = $query->fetch_array($reset))
 	{
-		if (empty($row['url']))
+		if (!empty($row['article_generate_path']))
+		{
+			$row['url'] = str_replace(ZCMS_ROOT,'',article_generate_path($row));
+		}
+		elseif (empty($row['url']))
 		$row['url'] = article_class_url($row['id']);
 		$list[] = $row;
 	}

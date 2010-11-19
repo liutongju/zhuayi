@@ -330,6 +330,7 @@ class DedeTemplate
 	//保存运行后的程序为文件
 	function SaveTo($savefile)
 	{
+		
 		extract($GLOBALS, EXTR_SKIP);
 		$this->WriteCache();
 		ob_start();
@@ -345,9 +346,9 @@ class DedeTemplate
 		{
 			$mk = @mkdir($savefile,0777,true);
 			@chmod($uppath,0777);
-			if(empty($mk)) die($savefile.'写入失败');
-		}	
-		$fp = @fopen($savefile.$str2[(count($str2)-1)],"w") or die($savefile.'写入失败');
+			if(empty($mk)) die($savefile.'目录创建失败');
+		}
+		$fp = fopen($savefile.$str2[(count($str2)-1)],"w") or die($savefile.$str2[(count($str2)-1)].'写入失败');
 		fwrite($fp,$okstr);
 		fclose($fp);
 	}

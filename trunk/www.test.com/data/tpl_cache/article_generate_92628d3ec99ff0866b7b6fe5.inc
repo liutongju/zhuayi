@@ -39,7 +39,8 @@ function generate()
 		}
 		id = arr[i];
 		title = arrt[i];
-		$.get('/index.php?m=article&c=show&id='+arr[i]+'&generate=zcms',function(data){
+		$.get('/index.php?m=article&c=<?php echo $_REQUEST['act']; ?>&<?php echo $zfields; ?>='+arr[i]+'&generate=zcms',function(data){
+
 			data = parseInt(data);
 			if (regNum.test(data))
 			{
@@ -63,7 +64,7 @@ function generate()
 function generate2(id)
 {
 	
-	$.get('/index.php?m=article&c=show&id='+id+'&generate=zcms&page='+j,function(data){
+	$.get('/index.php?m=article&c=<?php echo $_REQUEST['act']; ?>&<?php echo $zfields; ?>='+id+'&generate=zcms&page='+j,function(data){
 			data = parseInt(data);
 			if (regNum.test(data))
 			{
@@ -76,7 +77,7 @@ function generate2(id)
 			document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
 			if (j <= data)
 			{
-				setTimeout('generate2('+id+')',500);
+				setTimeout('generate2('+id+')',100);
 			}
 			else
 			{

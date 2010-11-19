@@ -56,7 +56,6 @@
 {zhuayi:include file="µ×²¿.html"/}
 <script src="{zhuayi:echo.model_url('admin','admin')/}js/jquery.min.js" type="text/javascript"></script>
 <script src="{zhuayi:echo.model_url('article','')/}js/article.js" type="text/javascript"></script>
-<script type="text/javascript">
-//article_generate('{zhuayi:echo.$info['id']/}');</script>
+<script type="text/javascript">article_generate('show','{zhuayi:echo.$info['id']/}','{zhuayi:echo.$_REQUEST['page']/}');</script>
 </body>
 </html>

@@ -24,6 +24,19 @@ $(function(){
 		$(".article_generate_path").css("display",'');
 		$(".article_news_url").css("display",'none');
 	}
+	
+	//----
+	if ($("input[name='article_config[article_class_generate]']:checked").val()==0)
+	{
+		$(".article_class_path").css("display",'none');
+		$(".article_class_url").css("display",'');
+	}
+	else
+	{
+		$(".article_class_path").css("display",'');
+		$(".article_class_url").css("display",'none');
+	}
+	
 	$(".article_generate").click(function(){
 		if ($(this).val()==0)
 		{
@@ -37,6 +50,23 @@ $(function(){
 			
 			$(".article_news_url").fadeOut("slow",function(){
 				$(".article_generate_path").fadeIn("slow");
+			});
+		}
+	})
+	
+	$(".article_class_generate").click(function(){
+		if ($(this).val()==0)
+		{
+			$(".article_class_path").fadeOut("slow",function(){
+				$(".article_class_url").fadeIn("slow");
+			});
+			
+		}
+		else
+		{
+			
+			$(".article_class_url").fadeOut("slow",function(){
+				$(".article_class_path").fadeIn("slow");
 			});
 		}
 	})
@@ -86,8 +116,28 @@ $(function(){
 		<tr>
 			<th width="150">默认栏目生成Html：</th>
 			<td class="y-bg">
-				<input name="article_config[html]" value="1" type="radio" <?php if ($html==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
-				<input name="article_config[html]" value="0" type="radio"  <?php if ($html==0){echo ' checked';}?>> 否  
+				<input name="article_config[article_class_generate]" value="1" type="radio" <?php if ($article_class_generate==1){echo ' checked';}?> class="article_class_generate"> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[article_class_generate]" value="0" type="radio"  <?php if ($article_class_generate==0){echo ' checked';}?> class="article_class_generate"> 否  
+			</td>
+		</tr>
+		<tr class="article_class_url">
+			<th width="150">动态URL规则：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_class_url]"  value="<?php echo $article_class_url; ?>" size="60" />
+				<span><br>可用标签{id}==>栏目ID</span>
+			</td>
+		</tr>
+		<tr class="article_class_path">
+			<th width="150">HTML存放地址：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_class_path]"  value="<?php echo $article_class_path; ?>" size="60" />
+				<span><br>可用标签{catdir}==>栏目路径、{Y}==>年、{M}==>月、{D}==>日、{id}==>栏目ID</span>
+			</td>
+		</tr>
+		<tr class="article_class_path">
+			<th width="150">更新间隔：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_class_time]"  value="<?php echo $article_class_time; ?>" id="article_generate_time" size="20" />
 			</td>
 		</tr>
 	</table>

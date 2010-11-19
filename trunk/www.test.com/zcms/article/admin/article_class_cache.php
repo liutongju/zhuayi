@@ -19,7 +19,11 @@ $i=0;
 while ($row = $query->fetch_array($reset))
 {
 	$article_class_cache_js .='arrSorts['.$i.'] = ["'.$row['id'].'", "'.$row['classname'].'", "'.$row['parent_id'].'","'.$row['id'].'"];';
-	if (empty($row['url']))
+	if (!empty($row['article_generate_path']))
+	{
+		$row['url'] = str_replace(ZCMS_ROOT,'',article_generate_path($row));
+	}
+	elseif (empty($row['url']))
 	$row['url'] = article_class_url($row['id']);
 	$row['maxnum'] = $query->maxnum("select count(*) from ".T."article where cid=".$row['id']);
 	$list[] = $row;

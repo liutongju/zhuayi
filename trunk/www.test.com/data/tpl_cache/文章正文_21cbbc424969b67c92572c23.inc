@@ -82,7 +82,6 @@ foreach( $blockValue as $key=>$fields )
  ?>
 <script src="<?php echo model_url('admin','admin'); ?>js/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo model_url('article',''); ?>js/article.js" type="text/javascript"></script>
-<script type="text/javascript">
-//article_generate('<?php echo $info['id']; ?>');</script>
+<script type="text/javascript">article_generate('show','<?php echo $info['id']; ?>','<?php echo $_REQUEST['page']; ?>');</script>
 </body>
 </html>

@@ -34,7 +34,8 @@ function generate()
 		}
 		id = arr[i];
 		title = arrt[i];
-		$.get('/index.php?m=article&c=show&id='+arr[i]+'&generate=zcms',function(data){
+		$.get('/index.php?m=article&c={zhuayi:echo.$_REQUEST['act']/}&{zhuayi:echo.$zfields/}='+arr[i]+'&generate=zcms',function(data){
+
 			data = parseInt(data);
 			if (regNum.test(data))
 			{
@@ -58,7 +59,7 @@ function generate()
 function generate2(id)
 {
 	
-	$.get('/index.php?m=article&c=show&id='+id+'&generate=zcms&page='+j,function(data){
+	$.get('/index.php?m=article&c={zhuayi:echo.$_REQUEST['act']/}&{zhuayi:echo.$zfields/}='+id+'&generate=zcms&page='+j,function(data){
 			data = parseInt(data);
 			if (regNum.test(data))
 			{

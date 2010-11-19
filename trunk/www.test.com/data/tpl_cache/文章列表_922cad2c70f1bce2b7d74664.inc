@@ -27,6 +27,7 @@ $atts = array();
 $atts['tagname'] = 'article_list';
 $atts['limit'] = '15';
 $atts['cid'] = $cid;
+$atts['page'] = $_REQUEST['page'];
 $blockValue = MakePublicTag($atts,$this->refObj,$fields); 
 if(is_array($blockValue) && count($blockValue) > 0){
 foreach( $blockValue as $key=>$fields )
@@ -48,6 +49,7 @@ $atts = array();
 $atts['tagname'] = 'pagelist';
 $atts['maxnum'] = $info['maxnum'];
 $atts['page'] = $_REQUEST['page'];
+$atts['html'] = $htmlfile;
  echo  MakePublicTag($atts,$this->refObj,$fields); 
 ?>
 
@@ -65,5 +67,8 @@ $atts['page'] = $_REQUEST['page'];
 </div>
 <?php include $this->CompilerInclude("µ×²¿.html");
  ?>
+<script src="<?php echo model_url('admin','admin'); ?>js/jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo model_url('article',''); ?>js/article.js" type="text/javascript"></script>
+<script type="text/javascript">article_generate('class','<?php echo $info['id']; ?>','<?php echo $_REQUEST['page']; ?>');</script>
 </body>
 </html>

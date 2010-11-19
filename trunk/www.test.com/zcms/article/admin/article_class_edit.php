@@ -26,8 +26,8 @@ else
 	else
 	$info['parent_id'] = 0;
 	
-	$info['html'] = $html;
-	$info['tpl'] = $class_tpl;
+	$seo['url'] = $article_class_url;
+	
 }
 
 ?>

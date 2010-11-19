@@ -19,7 +19,19 @@ if (is_array($_REQUEST['id']))
 	$search = ' and id in('.$_REQUEST['id'].')';
 }
 
-$sql = "select id,title from ".T."article where id >0".$search;$reset = $query->query($sql);while ($row = $query->fetch_array($reset)){	$id[] = $row['id'];	$title[] = addslashes($row['title']);}$id =  '"'.implode("\",\"",$id).'"';$title =  '"'.implode("\",\"",$title).'"';
+if ($_REQUEST['act'] == 'class')
+{
+	$tables = 'article_class';
+	$fields = 'classname';
+	$zfields = 'cid';
+}
+if ($_REQUEST['act'] == 'show')
+{
+	$tables = 'article';
+	$fields = 'title';
+	$zfields = 'id';
+}
+$sql = "select id,".$fields." from ".T.$tables." where id >0".$search;$reset = $query->query($sql);while ($row = $query->fetch_array($reset)){	$id[] = $row['id'];	$title[] = addslashes($row[$fields]);}$id =  '"'.implode("\",\"",$id).'"';$title =  '"'.implode("\",\"",$title).'"';
 
 
 
