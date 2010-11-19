@@ -305,6 +305,12 @@ class upload
 		imagejpeg($ground, $this->path, WATERMARK_QUALITY);
 		return $this->realpath($this->path);
 	}
+	
+	//----½ûÖ¹´òË®Ó¡
+	function mark_false()
+	{
+		define('WATERMARK_ENABLE', 0);
+	}
 }
 
 

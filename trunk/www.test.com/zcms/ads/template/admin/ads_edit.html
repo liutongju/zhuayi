@@ -1,0 +1,75 @@
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+	$("#title").formValidator({onshow:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中",onfocus:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中"}).inputValidator({min:2,onerror:"广告名称只是作为辨别多个广告条目之用，并不显示在广告中"});
+	$("#type").formValidator({onshow:"(更改时,更换类型,不会清空表单里的内容)",onfocus:"(更改时,更换类型,不会清空表单里的内容)"}).inputValidator({min:1,onerror:"(更改时,更换类型,不会清空表单里的内容)"});
+	
+})
+function ads(id,str)
+{
+	if (id == 1)
+	{
+		$("#"+str).html("<input name='count' type='text' id='count' size='60' value='{zhuayi:echo.$info['count']/}'> ");
+		$("#link").attr('disabled',false);
+	}
+	if (id == 2)
+	{
+		$("#"+str).html("<input name=\"count\" type=\"hidden\" id=\"count\"  size=\"60\" value=\"{zhuayi:echo.$info['count']/}\" ><input type=\"file\" name=\"file1\" id=\"file1\"/>");
+		$("#link").attr('disabled',false);
+	}
+	if (id == 3)
+	{
+		$("#"+str).html("<input name=\"count\" type=\"hidden\" id=\"count\"  size=\"60\" value=\"{zhuayi:echo.$info['count']/}\" ><input type=\"file\" name=\"file1\" id=\"file1\" />");
+		$("#link").attr('disabled',true);
+	}
+	if (id == 4)
+	{
+		$("#"+str).html("<textarea name=\"count\"  id=\"count\" style=\"width:99%; height:70px; overflow:auto;\" >{zhuayi:echo.$info['count']/}</textarea>");
+		$("#link").attr('disabled',true);
+	}
+}
+//-->
+</script>
+
+<form action="?m=ads&c=info&a=init" method="post" id="myform" enctype="multipart/form-data">
+<fieldset>
+	<legend>{zhuayi:echo.$pagename/}</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">广告标题：</th>
+			<td colspan="5" class="y-bg"><input type="text" class="input-text" name="title" id="title" value="{zhuayi:echo.$info['title']/}" size="30" /></td>
+		</tr>
+		<tr>
+			<th>广告类型：</th>
+			<td colspan="5" class="y-bg">
+				<select name="type" id="type" onchange="ads(this.options[this.selectedIndex].value,'count_td')">
+				<option value="">--请选择广告类型--</option>
+				<option value="1" <?php if ($info['type'] ==1) echo 'selected' ?>>--文字广告--</option>
+				<option value="2" <?php if ($info['type'] ==2) echo 'selected' ?>>--图片广告--</option>
+				<option value="3" <?php if ($info['type'] ==3) echo 'selected' ?>>--Flash--</option>
+				<option value="4" <?php if ($info['type'] ==4) echo 'selected' ?>>--代码--</option>
+			</select>			</td>
+		</tr>
+		<tr>
+		  <th>广告连接：</th>
+		  <td colspan="5">
+			<input name="link" type="text" id="link" size="60" value="{zhuayi:echo.$info['link']/}">		  </td>
+		</tr>
+		<tr>
+		  <th>广告内容：</th>
+		  <td colspan="5" id="count_td">{zhuayi:echo.$info['qiu']/}</td>
+		</tr>
+		<tr > 
+			<th>打开状态：</th>
+			<td colspan="5">
+			  <input type="radio" name="ismake" value="0" <?php if ($info['ismake'] ==0) echo 'checked' ?>/> 打开
+			  <input type="radio" name="ismake" value="1" <?php if ($info['ismake'] ==1) echo 'checked' ?>/> 关闭			</td>
+		</tr>
+	</table>
+
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="id" value="{zhuayi:echo.$info['id']/}">
+<input type="submit" class="button" id="dosubmit" name="dosubmit" value="提交" />
+</form>
