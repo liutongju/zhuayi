@@ -1,5 +1,6 @@
 <?php
 include_once(ZCMS_ROOT.'/function/admin_log.php');
+include_once(ZCMS_ROOT.'/function/closetags.php');
 include_once(ZCMS_ROOT.'/function/downfile.php');
 include_once(ZCMS_ROOT.'/function/dtime.php');
 include_once(ZCMS_ROOT.'/function/email.php');

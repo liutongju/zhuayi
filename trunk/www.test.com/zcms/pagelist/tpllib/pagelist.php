@@ -52,8 +52,16 @@ function pagelist($atts)
 		$url = implode('/',$url);
 		$url .= "page/{page}";
 	}
+	
+	if (!empty($html))
+	{
+
+		$url = str_replace('.html',"_{page}.html",$html);
+		
+	}
+	
 	$totalPage      = ceil($maxnum/$perpagenum);
-	//if ($totalPage>1)
+	if ($totalPage>1)
 	return  page( $totalPage , $page , $url,3,$maxnum);
 
 }

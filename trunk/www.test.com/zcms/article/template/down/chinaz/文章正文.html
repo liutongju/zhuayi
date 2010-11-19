@@ -25,6 +25,7 @@
 			<div class="content" id="textbody">
 				{zhuayi:echo.$info['body']/}
 			</div>
+			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile/}
 			<div class="text_tag">
 				<h5>Tags£∫<b>{zhuayi:echo.$info['tags']/}</b> &nbsp;</h5>
 				<span>‘»Œ±‡º≠£∫ZcmsπŸ∑Ω≤‚ ‘’æ</span>
@@ -56,6 +57,6 @@
 <script src="{zhuayi:echo.model_url('admin','admin')/}js/jquery.min.js" type="text/javascript"></script>
 <script src="{zhuayi:echo.model_url('article','')/}js/article.js" type="text/javascript"></script>
 <script type="text/javascript">
-article_generate('{zhuayi:echo.$info['id']/}');</script>
+//article_generate('{zhuayi:echo.$info['id']/}');</script>
 </body>
 </html>

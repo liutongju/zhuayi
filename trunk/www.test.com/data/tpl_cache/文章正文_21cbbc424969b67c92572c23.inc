@@ -29,6 +29,15 @@ $fields = array();
 			<div class="content" id="textbody">
 				<?php echo $info['body']; ?>
 			</div>
+			<?php
+$atts = array();
+$atts['tagname'] = 'pagelist';
+$atts['maxnum'] = $maxnum;
+$atts['page'] = $_REQUEST['page'];
+$atts['html'] = $htmlfile;
+ echo  MakePublicTag($atts,$this->refObj,$fields); 
+?>
+
 			<div class="text_tag">
 				<h5>Tags£∫<b><?php echo $info['tags']; ?></b> &nbsp;</h5>
 				<span>‘»Œ±‡º≠£∫ZcmsπŸ∑Ω≤‚ ‘’æ</span>
@@ -74,6 +83,6 @@ foreach( $blockValue as $key=>$fields )
 <script src="<?php echo model_url('admin','admin'); ?>js/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo model_url('article',''); ?>js/article.js" type="text/javascript"></script>
 <script type="text/javascript">
-article_generate('<?php echo $info['id']; ?>');</script>
+//article_generate('<?php echo $info['id']; ?>');</script>
 </body>
 </html>

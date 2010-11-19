@@ -25,9 +25,11 @@ $fields = array();
 arr = new Array(<?php echo $id; ?>);
 arrt = new Array(<?php echo $title; ?>);
 var i=-1;
+var regNum=/^\d*$/;
 function generate()
 {
 	i++;
+	j=1;
 	if ( i < arr.length)
 	{
 		//------清屏
@@ -38,20 +40,52 @@ function generate()
 		id = arr[i];
 		title = arrt[i];
 		$.get('/index.php?m=article&c=show&id='+arr[i]+'&generate=zcms',function(data){
-			if (data == '1')
-			$("#file").append('<li style="color:#009900">$ID:'+id+' -> '+title+' -> 生成成功... </li>');
+			data = parseInt(data);
+			if (regNum.test(data))
+			{
+				generate2(id)
+			}
 			else
-			$("#file").append('<li style="color:red">$ID:'+id+' -> '+title+' -> 生成失败...原因：'+data+' </li>');			document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
-			setTimeout('generate()',500);
+			{
+				$("#file").append('<li style="color:red">$ID:'+id+' -> '+title+' -> 生成失败...原因：'+data+' </li>');
+			}			document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
+			//
 		})
 		
 	}
 	else
 	{
 		$("#file").append('<li style="color:red">生成完毕... </li>');
+		document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
 	}
 }
 
-
+function generate2(id)
+{
+	
+	$.get('/index.php?m=article&c=show&id='+id+'&generate=zcms&page='+j,function(data){
+			data = parseInt(data);
+			if (regNum.test(data))
+			{
+				$("#file").append('<li style="color:#009900">$ID:'+id+' -> '+title+'  【第'+(j-1)+'页】 -> 生成成功... </li>');
+			}
+			else
+			{
+				$("#file").append('<li style="color:red">$ID:'+id+' -> '+title+' 【第'+(j-1)+'页】 -> 生成失败...原因：'+data+' </li>');
+			}
+			document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
+			if (j <= data)
+			{
+				setTimeout('generate2('+id+')',500);
+			}
+			else
+			{
+				setTimeout('generate()',500);
+			}
+			
+			
+		})
+	j++;
+}
 	if (arr.length==0){	alert('错误的数据来源..');}else{	generate()}
 </script>
