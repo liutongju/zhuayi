@@ -31,6 +31,8 @@ include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
 if ($article_generate == 0)
 unset($menu[6]);
 
+if ($article_class_generate == 0)
+unset($menu[7]);
 //-------序列化推送位
 $flag = explode(chr(13),$flag);
 
