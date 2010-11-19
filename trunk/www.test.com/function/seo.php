@@ -27,7 +27,7 @@ function seo($table,$aid,$action='')
 	//-----É¾³ı²Ù×÷
 	elseif ($action == 'delete')
 	{
-		$query->delete("seo"," tables = '".$table."' and aid=".$aid);
+		$query->delete("seo"," tables = '".$table."' and aid in(".$aid.")");
 	}
 }
 

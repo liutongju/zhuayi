@@ -8,7 +8,7 @@ $fields = array();
 .sbul{margin:10px;}
 .sbul li{line-height:30px;}
 .button{margin-top:20px;}
-.subnav,.ifm{display:none;}
+
 </style>	<div class="col-2">
 
 	<h6>提示区：</h6>
@@ -42,13 +42,13 @@ function generate()
 			$("#file").append('<li style="color:#009900">$ID:'+id+' -> '+title+' -> 生成成功... </li>');
 			else
 			$("#file").append('<li style="color:red">$ID:'+id+' -> '+title+' -> 生成失败...原因：'+data+' </li>');			document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
-
+			setTimeout('generate()',500);
 		})
-		setTimeout('generate()',500);
+		
 	}
 	else
 	{
-		//$("#file").append('<li style="color:red">生成完毕... </li>');
+		$("#file").append('<li style="color:red">生成完毕... </li>');
 	}
 }
 

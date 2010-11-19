@@ -71,5 +71,9 @@ foreach( $blockValue as $key=>$fields )
 </div>
 <?php include $this->CompilerInclude("µ×²¿.html");
  ?>
+<script src="<?php echo model_url('admin','admin'); ?>js/jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo model_url('article',''); ?>js/article.js" type="text/javascript"></script>
+<script type="text/javascript">
+article_generate('<?php echo $info['id']; ?>');</script>
 </body>
 </html>

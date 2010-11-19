@@ -22,18 +22,4 @@ else
 	include_once ZCMS_CACHE.'article_class_cache.php';
 	$list = unserialize($article_class_cache);
 }
-/*
-$sql = "select * from ".T."article";$reset = $query->query($sql);
-while ($row = $query->fetch_array($reset))
-{
-	$row['body'] = addslashes($row['body']);
-	$query->save('article',$row);
-	$row['cid'] = 11;
-	$query->save('article',$row);
-	$row['cid'] = 12;
-	$query->save('article',$row);
-	$row['cid'] = 13;
-	$query->save('article',$row);
-}
-*/
 ?>

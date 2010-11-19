@@ -11,21 +11,34 @@ $(function(){
 	$("#path").formValidator({onshow:"请输入静态页存放地址,请以\"/\"开头、以\"/\"结尾(非必须,不生成则不必填写)",onfocus:"请输入静态页存放地址(非必须,不生成则不必填写)"})
 	$("#html").formValidator({onshow:"请选择是否生成HTML",onfocus:"请选择是否生成HTML"})
 	$("#class_url").formValidator({onshow:"请输入默认URL,可用标签{id},替换为直投ID",onfocus:"请输入默认URL,可用标签{id}"}).inputValidator({min:2,onerror:"请输入默认URL,可用标签{id}"});
+	$("#article_generate_time").formValidator({onshow:"静态页自动更新间隔时间，单位秒",onfocus:"静态页自动更新间隔时间，单位秒"}).inputValidator({min:2,onerror:"静态页自动更新间隔时间，单位秒"});
 	
 	//----
 	if ($("input[name='article_config[article_generate]']:checked").val()==0)
 	{
-		$("#article_generate_path").css("display",'none');
+		$(".article_generate_path").css("display",'none');
+		$(".article_news_url").css("display",'');
 	}
 	else
 	{
-		$("#article_generate_path").css("display",'');
+		$(".article_generate_path").css("display",'');
+		$(".article_news_url").css("display",'none');
 	}
 	$(".article_generate").click(function(){
 		if ($(this).val()==0)
-		$("#article_generate_path").css("display",'none');
+		{
+			$(".article_generate_path").fadeOut("slow",function(){
+				$(".article_news_url").fadeIn("slow");
+			});
+			
+		}
 		else
-		$("#article_generate_path").css("display",'');
+		{
+			
+			$(".article_news_url").fadeOut("slow",function(){
+				$(".article_generate_path").fadeIn("slow");
+			});
+		}
 	})
 	
 })
@@ -117,11 +130,24 @@ $(function(){
 				<input name="article_config[article_generate]" value="0" type="radio" class="article_generate" <?php if ($article_generate==0){echo ' checked';}?>> 否  
 			</td>
 		</tr>
-		<tr id="article_generate_path">
+		<tr class="article_news_url">
+			<th width="150">动态URL规则：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_news_url]"  value="<?php echo $article_news_url; ?>" size="60" />
+				<span><br>可用标签{id}==>文章ID</span>
+			</td>
+		</tr>
+		<tr class="article_generate_path">
 			<th width="150">HTML存放地址：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="article_config[article_generate_path]"  value="<?php echo $article_generate_path; ?>" size="60" />
 				<span><br>可用标签{catdir}==>栏目路径、{Y}==>年、{M}==>月、{D}==>日、{id}==>文章ID</span>
+			</td>
+		</tr>
+		<tr class="article_generate_path">
+			<th width="150">更新间隔：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="article_config[article_generate_time]"  value="<?php echo $article_generate_time; ?>" id="article_generate_time" size="20" />
 			</td>
 		</tr>
 	</table>

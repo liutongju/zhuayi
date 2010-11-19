@@ -31,4 +31,6 @@ else
 	$_REQUEST['cid'] = 0;
 }
 $maxnum = $query->maxnum("select count(*) from ".T."article as a where a.id > 0 ".$search);
+
+//------ÔØÈë»º´æinclude_once ZCMS_CACHE.'article_class_cache.php';$classlist = unserialize($article_class_cache);
 ?>

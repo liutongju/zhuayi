@@ -28,7 +28,7 @@ $tips = '请在添加、修改、排序栏目全部完成后，更新栏目缓存';
 include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
 
 if ($article_generate == 0)
-unset($menu[5]);
+unset($menu[6]);
 
 //-------序列化推送位
 $flag = explode(chr(13),$flag);
