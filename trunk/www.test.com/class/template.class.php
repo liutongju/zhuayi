@@ -352,6 +352,20 @@ class DedeTemplate
 		fwrite($fp,$okstr);
 		fclose($fp);
 	}
+	
+	//保存运行后的为字符串
+	function savestr()
+	{
+		
+		extract($GLOBALS, EXTR_SKIP);
+		$this->WriteCache();
+		ob_start();
+		include $this->cacheFile;
+		$okstr = ob_get_contents();
+		ob_end_clean();
+		return $okstr;
+		
+	}
 
 	//解析模板并写缓存文件
 	function WriteCache($ctype='all')

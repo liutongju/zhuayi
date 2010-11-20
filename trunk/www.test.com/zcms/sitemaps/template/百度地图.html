@@ -1,0 +1,24 @@
+<document>
+<webSite>{zhuayi:echo.$weburl/}</webSite>
+<webMaster>zhuayi@zcms.cc</webMaster>
+<updatePeri>{zhuayi:echo.$updatePeri/}</updatePeri>
+{zhuayi:article_list page=$_REQUEST['page'] limit=$_REQUEST['num']}
+<?php 	if (substr($fields['url'],0,1) == '/')
+	{
+		$fields['url'] = $weburl.$fields['url'];
+	}
+?>
+<item>
+	<title>{zhuayi:echo.$fields['title']/}</title>
+	<link>{zhuayi:echo.$fields['url']/}</link>
+	<description>{zhuayi:echo.htmlspecialchars($fields['abstract'])/}</description>
+	<text>{zhuayi:echo.htmlspecialchars(strip_tags($fields['body']))/}</text>
+	<image>{zhuayi:echo.$fields['litpic']/}</image>
+	<keywords>{zhuayi:echo.$fields['tags']/}</keywords>
+	<category></category>
+	<author></author>
+	<source>{zhuayi:echo.$fields['source']/}</source>
+	<pubDate>{zhuayi:echo.dtime($fields['dtime'])/}</pubDate>
+</item>
+{/zhuayi:article_list}
+</document>
