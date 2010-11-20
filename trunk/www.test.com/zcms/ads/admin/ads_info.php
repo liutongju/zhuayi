@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-if ($_REQUEST['type'] ==2 || $_REQUEST['type'] ==3)
+if ($_POST['type'] ==2 || $_POST['type'] ==3)
 {
 	include_once ZCMS_ROOT.'/class/upload.class.php';
 	$upload = new upload($_FILES['file1']);
@@ -18,20 +18,20 @@ if ($_REQUEST['type'] ==2 || $_REQUEST['type'] ==3)
 	$_POST['count'] = $upload->copy('ads',time());
 }
 
-if (empty($_REQUEST['id']))
+if (empty($_POST['id']))
 {
 	$pagename = '广告添加';
-	$_REQUEST['dtime'] = time();
-	$_REQUEST['id'] = $query->save("ads",$_POST);
+	$_POST['dtime'] = time();
+	$_POST['id'] = $query->save("ads",$_POST);
 }
 else
 {
 	$pagename = '广告编辑';
-	$query->save("ads",$_POST,' id = '.$_REQUEST['id']);
+	$query->save("ads",$_POST,' id = '.$_POST['id']);
 	
 }
 //-------写入日志
-admin_log("ads",$_REQUEST['id'],'title',$pagename);
+admin_log("ads",$_POST['id'],'title',$pagename);
 showmsg("广告位编辑成功...",ret_cookie("backurl"));
 exit;
 ?>

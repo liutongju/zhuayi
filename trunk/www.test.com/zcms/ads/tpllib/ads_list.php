@@ -25,7 +25,6 @@ function ads_list($atts)
 			$row['type'] = '´úÂë¹ã¸æ';
 			break;
 		}
-		$row['dtime'] = date('Y-m-d G:i:s',$row['dtime']);
 		$list[] = $row;
 	}
 	return $list;
