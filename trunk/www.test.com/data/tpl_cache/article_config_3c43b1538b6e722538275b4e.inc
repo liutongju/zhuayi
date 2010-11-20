@@ -108,6 +108,17 @@ $(function(){
 		$("#article_index_url").val($(this).val())
 	})
 	$("#parameter").attr('disabled',true);
+	
+	$(".key_highlight").click(function(){
+		if ($(this).val()==0)
+		{
+			$("#key_highlight").fadeOut("slow")
+		}
+		else
+		{
+			$("#key_highlight").fadeIn("slow")
+		}
+	})
 })
 //-->
 </script>
@@ -221,6 +232,18 @@ $(function(){
 				<input name="article_config[downfile]" value="0" type="radio"  <?php if ($downfile==0){echo ' checked';}?>> 否  
 			</td>
 		</tr>
+		<tr>
+			<th width="150">自动添加内容关键词链接：</th>
+			<td class="y-bg">
+				<input name="article_config[key_highlight]" value="1" type="radio" class="key_highlight" <?php if ($key_highlight==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[key_highlight]" value="0" type="radio" class="key_highlight" <?php if ($key_highlight==0){echo ' checked';}?>> 否 
+				
+				<span id="key_highlight">&nbsp;&nbsp;&nbsp;&nbsp;替换次数：<input type="text" class="input-text" name="article_config[replace_times]" id="replace_times" value="<?php echo $replace_times; ?>" size="5" /> 
+				自动添加的链接会加上highlight_key样式，请在对应模版中设置
+				</span>
+			</td>
+		</tr>
+
 		<tr>
 			<th width="150">文章缩略图大小：</th>
 			<td class="y-bg">

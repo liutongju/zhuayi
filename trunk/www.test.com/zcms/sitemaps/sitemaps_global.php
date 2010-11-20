@@ -32,6 +32,4 @@ $menu = array(
 			'1'=>array('管理数据源','edit&height=200','ajax'),
 			);
 include_once ZCMS_ROOT.'/zcms/sitemaps/include/sitemaps_config.php';
-
-
 ?>

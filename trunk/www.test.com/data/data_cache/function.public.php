@@ -8,6 +8,7 @@ include_once(ZCMS_ROOT.'/function/GetCurUrl.php');
 include_once(ZCMS_ROOT.'/function/Geteditor.php');
 include_once(ZCMS_ROOT.'/function/get_ip.php');
 include_once(ZCMS_ROOT.'/function/handie.php');
+include_once(ZCMS_ROOT.'/function/highlight.php');
 include_once(ZCMS_ROOT.'/function/inject_check.php');
 include_once(ZCMS_ROOT.'/function/model_url.php');
 include_once(ZCMS_ROOT.'/function/mymd5.php');
