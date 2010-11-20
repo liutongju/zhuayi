@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `{%z%}article_class` (
   `nav` int(11) NOT NULL ,
   `html` int(11) NOT NULL ,
   `orders` int(11) NOT NULL ,
+  `article_generate_path` varchar(50) NOT NULL ,
   PRIMARY KEY  (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `html` (`html`),

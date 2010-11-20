@@ -107,12 +107,20 @@ $(function(){
 	$("#url").blur(function(){
 		$("#article_index_url").val($(this).val())
 	})
+	$("#parameter").attr('disabled',true);
 })
 //-->
 </script>
 <form action="?m=article&c=config_info&a=init" method="post" id="myform">
-<fieldset>
-	<legend>基本配置</legend>
+<div class="col-tab">
+	<ul class="tabBut cu-li">
+		<li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',4,1);">基本配置</li>
+		<li id="tab_setting_2" onclick="SwapTab('setting','on','',4,2);">文章栏目配置</li>
+		<li id="tab_setting_3" onclick="SwapTab('setting','on','',4,3);">内容页配置</li>
+		<li id="tab_setting_4" onclick="SwapTab('setting','on','',4,4);">SEO设置</li>
+	</ul>
+
+<div id="div_setting_1" class="contentList pad-10">
 	<table width="100%"  class="table_form">
 		<tr>
 			<th width="150">模块静态化：</th>
@@ -122,7 +130,7 @@ $(function(){
 			</td>
 		</tr>
 		<tr class="article_index_url">
-			<th width="150">动态URL规则：</th>
+			<th width="150">动态URL地址：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="article_config[article_index_url]"  value="<?php echo $article_index_url; ?>" size="60" id="article_index_url">
 			</td>
@@ -138,6 +146,13 @@ $(function(){
 			<td colspan="2" class="y-bg">
 				<textarea name="article_config[flag]" id="flag" style="width:50%;height:50px;"><?php echo implode(chr(13),$flag); ?></textarea>
 				<span><br>格式：推送位名|标识符 例如：推荐|tuijian (一行一个,可多个)</span>
+			</td>
+		</tr>
+		<tr>
+			<th>文章来源：</th>
+			<td colspan="2" class="y-bg">
+				<textarea name="article_config[source]" id="source" style="width:50%;height:50px;"><?php echo $source; ?></textarea>
+				<span><br>格式：来源名称1|来源名称2|来源名称3...</span>
 			</td>
 		</tr>
 		<tr>
@@ -157,13 +172,11 @@ $(function(){
 			</td>
 		</tr>
 	</table>
-</fieldset>
-<div class="bk15"></div>
-<fieldset>
-	<legend>文章栏目配置</legend>
+</div>
+<div id="div_setting_2" class="contentList pad-10 hidden">
 	<table width="100%"  class="table_form">
 		<tr>
-			<th width="150">默认栏目生成Html：</th>
+			<th width="150">栏目生成Html：</th>
 			<td class="y-bg">
 				<input name="article_config[article_class_generate]" value="1" type="radio" <?php if ($article_class_generate==1){echo ' checked';}?> class="article_class_generate"> 是&nbsp;&nbsp;&nbsp;&nbsp;
 				<input name="article_config[article_class_generate]" value="0" type="radio"  <?php if ($article_class_generate==0){echo ' checked';}?> class="article_class_generate"> 否  
@@ -184,16 +197,15 @@ $(function(){
 			</td>
 		</tr>
 		<tr class="article_class_path">
-			<th width="150">更新间隔：</th>
+			<th width="150">自动更新间隔：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="article_config[article_class_time]"  value="<?php echo $article_class_time; ?>" id="article_generate_time" size="20" />
 			</td>
 		</tr>
 	</table>
 </fieldset>
-<div class="bk15"></div>
-<fieldset>
-	<legend>内容页配置</legend>
+</div>
+<div id="div_setting_3" class="contentList pad-10 hidden">
 	<table width="100%"  class="table_form">
 		<tr>
 			<th width="150">自动提取文章摘要：</th>
@@ -207,13 +219,6 @@ $(function(){
 			<td class="y-bg">
 				<input name="article_config[downfile]" value="1" type="radio" <?php if ($downfile==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
 				<input name="article_config[downfile]" value="0" type="radio"  <?php if ($downfile==0){echo ' checked';}?>> 否  
-			</td>
-		</tr>
-		<tr>
-			<th>文章来源：</th>
-			<td colspan="2" class="y-bg">
-				<textarea name="article_config[source]" id="source" style="width:50%;height:50px;"><?php echo $source; ?></textarea>
-				<span><br>格式：来源名称1|来源名称2|来源名称3...</span>
 			</td>
 		</tr>
 		<tr>
@@ -257,14 +262,55 @@ $(function(){
 			</td>
 		</tr>
 	</table>
-</fieldset>
-<?php include $this->CompilerInclude("/zcms/admin/template/admin/seo.html");
- ?>
+</div>
+<div id="div_setting_4" class="contentList pad-10 hidden">
+	<table width="100%"  class="table_form">
+		<tr style="display:none">
+			<th width="150">自定义URL：</th>
+			<td class="y-bg">
+			<input type="text" class="input-text" name="url" id="url" value="<?php echo $seo['url']; ?>" size="60" />
+			<input name="parameter" id="parameter" value="1" size="35" type="checkbox" <?php if ($seo['parameter']==1){echo 'checked';};?> /> 模糊匹配
+			</td>
+		</tr>
+		<tr>
+			<th width="150">SEO标题：</th>
+			<td class="y-bg">
+			<input type="text" name="seo_title" id="seo_title" value="<?php echo $seo['seo_title']; ?>" size="30"/></td>
+		</tr>
+		<tr>
+			<th>SEO关键词：</th>
+			<td>
+			<input type="text" name="seo_keywords" id="seo_keywords" value="<?php echo $seo['seo_keywords']; ?>" size="60"/>
+			<span><br />格式: 关键词1,关键词2,关键词3(最多100个字符)</span>
+			</td>
+		</tr>
+		<tr>
+			<th>SEO描述：</th>
+			<td>
+			<textarea name="seo_description" cols="60" class="t" tabindex="1" style="width:99%;height:50px"><?php echo $seo['seo_description']; ?></textarea>
+			<span><br />文本格式,最多250个字符</span>
+			</td>
+		</tr>
+	</table>
+</div>
 <div class="bk15"></div>
 <input type="hidden" name="filename" value="article_config"/>
 <input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="提交" />
 </form>
-
+<script>
+function SwapTab(name,cls_show,cls_hide,cnt,cur)
+{
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+</script>
 
 <?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
  ?>

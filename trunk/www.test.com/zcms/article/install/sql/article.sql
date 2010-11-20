@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `{%z%}article` (
   `dtime` int(11) NOT NULL COMMENT '发布时间',
   `related` varchar(250) NOT NULL COMMENT '相关文章关键词',
   `flag` varchar(250) NOT NULL COMMENT '推送位',
+  `article_generate_path` varchar(250) NOT NULL COMMENT '文章生成规则',
+  `generate` int(11) NOT NULL COMMENT '0表示未生成静态',
   PRIMARY KEY  (`id`),
   KEY `comment` (`comment`),
   KEY `cid` (`cid`),

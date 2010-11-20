@@ -8,6 +8,10 @@
  * @author       zhuayi  
  * @QQ			 2179942
  */
+if (!file_exists(ZCMS_ROOT.'/zcms/article/include/article_config.php') && $_REQUEST['c']!='config' && $_REQUEST['c']!='config_info')
+{
+	showmsg("您还没有配置该模型,现在带你去配置",'/index.php?m=article&c=config&a=init');
+}
 
 //-------设置页面内部菜单 
 $menu = array(
