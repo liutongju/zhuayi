@@ -162,7 +162,7 @@ $(function(){
 					<tr>
 					<?php foreach ($tpllist as $key=>$val){
 					?>
-						<td align="center";>
+						<td align="center">
 							<img src="<?php echo str_replace(ZCMS_ROOT,'',$val); ?>/preview.png"/><br>
 							<input class="radio_style" name="article_config[article_tpl]" value="<?php echo $val; ?>" type="radio" <?php if ($article_tpl == $val){echo 'checked="checked"';}?>>
 						</td>
