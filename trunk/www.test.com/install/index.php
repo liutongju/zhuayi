@@ -12,19 +12,20 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 //-----输出页面字符集
 header('Content-type: text/html; charset=gbk');
 
-$path = $_SERVER["DOCUMENT_ROOT"];
-if(file_exists($path.'/data/zcms.lock') ){exit('你已经安装过了<br>重新安装请删除data目录下的zcms.lock文件');}
-include_once $path.'/data/include/zcms_config.php';
-include_once $path.'/data/include/web_config.php';
+define('ZCMS_ROOT', str_replace("\\", '/', substr(dirname(__FILE__), 0, -7)));
+
+if(file_exists(ZCMS_ROOT.'/data/zcms.lock') ){exit('你已经安装过了<br>重新安装请删除data目录下的zcms.lock文件');}
+include_once ZCMS_ROOT.'/data/include/zcms_config.php';
+include_once ZCMS_ROOT.'/data/include/web_config.php';
 //-----载入数据库配置文件
 
 //-----载入数据库类
-include_once($path.'/class/mysql.class.php');
+include_once(ZCMS_ROOT.'/class/mysql.class.php');
 
 
 if ($_REQUEST['c'] != 'info' && $_REQUEST['c'] != 'setup')
 {
-	require $path.'/install/template/zcms.html';
+	require ZCMS_ROOT.'/install/template/zcms.html';
 }
 if ($_REQUEST['c'] == 'info')
 {
@@ -42,12 +43,12 @@ if ($_REQUEST['c'] == 'info')
 		}
 		
 		$conent .= '?>';
-		write($path.'/data/include/'.$val.'.php',$conent);
+		write(ZCMS_ROOT.'/data/include/'.$val.'.php',$conent);
 	}
 
 	$query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
 	//----安装数据库
-	$sql = handie($path.'/install/sql/');
+	$sql = handie(ZCMS_ROOT.'/install/sql/');
 	//----创建数据库
 	$query->query('CREATE DATABASE IF NOT EXISTS `'.$dbname.'` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci');
 	echo '创建数据库....<br>';
@@ -73,7 +74,7 @@ if ($_REQUEST['c'] == 'info')
 	$_POST['admin']['gid'] = 2;
 	$query->save('admin',$_POST['admin']);
 	echo '完成安装';
-	write($path.'/data/zcms.lock');
+	write(ZCMS_ROOT.'/data/zcms.lock');
 }
 /**
  * 写入文件
