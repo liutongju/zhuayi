@@ -112,7 +112,7 @@ foreach( $blockValue as $key=>$fields )
 		</div>
 
     	<div class="col-1">
-				<iframe name="right" id="rightMain" src="http://www.18194.com" frameborder="false" scrolling="auto" style="overflow-x:hidden;border:none; " width="100%" height="auto" allowtransparency="true"></iframe>
+				<iframe name="right" id="rightMain" src="/index.php?m=admin&c=right&a=init" frameborder="false" scrolling="auto" style="overflow-x:hidden;border:none; " width="100%" height="auto" allowtransparency="true"></iframe>
         </div>
 
     </div>
@@ -181,7 +181,7 @@ $(function(){
 		})
 		return false;
 	})
-	
+	$(".top_menu > a"). eq(0).click();
 	//×ó²à¿ª¹Ø
 	$("#openClose").click(function(){
 

@@ -25,5 +25,5 @@ $menu = array(
 			'2'=>array('管理帐号','list'),
 			'3'=>array('帐号添加','edit','ajax'),
 			);
-$tips = '...';			
+$tips = '欢迎进入 '.$webname.' 管理中心';			
 ?>
