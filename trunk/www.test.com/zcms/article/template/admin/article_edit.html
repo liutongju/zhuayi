@@ -29,7 +29,17 @@ $(function(){
 	$("#sources").change(function(){
 		$("#source").val($(this).val())
 	})
+	//----自动填充关键词
+	$(".tags").click(function(){
+		
+		$.getJSON('/index.php?m=api&c=tags&title='+$("#title").val(),function(data){
+			$("#tags").val(data['tags']);
+			$("#seo_keywords").val(data['keywords']);
+			alert('自动提取完毕..');
+		})
+	})
 })
+
 //-->
 </script>
 <form action="?m=article&c=info&a=init" method="post" id="myform" enctype="multipart/form-data">
@@ -55,7 +65,7 @@ $(function(){
 			<th>文章标题：</th>
 			<td width="863" class="y-bg">
 				<input type="text" class="input-text" name="title" id="title" value="{zhuayi:echo.$info['title']/}" size="60" />
-				<input type="button" class="button"  value="检测重复" />
+				<input type="button" class="button tags"  value="自动提取关键词" />
 			</td>
 		</tr>
 		<tr>
@@ -97,7 +107,7 @@ $(function(){
 		<tr>
 			<th>Tags：</th>
 			<td class="y-bg" colspan="2">
-				<input type="text" class="input-text" name="tags" id="tags" value="{zhuayi:echo.$info['tags']/}" size="30" />
+				<input type="text" class="input-text" name="tags" id="tags" value="{zhuayi:echo.$info['tags']/}" size="60" />
 			</td>
 	    </tr>
 		<tr>
