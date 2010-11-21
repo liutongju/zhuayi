@@ -52,8 +52,11 @@ function generate()
 	}
 	else
 	{
+		var filename = '{zhuayi:echo.$_REQUEST['filename']/}'.replace('.','_(*).');
 		$("#file").append('<li style="color:red">生成完毕... </li>');
 		$("#file").append('<li style="color:red">总计生成 '+j+' 个... </li>');
+		$("#file").append('<li style="color:red">sitemaps地址：-> {zhuayi:echo.$weburl/}{zhuayi:echo.urldecode($_REQUEST['path'])/}/'+filename+'  </li>');
+		$("#file").append('<li style="color:red">(*)为分页通配符 根据需要替换相应页数 </li>');
 		document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
 	}
 }
