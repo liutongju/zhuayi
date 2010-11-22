@@ -16,7 +16,7 @@ verify_admin('admin_username');
 if (empty($_REQUEST['id']) && !is_array($_REQUEST['orders']))
 {
 	$pagename = '添加栏目';
-	$_POST['id'] = $query->save("article_class",$_POST);
+	$_POST['id'] = $query->save("taobao_class",$_POST);
 }
 else
 {
@@ -29,17 +29,17 @@ else
 		foreach ($_REQUEST['id'] as $key=>$value)
 		{
 			$order['orders'] = $_POST['orders'][$key];
-			$query->save("article_class",$order,' id='.$value);
+			$query->save("taobao_class",$order,' id='.$value);
 		}
 	}
 	else
 	{
-		$query->save("article_class",$_POST,' id = '.$_POST['id']);
+		$query->save("taobao_class",$_POST,' id = '.$_POST['id']);
 		
 	}	
 }
-if (!empty($_POST['url'])){	$_POST['request_url'] = article_class_url($_POST['id']);  //原始url，自定义url时使用}//---------写入SEO表seo('article_class',$_POST['id']);
+if (!empty($_POST['url'])){	$_POST['request_url'] = taobao_class_url($_POST['id']);  //原始url，自定义url时使用}//---------写入SEO表seo('taobao_class',$_POST['id']);
 //---------写入日志
-admin_log("article_class",$_POST['id'],'classname',$pagename);
-showmsg('恭喜您,操作成功..现在去生成缓存','/index.php?m=article&c=class_cache&a=init',1000);
+admin_log("taobao_class",$_POST['id'],'classname',$pagename);
+showmsg('恭喜您,操作成功..现在去生成缓存','/index.php?m=taobao&c=class_cache&a=init',1000);
 ?>

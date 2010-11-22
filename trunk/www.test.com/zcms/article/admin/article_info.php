@@ -65,13 +65,11 @@ else
 {
 	$pagename = '修改栏目';
 	
-	$query->save("article",$_POST,' id = '.$_POST['id']);
-	if (!empty($_POST['url']))
-	{
-		$_POST['request_url'] = article_url($_POST['id']);  //项目原始url，自定义url时使用
-	}	//---------写入SEO表
-	seo('article',$_POST['id']);	
+	$query->save("article",$_POST,' id = '.$_POST['id']);	
 }
+
+if (!empty($_POST['url'])){	$_POST['request_url'] = article_url($_POST['id']);  //项目原始url，自定义url时使用}//---------写入SEO表seo('article',$_POST['id']);
+	
 //---------写入日志
 admin_log("article",$_POST['id'],'title',$pagename);
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));

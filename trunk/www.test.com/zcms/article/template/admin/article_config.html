@@ -130,7 +130,7 @@ $(function(){
 <div id="div_setting_1" class="contentList pad-10">
 	<table width="100%"  class="table_form">
 		<tr>
-			<th width="150">模块静态化：</th>
+			<th width="150">频道页生成Html：</th>
 			<td class="y-bg">
 				<input name="article_config[article_index_generate]" value="1" type="radio" <?php if ($article_index_generate==1){echo ' checked';}?> class="article_index_generate"> 是&nbsp;&nbsp;&nbsp;&nbsp;
 				<input name="article_config[article_index_generate]" value="0" type="radio"  <?php if ($article_index_generate==0){echo ' checked';}?> class="article_index_generate"> 否  
@@ -249,7 +249,7 @@ $(function(){
 		<tr>
 			<th width="150">自动分页字符数：</th>
 			<td class="y-bg">
-				<input type="text" class="input-text" name="article_config[article_page_len]" id="article_page_len" value="{zhuayi:echo.$article_page_len/}" size="10" />字符数（包含HTML标记）建议填写奇数如9999
+				<input type="text" class="input-text" name="article_config[article_page_len]" id="article_page_len" value="{zhuayi:echo.$article_page_len/}" size="10" />字符数（包含HTML标记）建议填写偶数如5000
 			</td>
 		</tr>
 		

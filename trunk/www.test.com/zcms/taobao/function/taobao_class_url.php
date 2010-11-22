@@ -1,0 +1,7 @@
+<?php
+function taobao_class_url($id)
+{
+	//-------ÔØÈëÅäÖÃÎÄ¼þ
+	return '/taobao/class/cid/'.$id;
+}
+?>
