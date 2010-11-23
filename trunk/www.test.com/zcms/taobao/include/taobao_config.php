@@ -6,4 +6,5 @@ $timeout = "10";
 $taobao_index_generate = "0";
 $taobao_index_url = "/";
 $taobao_index_path = "/taobao/";
+$taobao_cache_time = "3600";
 ?>

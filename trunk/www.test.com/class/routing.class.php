@@ -18,9 +18,9 @@ class routing
 		//----获取当前URL
 		//$this->url =  $_SERVER['REQUEST_URI'];
 		$this->url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
-		
+				
 		$this->seo();
-		
+				
 		//----格式化URL
 		$this->url = parse_url($this->url);
 		$this->url_res();
@@ -113,7 +113,8 @@ class routing
 		$_REQUEST['g_file'] = ZCMS_ROOT.'/zcms/'.$_REQUEST['m'].'/'.$_REQUEST['m'].'_global.php';
 		
 		//-----映射模块虚拟路径,主要用来载入模块里的图片，CSS作用
-		$_REQUEST['app_url'] = ZCMS_URL.'/zcms/'.$_REQUEST['m'].'/template/'.$_REQUEST['a'];		
+		$_REQUEST['app_url'] = ZCMS_URL.'/zcms/'.$_REQUEST['m'].'/template/'.$_REQUEST['a'];
+
 	}
 	
 	//--------查询是否存在SEO表中

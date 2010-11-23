@@ -5,6 +5,7 @@ $(function(){
 	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
 	$("#app_key").formValidator({onshow:"请输入自己申请的AppKey",onfocus:"请输入自己申请的AppKey"}).inputValidator({min:2,max:20,onerror:"请输入自己申请的AppKey"});
 	$("#app_secret").formValidator({onshow:"请输入自己申请的appSecret",onfocus:"请输入自己申请的appSecret"}).inputValidator({min:2,onerror:"请输入自己申请的appSecret"});
+	$("#taobao_cache_time").formValidator({onshow:"请填写数字,单位秒",onfocus:"请填写数字,单位秒"}).inputValidator({min:2,onerror:"请填写数字,单位秒"});
 	
 	
 })
@@ -47,6 +48,12 @@ $(function(){
 			<th width="150">HTML存放地址：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="taobao_config[taobao_index_path]"  value="{zhuayi:echo.$taobao_index_path/}" size="60" id="taobao_index_path"/>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">缓存存活时间：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="taobao_config[taobao_cache_time]"  value="{zhuayi:echo.$taobao_cache_time/}" size="10" id="taobao_cache_time"/>
 			</td>
 		</tr>
 	</table>
