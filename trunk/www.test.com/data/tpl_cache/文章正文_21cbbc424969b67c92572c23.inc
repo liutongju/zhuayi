@@ -26,6 +26,7 @@ $fields = array();
 			</div>
 
 			<div class="content" id="textbody">
+				<img src="<?php echo litpic($info['litpic'],300); ?>"/>
 				<?php echo $info['body']; ?>
 			</div>
 			<?php

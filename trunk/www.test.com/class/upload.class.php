@@ -59,9 +59,9 @@ class upload
 		//----转换路径
 		$this->path = ZCMS_ROOT.UPLOAD_PATH.$dir.'/'.date("Y-m-d").'/';
 		
-		if (!file_exists($this->path.'tmp'))
+		if (!file_exists($this->path))
 		{
-			mkdir($this->path.'tmp',777,true);
+			mkdir($this->path,777,true);
 		}
 		//----连接路径
 		$this->path .= $this->filename;
@@ -193,7 +193,7 @@ class upload
 			default:
 			return $this->request;
 		}
-		echo 'aaa';
+		//echo 'aaa';
 		return $this->realpath($filename); 
 	}
 	

@@ -243,13 +243,6 @@ $(function(){
 				</span>
 			</td>
 		</tr>
-
-		<tr>
-			<th width="150">文章缩略图大小：</th>
-			<td class="y-bg">
-				<input type="text" class="input-text" name="article_config[article_width]" id="article_width" value="<?php echo $article_width; ?>" size="10" />  - <input type="text" class="input-text" name="article_config[article_height]" id="article_height" value="<?php echo $article_height; ?>" size="10" />
-			</td>
-		</tr>
 		<tr>
 			<th width="150">自动分页字符数：</th>
 			<td class="y-bg">

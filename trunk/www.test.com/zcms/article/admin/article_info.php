@@ -19,8 +19,8 @@ $_POST['flag'] = implode('|',$_POST['flag']);
 include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['file1']);
 $upload->request = $_POST['litpic'];
-$upload->copy('article/litpic',time());
-$_POST['litpic'] = $upload->breviary($article_width);
+$_POST['litpic'] = $upload->copy('article/litpic',time());
+//$_POST['litpic'] = $upload->breviary($article_width);
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
 //-----判断是否自动提取文章摘要

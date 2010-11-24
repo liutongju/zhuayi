@@ -61,8 +61,8 @@ $(function(){
 				</script>
 			</td>
 			<td width="321" rowspan="4" align="center">
-			<img src="<?php echo $info['litpic']; ?>" width="<?php echo $article_width; ?>" height="<?php echo $article_height; ?>" class="litpic" />
-			<span><br>尺寸<?php echo $article_width; ?>*<?php echo $article_height; ?>  <a href="<?php echo $info['litpic']; ?>" target="_blank"/>看原图</a></span>
+			<img src="<?php echo $info['litpic']; ?>" width="135" height="111" class="litpic" />
+			<span><br>尺寸<a href="<?php echo $info['litpic']; ?>" target="_blank"/>看原图</a></span>
 			</td>
 		</tr>
 		<tr>

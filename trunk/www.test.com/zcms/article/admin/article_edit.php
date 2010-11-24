@@ -26,6 +26,4 @@ else
 	$seo['url'] = $article_news_url;
 }
 //------×ª»»À´Ô´$source = explode('|',$source);
-
-
 ?>
