@@ -17,7 +17,7 @@ fieldset{width:800px;margin:0 auto;margin-top:10px;}
 <div class="logo"><img src="template/logo.jpg"/></div>
 <form action="?c=info" method="post" id="myform">
 <fieldset>
-	<legend>数据库安装</legend>
+	<legend>安装信息</legend>
 	<table width="100%"  class="table_form">
 		<tr>
 			<th width="80">数据库地址：</th>
@@ -44,35 +44,7 @@ fieldset{width:800px;margin:0 auto;margin-top:10px;}
 		</tr>
 	</table>
 </fieldset>
-<div class="bk15"></div>
-<fieldset>
-	<legend>网站基本配置</legend>
-	<table width="100%"  class="table_form">
-		<tr>
-			<th width="80">网站名称：</th>
-			<td class="y-bg"><input type="text" class="input-text" name="web_config[webname]" id="webname" value="<?php echo $webname ;?>" size="30" /></td>
-		</tr>
-		<tr>
-			<th>网站域名：</th>
-			<td class="y-bg"><input type="text" class="input-text" name="web_config[weburl]" id="weburl" value="<?php echo $weburl ;?>" size="30" /></td>
-		</tr>
 
-	</table>
-</fieldset>
-<div class="bk15"></div>
-<fieldset id="fieldset">
-	<legend>后台管理</legend>
-	<table width="100%"  class="table_form">
-		<tr>
-			<th width="80">管理帐号：</th>
-			<td class="y-bg"><input type="text" class="input-text" name="admin[username]" id="username" size="30"/></td>
-		</tr>
-		<tr>
-			<th>登录密码：</th>
-			<td class="y-bg"><input type="password" class="input-text" name="admin[pass]" id="pass"  size="30"/></td>
-		</tr>
-	</table>
-</fieldset>
 <div class="logo" style="width:50px">
 <input type="hidden" name="filename[]" value="zcms_config"/>
 <input type="hidden" name="filename[]" value="web_config"/>

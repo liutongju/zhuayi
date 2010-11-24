@@ -19,8 +19,7 @@ $_POST['flag'] = implode('|',$_POST['flag']);
 include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['file1']);
 $upload->request = $_POST['litpic'];
-$upload->copy('taobao/litpic',time());
-$_POST['litpic'] = $upload->breviary($taobao_width);
+$_POST['litpic'] = $upload->copy('taobao/litpic',time());
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
 

@@ -18,7 +18,7 @@ $menu = array(
 			'3'=>array('更新栏目缓存','class_cache'),
 			'4'=>array('管理商品','index'),
 			'5'=>array('发布商品','edit'),
-			'6'=>array('导入商品','data'),
+			'6'=>array('筛选商品','data'),
 			);
 $tips = '请慎重填写下列参数,配置不正确可能会使您的网站崩溃.';
 

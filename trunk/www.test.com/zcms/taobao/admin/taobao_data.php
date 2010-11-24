@@ -60,10 +60,11 @@ $classlist = unserialize($taobao_class_cache);
 if (!empty($_GET['taobao']))
 {
 	//----转码关键词
-	$_GET['taobao']['keyword'] = siconv($_GET['taobao']['keyword'],'utf-8');
+	$_GET['taobao']['keyword'] = iconv('gbk','utf-8',urldecode($_GET['taobao']['keyword']));
 	//----转换分类到API
 	$_GET['taobao']['page_no'] = $_GET['page'];
-	
+	if (empty($_GET['taobao']['cid']))
+	unset($_GET['taobao']['cid']);
 	//----转换淘宝客商家星级
 	$_GET['taobao']['end_credit'] = $_GET['taobao']['start_credit'];
 	$taobao = new taobao();
@@ -71,7 +72,7 @@ if (!empty($_GET['taobao']))
 
 	$taobao->method = 'taobao.taobaoke.items.get';
 
-	$taobao->fields = 'num_iid,title,pic_url,price,commission_rate,commission,commission_volume,volume,commission_num,item_location';
+	$taobao->fields = 'num_iid,title,pic_url,price,commission_rate,commission,commission_volume,volume,commission_num,item_location,click_url';
 	$taobao->_array = $_GET['taobao'];
 	$list = $taobao->_return();
 	$list = $list['taobaoke_items_get_response']['taobaoke_items']['taobaoke_item'];

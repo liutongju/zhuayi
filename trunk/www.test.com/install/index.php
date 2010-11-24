@@ -29,10 +29,8 @@ if ($_REQUEST['c'] != 'info' && $_REQUEST['c'] != 'setup')
 }
 if ($_REQUEST['c'] == 'info')
 {
-
+	$_POST['zcms_config']['perpagenum'] = 20;
 	//---写入文件
-	
-
 	foreach ($_POST['filename'] as $key=>$val)
 	{
 		$conent = '<?php'."\r\n";
@@ -51,7 +49,7 @@ if ($_REQUEST['c'] == 'info')
 	$sql = handie(ZCMS_ROOT.'/install/sql/');
 	//----创建数据库
 	$query->query('CREATE DATABASE IF NOT EXISTS `'.$dbname.'` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci');
-	echo '创建数据库....<br>';
+	//echo '创建数据库....<br>';
 	$query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
 	foreach ($sql as $val)
 	{
@@ -73,8 +71,9 @@ if ($_REQUEST['c'] == 'info')
 	$_POST['admin']['pass'] = mymd5($_POST['admin']['pass']);
 	$_POST['admin']['gid'] = 2;
 	$query->save('admin',$_POST['admin']);
-	echo '完成安装';
+	//echo '完成安装';
 	write(ZCMS_ROOT.'/data/zcms.lock');
+	showmsg('安装成功','/index.php?m=admin&c=login&a=init');
 }
 /**
  * 写入文件
@@ -152,5 +151,21 @@ function mymd5($str)
 
 	$str = base64_encode(md5($str));
 	return md5($str);
+}
+
+function showmsg($title='',$url='/',$time=1250,$a='init')
+{
+
+	if ($url == '-1')
+	{
+		$url = 'javascript:history.go(-1)';
+	}
+	else
+	{
+		$url = "window.location.href='".$url."'";
+	}
+	//----跳转URL	
+	header("Location: /index.php?m=showmsg&a=".$a."&title=".$title."&url=".base64_encode($url).'&time='.$time); 
+	exit;
 }
 ?>

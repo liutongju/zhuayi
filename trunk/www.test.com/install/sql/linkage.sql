@@ -1,14 +1,13 @@
 DROP TABLE IF EXISTS `{%z%}linkage`;
 CREATE TABLE IF NOT EXISTS `{%z%}linkage` (
   `id` int(11) NOT NULL auto_increment,
-  `parent_id` int(11) NOT NULL COMMENT '父ID',
-  `title` varchar(50) NOT NULL COMMENT '标题',
+  `parent_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `orders` int(11) NOT NULL,
   KEY `id` (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `orders` (`orders`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk COMMENT='联动菜单' AUTO_INCREMENT=3402 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=gbk  AUTO_INCREMENT=3402 ;
 INSERT INTO `{%z%}linkage` (`id`, `parent_id`, `title`, `orders`) VALUES
 (2, 1, '北京', 0),
 (3, 1, '安徽', 0),
