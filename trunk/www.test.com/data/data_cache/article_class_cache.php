@@ -1,0 +1,3 @@
+<?php 
+ $article_class_cache = 'a:2:{i:0;a:10:{s:2:"id";s:1:"1";s:9:"parent_id";s:1:"0";s:9:"classname";s:10:"　国内新闻";s:6:"catdir";s:22:"/article/guoneixinwen/";s:11:"description";s:8:"国内新闻";s:3:"nav";s:1:"1";s:6:"orders";s:1:"0";s:21:"article_generate_path";s:0:"";s:3:"url";s:20:"/article/class1.html";s:6:"maxnum";s:1:"1";}i:1;a:10:{s:2:"id";s:1:"2";s:9:"parent_id";s:1:"1";s:9:"classname";s:16:"　　└─北京新闻";s:6:"catdir";s:36:"/article/guoneixinwen/beijingxinwen/";s:11:"description";s:8:"北京新闻";s:3:"nav";s:1:"0";s:6:"orders";s:1:"0";s:21:"article_generate_path";s:0:"";s:3:"url";s:20:"/article/class2.html";s:6:"maxnum";s:1:"2";}}'; 
+ ?>
