@@ -15,10 +15,12 @@ class routing
 	//----构造函数
 	function __construct()
 	{
+		global $weburl;
 		//----获取当前URL
-		//$this->url =  $_SERVER['REQUEST_URI'];
 		$this->url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
-				
+		
+		//----替换当前网站URL，使他支持'/***'发布自定义URL
+		$this->url = str_replace($weburl,'',$this->url);
 		$this->seo();
 				
 		//----格式化URL
