@@ -9,10 +9,6 @@
  * @QQ			 2179942
  */
 
-
-echo '<pre>';
-print_r($_POST);
-print_r($_FILES);
 //-----判断是否安装文件
 
 $file = $_FILES['file1'];
