@@ -9,7 +9,7 @@ $(function(){
 	$("#class_url").formValidator({onshow:"请输入默认URL,可用标签{id},替换为直投ID",onfocus:"请输入默认URL,可用标签{id}"}).inputValidator({min:2,onerror:"请输入默认URL,可用标签{id}"});
 	$("#article_generate_time").formValidator({onshow:"静态页自动更新间隔时间，单位秒",onfocus:"静态页自动更新间隔时间，单位秒"}).inputValidator({min:2,onerror:"静态页自动更新间隔时间，单位秒"});
 	$("#article_index_path").formValidator({onshow:"请以“/”开头结尾，不允许添加后缀，只填写目录名",onfocus:"请以“/”开头结尾，不允许添加后缀，只填写目录名"}).inputValidator({min:2,onerror:"请以“/”开头结尾，不允许添加后缀，只填写目录名"});
-	$("#article_index_url").formValidator({onshow:"系统强制此功能和自定义URL一样",onfocus:"系统强制此功能和自定义URL一样"}).inputValidator({min:2,onerror:"系统强制此功能和自定义URL一样"});
+	$("#article_index_url").formValidator({onshow:"如果是根目录就写“/”，如果是想做频道，那就写/aricle/,结尾以必须以“/”结尾",onfocus:"如果是根目录就写“/”，如果是想做频道，那就写/aricle/,结尾以必须以“/”结尾"}).inputValidator({min:1,onerror:"如果是根目录就写“/”，如果是想做频道，那就写/aricle/,结尾以必须以“/”结尾"});
 	
 	//----
 	

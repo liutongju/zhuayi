@@ -1,6 +1,6 @@
 <?php
 $article_index_generate = "0";
-$article_index_url = "http://www.test.com/";
+$article_index_url = "/";
 $article_index_path = "/article/";
 $flag = "ÍÆ¼ö|tuijian
 ÈÈÃÅ|remen
