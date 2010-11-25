@@ -23,10 +23,28 @@ $_POST['litpic'] = $upload->copy('article/litpic',time());
 //$_POST['litpic'] = $upload->breviary($article_width);
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
+
 //-----判断是否自动提取文章摘要
 if ($abstract ==1)
 {
 	$_POST['abstract'] = trim(str_replace('	','',preg_replace('/\r|\n/', '',strlens($_POST['body'],0,250))));
+}
+
+//----判断是否SEO描述为空，如果为空，则引用正文摘要
+if (empty($_POST['seo_description']))
+{
+	$_POST['seo_description'] = $_POST['abstract'];
+}
+
+//----如果开启自动提取Tags则提取TAGS和SEO关键词
+if ($article_tags == 1)
+{
+	$tags = file_get_contents($weburl.'/index.php?m=api&c=tags&title='.$_POST['title']);
+	$tags = json_decode($tags,true);
+	if (empty($_POST['tags']))
+	$_POST['tags'] = siconv($tags['tags']);
+	if (empty($_POST['seo_keywords']))
+	$_POST['seo_keywords'] = siconv($tags['keywords']);
 }
 
 //----提取第一张图为缩略图
@@ -68,8 +86,9 @@ else
 	$query->save("article",$_POST,' id = '.$_POST['id']);	
 }
 
-if (!empty($_POST['url'])){	$_POST['request_url'] = article_url($_POST['id']);  //项目原始url，自定义url时使用}//---------写入SEO表seo('article',$_POST['id']);
-	
+if (!empty($_POST['url'])){	$_POST['request_url'] = article_url($_POST['id']);  //项目原始url，自定义url时使用}
+//---------写入SEO表seo('article',$_POST['id']);
+
 //---------写入日志
 admin_log("article",$_POST['id'],'title',$pagename);
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));

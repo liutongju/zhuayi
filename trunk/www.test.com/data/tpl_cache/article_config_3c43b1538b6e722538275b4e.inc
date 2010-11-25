@@ -226,6 +226,14 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
+			<th width="150">自动提取文章关键词：</th>
+			<td class="y-bg">
+				<input name="article_config[article_tags]" value="1" type="radio" <?php if ($article_tags==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="article_config[article_tags]" value="0" type="radio"  <?php if ($article_tags==0){echo ' checked';}?>> 否  
+				<span>开启自动提取关键词后，文章内容中Tags和SEO关键词为空的话则自动提取</span>
+			</td>
+		</tr>
+		<tr>
 			<th width="150">自动下载文章图片：</th>
 			<td class="y-bg">
 				<input name="article_config[downfile]" value="1" type="radio" <?php if ($downfile==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;

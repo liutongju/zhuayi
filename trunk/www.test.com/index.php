@@ -64,6 +64,7 @@ $cache = new cache();
 include ZCMS_ROOT.'/class/routing.class.php';
 $url = new routing();
 $url->app();
+
 //-----优先载入模型全局文件
 if(file_exists($_REQUEST['g_file']))
 {

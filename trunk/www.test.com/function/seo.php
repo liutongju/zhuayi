@@ -15,7 +15,7 @@ function seo($table,$aid,$action='')
 		if ($query->maxnum("select count(*) from ".T."seo where tables ='".$table."' and aid=".$aid)==0)
 		{
 
-			if (empty($_POST['request_url']))
+			if (empty($_POST['request_url']) && empty($_POST['seo_description']) && empty($_POST['seo_keywords']) && empty($_POST['seo_title']))
 			return;
 			$query->save("seo",$_POST);
 		}

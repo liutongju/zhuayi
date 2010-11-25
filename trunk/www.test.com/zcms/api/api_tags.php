@@ -11,6 +11,7 @@
 //---------载入分词类
 include_once ZCMS_ROOT.'/class/tags.class.php';
 
+
 //-------实例化类
 $tags = new tags($_REQUEST['title']);
 $tags->baidu();

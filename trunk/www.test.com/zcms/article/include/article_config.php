@@ -12,6 +12,7 @@ $article_class_url = "/article/class{id}.html";
 $article_class_path = "/{catdir}/index.html";
 $article_class_time = "3600";
 $abstract = "1";
+$article_tags = "1";
 $downfile = "1";
 $key_highlight = "1";
 $replace_times = "3";
