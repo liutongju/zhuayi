@@ -12,7 +12,7 @@
 //------载入验证码类
 include_once ZCMS_ROOT.'/class/checkcode.class.php';
 $checkcode = new checkcode();
-
+$checkcode->creat_code();
  
 //-------设置页面内部菜单 
 $menu = array(
