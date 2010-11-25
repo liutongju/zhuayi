@@ -22,7 +22,7 @@ else
 	}
 	
 	//----É¾³ýÎÄ¼þ
-	$reset = $query->query("select a.id,dtime,body,article_generate_path,b.catdir from ".T."article as a left join ".T."article_class  as b on a.cid = b.id where a.id in(".$_REQUEST['id'].")");
+	$reset = $query->query("select a.id,dtime,body,a.article_generate_path,b.catdir from ".T."article as a left join ".T."article_class  as b on a.cid = b.id where a.id in(".$_REQUEST['id'].")");
 	while ($row = $query->fetch_array($reset))
 	{
 		if (!empty($row['article_generate_path']))

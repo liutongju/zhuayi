@@ -7,6 +7,7 @@ $(function(){
 	$("#watermark_img").formValidator({onshow:"水印存放路径:/data/water.png",onfocus:"水印存放路径:/data/water.png"}).inputValidator({min:2,onerror:"水印存放路径:/data目录下"});
 	$("#watermark_pct").formValidator({onshow:" 请设置为0-100之间的数字，0代表完全透明，100代表不透明",onfocus:" 请设置为0-100之间的数字，0代表完全透明，100代表不透明"}).inputValidator({min:2,onerror:" 请设置为0-100之间的数字，0代表完全透明，100代表不透明"});
 	$("#watermark_quality").formValidator({onshow:"水印质量请设置为0-100之间的数字,决定 jpg 格式图片的质量",onfocus:"水印质量请设置为0-100之间的数字,决定 jpg 格式图片的质量"}).inputValidator({min:2,onerror:"水印质量请设置为0-100之间的数字,决定 jpg 格式图片的质量"});
+	$("#upload_allowext").formValidator({onshow:"多个附件类型请以“|”隔开",onfocus:"多个附件类型请以“|”隔开"}).inputValidator({min:2,onerror:"多个附件类型请以“|”隔开"});
 	
 	
 })
