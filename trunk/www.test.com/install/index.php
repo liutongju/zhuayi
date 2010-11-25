@@ -30,6 +30,12 @@ if ($_REQUEST['c'] != 'info' && $_REQUEST['c'] != 'setup')
 if ($_REQUEST['c'] == 'info')
 {
 	$_POST['zcms_config']['perpagenum'] = 20;
+	
+	//---判断网站域名后边有没有"/"，如果有则替换掉
+	if (substr($_POST['web_config']['weburl'],-1,1) == '/')
+	{
+		$_POST['web_config']['weburl'] = substr($_POST['web_config']['weburl'],0,strlen($_POST['web_config']['weburl'])-1);
+	}
 	//---写入文件
 	foreach ($_POST['filename'] as $key=>$val)
 	{

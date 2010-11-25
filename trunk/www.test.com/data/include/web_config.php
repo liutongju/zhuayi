@@ -1,4 +1,8 @@
 <?php
 $webname = "zcms¹Ù·½²âÊÔÕ¾";
 $weburl = "http://www.test.com";
+$logo = "/data/logo.gif";
+$powerby = "";
+$beian = "";
+$admin_log = "0";
 ?>
