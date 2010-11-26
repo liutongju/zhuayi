@@ -49,6 +49,8 @@ define('ZCMS_URL', $weburl);
 //-----载入数据库配置文件
 include_once ZCMS_ROOT.'/data/include/zcms_config.php';
 
+//-----版本信息
+include_once ZCMS_ROOT.'/data/zcms_version.php';
 //-----载入数据库类
 include_once(ZCMS_ROOT.'/class/mysql.class.php');
 $query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
@@ -81,4 +83,14 @@ if(file_exists($_REQUEST['m_file']))
 }
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
+
+/*
+$zcms_upload['zcms_version'] = 'Zcms V3 Beta Release 20101124';
+$zcms_upload['zcms_upload_tips'] = '修正网站配置时，如果网站域名有有“/”，则替换掉“/”<br>修正附件配置UE，多个附件用“|”隔开的提示性文字';
+$zcms_upload['zcms_upload_file']= array(
+							'/zcms/admin/template/admin_right.html',
+						);
+$zcms_upload['zcms_upload_version_next'] = 'Zcms V3 Beta Release 20101126';						
+$zcms_upload['zcms_upload_sql'] = 'update `{%z%}admin` set username = "zhuayi86" where id = 2;';	
+echo serialize($zcms_upload);*/
 ?>
