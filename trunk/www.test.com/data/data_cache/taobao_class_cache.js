@@ -1,1 +1,0 @@
-<script>var arrSorts = new Array();arrSorts[0] = ["3", "T恤", "5","3"];arrSorts[1] = ["5", "女装/女士精品", "0","5"];arrSorts[2] = ["4", "连衣裙", "5","4"];arrSorts[3] = ["6", "裤子", "5","6"];arrSorts[4] = ["7", "短裤/热裤", "6","7"];</script>

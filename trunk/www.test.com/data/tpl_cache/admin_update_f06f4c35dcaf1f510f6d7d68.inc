@@ -1,4 +1,8 @@
-{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+ include $this->CompilerInclude("/zcms/admin/template/admin/头部.html");
+ ?>
 <style>
 .sbs{}
 .sbul{margin:10px;}
@@ -11,16 +15,17 @@
 	<div class="sbs" id="update_tips" style="height:360px; overflow:auto;">
 		<ul class="sbul" style="color:red">
 			<li>本次更新内容：</li>
-			<li>{zhuayi:echo.$update_info['zcms_upload_tips']/}</li>
+			<li><?php echo $update_info['zcms_upload_tips']; ?></li>
 		</ul>
 		<ul id="file" class="sbul">
 			
 		</ul>
 
 	</div>
-	</div>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}
+	</div><?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
+ ?>
 <script>
-arr = new Array({zhuayi:echo.$file/});
+arr = new Array(<?php echo $file; ?>);
 var i=0;
 var regNum=/^\d*$/;
 
@@ -43,6 +48,7 @@ function generate()
 			if (regNum.test(data))
 			{
 				$("#file").append('<li style="color:#009900">文件: '+arr[i]+'    -> 更新成功... </li>');
+				i = data;
 			}
 			else
 			{

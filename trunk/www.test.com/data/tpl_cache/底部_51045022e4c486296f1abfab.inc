@@ -12,7 +12,6 @@ $timecost = sprintf("%0.2f",$totaltime);
 <strong class="copyright">
 共执行<?php echo $query->querynum;; ?> 个查询，用时 <?php echo $timecost;; ?>秒 Gzip 已禁用，内存占用 <?php echo sprintf('%0.2f', memory_get_usage() / 1048576 );?> MB <br />
 Powered By 
-<a href="http://www.zcms.cc" target="_blank">Zcms</a>
-2.0 &copy; 2007-2010 <a href="http://www.zcms.cc" title="zcms" target="_blank">Zhuayi</a> (zcms.cc) 版权所有
+<?php echo $zcms_version; ?> &copy; 2007-2010 <a href="http://www.zcms.cc" title="zcms" target="_blank">Zhuayi</a> (zcms.cc) 版权所有
 </strong>
 </body>
