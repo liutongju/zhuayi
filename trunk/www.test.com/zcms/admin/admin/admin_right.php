@@ -21,6 +21,9 @@ if (!empty($update_info))
 	{
 		$zcms_version = str_replace('_',' ',$zcms_version).' <a href="/index.php?m=admin&c=update&a=init" style="color:red">[新更新 '.$update_info['zcms_upload_version_next'].']</a>';
 	}
-	
+}
+else
+{
+	$zcms_version_tips = ' <font color=#009900>[已是最新版本]</font>';
 }
 ?>

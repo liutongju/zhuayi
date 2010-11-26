@@ -67,6 +67,7 @@ else
 		foreach ($sql as $val)
 		{
 			$val= str_replace('{%z%}',T,$val);
+			if (!empty($val))
 			$query->query($val);
 			
 			//----更新版本 写入文件
