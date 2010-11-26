@@ -83,16 +83,4 @@ if(file_exists($_REQUEST['m_file']))
 }
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
-/*
-$zcms_upload['zcms_version'] = 'Zcms V3 Beta 1.1';
-$zcms_upload['zcms_upload_tips'] = '安全性必要更行';
-$zcms_upload['zcms_upload_file']= array(
-                                                        '/zcms/admin/template/admin/admin_update.html',
-                                                        '/zcms/admin/admin/admin_right.php',
-                                                        '/zcms/admin/template/admin/admin_right.html',
-                                                );
-$zcms_upload['zcms_upload_version_next'] = 'Zcms V3 Beta 1.2';                                                
-$zcms_upload['zcms_upload_sql'] = ''; 
-echo serialize($zcms_upload);
-*/
 ?>
