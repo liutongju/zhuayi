@@ -27,7 +27,7 @@ var regNum=/^\d*$/;
 function generate()
 {
 	
-	
+	alert(i)
 	url = '/index.php?m=admin&c=update&a=init&update=1&page='+i;
 	
 	if ( i < arr.length)
@@ -43,7 +43,6 @@ function generate()
 			if (regNum.test(data))
 			{
 				$("#file").append('<li style="color:#009900">文件: '+arr[i]+'    -> 更新成功... </li>');
-				i = data;
 			}
 			else
 			{
