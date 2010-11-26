@@ -15,15 +15,22 @@ if ($_REQUEST['update']=='')
 	//----去查询是否有版本更新
 	$update_info = file_get_contents('http://www.zcms.cc/update/'.$zcms_version.'/upload_info.txt');
 	
+	
+	
 	//----反序列化数组，用于写入缓存
 	$update_info = unserialize($update_info);
 	$zcms_upload['file'] = $update_info['zcms_upload_file'];
 	$zcms_upload['sql'] = $update_info['zcms_upload_sql'];
 	
+	if (empty($update_info['zcms_upload_version_next']))
+	{
+		showmsg('没有可用的更新了','-1');
+	}
 	//---写入文件
 	$conent = '<?php'."\r\n";
 
-	$conent .= '$zcms_version_update = \''.serialize($zcms_upload)."'\r\n";  
+	$conent .= '$zcms_version_update = \''.serialize($zcms_upload)."';\r\n";  
+	$conent .= '$zcms_upload_version_next = \''.$update_info['zcms_upload_version_next']."'\r\n";  
 
 	$conent .= '?>';
 	
@@ -61,6 +68,12 @@ else
 		{
 			$val= str_replace('{%z%}',T,$val);
 			$query->query($val);
+			
+			//----更新版本 写入文件
+			$conent = '<?php'."\r\n";
+			$conent .='$zcms_version = \''.$zcms_upload_version_next."';\r\n";  
+			$conent .= '?>';
+			write(ZCMS_ROOT.'/data/zcms_version.php',$conent);
 			echo '0';
 			exit;
 		}
