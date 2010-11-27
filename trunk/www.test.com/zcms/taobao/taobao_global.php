@@ -11,9 +11,6 @@
 
 $menu = array(
 			'0'=>array('淘宝客配置','config'),
-			'1'=>array('管理栏目','class'),
-			'2'=>array('添加栏目','class_edit'),
-			'3'=>array('更新栏目缓存','class_cache'),
 			'4'=>array('管理专题','special'),
 			'5'=>array('发布专题','special_edit'),
 			'6'=>array('筛选商品','data'),
