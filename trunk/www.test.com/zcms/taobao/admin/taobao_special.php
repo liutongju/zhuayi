@@ -24,7 +24,7 @@ else
 {
 	$_REQUEST['cid'] = 0;
 }
-$maxnum = $query->maxnum("select count(*) from ".T."taobao as a where a.id > 0 ".$search);
+$maxnum = $query->maxnum("select count(*) from ".T."taobao_special as a where a.id > 0 ".$search);
 
 //------ÔØÈë»º´æinclude_once ZCMS_CACHE.'taobao_class_cache.php';$classlist = unserialize($taobao_class_cache);
 ?>

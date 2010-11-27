@@ -27,7 +27,8 @@ else
 		admin_log("article_class",$_REQUEST['id'],'classname','删除文章栏目');
 
 		$query->delete("article_class"," id =".$_REQUEST['id']);
-		
+		//----删除SEO表
+		seo('article_class',$_REQUEST['id'],'delete');
 		showmsg('删除成功..现在去生成缓存','/index.php?m=article&c=class_cache&a=init',1000);
 	}
 }exit;

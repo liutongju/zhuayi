@@ -171,7 +171,7 @@ class upload
 		//-------------缩小图片
 		imagecopyresampled($image_p, $image, 0, 0, 0, 0, $logo_w, $logo_g, $width, $height);
 		
-		$filename = str_replace(basename($this->path),'tmp/',$this->path);
+		$filename = str_replace(basename($this->path),$this->path);
 		
 		if (!file_exists($filename))
 		{
@@ -310,6 +310,18 @@ class upload
 	function mark_false()
 	{
 		define('WATERMARK_ENABLE', 0);
+	}
+	
+	//----获取文件名
+	function h($file)
+	{
+		$h = strtolower(trim(substr(strrchr($file,'.'),1,100)));
+		if ($h !='jpg' && $h !='gif' && $h !='png')
+		{
+			
+			return 'jpg';
+		}
+		return $h;
 	}
 }
 

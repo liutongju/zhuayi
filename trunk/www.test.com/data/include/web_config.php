@@ -2,7 +2,8 @@
 $webname = "zcms¹Ù·½²âÊÔÕ¾";
 $weburl = "http://www.test.com";
 $logo = "/data/logo.gif";
-$powerby = "";
-$beian = "";
-$admin_log = "0";
+$powerby = "CopyRight &#169; 2002-2010  All Rights Reserved";
+$beian = "¾©ICP±¸05079575ºÅ";
+$admin_log = "1";
+$pic_cache = "1";
 ?>

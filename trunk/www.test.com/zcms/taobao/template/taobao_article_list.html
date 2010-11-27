@@ -1,0 +1,22 @@
+{zhuayi:include file="头部.html"/}
+<style>
+.product_list li{margin:5px 0px 0px 7px;}
+</style>
+<div class="links w_960">
+	当前位置：<a href="{zhuayi:echo.$info['url']/}">首页</a> > <a href="{zhuayi:echo.$info['url']/}">{zhuayi:echo.$info['title']/}</a> > <a href="{zhuayi:echo.$info['url']/}{zhuayi:echo.$info_class['url']/}">{zhuayi:echo.$info_class['classname']/}</a>
+</div>
+<div class="cen w_960">
+	<div class="news_list float_left mt10">
+	{zhuayi:article_list limit=15 cid=$cid page=$_REQUEST['page']}
+		<ul>
+			<li class="list_title"><span>{zhuayi:echo.dtime($fields['dtime'])/}</span><a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+			<li class="text">{zhuayi:echo.$fields['abstract']/}....     <a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}" target="_blank">[阅读全文]</a></li>
+			<li class="ot"><span>来源：{zhuayi:echo.$fields['source']/}</span><span>&nbsp;&nbsp;点击：{zhuayi:echo.$fields['click']/}</span></li>
+		</ul>
+	{/zhuayi:article_list}
+	</div>
+	{zhuayi:include file="右边.html"/}
+</div>
+{zhuayi:include file="底部.html"/}
+</body>
+</html>

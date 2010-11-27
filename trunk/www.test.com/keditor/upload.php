@@ -8,7 +8,7 @@ header('Content-Type: text/html; charset=UTF-8');
 include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['imgFile']);
 
-$msg = $upload->copy('article/edit/',time());
+$msg = $upload->copy('article/edit',time());
 
 if ($msg===false)
 {

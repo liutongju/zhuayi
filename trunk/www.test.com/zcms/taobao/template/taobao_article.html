@@ -1,0 +1,43 @@
+{zhuayi:include file="头部.html"/}
+<style>
+.product_list li{margin:5px 0px 0px 7px;}
+</style>
+<div class="links w_960">
+	当前位置：<a href="{zhuayi:echo.$info['url']/}">首页</a> > <a href="{zhuayi:echo.$info['url']/}">{zhuayi:echo.$info['title']/}</a> > <a href="{zhuayi:echo.$info['url']/}/cid/{zhuayi:echo.$info_article['cid']/}">{zhuayi:echo.$info_article['classname']/}</a> > <a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$info_article['id']/}">{zhuayi:echo.$info_article['title']/}</a>
+</div>
+<div class="cen w_960">
+	<div class="news_list float_left mt10">
+		<div id="news">
+			<h1>{zhuayi:echo.$info_article['title']/}</h1>
+			<div class="times">
+			{zhuayi:echo.dtime($info_article['dtime'],2)/}    
+			来源:{zhuayi:echo.$info_article['source']/}
+			【<a href="javascript:doZoom(16)">大</a> <a href="javascript:doZoom(14)">中</a> <a href="javascript:doZoom(12)">小</a>】
+			<a href="#">收藏本文</a> <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=2173988749',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','{dede:field.title/}','',''));">分享至微博</a>
+			</div>
+			<div class="content" id="textbody">
+				{zhuayi:echo.$info_article['body']/}
+			</div>
+			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile perpagenum=$article_page_len/}
+			
+			<div class="xg">
+				<li style="white-space:nowrap;text-overflow:ellipsis;overflow: hidden;float:right;"> 上一篇：<a href="{zhuayi:echo.$info_article['pre']['url']/}">{zhuayi:echo.$info_article['pre']['title']/}</a></li>
+
+				<li style="white-space:nowrap;text-overflow:ellipsis;overflow: hidden;float:left;">下一篇：<a href="{zhuayi:echo.$info_article['next']['url']/}">{zhuayi:echo.$info_article['next']['title']/}</a></li>
+			</div>
+			<div class="box_xg">
+				<div class="title_xg">相关商品列表</div>
+				<ul>
+				<?php for($i=0;$i<10;$i++){?>
+					<li><a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a</li>
+				<?php }?>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	{zhuayi:include file="右边.html"/}
+</div>
+{zhuayi:include file="底部.html"/}
+</body>
+</html>

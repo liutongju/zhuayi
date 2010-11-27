@@ -1,13 +1,15 @@
 <?php
 //------下载远程附件
-function downfile($file,$path,$width='',$height='')
+function downfile($file,$path)
 {
 	global $upload,$weburl,$i;
 	$i++;
-	if (!empty($file) && substr($file,0,1)== '/' && substr($file,0,strlen($weburl))== $weburl)
+	
+	if (empty($file) || substr($file,0,1)== '/' || substr($file,0,strlen($weburl))== $weburl)
 	{
 		return $file;
 	}
+
 	if (empty($upload))
 	{
 		include_once ZCMS_ROOT.'/class/upload.class.php';
@@ -16,29 +18,24 @@ function downfile($file,$path,$width='',$height='')
 	}
 	$upload->request = $file;
 	//----得到文件名
-	$h = strtolower(trim(substr(strrchr($file,'.'),1,100)));
-	$filename = ZCMS_ROOT.UPLOAD_PATH.$path.'/'.time().$i.'.'.$h;
+	$filename = ZCMS_ROOT.UPLOAD_PATH.$path.'/'.md5($file).'.'.$upload->h($file);
 	
 	//----远程获取
-	$picbody = file_get_contents($file);
-	
-	//----写入
-	write($filename,$picbody);
-	
-	//---返回
-	if ($h !='jpg' && $h !='gif' && $h !='png')
+	$ctx = stream_context_create(array('http' => array('timeout' => 1)));
+	$picbody = @file_get_contents($file,false, $ctx);
+
+	if (!empty($picbody))
 	{
-		return str_replace(ZCMS_ROOT,'',$filename);
+		//----写入
+		write($filename,$picbody);
+		$upload->request = $filename;
 	}
 	else
 	{
-		
-		if (!empty($width) || !empty($height))
-		{
-			return $upload->breviary($width,$height,$filename);
-		}
-		return $upload->mark($filename);
+		return $upload->request;
 	}
+	//---返回
+	return $upload->mark($filename);
 }
 
 

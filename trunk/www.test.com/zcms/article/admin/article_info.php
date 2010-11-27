@@ -37,7 +37,7 @@ if (empty($_POST['seo_description']))
 }
 
 //----如果开启自动提取Tags则提取TAGS和SEO关键词
-if ($article_tags == 1)
+if ($article_tags == 1 && $_POST['tags']=='' && $_POST['seo_keywords']=='')
 {
 	$tags = file_get_contents($weburl.'/index.php?m=api&c=tags&title='.$_POST['title']);
 	$tags = json_decode($tags,true);
@@ -56,7 +56,7 @@ $_POST['body'] = stripslashes($_POST['body']);
 //----下载第一个图为缩略图
 
 if (empty($_POST['litpic']) && !empty($pic[0]))
-$_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"),$article_width);
+$_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"));
 
 //----判断是否要下载文章内容里的图片
 if ($downfile == 1)
@@ -66,8 +66,7 @@ if ($downfile == 1)
 		$picbody = downfile($val,'article/edit/'.date("Y-m-d"));
 		if (!empty($picbody))
 		$_POST['body'] = str_replace($val,$picbody,$_POST['body']);
-	}
-	}
+	}}
 $_POST['body'] = addslashes($_POST['body']);
 if (!empty($_REQUEST['jump']))
 {

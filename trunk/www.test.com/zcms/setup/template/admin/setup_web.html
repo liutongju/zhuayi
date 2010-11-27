@@ -45,6 +45,13 @@ $(function(){
 				<input name="web_config[admin_log]" value="0" type="radio"  <?php if ($admin_log==0){echo ' checked';}?>> 否     
 			</td>
 		</tr>
+		<tr>
+			<th>是否开启图片缓存：</th>
+			<td class="y-bg">
+				<input class="radio_style" name="web_config[pic_cache]" value="1" <?php if ($pic_cache == 1){echo 'checked="checked"';}?> type="radio"> 启用&nbsp;&nbsp;&nbsp;&nbsp;
+				<input class="radio_style" name="web_config[pic_cache]" value="0" <?php if ($pic_cache == 0){echo 'checked="checked"';}?> type="radio"> 关闭
+			</td>
+		</tr>
 	</table>
 </fieldset>
 <div class="bk15"></div>

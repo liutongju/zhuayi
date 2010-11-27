@@ -25,7 +25,7 @@
 				<img src="{zhuayi:echo.litpic($info['litpic'],300)/}"/>
 				{zhuayi:echo.$info['body']/}
 			</div>
-			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile/}
+			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile $perpagenum = article_page_len/}
 			<div class="text_tag">
 				<h5>Tags£∫<b>{zhuayi:echo.$info['tags']/}</b> &nbsp;</h5>
 				<span>‘»Œ±‡º≠£∫ZcmsπŸ∑Ω≤‚ ‘’æ</span>

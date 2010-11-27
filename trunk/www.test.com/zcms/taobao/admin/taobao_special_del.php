@@ -22,11 +22,11 @@ else
 	}
 	
 	
-	$query->delete("taobao"," id in (".$_REQUEST['id'].")");
+	$query->delete("taobao_special"," id in (".$_REQUEST['id'].")");
 	//----删除SEO表
-	seo('taobao',$_REQUEST['id'],'delete');
+	seo('taobao_special',$_REQUEST['id'],'delete');
 	//---------写入日志
-	admin_log("taobao",$_REQUEST['id'],'title','删除淘宝客商品');
+	admin_log("taobao_special",$_REQUEST['id'],'title','删除淘宝客商品专题');
 	showmsg('删除成功..',ret_cookie('backurl'));
 }exit;
 ?>

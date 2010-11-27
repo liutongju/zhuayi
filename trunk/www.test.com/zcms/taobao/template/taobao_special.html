@@ -1,0 +1,53 @@
+{zhuayi:include file="头部.html"/}
+<style>
+img{float:left;}
+</style>
+<div class="banner w_960"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}"/></div>
+<div class="t_product">
+<?php for($i=0;$i<10;$i++){
+$j= $i+1;
+?>
+	<ul>
+		<li class="top_num" style="<?php if ($j==2){echo 'background:#d53361';}?> <?php if ($j==3){echo 'background:#df6688';}?> <?php if ($j>3){echo 'background:#cccccc';}?>"><?php if ($j<10){echo '0';}?><?php echo $j;?></li>
+		<li class="product_litpic">
+			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],120)/}"/></a>
+		</li>
+		<li class="product_title">
+			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a><br>
+			<img src="{zhuayi:echo.model_url('taobao','')/}images/gf.jpg"/>
+		</li>
+		<li class="product_price">
+			￥<span>{zhuayi:echo.$list[$i]['price']/}</span>元<br>
+			<img src="{zhuayi:echo.model_url('taobao','')/}images/hdfk.jpg"/>
+			
+		</li>
+		<li class="product_rx">
+			当月热销 {zhuayi:echo.$list[$i]['commission_num']/} 件 <br>
+			<span>卖家信用 </span><img src="{zhuayi:echo.model_url('taobao','')/}images/huanzuan.jpg"/>
+		</li>
+		<li class="product_button">
+			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.model_url('taobao','')/}images/button.jpg"/></a>
+		</li>
+	</ul><?php }?>
+</div>
+<div class="banner w_960 m10"><img src="{zhuayi:echo.model_url('taobao','')/}images/xbanner.jpg"/></div>
+
+<div class="product_list w_960">
+<?php for($i=10;$i<20;$i++){?>
+	<ul <?php if ($i ==14 ){echo 'style="margin-right:0px;float:right;"';};?>>
+		<li class="litpic"><a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],180)/}"/></a></li>
+		<li class="price">￥{zhuayi:echo.$list[$i]['price']/} 元<?php echo $i;?></li>
+		<li class="title"><a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a></li>
+		<li class="comment">最近成交：<span>{zhuayi:echo.$list[$i]['commission_num']/}</span></li>
+	</ul>
+<?php }?>
+</div>
+
+<div class="links w_960">
+{zhuayi:link_list}
+	<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
+{/zhuayi:link_list}
+</div>
+{zhuayi:include file="底部.html"/}
+</body>
+</html>
