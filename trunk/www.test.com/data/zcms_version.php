@@ -1,3 +1,3 @@
 <?php
-$zcms_version = 'Zcms V3 Beta 1.2';
+$zcms_version = 'Zcms_V3_Beta_1.3';
 ?>

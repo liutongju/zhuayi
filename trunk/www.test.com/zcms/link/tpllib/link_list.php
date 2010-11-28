@@ -27,6 +27,10 @@ function link_list($atts)
 	{
 		$search .= " and a.url like '%".$url."%'";
 	}
+	if (!empty($default))
+	{
+		$search .= " and a.default = '".$default.$aid."'";
+	}
 	$search .= " order by a.id desc";
 	$sql = "select a.* from ".T."link as a  ".$search."  limit $startnum , $limit";
 	$list = $query->arrays($sql);

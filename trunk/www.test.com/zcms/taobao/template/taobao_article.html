@@ -16,6 +16,9 @@
 			<a href="#">收藏本文</a> <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=2173988749',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','{dede:field.title/}','',''));">分享至微博</a>
 			</div>
 			<div class="content" id="textbody">
+				<div style="float:left;clear:left;height:auto;width:auto;margin-right:10px;" id="selfads">
+					<script type="text/javascript" src="http://www.test.com/index.php?m=ads&c=show&key={zhuayi:echo.$info['title']/}"></script>
+				</div>
 				{zhuayi:echo.$info_article['body']/}
 			</div>
 			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile perpagenum=$article_page_len/}

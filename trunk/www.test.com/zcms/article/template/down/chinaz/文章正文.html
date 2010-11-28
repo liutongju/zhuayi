@@ -9,23 +9,24 @@
 	</div>
 <!-- Digg-->
 
-
 <div class="clearfix wrap layout-cols2">
 	<div class="col1">
 		<div id="news">
 			<h1>{zhuayi:echo.$info['title']/}</h1>
 			<div class="times">
-			{zhuayi:echo.dtime($info['dtime'],2)/}    
+			{zhuayi:echo.dtime($info['dtime'])/}    
 			来源:{zhuayi:echo.$info['source']/}
 			【<a href="javascript:doZoom(16)">大</a> <a href="javascript:doZoom(14)">中</a> <a href="javascript:doZoom(12)">小</a>】
 			<a href="#">收藏本文</a> <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=2173988749',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','{dede:field.title/}','',''));">分享至微博</a>
 			</div>
 
 			<div class="content" id="textbody">
-				<img src="{zhuayi:echo.litpic($info['litpic'],300)/}"/>
+				<div style="float:left;clear:left;height:auto;width:auto;margin-right:10px;" id="selfads">
+					<script type="text/javascript" src="http://www.test.com/index.php?m=ads&c=show&key={zhuayi:echo.$info['title']/}"></script>
+				</div>
 				{zhuayi:echo.$info['body']/}
 			</div>
-			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile $perpagenum = article_page_len/}
+			{zhuayi:pagelist maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile perpagenum=$article_page_len/}
 			<div class="text_tag">
 				<h5>Tags：<b>{zhuayi:echo.$info['tags']/}</b> &nbsp;</h5>
 				<span>责任编辑：Zcms官方测试站</span>

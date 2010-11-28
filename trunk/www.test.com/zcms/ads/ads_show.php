@@ -9,14 +9,22 @@
  * @QQ			 2179942
  */
 
-if (empty($_REQUEST['id']))
+if (!empty($_REQUEST['id']))
 {
-	exit('´íÎó');
+	
+	$search = " and id =".$_REQUEST['id'];
+}
+elseif (!empty($_REQUEST['key']))
+{
+	//$search = " and instr('".siconv(urldecode($_REQUEST['key']))."','zcms2|ÒòÎª')";
+	$search = " and '".urldecode($_REQUEST['key'])."' regexp `key` ";
 }
 else
 {
-	$info = $query->one_array("select * from ".T."ads where id =".$_REQUEST['id']);
+	exit('´íÎó');
 }
+
+$info = $query->one_array("select * from ".T."ads where id>0".$search);$info['count'] = addslashes($info['count']);
 if ($_REQUEST['url'] =='true')
 {
 	$query->query("update ".T."ads set click = click+1 where id=".$info['id']);

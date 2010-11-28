@@ -7,6 +7,7 @@ function pagelist($atts)
 	//------
 	if (empty($perpagenum))
 	global $perpagenum;
+	
 	/*------------分页操作---定义每页显示多少记录---------*/
 	
 	if (empty($page)) 
