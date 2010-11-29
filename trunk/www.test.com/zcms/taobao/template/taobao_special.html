@@ -10,10 +10,10 @@ $j= $i+1;
 	<ul>
 		<li class="top_num" style="<?php if ($j==2){echo 'background:#d53361';}?> <?php if ($j==3){echo 'background:#df6688';}?> <?php if ($j>3){echo 'background:#cccccc';}?>"><?php if ($j<10){echo '0';}?><?php echo $j;?></li>
 		<li class="product_litpic">
-			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],120)/}"/></a>
+			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],120)/}"/></a>
 		</li>
 		<li class="product_title">
-			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a><br>
+			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a><br>
 			<img src="{zhuayi:echo.model_url('taobao','')/}images/gf.jpg"/>
 		</li>
 		<li class="product_price">
@@ -26,7 +26,7 @@ $j= $i+1;
 			<span>卖家信用 </span><img src="{zhuayi:echo.model_url('taobao','')/}images/huanzuan.jpg"/>
 		</li>
 		<li class="product_button">
-			<a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.model_url('taobao','')/}images/button.jpg"/></a>
+			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank"><img src="{zhuayi:echo.model_url('taobao','')/}images/button.jpg"/></a>
 		</li>
 	</ul><?php }?>
 </div>
@@ -35,9 +35,9 @@ $j= $i+1;
 <div class="product_list w_960">
 <?php for($i=10;$i<20;$i++){?>
 	<ul <?php if ($i ==14 ){echo 'style="margin-right:0px;float:right;"';};?>>
-		<li class="litpic"><a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],180)/}"/></a></li>
+		<li class="litpic"><a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],180)/}"/></a></li>
 		<li class="price">￥{zhuayi:echo.$list[$i]['price']/} 元<?php echo $i;?></li>
-		<li class="title"><a href="{zhuayi:echo.$list[$i]['click_url']/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a></li>
+		<li class="title"><a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a></li>
 		<li class="comment">最近成交：<span>{zhuayi:echo.$list[$i]['commission_num']/}</span></li>
 	</ul>
 <?php }?>

@@ -1,4 +1,0 @@
-<?php
-$zcms_version_update = 'a:2:{s:4:"file";a:11:{i:0;s:23:"/class/upload.class.php";i:1;s:22:"/function/downfile.php";i:2;s:20:"/function/litpic.php";i:3;s:19:"/keditor/upload.php";i:4;s:30:"/zcms/article/article_show.php";i:5;s:41:"/zcms/article/admin/article_class_del.php";i:6;s:40:"/zcms/article/admin/article_info.php.php";i:7;s:48:"/zcms/article/template/down/chinaz/ндубуЩнд.html";i:8;s:40:"/zcms/checkcode/admin/checkcode_show.php";i:9;s:34:"/zcms/pagelist/tpllib/pagelist.php";i:10;s:41:"/zcms/setup/template/admin/setup_web.html";}s:3:"sql";s:0:"";}';
-$zcms_upload_version_next = 'Zcms_V3_Beta_1.3'
-?>

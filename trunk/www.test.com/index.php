@@ -83,5 +83,4 @@ if(file_exists($_REQUEST['m_file']))
 }
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
-
 ?>
