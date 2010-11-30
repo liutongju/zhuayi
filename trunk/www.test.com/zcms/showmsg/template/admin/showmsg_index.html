@@ -22,7 +22,7 @@ a:hover,a:active{color:#ff6600;text-decoration: underline}
 <div class="showMsg" style="text-align:center"> 
 	<h5>提示信息</h5> 
     <div class="content guery" style="display:inline-block;display:-moz-inline-stack;zoom:1;*display:inline;max-width:330px">
-		<font>{zhuayi:echo.$_GET['title']/}</font>
+		<font>{zhuayi:echo.urldecode($_GET['title'])/}</font>
 	</div> 
     <div class="bottom"> 
     	<a href="<?php echo $url[1][0]?>">如果您的浏览器没有自动跳转，请点击这里</a> 

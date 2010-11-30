@@ -7,13 +7,13 @@
 </div>
 <div class="cen w_960">
 	<div class="news_list float_left mt10">
-	{zhuayi:article_list limit=15 cid=$cid page=$_REQUEST['page']}
+	{zhuayi:article_list cid=$cid page=$_REQUEST['page'] limit=26}
 		<ul>
 			<li class="list_title"><span>{zhuayi:echo.dtime($fields['dtime'])/}</span><a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
 			<li class="text">{zhuayi:echo.$fields['abstract']/}....     <a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}" target="_blank">[阅读全文]</a></li>
-			<li class="ot"><span>来源：{zhuayi:echo.$fields['source']/}</span><span>&nbsp;&nbsp;点击：{zhuayi:echo.$fields['click']/}</span></li>
 		</ul>
 	{/zhuayi:article_list}
+	{zhuayi:pagelist  maxnum=$info_class['maxnum'] page=$_REQUEST['page'] html=$htmlfile  perpagenum=26/}
 	</div>
 	{zhuayi:include file="右边.html"/}
 </div>

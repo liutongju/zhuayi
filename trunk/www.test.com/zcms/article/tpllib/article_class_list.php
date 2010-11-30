@@ -2,6 +2,7 @@
 /*---------文章栏目列表-------*/
 function article_class_list($atts)
 {
+	
 	extract($atts, EXTR_OVERWRITE);
 	//------
 	global $query,$perpagenum;
@@ -27,19 +28,12 @@ function article_class_list($atts)
 	if ($nav !='')
 	{
 		$search .= ' and a.nav ='.$nav;
-	}
-	
+	}
 	$search .= " order by a.orders asc";
 	$sql = "select a.*,b.url from ".T."article_class as a left join ".T."seo as b on a.id = b.aid and b.tables='article_class'".$search."  limit $startnum , $limit";
 	$reset = $query->query($sql);
 	while ($row = $query->fetch_array($reset))
 	{
-		if (!empty($row['article_generate_path']))
-		{
-			$row['url'] = str_replace(ZCMS_ROOT,'',article_generate_path($row));
-		}
-		elseif (empty($row['url']))
-		$row['url'] = article_class_url($row['id']);
 		$list[] = $row;
 	}
 	return $list;

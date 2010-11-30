@@ -19,7 +19,8 @@ $openedtags = array_reverse($openedtags);
 # close tags
 for($i=0;$i<$len_opened;$i++) {
   if (!in_array($openedtags[$i],$closedtags)){
-   $html .= '</'.$openedtags[$i].'>';
+		//---转换$标签为小写
+		$openedtags[$i] = strtolower($openedtags[$i]);		if ($openedtags[$i]!='br' && $openedtags[$i]!='img')		$html .= '</'.$openedtags[$i].'>';
   } else {
    unset($closedtags[array_search($openedtags[$i],$closedtags)]);
   }

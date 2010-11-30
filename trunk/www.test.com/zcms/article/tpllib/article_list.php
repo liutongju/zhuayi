@@ -51,20 +51,8 @@ function article_list($atts)
 	$search .= " order by a.id desc";
 	$sql = "select a.*,b.url,c.classname,catdir,d.url as classurl from ".T."article as a left join ".T."seo as b on a.id = b.aid and b.tables='article' left join ".T."article_class as c on a.cid = c.id left join ".T."seo as d on c.id = d.aid and d.tables = 'article_class'".$search."  limit $startnum , $limit";
 	$reset = $query->query($sql);
-	//echo $sql;
 	while ($row = $query->fetch_array($reset))
 	{
-		if (!empty($row['article_generate_path']))
-		{
-			$row['url'] = str_replace(ZCMS_ROOT,'',article_generate_path($row));
-		}
-		elseif (empty($row['url']))
-		$row['url'] = article_url($row['id']);
-		
-		if (!empty($strlen))
-		{
-			$row['title'] = strlens($row['title'],0,$strlen);
-		}
 		$list[] = $row;
 	}
 	return $list;

@@ -1,18 +1,33 @@
 <?php
 
 //-------解析文章内容页生成的URL
-function article_generate_path($info)
+function article_generate_path($id)
 {
-
-	$info['article_generate_path'] = str_replace('{catdir}',$info['catdir'],$info['article_generate_path']);
-	$info['article_generate_path'] = str_replace('{id}',$info['id'],$info['article_generate_path']);
-	$info['article_generate_path'] = str_replace('{Y}',date("Y",$info['dtime']),$info['article_generate_path']);
-	$info['article_generate_path'] = str_replace('{M}',date("m",$info['dtime']),$info['article_generate_path']);
-	$info['article_generate_path'] = str_replace('{D}',date("d",$info['dtime']),$info['article_generate_path']);
-	$info['article_generate_path'] = str_replace('//','/',$info['article_generate_path']);
-	return ZCMS_ROOT.$info['article_generate_path'];
+	global $query,$article_generate_path;
+	$info = $query->one_array("select a.id,dtime,b.catdir from ".T."article as a left join ".T."article_class as b on a.cid = b.id where a.id=".$id);
+	
+	$url = str_replace('{catdir}',$info['catdir'],$article_generate_path);
+	$url = str_replace('{id}',$id,$url);
+	$url = str_replace('{Y}',date("Y",$info['dtime']),$url);
+	$url = str_replace('{M}',date("m",$info['dtime']),$url);
+	$url = str_replace('{D}',date("d",$info['dtime']),$url);
+	$url = str_replace('//','/',$url);
+	return $url;
 	
 }
 
+function article_class_generate_path($id)
+{
+	global $query,$article_class_path;
+	$info = $query->one_array("select * from ".T."article_class as a  where a.id=".$id);
+	$url = str_replace('{catdir}',$info['catdir'],$article_class_path);
+	$url = str_replace('{id}',$id,$url);
+	$url = str_replace('{Y}',date("Y",$info['dtime']),$url);
+	$url = str_replace('{M}',date("m",$info['dtime']),$url);
+	$url = str_replace('{D}',date("d",$info['dtime']),$url);
+	$url = str_replace('//','/',$url);
+	
+	return $url;
+}
 
 ?>

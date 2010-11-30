@@ -22,7 +22,9 @@ $menu = array(
 			'4'=>array('管理文章','index'),
 			'5'=>array('发布文章','edit'),
 			'6'=>array('生成全部文章','generate&act=show'),
-			'7'=>array('生成全部栏目','generate&act=class')
+			'7'=>array('生成全部栏目','generate&act=class'),
+			'8'=>array('格式化文章URL','format&tables=article'),
+			'9'=>array('格式化栏目URL','format&tables=article_class')
 			);
 
 

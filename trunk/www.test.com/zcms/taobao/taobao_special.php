@@ -41,7 +41,10 @@ if (!empty($_REQUEST['cid']))
 	}
 
 	$seo['seo_title'] .= ' - '.parent_classname($cid);
-
+	
+	//---²éÑ¯×ÜÊý
+	$info_class['maxnum'] = $query->maxnum("select count(*) from ".T."article where cid=".$cid);
+	
 	$_REQUEST['c_file'] = ZCMS_ROOT.'/zcms/taobao/template/taobao_article_list.html';
 }
 elseif (!empty($_REQUEST['aid']))

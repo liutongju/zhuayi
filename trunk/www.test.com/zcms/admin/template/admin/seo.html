@@ -5,7 +5,7 @@
 		<tr id="seo_url">
 			<th width="100">自定义URL：</th>
 			<td class="y-bg">
-			<input type="text" class="input-text" name="url" id="url" value="{zhuayi:echo.$seo['url']/}" size="60" />
+			<input type="text" class="input-text" name="request_url" id="request_url" value="{zhuayi:echo.$seo['url']/}" size="60" />
 			<input name="parameter" id="parameter" value="1" size="35" type="checkbox" <?php if ($seo['parameter']==1){echo 'checked';};?> /> 模糊匹配
 			<span><br>二级域名必须以‘http://’开头,顶级域名必须以'/'开头的任意不重复字符串,结尾不要加"/"、模糊匹配勾选允许自定义URL后边再继续跟参数,如:/page/2/
 			<br><font color="red">可用标签：{id}-->会自动替换成信息ID</font></span>
