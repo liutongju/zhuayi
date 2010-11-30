@@ -52,8 +52,12 @@ $(function(){
 			<td class="y-bg"><input type="text" class="input-text" name="email_config[mail_password]" id="mail_password" value="{zhuayi:echo.$mail_password/}" size="30" /></td>
 		</tr>
 		<tr>
-			<th>邮件设置测试：</th>
-			<td class="y-bg"><input type="text" class="input-text" name="mail_to" id="mail_to" size="30" value=""/> <input type="button" class="button ceshi"  value="测试发送"></td>
+			<th>错误推送：</th>
+			<td class="y-bg"><input name="email_config[error_push]" id="error_push" value="1" type="radio" <?php if ($error_push==1){echo ' checked';}?>> 开启	<input name="email_config[error_push]" id="error_push" value="0" type="radio" <?php if ($error_push==0){echo ' checked';}?>> 关闭</td>
+		</tr>
+		<tr>
+			<th>收信地址：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="email_config[mail_to]" id="mail_to" size="30" value="{zhuayi:echo.$mail_to/}"/> <input type="button" class="button ceshi"  value="测试发送"></td>
 		</tr>
 	</table>
 </fieldset>

@@ -5,4 +5,6 @@ $mail_from = "test@zcms.cc";
 $mail_auth = "0";
 $mail_user = "test@zcms.cc";
 $mail_password = "test";
+$error_push = "0";
+$mail_to = "2179942@qq.com";
 ?>

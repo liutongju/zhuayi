@@ -21,7 +21,7 @@ function downfile($file,$path)
 	$filename = ZCMS_ROOT.UPLOAD_PATH.$path.'/'.md5($file).'.'.$upload->h($file);
 	
 	//----Ô¶³Ì»ñÈ¡
-	$ctx = stream_context_create(array('http' => array('timeout' => 1)));
+	$ctx = stream_context_create(array('http' => array('timeout' => 2)));
 	$picbody = @file_get_contents($file,false, $ctx);
 
 	if (!empty($picbody))

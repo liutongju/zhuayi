@@ -5,6 +5,7 @@
 <title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
 <meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
 <meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
+
 <script>
 function doZoom(size){
 	document.getElementById('textbody').style.fontSize=size+'px'
@@ -13,13 +14,13 @@ function doZoom(size){
 <style>
 body{margin:0;padding:0px;font-size:12px;margin:0;padding:0px;}
 a{text-decoration:none;color:#0000FF;}
-img{margin:0px;padding:0px;border:0px;}
+img{margin:0px;padding:0px;border:0px;z-index:1}
 ul{margin:0px;padding:0px;}
 li{list-style:none;}
 .float_left{float:left}
 .float_right{float:right}
 .w_990{width:990px;margin:0 auto;}
-.w_960{width:960px;margin:0 auto;}
+.w_960{width:960px;margin:0 auto;background:#fff;}
 .top_g{height:3px;background:url({zhuayi:echo.model_url('taobao','')/}images/top_g.gif);overflow:hidden;}
 
 .top_logo{overflow:hidden;}
@@ -32,12 +33,13 @@ li{list-style:none;}
 .nav_cen{width:968px;background:url({zhuayi:echo.model_url('taobao','')/}images/nav_cen.gif)}
 .nav_cen a{font-weight:bold;color:#fff;line-height:40px;font-size:14px;margin:5px;}
 
-.banner{position:relative;top:-5px;}
+.banner{}
 .t_product{width:952px;border:4px #eaeaea solid;border-top:0px;margin:0 auto;clear:both;}
-.t_product ul{overflow:hidden;border-top:4px #eaeaea solid;zoom:1;}
+.t_product ul{border-top:4px #eaeaea solid;zoom:1;clear:both;}
 .t_product ul li{list-style:none;margin-top:5px;}
 .top_num{float:left; font-weight:bold;color:#fff;background:#ca0039;height:120px;line-height:115px; font-family:Arial, Helvetica, sans-serif;font-size:70px;margin:1px;}
-.product_litpic img{width:120px;height:116px;padding:2px;border:1px #eaeaea solid;margin-left:10px;}
+.product_litpic{float:left;}
+.product_litpic img{padding:2px;border:1px #eaeaea solid;margin-left:10px;}
 .product_title{float:left; color:#337fa3;font-size:14px;margin-left:10px;height:80px;padding:20px;width:280px;line-height:180%;}
 .product_price{float:left; color:#666666;font-weight:bold;height:80px;padding:20px;font-size:16px;line-height:180%;}
 .product_price span{color:#ff6600;font-size:18px; font-family:Arial, Helvetica, sans-serif}
@@ -59,7 +61,7 @@ li{list-style:none;}
 .product_list ul .comment span{color:#ceaa00;font-weight:bold;}
 .product_list ul .comment font{color:#2953a6;}
 
-.links{background:#f2f2f2;padding:10px 0px 10px 10px;width:950px;}
+.links{background:#f2f2f2;padding:10px 0px 10px 10px;width:950px;margin-top:10px;}
 .links a{color:#666666;}
 
 .bottom{clear:both;border-top:1px #ccc solid;padding-top:5px;margin-top:10px; font-family:"ËÎÌå"}
@@ -172,7 +174,7 @@ li{list-style:none;}
 	display:block;
 	float:left;
 	width:50%;
-	background:url("xg_bg.gif"/*tpa=http://www.chinaz.com/images/xg_bg.gif*/) no-repeat 5px 9px;
+	background:url("xg_bg.gif") no-repeat 5px 9px;
 	*width:49%;
 	text-indent:12px;
 	height:24px;
@@ -198,23 +200,19 @@ li{list-style:none;}
 .page2,.page3{ border:1px #eeeeee solid;  padding:4px 8px 4px 8px;}
 .page2{ color:#075cb1;}
 .page3{color:#666;}
+
+.article_list{border:1px #ccc solid;}
+.article_list ul{overflow:hidden;}
+.article_list h2{font-size:14px;padding:0px;padding-left:10px;margin:0px;height:42px;line-height:42px;background:#f2f2f2;}
+.article_list h2 a{color:#000;}
+.article_list ul li{width:45%;float:left;margin:5px 20px 5px 10px;}
+.article_list ul li a{float:left;margin-left:10px;color:#555;border:1px #fff solid;padding:2px;}
+.article_list ul li a:hover{border:1px red dotted;}
+.article_list ul li span{float:right;color:#606060;margin-top:5px;}
 </style>
 </head>
 
 <body>
-<div class="top_g w_990"/></div>
-<div class="top_logo w_990">
-	<div class="logo"><a href="{zhuayi:echo.$info['url']/}" target="_blank"><img src="{zhuayi:echo.model_url('taobao','')/}images/logo.gif"/></a></div>
-</div>
-<div class="nav">
-	<div class="nav2 w_990">
-		<div class="nav_left"></div>
-		<div class="nav_cen">
-			<a href="{zhuayi:echo.$info['url']/}" target="_blank">Ê× Ò³</a>
-		{zhuayi:article_class_list parent_id=$info['cid'] nav=1}
-			<a href="{zhuayi:echo.$info['url']/}/cid/{zhuayi:echo.$fields['id']/}" target="_blank">{zhuayi:echo.$fields['classname']/}</a>
-		{/zhuayi:article_class_list}
-		</div>
-		<div class="nav_right"></div>
-	</div>
-</div>
+<div class="banner w_960"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}"/></div>
+
+

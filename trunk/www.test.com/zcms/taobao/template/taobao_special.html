@@ -1,16 +1,12 @@
 {zhuayi:include file="头部.html"/}
-<style>
-img{float:left;}
-</style>
-<div class="banner w_960"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}"/></div>
 <div class="t_product">
 <?php for($i=0;$i<10;$i++){
 $j= $i+1;
 ?>
 	<ul>
 		<li class="top_num" style="<?php if ($j==2){echo 'background:#d53361';}?> <?php if ($j==3){echo 'background:#df6688';}?> <?php if ($j>3){echo 'background:#cccccc';}?>"><?php if ($j<10){echo '0';}?><?php echo $j;?></li>
-		<li class="product_litpic">
-			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],120)/}"/></a>
+		<li class="product_litpic picbigpr" id="{zhuayi:echo.$list[$i]['num_iid']/}">
+			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank"><img src="{zhuayi:echo.litpic($list[$i]['pic_url'],120)/}" style="width:120px;height:116px;"/></a>
 		</li>
 		<li class="product_title">
 			<a href="{zhuayi:echo.taobao_urlshort($list[$i]['click_url'])/}" target="_blank">{zhuayi:echo.siconv($list[$i]['title'])/}</a><br>
@@ -42,7 +38,19 @@ $j= $i+1;
 	</ul>
 <?php }?>
 </div>
-
+<div class="article_list w_960">
+	<h2>相关<a href="{zhuayi:echo.$info['url']/}/cid/{zhuayi:echo.$info['class']['id']/}">{zhuayi:echo.$info['class']['classname']/}</a>信息</h2>
+	<ul>
+	<?php $i=1;?>
+	{zhuayi:article_list limit=15 cid=$info['cid']}
+		<li <?php if ($i % 2 ==0){echo 'style="float:right"';}?>>
+			<a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}">{zhuayi:echo.$fields['title']/}</a>
+			<span>2010-10-11</span>
+		</li>
+	<?php $i++;?>
+	{/zhuayi:article_list}
+	</ul>
+</div>
 <div class="links w_960">
 {zhuayi:link_list default="taobao_special|" aid=$info['id']}
 	<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
