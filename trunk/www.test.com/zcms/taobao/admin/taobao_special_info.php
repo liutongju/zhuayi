@@ -12,8 +12,7 @@
 //-------验证登录
 verify_admin('admin_username');
 
-//-------序列化推送位
-$_POST['flag'] = implode('|',$_POST['flag']);
+
 
 //----处理上传文件
 include_once ZCMS_ROOT.'/class/upload.class.php';
@@ -39,7 +38,15 @@ else
 	$query->save("taobao_special",$_POST,' id = '.$_POST['id']);	
 }
 
-if (!empty($_POST['url'])){	$_POST['request_url'] = taobao_special_url($_POST['id']);  //项目原始url，自定义url时使用}//---------写入SEO表seo('taobao_special',$_POST['id']);
+if (!empty($_POST['request_url']))
+{
+	$_POST['url'] = $_POST['request_url'];
+	$_POST['request_url'] = taobao_special_url($_POST['id']);
+	//项目原始url，自定义url时使用
+}
+
+//---------写入SEO表
+seo('taobao_special',$_POST['id']);
 	
 //---------写入日志
 admin_log("taobao_special",$_POST['id'],'title',$pagename);

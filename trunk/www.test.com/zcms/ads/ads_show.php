@@ -12,19 +12,23 @@
 if (!empty($_REQUEST['id']))
 {
 	
-	$search = " and id =".$_REQUEST['id'];
+	$search .= " and id =".$_REQUEST['id'];
 }
 elseif (!empty($_REQUEST['key']))
 {
-	//$search = " and instr('".siconv(urldecode($_REQUEST['key']))."','zcms2|ÒòÎª')";
-	$search = " and '".urldecode($_REQUEST['key'])."' regexp `key` ";
+	$search = " and concat(',',`key`,',') regexp concat(',(',replace('".urldecode($_REQUEST['key'])."',',','|'),'),')";
 }
 else
 {
 	exit('´íÎó');
 }
+if (!empty($_REQUEST['type']))
+{
+	$search .= " and type =".$_REQUEST['type'];
+}
 
-$info = $query->one_array("select * from ".T."ads where id>0".$search);$info['count'] = addslashes($info['count']);
+$info = $query->one_array("select * from ".T."ads where id>0".$search." order by rand()");
+$info['count'] = addslashes($info['count']);
 if ($_REQUEST['url'] =='true')
 {
 	$query->query("update ".T."ads set click = click+1 where id=".$info['id']);

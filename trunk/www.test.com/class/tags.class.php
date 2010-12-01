@@ -46,11 +46,13 @@ class tags
 		
 	}
 	
+
+
 	//-----远程抓取函数
 	function file_get_open($url)
 	{
 		$ctx = stream_context_create(array('http' => array('timeout' => 10)));
-		$result = @file_get_contents($url.$this->title,0, $ctx);
+		$result = @file_get_contents($url.trim($this->title),0, $ctx);
 		if($result)
 		{
 			return $result;

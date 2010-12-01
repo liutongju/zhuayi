@@ -33,8 +33,8 @@ li{list-style:none;}
 .nav_cen{width:968px;background:url({zhuayi:echo.model_url('taobao','')/}images/nav_cen.gif)}
 .nav_cen a{font-weight:bold;color:#fff;line-height:40px;font-size:14px;margin:5px;}
 
-.banner{}
-.t_product{width:952px;border:4px #eaeaea solid;border-top:0px;margin:0 auto;clear:both;}
+.banner{margin:10px auto 10px auto;text-align:center;}
+.t_product{width:952px;border:4px #eaeaea solid;border-top:0px;margin:0 auto;clear:both;overflow:hidden;}
 .t_product ul{border-top:4px #eaeaea solid;zoom:1;clear:both;}
 .t_product ul li{list-style:none;margin-top:5px;}
 .top_num{float:left; font-weight:bold;color:#fff;background:#ca0039;height:120px;line-height:115px; font-family:Arial, Helvetica, sans-serif;font-size:70px;margin:1px;}
@@ -213,6 +213,10 @@ li{list-style:none;}
 </head>
 
 <body>
-<div class="banner w_960"><a href="{zhuayi:echo.$info['url']/}" title="{zhuayi:echo.$info['title']/}"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}" alt="{zhuayi:echo.$info['title']/}"/></a></div>
+
+<div class="banner w_960">
+<a href="{zhuayi:echo.$info['url']/}" title="{zhuayi:echo.$info['title']/}"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}" alt="{zhuayi:echo.$info['title']/}"/>
+</a>
+</div>
 
 

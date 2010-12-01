@@ -26,8 +26,8 @@ $j= $i+1;
 		</li>
 	</ul><?php }?>
 </div>
-<div class="banner w_960 m10"><img src="{zhuayi:echo.model_url('taobao','')/}images/xbanner.jpg"/></div>
-
+<div class="banner w_960 m10"><div class="banner w_960 m10"><script type="text/javascript" src="http://www.wamifang.com/index.php?m=ads&c=show&key={zhuayi:echo.$seo['seo_keywords']/}&type=2"></script> </div>
+</div>
 <div class="product_list w_960">
 <?php for($i=10;$i<20;$i++){?>
 	<ul <?php if ($i ==14 ){echo 'style="margin-right:0px;float:right;"';};?>>
@@ -52,6 +52,9 @@ $j= $i+1;
 	</ul>
 </div>
 <div class="links w_960">
+{zhuayi:taobao_special_list}
+	<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
+{/zhuayi:taobao_special_list}
 {zhuayi:link_list default="taobao_special|" aid=$info['id']}
 	<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
 {/zhuayi:link_list}

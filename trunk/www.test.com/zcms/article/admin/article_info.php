@@ -20,7 +20,6 @@ include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['file1']);
 $upload->request = $_POST['litpic'];
 $_POST['litpic'] = $upload->copy('article/litpic',time());
-//$_POST['litpic'] = $upload->breviary($article_width);
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
 
@@ -36,11 +35,17 @@ if (empty($_POST['seo_description']))
 	$_POST['seo_description'] = $_POST['abstract'];
 }
 
+$_POST['title'] = trim($_POST['title']);
+
 //----如果开启自动提取Tags则提取TAGS和SEO关键词
 if ($article_tags == 1 && $_POST['tags']=='' && $_POST['seo_keywords']=='')
 {
 	$tags = file_get_contents($weburl.'/index.php?m=api&c=tags&title='.$_POST['title']);
+
 	$tags = json_decode($tags,true);
+
+	
+
 	if (empty($_POST['tags']))
 	$_POST['tags'] = siconv($tags['tags']);
 	if (empty($_POST['seo_keywords']))
@@ -51,7 +56,8 @@ if ($article_tags == 1 && $_POST['tags']=='' && $_POST['seo_keywords']=='')
 $_POST['body'] = stripslashes($_POST['body']);
 preg_match_all("/<img(.*)src=\"([^\"]+)\"[^>]+>/isU",$_POST['body'],$array);
 
-//------去除重复地址$pic = array_flip(array_flip($array[2]));
+//------去除重复地址
+$pic = array_flip(array_flip($array[2]));
 
 //----下载第一个图为缩略图
 
@@ -66,16 +72,22 @@ if ($downfile == 1)
 		$picbody = downfile($val,'article/edit/'.date("Y-m-d"));
 		if (!empty($picbody))
 		$_POST['body'] = str_replace($val,$picbody,$_POST['body']);
-	}}
+	}
+}
+
 $_POST['body'] = addslashes($_POST['body']);
+
 if (!empty($_REQUEST['jump']))
 {
 	$_POST['url'] = $_REQUEST['jump'];
 }
+
 if (empty($_REQUEST['id']))
 {
 	$_POST['dtime'] = time();
+
 	$pagename = '添加文章';
+
 	$_POST['id'] = $query->save("article",$_POST);
 }
 else
@@ -86,9 +98,9 @@ else
 }
 
 
-if (!empty($_POST['url']))
+if (!empty($_POST['request_url']))
 {
-	$_POST['url'] = $_POST['url'];
+	$_POST['url'] = $_POST['request_url'];
 }
 elseif ($article_generate == 0)
 {
@@ -105,5 +117,6 @@ $_POST['request_url'] = article_url($_POST['id']);  //项目原始url，自定义url时使
 
 //---------写入日志
 admin_log("article",$_POST['id'],'title',$pagename);
+
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));
 ?>
