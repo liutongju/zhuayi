@@ -39,7 +39,7 @@ while ($row = $query->fetch_array($reset))
 	{
 		$row['url'] = $fun($row['id']);
 	}
-	$query->query("update ".T."seo set request_url = '".$fun2($row['id'])."' , url = '".$row['url']."' where tables ='".$_REQUEST['tables']."' and aid=".$row['id']);
+	$query->query("update ".T."seo set request_url = '".$fun2($row['id'])."' , url = '".$row['url']."' ,parameter=1  where aid<>0 and  tables ='".$_REQUEST['tables']."' and aid=".$row['id']);
 }
 
 showmsg('¹§Ï²Äã£¬²Ù×÷³É¹¦',ret_cookie('backurl'));

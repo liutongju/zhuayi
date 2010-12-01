@@ -16,6 +16,7 @@ if (empty($_REQUEST['id']))
 }
 else
 {
+
 	if (is_array($_REQUEST['id']))
 	{
 		$_REQUEST['id'] = @implode(',',$_REQUEST['id']);
