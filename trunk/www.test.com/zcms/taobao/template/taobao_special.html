@@ -39,13 +39,13 @@ $j= $i+1;
 <?php }?>
 </div>
 <div class="article_list w_960">
-	<h2>相关<a href="{zhuayi:echo.$info['url']/}/cid/{zhuayi:echo.$info['class']['id']/}">{zhuayi:echo.$info['class']['classname']/}</a>信息</h2>
+	<h2>相关<a href="{zhuayi:echo.$info['url']/}/cid/{zhuayi:echo.$info['class']['id']/}" target="_blank">{zhuayi:echo.$info['class']['classname']/}</a>信息</h2>
 	<ul>
 	<?php $i=1;?>
 	{zhuayi:article_list limit=21 cid=$info['cid']}
 		<li <?php if ($i % 3 ==0){echo 'style="float:right"';}?>>
-			<a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}">{zhuayi:echo.$fields['title']/}</a>
-			<span>2010-10-11</span>
+			<a href="{zhuayi:echo.$info['url']/}/aid/{zhuayi:echo.$fields['id']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
+			<span>{zhuayi:echo.dtime($fields['dtime'],3)/}</span>
 		</li>
 	<?php $i++;?>
 	{/zhuayi:article_list}
@@ -57,5 +57,10 @@ $j= $i+1;
 {/zhuayi:link_list}
 </div>
 {zhuayi:include file="底部.html"/}
+<!-- ShareTo Button BEGIN -->
+<script type="text/javascript" src="http://s.shareto.com.cn/js/shareto_float.js#color=0&align=right&move=1" charset="utf-8"></script> 
+<!-- ShareTo Button END -->
+
+
 </body>
 </html>

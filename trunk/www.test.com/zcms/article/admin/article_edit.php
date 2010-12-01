@@ -23,7 +23,10 @@ else
 	$pagename = "文章添加";
 	$info['cid'] = 0;
 	$info['dtime'] = time();
+	if ($article_generate ==0)
 	$seo['url'] = $article_news_url;
+	else
+	$seo['url'] = $article_generate_path;
 }
 //------转换来源$source = explode('|',$source);
 ?>

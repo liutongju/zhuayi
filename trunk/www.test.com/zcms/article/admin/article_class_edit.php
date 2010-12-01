@@ -26,7 +26,10 @@ else
 	else
 	$info['parent_id'] = 0;
 	
+	if ($article_class_generate ==0)
 	$seo['url'] = $article_class_url;
+	else
+	$seo['url'] = $article_class_path;
 	
 }
 
