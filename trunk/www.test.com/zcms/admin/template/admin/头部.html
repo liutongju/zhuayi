@@ -22,7 +22,11 @@ $(function(){
 	$('[name=checkbox]:checkbox').click(function(){
 		$('.check').attr('checked',$('[name=checkbox]:checkbox').attr('checked'));
 	})
+	$(".right_menu").click(function(){
+		$(window.parent.document).find('#right_menu').html($(this).html());
+	});
 })
+
 </script>
 </head>
 <body>
@@ -31,7 +35,7 @@ $(function(){
     <div class="content-menu ib-a blue line-x">
 	<?php 
 		foreach ($menu as $val){?>
-        <a href="?m={zhuayi:echo.$_REQUEST['m']/}&c={zhuayi:echo.$val[1]/}&a=init<?php if (!empty($val[3])){echo $val[3];}?>" class="<?php if ($_REQUEST['c']==$val[1]){echo 'on';}?> <?php if (!empty($val[2])){echo ' thickbox';}?>"><em>{zhuayi:echo.$val['0']/}</em></a><span>|</span>
+        <a href="?m={zhuayi:echo.$_REQUEST['m']/}&c={zhuayi:echo.$val[1]/}&a=init<?php if (!empty($val[3])){echo $val[3];}?>" class="<?php if ($_REQUEST['c']==$val[1]){echo 'on';}?> <?php if (!empty($val[2])){echo ' thickbox';}?>" ><em class="right_menu">{zhuayi:echo.$val['0']/}</em></a><span>|</span>
 	<?php }
 		
 	?>

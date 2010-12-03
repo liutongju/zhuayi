@@ -17,25 +17,26 @@
 	
 		$this->zcmsfun();	
 	}
-	//-----载入公共函数库
+
+	/*-----载入公共函数库  */
 	function cache_funs()
 	{
-		//---------复制函数库路径
+		/* ---------复制函数库路径  */
 		$filepath = ZCMS_ROOT.'/function/';
-		//------如果缓存不存在，则生成缓存
-		
+
+		/*------如果缓存不存在，则生成缓存  */
 		if (!file_exists(ZCMS_FUN))
 		{
-			
-			$handle = opendir($filepath); //打开指定文件夹 .DS_Store 是输出说有的文件
+			/* 打开指定文件夹 .DS_Store 是输出说有的文件 */
+			$handle = opendir($filepath); 
 			$files = array();
 			$conent = '<?php'."\n";
 			while (false != ($file = readdir($handle)))
 			{
-				//--------取的文件的后缀
+				/* --------取的文件的后缀  */
 				$h = trim(substr(strrchr($file,'.'),1,100)); 
 				
-				//--------如果是文件则包含
+				/* --------如果是文件则包含  */
 				if (is_file(ZCMS_ROOT.'/function/'.$file))
 				{ 
 					$conent .= 'include_once(ZCMS_ROOT.\'/function/'.$file.'\');'."\n";
@@ -59,7 +60,7 @@
 	function write($file,$conent,$w="w")
 	{
 
-		//-----获取写入文件路径，用来生成路径
+		/* -----获取写入文件路径，用来生成路径  */
 		$filedir = str_replace(basename($file),'',$file);
 		
 		if (!file_exists($filedir))
@@ -71,13 +72,12 @@
 		fclose($handle);
 	}
 	
-	/**
-	 * 生成模块函数缓存
-	 *
-	 */
-	function zcmsfun()	{
-		//---------复制函数库路径
+	/*  生成模块函数缓存 */
+	function zcmsfun()
+	{
+		/* ---------复制函数库路径  */
 		$filepath = ZCMS_ROOT.'/data/data_cache/zcms.function.php';
+
 		if (file_exists($filepath))
 		{
 			include_once($filepath);

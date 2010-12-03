@@ -4,7 +4,7 @@
 $(function(){
 	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
 	$("#webname").formValidator({onshow:"请输入站点名称",onfocus:"请输入站点名称"}).inputValidator({min:1,onerror:"请输入站点名"});
-	$("#logo").formValidator({onshow:"LOGO默认存放地址/data/logo.gif",onfocus:"LOGO默认存放地址/data/logo.gif"}).inputValidator({min:1,onerror:"LOGO默认存放地址/data/logo.gif"});
+	$("#logo").formValidator({onshow:"LOGO默认存放地址/data/logo.gif",onfocus:"LOGO默认存放地址/data/logo.gif"})
 	$("#weburl").formValidator({onshow:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",onfocus:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’",tipcss:{width:'300px'},empty:false}).inputValidator({onerror:"请填写域名，格式为：http://www.zcms.cn,末尾不要带‘/’"}).regexValidator({regexp:"http:\/\/(.+)$",onerror:"格式应该为http://www.zcms.cn，末尾不要带‘/’"});
 
 	

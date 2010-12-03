@@ -218,7 +218,7 @@ function click_color(obj)
 	$(".sub_menu").removeClass('on fb blue')
 	$(obj).addClass('on fb blue');
 	str = $(obj).parent().parent().children("h3").html().replace(/<[^>]*>/g,'');
-	$("#current_pos").html(str +' > '+ $(obj).children("a").html());
+	$("#current_pos").html(str +' > '+ '<span id="right_menu">'+$(obj).children("a").html()+'</span>');
 	//--------
 	$("#rightMain").attr("src",$(obj).children("a").attr("href"));
 	
@@ -251,6 +251,7 @@ function check_screenlock()
 		$("#dvLockScreen").css('display','none');
 	})
 }
+
 </script>
 
 </body>

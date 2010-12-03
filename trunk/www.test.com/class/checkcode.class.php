@@ -3,57 +3,55 @@
  * checkcode.class.php     ZCMS 验证码类
  * 
  * @copyright    (C) 2005 - 2010  ZCMS
- * @licenes      http://www.zcms.cc
+ * @licenes      http:/*www.zcms.cc
  * @lastmodify   2010-10-28
  * @author       zhuayi  
  * @QQ			 2179942
  * 类用法
  * $checkcode = new checkcode();
  * $checkcode->doimage();
- * //取得验证
+ * /*取得验证
  * $_SESSION['code']=$checkcode->get_code();
  */
 class checkcode {
-	//验证码的宽度
+	/* 验证码的宽度  */
 	public $width=130;
 	
-	//验证码的高
+	/*验证码的高  */
 	public $height=50;
 	
-	//设置字体的地址
+	/*设置字体的地址  */
 	private $font;
 	
-	//设置字体色
+	/*设置字体色  */
 	public $font_color;
 	
-	//设置随机生成因子
+	/*设置随机生成因子  */
 	public $charset = 'abcdefghkmnprstuvwyzABCDEFGHKLMNPRSTUVWYZ23456789';
 	
-	//设置背景色
+	/*设置背景色  */
 	public $background = '#EDF7FF';
 	
-	//生成验证码字符数
+	/*生成验证码字符数  */
 	public $code_len = 4;
 	
-	//字体大小
+	/*字体大小  */
 	public $font_size = 20;
 	
-	//验证码
+	/*验证码  */
 	private $code;
 	
-	//图片内存
+	/*图片内存  */
 	private $img;
 	
-	//文字X轴开始的地方
+	/*文字X轴开始的地方  */
 	private $x_start;
 		
 	function __construct() {
 		$this->font = ZCMS_ROOT.'/data/font/elephant.ttf';
 	}
 
-	/**
-	 * 生成随机验证码。
-	 */
+	/*  生成随机验证码。 */
 	public function creat_code() {
 		$code = '';
 		$charset_len = strlen($this->charset)-1;
@@ -63,15 +61,11 @@ class checkcode {
 		$this->code = $code;
 	}
 	
-	/**
-	 * 获取验证码并加密
-	 */
+	/* 获取验证码并加密  */
 	public function get_code()	{				return md5(strtolower($this->code));
 	}
 	
-	/**
-	 * 生成图片
-	 */
+	/*  生成图片 */
 	public function doimage() {
 		$code = $this->code;
 		$this->img = imagecreatetruecolor($this->width, $this->height);
@@ -80,18 +74,16 @@ class checkcode {
 		} else {
 			$this->font_color = imagecolorallocate($this->img, hexdec(substr($this->font_color, 1,2)), hexdec(substr($this->font_color, 3,2)), hexdec(substr($this->font_color, 5,2)));
 		}
-		//设置背景色
+		/*设置背景色  */
 		$background = imagecolorallocate($this->img,hexdec(substr($this->background, 1,2)),hexdec(substr($this->background, 3,2)),hexdec(substr($this->background, 5,2)));
-		//画一个柜形，设置背景颜色。
+		/*画一个柜形，设置背景颜色。  */
 		imagefilledrectangle($this->img,0, $this->height, $this->width, 0, $background);
 		$this->creat_font();
 		$this->creat_line();
 		$this->output();
 	}
 	
-	/**
-	 * 生成文字
-	 */
+	/*  生成文字  */
 	private function creat_font() {
 		$x = $this->width/$this->code_len;
 		for ($i=0; $i<$this->code_len; $i++) {
@@ -100,9 +92,7 @@ class checkcode {
 		}
 	}
 	
-	/**
-	 * 画线
-	 */
+	/* 画线 */
 	private function creat_line() {
 		imagesetthickness($this->img, 3);
 	    $xpos   = ($this->font_size * 2) + rand(-5, 5);
@@ -136,7 +126,7 @@ class checkcode {
 	    imagearc($this->img, $this->width * .75, $ypos, $width, $height, $start, $end, $this->font_color);
 	}
 	
-	//输出图片
+	/*输出图片  */
 	private function output() {
 		header("content-type:image/png\r\n");
 		imagepng($this->img);
