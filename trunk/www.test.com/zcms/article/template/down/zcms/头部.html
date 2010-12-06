@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
+	<link href="{zhuayi:echo.$path/}style/top.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" type="text/javascript" src="{zhuayi:echo.$path/}js/jquery.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+	<meta name="author" content="Zcms">
+	<meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
+	<meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
+</head>
+<body>
+<div class="w_auto border-bottom top">
+	<div class="w_960 overflow">
+		<span class="float_left left">
+			2010年11月30日 21:47:43 星期二		</span>
+		<span class="float_right right">
+			<a href="javascript:">网站地图</a> | 
+			<a href="javascript:">Tag标签</a> | 
+			<a href="javascript:">RSS订阅</a> | 
+			<a href="javascript:">【设为首页】</a> | 
+			<a href="javascript:">【加入收藏】</a>		</span>
+	</div>
+</div>
+<div class="w_960 overflow top_logo">
+	<a href="{zhuayi:echo.$weburl/}" title="{zhuayi:echo.$webname/}"><h2 class="float_left">{zhuayi:echo.$weburl/} - {zhuayi:echo.$webname/}</h2></a>
+	<div class="banner float_right">
+		<img src="{zhuayi:echo.$path/}images/shan/banner.jpg"/>
+	</div>
+</div>
+<div class="w_960 nav zcms overflow">
+	<a href="/">首 页</a>
+	{zhuayi:article_class_list parent_id=0 nav=1}
+	<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['classname']/}</a>
+	{/zhuayi:article_class_list}
+</div>
+<div class="nav_search overflow">
+<form>
+	<div class="float_left">
+		<label>
+			<input type="text" name="title" class="text" value="日韩对战火热开炮"/>
+		</label>
+		<label>
+			<input type="submit" class="search zcms" value="搜索"/>
+		</label>
+	</div>
+	<div class="float_left tags">
+		<b>热点推荐：</b>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+		<a href="#">一个牌香烟</a>
+	</div>
+</form>
+</div>

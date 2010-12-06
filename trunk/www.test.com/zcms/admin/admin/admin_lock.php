@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-//------触发锁屏，设置锁屏cookie的值，如果有值，刷新页面时自动打开锁屏状态 
+/* 触发锁屏，设置锁屏cookie的值，如果有值，刷新页面时自动打开锁屏状态 */
 if ($_GET['lock'] == 1)
 {
 	set_cookie('admin_lock',1);
@@ -21,18 +21,17 @@ $userid = ret_cookie('admin_userid');
 
 if (empty($userid))
 {
-	//-----取消锁屏COOKIE的值
+	/* 取消锁屏COOKIE的值 */
 	set_cookie('admin_lock','');
 	
 	exit('-1');
 } 
 
-//------验证登录
+/* 验证登录 */
 $info = $query->one_array("select * from ".T."admin where id = '".$userid."' and pass = '".mymd5($_POST['password'])."'");
 if (empty($info['id']))
 {
-	//-----取消锁屏COOKIE的值
-	//set_cookie('admin_lock','0');
+	/* 取消锁屏COOKIE的值 */
 	exit('-2');
 }
 set_cookie('admin_lock','0');

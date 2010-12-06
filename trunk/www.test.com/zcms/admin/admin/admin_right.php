@@ -10,12 +10,12 @@
  */
 
 
-//----去查询是否有版本更新
+/* 去查询是否有版本更新 */
 $zcms_version = str_replace(' ','_',$zcms_version);$update_info = file_get_contents('http://www.zcms.cc/update/'.urlencode($zcms_version).'/upload_info.txt');
-//---判断是否有更新
+/* 判断是否有更新 */
 if (!empty($update_info))
 {
-	//---反序列化
+	/* 反序列化 */
 	$update_info = unserialize($update_info);
 	if (!empty($update_info['zcms_upload_version_next']))
 	{

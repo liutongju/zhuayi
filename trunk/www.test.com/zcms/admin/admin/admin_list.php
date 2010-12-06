@@ -7,7 +7,8 @@
  * @lastmodify   2010-11-5
  * @author       zhuayi  
  * @QQ			 2179942
- *///-------设置返回URL
+ */
+/* 设置返回URL */
 set_cookie("backurl",GetCurUrl(),0);
 
 	

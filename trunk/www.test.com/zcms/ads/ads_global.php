@@ -11,10 +11,10 @@
 
 if ($_REQUEST['c']!='show')
 { 
-	//-------验证登录
+	/* 验证登录 */
 	verify_admin('admin_username');
 }
-//-------设置页面内部菜单 
+/* 设置页面内部菜单 */
 $menu = array(
 			'0'=>array('管理广告','index'),
 			'1'=>array('添加广告','edit&height=400&width=700','ajax'),

@@ -14,15 +14,15 @@ class tags
 {
 	var $tags;
 	var $keywords;
-	//------构造函数
+	/* ------构造函数 */
 	function __construct($title)
 	{
-		//-----转码字符串
+		/* -----转码字符串 */
 		$this->title = $title;
 		
 	}
 
-	//-----抓取百度分词结果
+	/* -----抓取百度分词结果 */
 	function baidu()
 	{
 		$result = $this->file_get_open('http://www.baidu.com/s?wd=');
@@ -31,24 +31,24 @@ class tags
 		
 		$tags = $this->jiequ('<em>','</em>',$result);
 		
-		//---去除重复 array_flip
+		/* ---去除重复 array_flip */
 		$this->tags = array_count_values($tags);
 		
-		//---截取相关搜索
+		/* ---截取相关搜索 */
 		$xiangguan = $this->jiequ('相关搜索','</table>',$result);
 		
 		$this->keywords = $this->jiequ('">','</a>',$xiangguan[0]);
 		
 		$this->tags = $this->tags + array_flip($this->keywords);
 		
-		//-------简单处理下数组
+		/* -------简单处理下数组 */
 		$this->treat();
 		
 	}
 	
 
 
-	//-----远程抓取函数
+	/* -----远程抓取函数 */
 	function file_get_open($url)
 	{
 		$ctx = stream_context_create(array('http' => array('timeout' => 10)));
@@ -73,11 +73,11 @@ class tags
 		return str_replace($list_end,'',$count[0]);
 	}
 	
-	//----简单处理数组
+	/* ----简单处理数组 */
 	function treat()
 	{
 		
-		//------处理数组
+		/* ------处理数组 */
 		foreach ($this->tags as $key=>$val)
 		{
 			foreach ($this->tags as $key2=>$val2)
@@ -118,7 +118,7 @@ class tags
 		return implode(',',$this->tags);
 	}
 	
-	//----返回数组
+	/* ----返回数组 */
 	function return_keywords()
 	{
 		return implode(',',$this->keywords);

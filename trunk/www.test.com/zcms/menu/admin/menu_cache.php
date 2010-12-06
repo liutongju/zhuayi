@@ -25,7 +25,7 @@ $menu_cache_js .='</script>';
 write(ZCMS_CACHE.'menu_cache.js',$menu_cache_js);
 $list= tree($list,'parent_id',0,'°°');
 $list = serialize($list);
-//-----–¥»Îª∫¥Ê
+/* –¥»Îª∫¥Ê */
 $list = '<?php '."\r\n".' $menu_cache = \''.$list.'\''."; \r\n".' ?>';write(ZCMS_CACHE.'menu_cache.php',$list);
 showmsg('ª∫¥Ê–¥»Î≥…π¶..',ret_cookie('backurl'));
 exit;

@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
 
 if (!is_array($_REQUEST['id']))

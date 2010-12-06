@@ -9,10 +9,10 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
  
-//-------设置页面内部菜单 
+/* 设置页面内部菜单 */
 $menu = array(
 			'0'=>array('管理友情连接','index'),
 			'1'=>array('添加友情连接','edit&height=200','ajax'),

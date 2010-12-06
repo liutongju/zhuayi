@@ -1,0 +1,58 @@
+<div class="article_right float_right overflow">
+	<div class="images">
+		<img src="{zhuayi:echo.$path/}images/shan/ad.jpg"/>
+	</div>
+	<div class="title zcms">
+		<span class="float_left">最新资讯</span>
+	</div>
+	<div class="article_list">
+	{zhuayi:article_list limit=1 litpic=1}
+		<div class="article_pic overflow">
+			<img src="{zhuayi:echo.litpic($fields['litpic'],62)/}" width="62" />
+			<div class="float_left">
+				<h3><a href="{zhuayi:echo.$fields['url']/}"  target="_blank">{zhuayi:echo.$fields['title']/}</a></h3>
+				{zhuayi:echo.strlens($fields['abstract'],0,40)/}...<a href="{zhuayi:echo.$fields['url']/}" target="_blank">更多>></a>
+			</div>
+		</div>
+	{/zhuayi:article_list}
+		<div class="jiange zcms"></div>
+		<ul>
+		{zhuayi:article_list limit=7 start=1}
+			<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+		{/zhuayi:article_list}
+		</ul>
+	</div>
+	<div class="title zcms">
+		<span class="float_left">最新热门</span>
+	</div>
+	<div class="article_list">
+		<ul style="padding-top:10px;">
+		{zhuayi:article_list limit=10 flag="remen"}
+			<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+		{/zhuayi:article_list}
+		</ul>
+	</div>
+	<div class="title zcms">
+		<span class="float_left">精彩推荐</span>
+	</div>
+	<div class="article_list">
+		{zhuayi:article_list limit=1 litpic=1 start=8}
+		<div class="article_pic overflow">
+			<img src="{zhuayi:echo.litpic($fields['litpic'],62)/}" width="62" />
+			<div class="float_left">
+				<h3><a href="{zhuayi:echo.$fields['url']/}"  target="_blank">{zhuayi:echo.$fields['title']/}</a></h3>
+				{zhuayi:echo.strlens($fields['abstract'],0,40)/}...<a href="{zhuayi:echo.$fields['url']/}" target="_blank">更多>></a>
+			</div>
+		</div>
+	{/zhuayi:article_list}
+		<div class="jiange zcms"></div>
+		<ul>
+		{zhuayi:article_list limit=7 flag="tuijian"}
+			<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+		{/zhuayi:article_list}
+		</ul>
+	</div>
+	<div class="images" style="margin-top:10px;">
+		<img src="{zhuayi:echo.$path/}images/shan/ad.jpg"/>
+	</div>
+</div>

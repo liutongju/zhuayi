@@ -32,7 +32,6 @@ function taobao_special_list($atts)
 	$search .= " order by a.id desc";
 	$sql = "select a.*,b.url,c.classname,catdir,d.url as classurl from ".T."taobao_special as a left join ".T."seo as b on a.id = b.aid and b.tables='taobao_special' left join ".T."article_class as c on a.cid = c.id left join ".T."seo as d on c.id = d.aid and d.tables = 'taobao_class'".$search."  limit $startnum , $limit";
 	$reset = $query->query($sql);
-	//echo $sql;
 	while ($row = $query->fetch_array($reset))
 	{
 		if (empty($row['url']))

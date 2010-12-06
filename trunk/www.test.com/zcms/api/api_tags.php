@@ -8,11 +8,11 @@
  * @author       zhuayi  
  * @QQ			 2179942
  */
-//---------载入分词类
+/* 载入分词类 */
 include_once ZCMS_ROOT.'/class/tags.class.php';
 
 
-//-------实例化类
+/* 实例化类 */
 $tags = new tags($_REQUEST['title']);
 $tags->baidu();
 $reset['tags'] = iconv('gbk','utf-8',$tags->return_tags());

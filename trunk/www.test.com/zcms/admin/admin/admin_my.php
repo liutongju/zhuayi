@@ -9,6 +9,6 @@
  * @QQ			 2179942
  */
 
-//----查询当前登录管理员信息
+/* 查询当前登录管理员信息 */
 $info = $query->one_array("select * from ".T."admin where id ='".ret_cookie('admin_userid')."'");
 ?>

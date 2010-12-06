@@ -1,7 +1,7 @@
 <?php
 function article_class_url($id)
 {
-	//-------载入配置文件
+	/* 载入配置文件 */
 	return '/article/class/cid/'.$id;
 }
 ?>

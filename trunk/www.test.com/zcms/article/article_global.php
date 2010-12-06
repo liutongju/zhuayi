@@ -13,7 +13,7 @@ if (!file_exists(ZCMS_ROOT.'/zcms/article/include/article_config.php') && $_REQU
 	showmsg("您还没有配置该模型,现在带你去配置",'/index.php?m=article&c=config&a=init');
 }
 
-//-------设置页面内部菜单 
+/* 设置页面内部菜单  */
 $menu = array(
 			'0'=>array('文章配置','config'),
 			'1'=>array('管理栏目','class'),
@@ -28,10 +28,10 @@ $menu = array(
 			);
 
 
-//-------设置模块提示
+/* 设置模块提示 */
 $tips = '请在添加、修改、排序栏目全部完成后，更新栏目缓存';
 
-//-------载入文章文件
+/* 载入文章文件 */
 include_once ZCMS_ROOT.'/zcms/article/include/article_config.php';
 
 if ($article_generate == 0)
@@ -39,10 +39,10 @@ unset($menu[6]);
 
 if ($article_class_generate == 0)
 unset($menu[7]);
-//-------序列化推送位
+/* 序列化推送位 */
 $flag = explode(chr(13),$flag);
 
-//-------载入模版缓存文件
+/* 载入模版缓存文件 */
 $tpl_cache =  ZCMS_ROOT.'/data/data_cache/tpl.cache.php';
 
 if (file_exists($tpl_cache))
@@ -51,7 +51,7 @@ if (file_exists($tpl_cache))
 	$tpl_cache = unserialize($tpl_cache);
 }
 
-//----频道URL
+/* 频道URL */
 if ($article_index_generate==1)
 {
 	$article_url = $article_index_path;

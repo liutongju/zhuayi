@@ -240,7 +240,7 @@ class DedeTemplate
 	{
 		if(!file_exists($tmpfile))
 		{
-			echo $tmpfile;
+			error_404($tmpfile);
 			exit;
 			showmsg("Ä£°æÂ·¾¶´íÎó£¡",'/','5000','init');
 			exit;

@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
  
 
@@ -39,18 +39,20 @@ else
 	}	
 }
 
-if (!empty($_POST['url'])){	$_POST['url'] = article_class_url($_POST['id']);  //原始url，自定义url时使用}
-elseif ($article_class_generate == 0)
+if (!empty($_POST['request_url']))
 {
-	$_POST['url']= str_replace('{id}',$_POST['id'],$article_class_url);
+	$_POST['url'] = article_class_generate_path($_POST['id'],$_POST['request_url']);
 }
-elseif ($article_class_generate == 1)
+else
 {
-	$_POST['url'] = article_class_generate_path($_POST['id']);
+	$_POST['url']= article_class_generate_path($_POST['id'],$article_class_path);
 }
-//---------写入SEO表
-$_POST['request_url'] = article_class_url($_POST['id']);  //项目原始url，自定义url时使用//---------写入SEO表seo('article_class',$_POST['id']);
-//---------写入日志
+
+/* 写入SEO表 */
+$_POST['request_url'] = article_class_url($_POST['id']);
+/*项目原始url，自定义url时使用*/
+seo('article_class',$_POST['id']);
+/* 写入日志 */
 admin_log("article_class",$_POST['id'],'classname',$pagename);
 showmsg('恭喜您,操作成功..现在去生成缓存','/index.php?m=article&c=class_cache&a=init',1000);
 ?>

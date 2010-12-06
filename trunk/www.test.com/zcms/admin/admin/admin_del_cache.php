@@ -9,13 +9,12 @@
  * @QQ			 2179942
  */
 
-//----查询当前登录管理员信息
+/* 查询当前登录管理员信息 */
 
 if ($_REQUEST['if'] == 1)
 {
 	if ($_REQUEST['page']=='')
 	$_REQUEST['page'] = 1;
-	//else
 	
 	$caches[] = '';
 	$caches[] = array('tpl_cache','模版缓存');
@@ -29,7 +28,7 @@ if ($_REQUEST['if'] == 1)
 		$body .= '　<font color=red>更新完成..........</font>';
 		$body .= '</li>"</script>';
 		echo $body;
-		//---------写入日志
+		/* 写入日志 */
 		admin_log("cache",'','','更新缓存','');
 		exit;
 	}
@@ -50,7 +49,7 @@ if ($_REQUEST['if'] == 1)
 		echo $body;
 	}
 	$_REQUEST['page']++;
-	echo '<script>setTimeout("window.location.href=\'/index.php?m=admin&c=del_cache&a=init&if=1&page='.$_REQUEST['page'].'\'",1000)</script>'; //跳转
+	echo '<script>setTimeout("window.location.href=\'/index.php?m=admin&c=del_cache&a=init&if=1&page='.$_REQUEST['page'].'\'",1000)</script>'; /* 跳转 */
 	exit;
 }
 ?>

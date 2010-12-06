@@ -8,7 +8,7 @@
  * @author       zhuayi  
  * @QQ			 2179942
  */
-//-------设置返回URL
+/* 设置返回URL */
 set_cookie("backurl",GetCurUrl(),0);
 $pagename = '管理角色';
 $search = ' where a.id >0';

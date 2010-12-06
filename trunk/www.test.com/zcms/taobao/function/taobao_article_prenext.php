@@ -1,5 +1,5 @@
 <?php
-//----下一篇   上一篇
+/* 下一篇   上一篇 */
 function taobao_article_prenext($id,$cid,$pre)
 {
 	global $query,$infourl;

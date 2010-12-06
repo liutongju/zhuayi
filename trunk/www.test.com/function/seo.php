@@ -6,10 +6,10 @@ function seo($table,$aid,$action='')
 	$_POST['tables'] = $table;
 	$_POST['aid'] = $aid;
 	$_POST['url'] = str_replace('{id}',$aid,$_POST['url']);
-	//----替换当前网站URL，使他支持'/***'发布自定义URL
+	/* 替换当前网站URL，使他支持'/***'发布自定义URL */
 	$_POST['url'] = str_replace($weburl,'',$_POST['url']);
 	
-	//----如果为空则不入库
+	/* 如果为空则不入库 */
 	if ($action=='')
 	{
 		
@@ -28,7 +28,7 @@ function seo($table,$aid,$action='')
 			$query->save("seo",$_POST," aid =".$aid." and tables ='".$table."'");
 		}
 	}
-	//-----删除操作
+	/* 删除操作 */
 	elseif ($action == 'delete')
 	{
 		$query->delete("seo"," tables = '".$table."' and aid in(".$aid.")");

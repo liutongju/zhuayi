@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-//------判断来路ID是否存在
+/* 判断来路ID是否存在 */
 if (empty($_REQUEST['id']))
 {
 	showmsg('您没有指定要删除哪个连接..',-1);
@@ -23,9 +23,9 @@ else
 	
 	
 	$query->delete("taobao_special"," id in (".$_REQUEST['id'].")");
-	//----删除SEO表
+	/* 删除SEO表 */
 	seo('taobao_special',$_REQUEST['id'],'delete');
-	//---------写入日志
+	/* -写入日志 */
 	admin_log("taobao_special",$_REQUEST['id'],'title','删除淘宝客商品专题');
 	showmsg('删除成功..',ret_cookie('backurl'));
 }exit;

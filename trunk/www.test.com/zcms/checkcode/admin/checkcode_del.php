@@ -9,14 +9,14 @@
  * @QQ			 2179942
  */
 
-//------判断来路ID是否存在
+/* 判断来路ID是否存在 */
 if (empty($_REQUEST['id']))
 {
 	showmsg('您没有指定要删除哪个菜单..',-1);
 }
 else
 {
-	//---------写入日志
+	/* 写入日志 */
 	admin_log("checkcode",$_REQUEST['id'],'title','删除验证码规则');
 	$query->delete("checkcode"," id =".$_REQUEST['id']);
 	showmsg('删除验证码成功..',ret_cookie('backurl'));

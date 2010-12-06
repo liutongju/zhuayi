@@ -9,11 +9,11 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
 
 $pagename = "淘宝客栏目选取";
-//----载入淘宝类
+/* 载入淘宝类 */
 include_once ZCMS_ROOT.'/zcms/taobao/class/taobao.api.class.php';
 
 if (empty($_REQUEST['parent_cid']))
@@ -33,7 +33,6 @@ $reset = $taobao->_return();
 
 if ($reset!==false)
 {
-	//$reset = json_decode($reset,true);
 	$reset = $reset['itemcats_get_response']['item_cats']['item_cat'];}
 
 ?>

@@ -22,10 +22,10 @@ if (!file_exists(ZCMS_ROOT.'/zcms/taobao/include/taobao_config.php') && $_REQUES
 	showmsg("您还没有配置该模型,现在带你去配置",'/index.php?m=taobao&c=config&a=init');
 }
 
-//-------载入淘宝客配置文件
+/* 载入淘宝客配置文件 */
 include_once ZCMS_ROOT.'/zcms/taobao/include/taobao_config.php';
 
-//-----卖家信誉
+/* 卖家信誉 */
 $start_credit = array(
 						array('value'=>'1heart','title'=>'一心'),
 						array('value'=>'2heart','title'=>'两心'),
@@ -48,7 +48,7 @@ $start_credit = array(
 						array('value'=>'4goldencrown','title'=>'四黄冠'),
 						array('value'=>'5goldencrown','title'=>'五黄冠'),
 					 );
-//-----默认排序
+/* 默认排序 */
 $sort = array(
 						array('value'=>'price_desc','title'=>'价格从高到低'),
 						array('value'=>'price_asc','title'=>'价格从低到高'),

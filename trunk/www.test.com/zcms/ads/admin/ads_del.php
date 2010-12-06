@@ -14,7 +14,7 @@ if (is_array($_REQUEST['id']))
 	$_REQUEST['id'] = @implode(',',$_REQUEST['id']);
 }
 
-//-------写入日志
+/* 写入日志 */
 admin_log("ads",$_REQUEST['id'],'title','删除广告');
 $query->delete("ads",'id in('.$_REQUEST['id'].')');
 showmsg('广告删除成功...',ret_cookie("backurl"));

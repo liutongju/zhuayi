@@ -11,7 +11,7 @@
 
 $_REQUEST['url'] = str_replace('zcms','/',$_REQUEST['url']);
 
-header("Location:".base64_decode($_REQUEST['url'])); //Ìø×ª
+header("Location:".base64_decode($_REQUEST['url'])); /* Ìø×ª */
 exit;
  
  

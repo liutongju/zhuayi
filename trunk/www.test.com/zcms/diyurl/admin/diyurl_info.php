@@ -20,7 +20,7 @@ else
 	$query->save("seo",$_POST,' id = '.$_POST['id']);
 	
 }
-//---------写入日志
+/* 写入日志 */
 admin_log("seo",$_POST['id'],'url',$pagename);
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));
 ?>

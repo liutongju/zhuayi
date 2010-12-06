@@ -21,7 +21,7 @@ function pagelist($atts)
 	$urls = parse_url($url);
 	if (!empty($urls['query']) && ($urls['path'] == '/' || $urls['path'] == '/index.php'))
 	{
-		//-----格式化URL
+		/* 格式化URL */
 		$url = explode('&',$url);
 		foreach ($url as $key=>$val)
 		{
@@ -41,7 +41,7 @@ function pagelist($atts)
 		{
 			$url .='/';
 		}
-		//-----格式化URL
+		/* 格式化URL */
 		$url = explode('/',$url);
 		foreach ($url as $key=>$val)
 		{
@@ -75,7 +75,7 @@ function page ( $totalPage , $currentPage,$url ,$halfPer=5,$maxnum)
 	$next=$currentPage+1;
 	$per  =$currentPage-1;
 	
-	$re="<div class='page'><span class=page3>总计：".$maxnum.'</span>';
+	$re="<div class='page'><span class=page3>总计：".$maxnum.' 个</span>';
 	$re .= ( $currentPage > 1 ) 
 		? "<span class='page3'>当前：第{$currentPage}/{$total}页</span> <a href=\"".ereg_replace('{page}','1',$url)."\" class='page2 '>首页</a> <a href=\"".ereg_replace('{page}',strval($per),$url)."\" class='page2 '>上一页</a>" 
 		: " <span class=page3>首页</span> <span class=page3>上一页</span>";

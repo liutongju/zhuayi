@@ -9,14 +9,14 @@
  * @QQ			 2179942
  */
 
-//------判断来路ID是否存在
+/* 判断来路ID是否存在 */
 if (empty($_REQUEST['id']))
 {
 	showmsg('您没有指定要删除哪个菜单..',-1);
 }
 else
 {
-	//------查询全部数组
+	/* 查询全部数组 */
 	$array = $query->arrays("select * from ".T."linkage");
 	$tree = tree($array,'parent_id',$_REQUEST['id']);
 	foreach ($tree as $val)
@@ -26,7 +26,7 @@ else
 	$id = implode(',',$id);
 	if (!empty($id))
 	$query->delete("linkage"," id in (".$id.")");
-	//---------写入日志
+	/* -写入日志 */
 	admin_log("linkage",$_REQUEST['id'],'title','删除后台菜单');
 
 	$query->delete("linkage"," id =".$_REQUEST['id']);

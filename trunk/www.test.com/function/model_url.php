@@ -1,8 +1,12 @@
 <?php
-//-----获取模型虚拟URL
+/* -获取模型虚拟URL */
 function model_url($m,$c='index')
 {
-	return ZCMS_URL.'/zcms/'.$m.'/template/'.$c.'/';
+	if ($c!='')
+	{
+		$c .= '/';
+	}
+	return ZCMS_URL.'/zcms/'.$m.'/template/'.$c;
 }
 
 ?>

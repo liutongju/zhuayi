@@ -9,7 +9,7 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
 $menu = array(
 			'0'=>array('ZCMS配置','zcms'),

@@ -1,5 +1,5 @@
 <?php
-//----PHP×ªºº×ÖÎªÆ´Òô
+/* PHP×ªºº×ÖÎªÆ´Òô */
 function pinyin($_String, $_Code='gb2312')
 {
 $_DataKey = "a|ai|an|ang|ao|ba|bai|ban|bang|bao|bei|ben|beng|bi|bian|biao|bie|bin|bing|bo|bu|ca|cai|can|cang|cao|ce|ceng|cha".

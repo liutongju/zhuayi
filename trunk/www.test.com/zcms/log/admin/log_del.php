@@ -18,7 +18,7 @@ elseif (empty($_REQUEST['id']))
 {
 	$search = 'id > 0';
 }
-//---------写入日志
+/* 写入日志 */
 admin_log("log",$_REQUEST['id'],'log','删除操作日志');
 $query->delete("log",$search);
 showmsg('该日志删除成功...',ret_cookie('backurl'));exit;

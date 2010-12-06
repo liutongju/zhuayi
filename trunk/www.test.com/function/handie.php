@@ -2,7 +2,7 @@
 //输出遍历此文件夹中的内容
 function handie($filepath,$filet="")
 {
-	$handle = opendir($filepath); //打开指定文件夹 .DS_Store 是输出说有的文件
+	$handle = opendir($filepath); /* 打开指定文件夹 .DS_Store 是输出说有的文件 */
 	while (false != ($file = readdir($handle)))
 	{
 		if ($file != "." && $file != ".." && $file != ".DS_Store")

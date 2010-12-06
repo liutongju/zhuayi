@@ -7,10 +7,11 @@
  * @lastmodify   2010-11-20
  * @author       zhuayi  
  * @QQ			 2179942
- *///-------设置返回URL
+ */
+/* 设置返回URL */
 set_cookie("backurl",GetCurUrl(),0);
 
-//----模版列表
+/* 模版列表 */
 $file = handie(ZCMS_ROOT.'/zcms/sitemaps/template',1);
 
 ?>

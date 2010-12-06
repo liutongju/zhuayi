@@ -19,15 +19,15 @@ else
 {
 	$info = $query->one_array("select * from ".T."module where id =".$_REQUEST['id']);
 	$info['tables'] = explode(',',$info['tables']);
-	//------删除数据表
+	/* 删除数据表 */
 	foreach ($info['tables'] as $val)
 	{
 		$query->query("DROP TABLE IF EXISTS `".T.$val."`");
 	}
-	//-----删除后台菜单
+	/* 删除后台菜单 */
 	$query->delete("menu"," mid = ".$_REQUEST['id']);
 	
-	//-----设置模块为未安装
+	/* 设置模块为未安装 */
 	$query->query("update ".T."module set install = 0 where id =".$_REQUEST['id']);
 	
 	showmsg('卸载成功..',ret_cookie('backurl'));

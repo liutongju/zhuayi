@@ -28,7 +28,6 @@ function admin_list($atts)
 	}
 	
 	$sql = "select a.*,b.groupname from ".T."admin  as a  left join ".T."admin_group as b on a.gid = b.id ".$search." order by id desc  limit $startnum , $limit";
-	//echo $sql;
 	$list = $query->arrays($sql);
 
 	return $list;

@@ -17,7 +17,7 @@ while ($row = $query->fetch_array($reset))
 	$list['title'][] = $row['title'];
 	$list['url'][] = $row['url'];
 }
-//---写入文件
+/* 写入文件 */
 $conent = '<?php'."\r\n";
 $conent .= '$zkeylink = \''.serialize($list).'\''."\r\n";
 $conent .= '?>';

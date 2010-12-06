@@ -21,7 +21,7 @@ else
 	$query->save("link",$_POST,' id = '.$_POST['id']);
 	
 }
-//---------写入日志
+/* 写入日志 */
 admin_log("link",$_POST['id'],'title',$pagename);
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));
 ?>

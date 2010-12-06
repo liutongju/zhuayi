@@ -9,12 +9,12 @@
  * @QQ			 2179942
  */
 
-//-------验证登录
+/* 验证登录 */
 verify_admin('admin_username');
 
 
 
-//----处理上传文件
+/* 处理上传文件 */
 include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['file1']);
 $upload->request = $_POST['litpic'];
@@ -22,7 +22,7 @@ $_POST['litpic'] = $upload->copy('taobao_special/litpic',time());
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
 
-//---序列化产品定制
+/* 序列化产品定制 */
 $_POST['customize'] = serialize($_POST['taobao']);
 
 if (empty($_REQUEST['id']))
@@ -42,13 +42,13 @@ if (!empty($_POST['request_url']))
 {
 	$_POST['url'] = $_POST['request_url'];
 	$_POST['request_url'] = taobao_special_url($_POST['id']);
-	//项目原始url，自定义url时使用
+	/* 项目原始url，自定义url时使用 */
 }
 
-//---------写入SEO表
+/* 写入SEO表 */
 seo('taobao_special',$_POST['id']);
 	
-//---------写入日志
+/* 写入日志 */
 admin_log("taobao_special",$_POST['id'],'title',$pagename);
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));
 ?>

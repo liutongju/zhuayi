@@ -12,7 +12,7 @@
 $path = ZCMS_ROOT.urldecode($_REQUEST['path']).$_REQUEST['filename'];
 $tpl->LoadTemplate(urldecode($_REQUEST['tpl']));
 $count =  '<?xml version="1.0" encoding="gbk" ?>'."\r\n".$tpl->savestr();
-//---获取后缀
+/* 获取后缀 */
 $h = '.'.trim(substr(strrchr($path,'.'),1,100));
 
 if (empty($_REQUEST['page']))
@@ -24,7 +24,8 @@ else
 	$html = '_'.$_REQUEST['page'].$h;
 }
 write(str_replace($h,$html,$path),$count);
-//----返回总页数$maxnum = $query->maxnum("select count(*) from ".T.$_REQUEST['dbsource']);
+/* 返回总页数 */
+$maxnum = $query->maxnum("select count(*) from ".T.$_REQUEST['dbsource']);
 echo ceil($maxnum/$_REQUEST['num']);
 exit;
 ?>

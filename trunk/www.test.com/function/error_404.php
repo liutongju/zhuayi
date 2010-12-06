@@ -3,7 +3,7 @@
 function error_404(){
 	global $tpl;
 	header("HTTP/1.0 404 Not Found" );
-	//-----获取当前信息
+	/* 获取当前信息 */
 	$body = '<div style="background:#233040;color:#fff;font-family:\'微软雅黑\';">';
 	$body .= '<h1 style="font-size:16px;margin:0px;padding:0px;padding-left:15px;padding-top:15px;">错误信息</h1>';
 	$body .= '<ol>';
@@ -18,7 +18,7 @@ function error_404(){
 	$body .= '<li style="line-height:25px;">用户信息:'.$_SERVER['HTTP_USER_AGENT'].'</li>';
 	$body .= '</ol>';
 	$body .= '</div>';
-	//----载入邮件配置文件
+	/* 载入邮件配置文件 */
 	include_once ZCMS_ROOT.'/data/include/email_config.php';
 	if ($error_push == 1)
 	{

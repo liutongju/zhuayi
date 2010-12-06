@@ -38,7 +38,7 @@ class dbQuery {
 			}
 		}
 		if($this->version() > '4.1') {
-			//global $dbcharset;
+			/* global $dbcharset; */
 			if($dbcharset) {
 				mysql_query("SET character_set_connection=$dbcharset, character_set_results=$dbcharset, character_set_client=binary", $this->link);
 			}
@@ -88,12 +88,7 @@ class dbQuery {
 			$this->halt('MySQL Query Error', $sql);
 		}		
 		$this->querynum++;
-		/*echo '<pre>';
-		echo strpos($sql,'from');
-		print_r(explode(' ',$sql));
-		//$log['']
-		exit;*/
-		//$this->sqls .=htmlspecialchars($sql).'|';
+		
 		return $query;
 	}
 	/**
@@ -129,7 +124,6 @@ class dbQuery {
 	 */
 	function result($query, $row = 'gbk') {
 		$query = mysql_result($query, $row);
-		//mysql_query("SET NAMES 'utf8'");
 		return $query;
 	}
 	/**
@@ -212,12 +206,7 @@ class dbQuery {
 	function halt($message = '', $sql = '') {
 		if ($this->error===false)
 		{
-			echo '<pre>';
-			echo $message . '<br> ' . $sql. '<br> ';
-		    echo mysql_errno() . ": " . mysql_error() . "\n";
-
-		//echo $message . ' ';
-		//return false;
+			error_404(mysql_error());
 			exit;
 		}
 
@@ -261,11 +250,8 @@ class dbQuery {
 			{
 				if (in_array($key,$list))
 				{
-					//if (!empty($value))
-					//{
-						$field[] = '`'.$key.'`';
-						$values[] = "'".$value."'";
-					//}
+					$field[] = '`'.$key.'`';
+					$values[] = "'".$value."'";
 				}
 			}
 			if ($id=='')

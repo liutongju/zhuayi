@@ -2,7 +2,7 @@
 function highlight($string, $words, $hrefs='',$pretext='', $step='')
 {
 	global $replace_times,$highlight_array;
-	//后两个变量为系统继承变量，不可指定
+	/* 后两个变量为系统继承变量，不可指定 */
 	if($step != 'me')
 	{
 		return preg_replace('/(^|>)([^<]+)(?=<|$)/sUe', "highlight('\\2',\$words, \$hrefs, '\\1', 'me')", $string);

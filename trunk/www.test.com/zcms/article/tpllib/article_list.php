@@ -18,6 +18,12 @@ function article_list($atts)
 	$startnum =  ($page-1)*$limit;
 	$search = ' where a.id >0';
 	
+
+	if (!empty($start))
+	{
+		$startnum = $start;
+	}
+
 	if (!empty($title))
 	{
 		$search .= " and a.title like '%".$title."%'";
@@ -35,9 +41,10 @@ function article_list($atts)
 	
 	if (!empty($cid))
 	{
-		$search .= " and  a.cid = ".$cid."";
+		$search .= " and  a.cid in (".$cid.")";
 	}
 	
+
 	if (!empty($litpic))
 	{
 		$search .= " and  a.litpic <>''";

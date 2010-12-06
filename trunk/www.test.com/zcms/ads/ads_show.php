@@ -32,7 +32,7 @@ $info = $query->one_array("select * from ".T."ads where id>0".$search." order by
 if ($_REQUEST['url'] =='true')
 {
 	$query->query("update ".T."ads set click = click+1 where id=".$info['id']);
-	//----Ìø×ª
+	/* Ìø×ª */
 	echo "<script>window.location.href='".$info['link']."'</script>";
 	exit;
 }

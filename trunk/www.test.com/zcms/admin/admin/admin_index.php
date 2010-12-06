@@ -9,6 +9,6 @@
  * @QQ			 2179942
  */
 
-//----查询当前登录管理员信息
+/* 查询当前登录管理员信息 */
 $info = $query->one_array("select a.*,b.* from ".T."admin as a left join ".T."admin_group as b on a.gid=b.id where a.username ='".ret_cookie('admin_username')."'");
 ?>

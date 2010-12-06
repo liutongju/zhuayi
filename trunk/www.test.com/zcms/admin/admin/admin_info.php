@@ -29,7 +29,7 @@ else
 	}
 	$query->save("admin",$_POST,' id='.$_REQUEST['id']);
 }
-//---------写入日志
+/* 写入日志 */
 admin_log("admin",$_REQUEST['id'],'username',$pagename,$_REQUEST['id']);
 exit('1');
 ?>

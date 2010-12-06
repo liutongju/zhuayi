@@ -18,7 +18,7 @@
 function tree($array,$parent,$f=0,$gap='　',$branches='├─',$fields='title')
 {
 	$ge = '└─';
-	//-----如果传入通配符，那么把所有间隔负设置为空
+	/* 如果传入通配符，那么把所有间隔负设置为空 */
 	if ($gap == '^')
 	{
 		$gap ='';

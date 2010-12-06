@@ -1,9 +1,7 @@
 <?php
-//-----------编码转换
+/* 编码转换 */
 function siconv($string,$outEncoding ='gb2312')     
 {     
-    //$encoding = "utf-8";
-	//$string = urlencode($); 
 	$encoding='';
     for($i=0;$i<strlen($string);$i++)     
     {     
@@ -12,11 +10,11 @@ function siconv($string,$outEncoding ='gb2312')
     
         if((ord($string{$i})&224)==224)     
         {     
-            //第一个字节判断通过     
+            /* 第一个字节判断通过 */    
             $char = $string{++$i};     
             if((ord($char)&128)==128)     
             {     
-                //第二个字节判断通过     
+                /* 第二个字节判断通过 */  
                 $char = $string{++$i};     
                 if((ord($char)&128)==128)     
                 {     
@@ -27,11 +25,11 @@ function siconv($string,$outEncoding ='gb2312')
         }     
         if((ord($string{$i})&192)==192)     
         {     
-            //第一个字节判断通过     
+           /* 第一个字节判断通过 */ 
             $char = $string{++$i};     
             if((ord($char)&128)==128)     
             {     
-                // 第二个字节判断通过     
+                /* 第二个字节判断通过  */    
                 $encoding = "GB2312";     
                 break;     
             }     

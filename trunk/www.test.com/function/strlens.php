@@ -1,6 +1,6 @@
 <?php
 
-//½ØÈ¡
+/* ½ØÈ¡ */
 function strlens($str,$start,$len,$tags='') {
 if (empty($tags))
 $str = strip_tags($str);

@@ -90,3 +90,4 @@ if(file_exists($_REQUEST['m_file']))
 /* Êä³öÄ£°æ  */
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
+

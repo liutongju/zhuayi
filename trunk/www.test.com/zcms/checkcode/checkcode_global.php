@@ -9,16 +9,16 @@
  * @QQ			 2179942
  */
 
-//------载入验证码类
+/* 载入验证码类 */
 include_once ZCMS_ROOT.'/class/checkcode.class.php';
 $checkcode = new checkcode();
 $checkcode->creat_code();
  
-//-------设置页面内部菜单 
+/* 设置页面内部菜单 */
 $menu = array(
 			'0'=>array('验证码规则','index'),
 			'1'=>array('添加验证码规则','edit&height=300','ajax'),
 			);
-//-------设置模块提示
+/* 设置模块提示 */
 $tips = '请在按照生成验证码地址调用...';
 ?>

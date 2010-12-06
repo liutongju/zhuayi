@@ -12,9 +12,17 @@
 /* -------验证登录 */
 verify_admin('admin_username');
 
-/* -------序列化推送位  */
-$_POST['flag'] = implode('|',$_POST['flag']);
 
+/* 开启随机推送 */
+if (empty($_POST['flag']) && $rand_push == 1)
+{
+	$_POST['flag'] = explode('|',$flag[array_rand($flag)]);
+	$_POST['flag'] = $_POST['flag'][1];
+}
+else
+{
+	$_POST['flag'] = implode('|',$_POST['flag']);
+}
 /* ----处理上传文件  */
 include_once ZCMS_ROOT.'/class/upload.class.php';
 $upload = new upload($_FILES['file1']);
@@ -66,7 +74,7 @@ $_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"));
 
 /*----判断是否要下载文章内容里的图片  */
 if ($downfile == 1)
-{	//------循环下载图片
+{	/* 循环下载图片 */
 	foreach ($pic as $key=>$val)
 	{
 		$picbody = downfile($val,'article/edit/'.date("Y-m-d"));
@@ -100,25 +108,23 @@ else
 
 if (!empty($_POST['request_url']))
 {
-	$_POST['url'] = $_POST['request_url'];
+	$_POST['url'] = article_generate_path($_POST['id'],$_POST['request_url']);
 }
-elseif ($article_generate == 0)
+else
 {
-	$_POST['url']= str_replace('{id}',$_POST['id'],$article_news_url);
-}
-elseif ($article_generate == 1)
-{
-	$_POST['url'] = article_generate_path($_POST['id']);
+	$_POST['url']= article_generate_path($_POST['id'],$article_generate_path);
 }
 
-//------强制信息可以模糊匹配
+
+
+/* 强制信息可以模糊匹配 */
 $_POST['parameter'] == 1;
-//---------写入SEO表
+/* 写入SEO表 */
 $_POST['request_url'] = article_url($_POST['id']);
-//项目原始url，自定义url时使用
+/* 项目原始url，自定义url时使用 */
 seo('article',$_POST['id']);
 
-//---------写入日志
+/* 写入日志 */
 admin_log("article",$_POST['id'],'title',$pagename);
 
 showmsg('恭喜您,操作成功',ret_cookie('backurl'));

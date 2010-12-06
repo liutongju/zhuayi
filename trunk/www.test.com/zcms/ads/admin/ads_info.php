@@ -30,7 +30,7 @@ else
 	$query->save("ads",$_POST,' id = '.$_POST['id']);
 	
 }
-//-------写入日志
+/* 写入日志 */
 admin_log("ads",$_POST['id'],'title',$pagename);
 showmsg("广告位编辑成功...",ret_cookie("backurl"));
 exit;

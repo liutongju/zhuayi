@@ -2,12 +2,12 @@
 function admin_log($table,$id,$fields,$action,$cookieid='')
 {
 	global $query,$admin_log;
-	//--------关闭后台日志
+	/* 关闭后台日志 */
 	if ($admin_log == 0)
 	{
 		return false;
 	}
-	//------屏蔽SQL错误
+	/* 屏蔽SQL错误 */
 	$query->error = true;
 	if (is_array($id))
 	{

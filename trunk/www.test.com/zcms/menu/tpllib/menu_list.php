@@ -3,7 +3,7 @@
 function menu_list($atts)
 {
 	extract($atts, EXTR_OVERWRITE);
-	//----ÆÁ±ÎÒ»°ã´íÎó
+	/* ÆÁ±ÎÒ»°ã´íÎó */
 	error_reporting(E_ALL^E_NOTICE^E_WARNING);
 	//------
 	global $query,$perpagenum;
@@ -34,7 +34,6 @@ function menu_list($atts)
 
 	$sql = "select a.*,b.title as p_title from ".T."menu  as a  left join ".T."menu as b on a.parent_id = b.id ".$search." order by orders asc  limit $startnum , $limit";
 	$list = $query->arrays($sql);
-	//echo $sql;
 	return $list;
 }
 ?>

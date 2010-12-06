@@ -1,6 +1,6 @@
 <?php
 
-//-----当前位置
+/* 当前位置 */
 function position($id)
 {
 	global $query,$position;
@@ -13,7 +13,7 @@ function position($id)
 	return $info;
 }
 
-//------根据父ID获取下属全部子类
+/* 根据父ID获取下属全部子类 */
 function parent_parent_id($id)
 {
 	global $query;
@@ -32,7 +32,7 @@ function parent_parent_id($id)
 	return $info['id'];
 }
 
-//-----当前位置
+/* 当前位置 */
 function parent_classname($id)
 {
 	global $query;
