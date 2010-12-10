@@ -12,35 +12,44 @@
 /* 验证登录 */
 verify_admin('admin_username');
 
+$limit = 1000;
+if (empty($_REQUEST['page']))
+{	
+	$_REQUEST['page'] = 1;
+	$startnum = 0 ;
+}
+else
+$startnum =  ($_REQUEST['page']-1)*$limit;
+
 if ($_REQUEST['tables'] == 'article')
 {
-	$sql = "select a.id,dtime,b.catdir from ".T."article as a left join ".T."article_class as b on a.cid = b.id ";
+	$sql = "select a.id,dtime,b.catdir from ".T."article as a left join ".T."article_class as b on a.cid = b.id limit $startnum , $limit";
 	$fun = 'article_generate_path';
-	$article_url = $article_news_url;
-	$fun2 = 'article_url';}
+	$article_url = $article_generate_path;
+	$fun2 = 'article_url';
+}
 elseif ($_REQUEST['tables'] == 'article_class')
 {
-	$sql = "select * from ".T."article_class ";
+	$sql = "select * from ".T."article_class limit $startnum , $limit";
 	$fun = 'article_class_generate_path';
-	$article_url = $article_class_url;
-	$fun2 = 'article_class_url';}
+	$article_url = $article_class_path;
+	$fun2 = 'article_class_url';
+}
 else
 {
 	showmsg('错误的来源');
 }
-$reset = $query->query($sql);
-while ($row = $query->fetch_array($reset))
-{
-	if ($article_generate == 0)
-	{
-		$row['url']= str_replace('{id}',$row['id'],$article_url);
-	}
-	elseif ($article_generate == 1)
-	{
-		$row['url'] = $fun($row['id']);
-	}
-	$query->query("update ".T."seo set request_url = '".$fun2($row['id'])."' , url = '".$row['url']."' ,parameter=1  where aid<>0 and  tables ='".$_REQUEST['tables']."' and aid=".$row['id']);
-}
+$reset = $query->arrays($sql);
 
-showmsg('恭喜你，操作成功',ret_cookie('backurl'));
+if (count($reset)==0)
+{
+	showmsg('恭喜你，操作成功',ret_cookie('backurl'));
+}
+foreach ($reset as $val)
+{
+	$val['url'] = $fun($val['id'],$article_url);
+	$query->query("update ".T."seo set request_url = '".$fun2($val['id'])."' , url = '".$val['url']."' ,parameter=1  where aid<>0 and  tables ='".$_REQUEST['tables']."' and aid=".$val['id']);
+}
+$_REQUEST['page']++;
+showmsg('已经格式化《'.($startnum+$limit).'》个信息','/index.php?m=article&c=format&a=init&tables='.$_REQUEST['tables'].'&page='.$_REQUEST['page']);
 ?>

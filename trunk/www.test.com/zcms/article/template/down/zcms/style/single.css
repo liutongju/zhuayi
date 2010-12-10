@@ -1,0 +1,7 @@
+.single{}
+.single_left{width:174px;border:1px #ccc solid;}
+.single_left li{line-height:25px;background:url(../images/zcms.png) 0px -457px;padding-left:10px;margin:10px;}
+.single_left .title{margin-bottom:10px;height:30px;background:url(../images/title_bg.png);width:159px;line-height:30px;margin-top:0px;padding-left:15px;color:#333333;font-weight:bold;}
+.single_right{width:755px;border:1px #ccc solid;}
+.single_right .title{background:#eaeff2;margin:0px;padding:0px;width:735px;padding-left:20px;font-weight:bold;color:#333333;font-size:14px;}
+.single_right .body{width:700px;margin:10px auto;line-height:180%;}

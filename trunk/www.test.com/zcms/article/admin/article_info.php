@@ -92,7 +92,10 @@ if (!empty($_REQUEST['jump']))
 
 if (empty($_REQUEST['id']))
 {
-	$_POST['dtime'] = time();
+	if (empty($_POST['dtime']))
+	{
+		$_POST['dtime'] = time();
+	}
 
 	$pagename = 'лМ╪сндуб';
 

@@ -1,5 +1,5 @@
 <?php
-$webname = "0913e - 渭南新闻网";
+$webname = "ZCMS官方测试站";
 $weburl = "http://www.test.com";
 $logo = "/data/logo.gif";
 $powerby = "CopyRight &#169; 2002-2010  All Rights Reserved";

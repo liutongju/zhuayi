@@ -18,6 +18,7 @@ if (!empty($_REQUEST['id']))
 	$info = $query->one_array("select * from ".T."taobao_special where id =".$_REQUEST['id']);
 	$seo = $query->one_array("select * from ".T."seo where tables ='taobao_special' and aid=".$_REQUEST['id']);
 	$info['customize'] = unserialize($info['customize']);
+	$info['banner'] = unserialize($info['banner']);
 }
 else
 {

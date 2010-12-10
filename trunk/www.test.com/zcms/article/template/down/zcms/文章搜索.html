@@ -1,0 +1,39 @@
+{zhuayi:include file="头部.html"/}
+<link href="{zhuayi:echo.$path/}style/article.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{zhuayi:echo.$path/}js/jquery.highlight.js"></script>
+<script>
+$(function(){
+	$(".article_list_class >ul > li").highlight("{zhuayi:echo.$tags/}");
+})
+</script>
+<style>
+.highlight {
+	color:red;
+}
+</style>
+<div class="w_960 location">
+	当前位置：
+	<a href="{zhuayi:echo.$weburl/}">首页</a> > 文章搜索 > 《<font color=red><b>{zhuayi:echo.$tags/}</b></font>》
+</div>
+<div class="w_960 overflow">
+	<div class="float_left article_list_class">
+		<div class="search_info">
+			<h1>您正在搜索的是“<font color=red><b>{zhuayi:echo.$tags/}</b></font>”</h1>
+			<span>搜索到约 {zhuayi:echo.$maxnum/} 项结果.</span>
+		</div>
+		{zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile/}
+		{zhuayi:article_list limit=15 title=$tags page=$_REQUEST['page']}
+		<ul>
+			<li class="list_title"><span>{zhuayi:echo.dtime($fields['dtime'])/}</span><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+			<li class="text">
+			<?php if (!empty($fields['litpic'])){?>
+			<a href="{zhuayi:echo.$fields['url']/}" target="_blank"><img src="{zhuayi:echo.litpic($fields['litpic'],0,70)/}" height="70"/></a>
+			<?php }?>
+			{zhuayi:echo.$fields['abstract']/}....     <a href="{zhuayi:echo.$fields['url']/}" target="_blank">[阅读全文]</a></li>
+		</ul>
+		{/zhuayi:article_list}
+		{zhuayi:pagelist  maxnum=$maxnum page=$_REQUEST['page'] html=$htmlfile/}
+	</div>
+	{zhuayi:include file="右边.html"/}
+</div>
+{zhuayi:include file="底部.html"/}

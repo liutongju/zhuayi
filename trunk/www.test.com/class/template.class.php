@@ -240,7 +240,7 @@ class DedeTemplate
 	{
 		if(!file_exists($tmpfile))
 		{
-			error_404($tmpfile);
+			error_404($tmpfile.'模版路径错误');
 			exit;
 			showmsg("模版路径错误！",'/','5000','init');
 			exit;

@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div class="index_top_cen float_left">
-	{zhuayi:article_list limit=1 start=1}
+	{zhuayi:article_list limit=1 start=1 titlelen=38}
 		<div class="tuijian zcms">
 			<h2><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['title']/}</a></h2>
 			<span>{zhuayi:echo.$fields['abstract']/}</span>
@@ -62,7 +62,7 @@
 		<div class="article_list">
 		{zhuayi:article_list limit=1 litpic=1 flag="tuijian"}
 			<div class="article_pic overflow">
-				<img src="{zhuayi:echo.litpic($fields['litpic'],62,62)/}" width="62" />
+				<a href="{zhuayi:echo.$fields['url']/}"  target="_blank"><img src="{zhuayi:echo.litpic($fields['litpic'],62,62)/}" width="62" /></a>
 				<div class="float_left">
 					<h3><a href="{zhuayi:echo.$fields['url']/}"  target="_blank">{zhuayi:echo.$fields['title']/}</a></h3>
 					{zhuayi:echo.strlens($fields['abstract'],0,40)/}...<a href="{zhuayi:echo.$fields['url']/}" target="_blank">更多>></a>
@@ -95,12 +95,14 @@
 		<div class="title zcms">
 			<span class="float_left">精彩瞬间</span>
 		</div>
-		<div class="article_pic_list">
-			<ul>
-			{zhuayi:article_list limit=5 litpic=1}
+		<div class="article_pic_list overflow zcms">
+			<a href="#" class="pic_left float_left zcms">点击左滑动</a>
+			<ul class="float_left">
+			{zhuayi:article_list limit=5 litpic=1 titlelen=26}
 				<li <?php if ($key == 5){echo 'margin-right:0px;';}?>><a href="{zhuayi:echo.$fields['url']/}"><img src="{zhuayi:echo.litpic($fields['litpic'],'160',120)/}" height="120" /></a><br><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
 			{/zhuayi:article_list}
 			</ul>
+			<a href="#" class="pic_right float_left zcms">点击左滑动</a>
 		</div>
 	</div>
 </div>
@@ -131,7 +133,7 @@
 				<a href="{zhuayi:echo.$fields['url']/}" target="_blank"><img src="{zhuayi:echo.litpic($fields['litpic'],135,90)/}" width="135" height="90"/></a>
 			{/zhuayi:article_list}
 			</div>
-			{zhuayi:article_list limit=1  flag="remen" litpic=1 start=1 cid=$cid}
+			{zhuayi:article_list limit=1  flag="remen" litpic=1 start=1 cid=$cid titlelen=36}
 			<div class="tuijian">
 				<h3><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></h3>
 				<span>{zhuayi:echo.$fields['abstract']/}...<font><a href="{zhuayi:echo.$fields['url']/}" target="_blank">[详细]</a></font></span>
@@ -148,7 +150,7 @@
 			<span class="float_left">热门排行</span>
 		</div>
 		<div class="article_list">
-		{zhuayi:article_list limit=1  flag="remen" litpic=1 start=9 cid=$cid}
+		{zhuayi:article_list limit=1  flag="remen" litpic=1 start=9 cid=$cid titlelen=36}
 			<div class="tuijian tops">
 				<h3><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></h3>
 				<span>{zhuayi:echo.$fields['abstract']/}...<font><a href="{zhuayi:echo.$fields['url']/}" target="_blank">[详细]</a></font></span>
@@ -210,10 +212,10 @@
 			<span class="float_left">最新推荐</span>
 		</div>
 		<div class="article_list">
-		{zhuayi:article_list limit=1 litpic=1 start=8 cid=$cid flag='tuijian'}
+		{zhuayi:article_list limit=1 litpic=1 start=8 cid=$cid flag='tuijian' titlelen=36}
 			<div class="article_pic_230">
 				<a href="{zhuayi:echo.$fields['url']/}" target="_blank"><img src="{zhuayi:echo.litpic($fields['litpic'],230,147)/}" width="230" height="147"/></a>
-				{zhuayi:echo.$fields['title']/}
+				<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
 			</div>
 		{/zhuayi:article_list}
 			<div class="jiange zcms"></div>

@@ -33,7 +33,7 @@ li{list-style:none;}
 .nav_cen{width:968px;background:url({zhuayi:echo.model_url('taobao','')/}images/nav_cen.gif)}
 .nav_cen a{font-weight:bold;color:#fff;line-height:40px;font-size:14px;margin:5px;}
 
-.banner{margin:10px auto 10px auto;text-align:center;}
+.banner{margin:0px auto 10px auto;text-align:center;}
 .t_product{width:952px;border:4px #eaeaea solid;border-top:0px;margin:0 auto;clear:both;overflow:hidden;}
 .t_product ul{border-top:4px #eaeaea solid;zoom:1;clear:both;}
 .t_product ul li{list-style:none;margin-top:5px;}
@@ -213,10 +213,27 @@ li{list-style:none;}
 </head>
 
 <body>
-
+<div class="top_g w_990"/></div>
+<div class="top_logo w_990">
+        <div class="logo"><a href="{zhuayi:echo.$info['url']/}" target="_blank"><img src="{zhuayi:echo.model_url('taobao','')/}images/logo.gif"/></a></div>
+</div>
+<div class="nav">
+        <div class="nav2 w_990">
+                <div class="nav_left"></div>
+                <div class="nav_cen">
+                        <a href="{zhuayi:echo.$info['url']/}" target="_blank">首页</a>
+                        <a href="<?php echo taobao_urlshort('http://www.taobao.com/go/chn/tbk_channel/lady.php?pid=mm_24215836_0_0&eventid=101345');?>" target="_blank">女性频道</a>
+						<a href="<?php echo taobao_urlshort('http://www.taobao.com/go/chn/tbk_channel/man.php?pid=mm_24215836_0_0&eventid=101330');?>" target="_blank">男人频道</a>
+						<a href="<?php echo taobao_urlshort('http://pindao.huoban.taobao.com/tms/channel/jewelry.htm?pid=mm_24215836_0_0&eventid=101331');?>" target="_blank">饰品鞋包</a>
+						<a href="<?php echo taobao_urlshort('http://pindao.huoban.taobao.com/tms/channel/beauty.htm?pid=mm_24215836_0_0&eventid=101328');?>" target="_blank">美容频道</a>
+						<a href="<?php echo taobao_urlshort('http://pindao.huoban.taobao.com/tms/channel/mallhouse.htm?pid=mm_24215836_0_0&eventid=101546');?>" target="_blank">家装频道</a>
+						<a href="<?php echo taobao_urlshort('http://www.taobao.com/go/chn/tbk_channel/channelcode.php?pid=mm_24215836_0_0&eventid=101329');?>" target="_blank">综合频道</a>
+						<a href="<?php echo taobao_urlshort('http://pindao.huoban.taobao.com/channel/channelfy.htm?pid=mm_24215836_0_0&eventid=101325');?>" target="_blank">淘宝风云榜</a>
+                </div>
+                <div class="nav_right"></div>
+        </div>
+</div>
 <div class="banner w_960">
 <a href="{zhuayi:echo.$info['url']/}" title="{zhuayi:echo.$info['title']/}"><img src="{zhuayi:echo.litpic($info['litpic'],960)/}" alt="{zhuayi:echo.$info['title']/}"/>
 </a>
 </div>
-
-

@@ -1,0 +1,23 @@
+<?php
+/**
+ * admin_edit.php     ZCMS ºóÌ¨²Ëµ¥Ìí¼Ó¡¢±à¼­
+ * 
+ * @copyright    (C) 2005 - 2010  ZCMS
+ * @licenes      http://www.zcms.cc
+ * @lastmodify   2010-11-8
+ * @author       zhuayi  
+ * @QQ			 2179942
+ */
+
+if (!empty($_REQUEST['id']))
+{
+	$pagename = "ËÑË÷¹Ø¼ü´Ê±à¼­";
+	$info = $query->one_array("select * from ".T."search where id =".$_REQUEST['id']);
+}
+else
+{
+	$pagename = "ËÑË÷¹Ø¼ü´ÊÌí¼Ó";
+}
+
+	
+?>

@@ -14,11 +14,29 @@ verify_admin('admin_username');
 
 
 
-/* 处理上传文件 */
-include_once ZCMS_ROOT.'/class/upload.class.php';
-$upload = new upload($_FILES['file1']);
-$upload->request = $_POST['litpic'];
-$_POST['litpic'] = $upload->copy('taobao_special/litpic',time());
+if (empty($_POST['litpic']) && $_POST['banner']['tpl']!='')
+{
+	
+	header("Content-type: image/jpeg");
+	$im = imagecreatefromjpeg($_POST['banner']['tpl']);
+	$white = imagecolorallocate($im, 255,255,255);
+	$black = imagecolorallocate($im, 0,0,0);
+	$test = iconv('gbk','utf-8',$_POST['banner']['title']);
+	$test2 = iconv('gbk','utf-8',$_POST['banner']['ftitle']);
+	$test3 = iconv('gbk','utf-8',$_POST['banner']['body']);
+	imagettftext($im, 30, 0, 71, 190, $white, ZCMS_ROOT.'/zcms/taobao/template/banner_tpl/FZDHTJW.TTF', $test);
+	imagettftext($im, 20, 0, 207, 225, $white, ZCMS_ROOT.'/zcms/taobao/template/banner_tpl/msyh.ttf', $test2);
+	imagettftext($im, 12, 0, 174, 263, $white, ZCMS_ROOT.'/zcms/taobao/template/banner_tpl/msyh.ttf', $test3);
+	$banner_path = '/uploads/tbanner/';
+	if (!file_exists(ZCMS_ROOT.$banner_path))
+	{
+		mkdir(ZCMS_ROOT.$banner_path,777,true);
+	}
+	imagejpeg($im,ZCMS_ROOT.$banner_path.md5($_POST['banner']['title']).'.jpg',100);
+	imagedestroy($im);
+	$_POST['litpic'] = $banner_path.md5($_POST['banner']['title']).'.jpg';
+}
+$_POST['banner'] = serialize($_POST['banner']);
 
 $_POST['dtime'] = strtotime($_POST['dtime']);
 

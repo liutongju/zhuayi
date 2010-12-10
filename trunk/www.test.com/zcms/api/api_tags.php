@@ -13,7 +13,7 @@ include_once ZCMS_ROOT.'/class/tags.class.php';
 
 
 /* ÊµÀý»¯Àà */
-$tags = new tags($_REQUEST['title']);
+$tags = new tags(str_replace('£º','',$_REQUEST['title']));
 $tags->baidu();
 $reset['tags'] = iconv('gbk','utf-8',$tags->return_tags());
 $reset['keywords'] = iconv('gbk','utf-8',$tags->return_keywords());

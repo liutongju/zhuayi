@@ -1,14 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
-	<link href="{zhuayi:echo.$path/}style/top.css" rel="stylesheet" type="text/css" />
-	<script language="javascript" type="text/javascript" src="{zhuayi:echo.$path/}js/jquery.min.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-	<meta http-equiv="X-UA-Compatible" content="IE=7" />
-	<meta name="author" content="Zcms">
-	<meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
-	<meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
+<title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
+<link href="{zhuayi:echo.$path/}style/top.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{zhuayi:echo.$path/}js/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta name="author" content="Zcms">
+<meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
+<meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
+<script>
+$(function(){
+	$(".search").click(function(){
+		window.location = '/'+$("#srarch_table").val()+'/search/title/'+$("#search_title").val();
+		return false;
+	})
+})
+</script>
 </head>
 <body>
 <div class="w_auto border-bottom top">
@@ -19,8 +27,8 @@
 			<a href="javascript:">网站地图</a> | 
 			<a href="javascript:">Tag标签</a> | 
 			<a href="javascript:">RSS订阅</a> | 
-			<a href="javascript:">【设为首页】</a> | 
-			<a href="javascript:">【加入收藏】</a>		</span>
+			<a href='javascript:' onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('{zhuayi:echo.$weburl/}');">【设为首页】</a> | 
+			<a href="javascript:window.external.addFavorite('{zhuayi:echo.$weburl/}','{zhuayi:echo.$webname/}');">【加入收藏】</a>		</span>
 	</div>
 </div>
 <div class="w_960 overflow top_logo">
@@ -36,24 +44,21 @@
 	{/zhuayi:article_class_list}
 </div>
 <div class="nav_search overflow">
-<form>
+<form id="">
 	<div class="float_left">
 		<label>
-			<input type="text" name="title" class="text" value="日韩对战火热开炮"/>
+			<input type="text" name="title" id="search_title" class="text" value="{zhuayi:search_list orders=1 limit=1}{zhuayi:echo.$fields['title']/}{/zhuayi:search_list}"/>
 		</label>
 		<label>
+			<input type="hidden" name="srarch_table" id="srarch_table" value="article"/>
 			<input type="submit" class="search zcms" value="搜索"/>
 		</label>
 	</div>
 	<div class="float_left tags">
-		<b>热点推荐：</b>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
-		<a href="#">一个牌香烟</a>
+		<b>热们搜索：</b>
+		{zhuayi:search_list orders=1}
+		<a href="/article/search/title/{zhuayi:echo.$fields['title']/}">{zhuayi:echo.$fields['title']/}</a>
+		{/zhuayi:search_list}
 	</div>
 </form>
 </div>

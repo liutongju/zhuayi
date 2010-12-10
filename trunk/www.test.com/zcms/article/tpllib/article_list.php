@@ -60,6 +60,8 @@ function article_list($atts)
 	$reset = $query->query($sql);
 	while ($row = $query->fetch_array($reset))
 	{
+		if (!empty($titlelen))
+		$row['title'] = strlens($row['title'],0,$titlelen);
 		$list[] = $row;
 	}
 	return $list;

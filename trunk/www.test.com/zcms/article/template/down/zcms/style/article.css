@@ -4,6 +4,7 @@
 #ckepop{margin:15px 0px 0px 0px;}
 #body{line-height:180%;clear:both;padding:10px 20px;text-indent:2em;color:#333333;font-size:14px;}
 .article_left .tags{border:1px #ccc dashed;background:#fff;height:25px;line-height:25px;font-weight:bold;width:660px;margin:0 auto;padding-left:10px;color:#333;}
+.article_left .tags a{color:#333;}
 .article_left .infonext{width:655px;padding:10px 0px 10px 15px;margin:10px auto 0px auto;border:1px #ccc dashed;overflow:hidden;background:#fff;}
 .article_left .infonext li{list-style:disc;margin-left:5px;}
 .article_left .infonext .float_right{margin-right:10px;}
@@ -32,6 +33,9 @@
 .w_960 .article_list_class a:hover{color:#004499;text-decoration:underline;}
 .w_960 .article_list_class .page{margin-bottom:20px;}
 
+.search_info{width:98%;background:#eaeff2;margin:5px auto 10px auto;padding-bottom:10px;}
+.article_list_class .search_info h1{margin:0px;padding:10px 10px 5px 19px;}
+.search_info span{color:#98999b;padding:0px 0px 0px 20px;}
 /* Í¼Æ¬ÓÐ¹Ø */
 .img_wrapper{text-align:center}
 .img_wrapper img{border:1px solid #000; display:block; margin:0 auto}

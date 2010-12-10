@@ -13,7 +13,11 @@ $(function(){
 		$(this).width(450);
 		$("#litpic").css('display','none')
 	})
-
+	
+	$(".banner").click(function(){
+		tb_show('制作banner','/index.php?m=taobao&c=banner&a=init');
+		return false;
+	})
 
 })
 
@@ -45,10 +49,35 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
+			<th width="80">主标题：</th>
+			<td  class="y-bg">
+				<input type="text" class="input-text" name="banner[title]" id="title" value="{zhuayi:echo.$info['banner']['title']/}" size="60" />
+				<span><br>最多11个字</span>
+			</td>
+		</tr>
+		<tr>
+			<th>副标题：</th>
+			<td class="y-bg" colspan="2">
+				<input type="text" class="input-text" name="banner[ftitle]" id="title" value="{zhuayi:echo.$info['banner']['ftitle']/}" size="60" />
+			</td>
+		</tr>
+		<tr>
+			<th>说明文字：</th>
+			<td class="y-bg" colspan="2">
+				<input name="banner[body]" type="text" id="body" value="{zhuayi:echo.$info['banner']['body']/}" size="60" class="input-text" >
+			</td>
+	    </tr>
+		<tr>
+			<th>banner模版：</th>
+			<td class="y-bg" colspan="2">
+				<input name="banner[tpl]" type="text" id="tpl" value="{zhuayi:echo.$info['banner']['tpl']/}" size="60" class="input-text" >
+				<button class="button banner">选择banner</button>
+			</td>
+		</tr>
+		<tr>
 			<th>大Banner：</th>
-			<td class="y-bg">
+			<td class="y-bg" colspan="2">
 				<input name="litpic" type="text" id="litpic" value="{zhuayi:echo.$info['litpic']/}" size="60">
-				<input type="file" name="file1" id="file1"  style="width:63px;"/>
 			</td>
 	    </tr>
 		<tr>
