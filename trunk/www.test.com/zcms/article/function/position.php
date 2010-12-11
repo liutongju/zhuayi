@@ -13,23 +13,19 @@ function position($id)
 	return $info;
 }
 
-/* 根据父ID获取下属全部子类 */
+/* 根据父ID获取下属全部子类ID */
 function parent_parent_id($id)
 {
 	global $query;
-
-	$info = $query->one_array("select * from ".T."article_class where parent_id =".$id." limit 0,1");
-	$infopre = $query->maxnum("select id from ".T."article_class where parent_id=".$id." limit 0,1");
-	if (!empty($info['id']) && !empty($infopre['id']))
+	$info = $query->arrays("select id from ".T."article_class where parent_id =".$id);
+	foreach ($info as $val)
 	{
-		
-		$info['id'] = $id.','.parent_parent_id($infopre['id']);
+		if (!empty($val['id']))
+		{
+			$id .= ','.parent_parent_id($val['id']);
+		}
 	}
-	else
-	{
-		return $id;
-	}
-	return $info['id'];
+	return $id;
 }
 
 /* 当前位置 */

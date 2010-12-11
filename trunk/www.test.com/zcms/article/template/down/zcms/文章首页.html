@@ -17,8 +17,8 @@ var texts = "";
 
 {zhuayi:article_list limit=5 litpic=1 flag="huandengpian"}
 linkarr[{zhuayi:echo.$key/}] = "{zhuayi:echo.$fields['url']/}";
-picarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.litpic($fields['litpic'],296)/}";
-textarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.$fields['title']/}";
+picarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.litpic($fields['litpic'],296,225)/}";
+textarr[{zhuayi:echo.$key/}]  = '{zhuayi:echo.$fields['title']/}';
 {/zhuayi:article_list}
 for(i=0;i<picarr.length;i++){
   if(files=="") files = picarr[i];
@@ -226,7 +226,7 @@ document.write('</object>');
 			<ul>
 			<?php $i=1;?>
 			{zhuayi:article_list limit=20 start=1 cid=$cid}
-				<li><a href="{zhuayi:echo.$fields['classurl']/}" target="_blank">[{zhuayi:echo.$fields['classname']/}]</a> <a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a><span>11月30日</span></li>
+				<li><a href="{zhuayi:echo.$fields['classurl']/}" target="_blank">[{zhuayi:echo.$fields['classname']/}]</a> <a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a><span>{zhuayi:echo.dtime($fields['dtime'],'m月d日')/}</span></li>
 			<?php $i++;
 			if ($i%6 ==0){echo '</ul><ul>';}
 			?>

@@ -1,6 +1,5 @@
 <?php
-
-function litpic($litpic,$width=0,$height=0,$cut='')
+function litpic($litpic,$width=0,$height=0)
 {
 	global $weburl,$pic_cache;
 	
@@ -43,74 +42,100 @@ function litpic($litpic,$width=0,$height=0,$cut='')
 	}
 	return str_replace(ZCMS_ROOT,$weburl,$litpic_tmp);}
 
-
+/*
+	如果同时穿入宽度和高度,则进行裁剪
+*/
 function breviary($litpic_tmp,$pic,$logo_w,$logo_g)
 {
-       /* ----------缩小文件，获得图片的宽和高和类型 */
-        list($width, $height,$type) = getimagesize($pic);
-        
-        if ($logo_w>$width)
-        {
-                return $pic;
-        }
-        elseif($logo_g>=$height)
-        {
-                return $pic;
-        }
-                
-        /* ----------如果高为0的话，则按宽的数值等比缩小 */
+	/* 定义要裁剪的图片大小 */
+	$cut_w = $logo_w;
+	$cut_h = $logo_g;
+	/* ----------缩小文件，获得图片的宽和高和类型 */
+	list($width, $height,$type) = getimagesize($pic);
 
-        if ($logo_w == 0)
-        {
-                $logo_w = $width / ($height / $logo_g);
-        }
-        if ($logo_g == 0)
-        {
-                $logo_g = $height / ($width / $logo_w);
-        }
-                
-        
-		/* -----------这个是PHP规定的 */
-        $image_p = imagecreatetruecolor($logo_w, $logo_g);
-        switch($type)
-        { 
-                case 1:
-                $image = imagecreatefromgif($pic);
-                break; 
-                case 2:
-                $image = imagecreatefromjpeg($pic);
-                break; 
-                case 3:
-                $image = imagecreatefrompng($pic);
-                break; 
-                default:
-                return $pic;
-        }
-        /* -------------缩小图片 */
-        imagecopyresampled($image_p, $image, 0, 0, 0, 0, $logo_w, $logo_g, $width, $height);
-        
-        $filename = str_replace(basename($litpic_tmp),'',$litpic_tmp);
-        
-        if (!file_exists($filename))
-        {
-                mkdir($filename,777,true);
-        }
-        $filename .= basename($litpic_tmp);
-        switch($type)
-        { 
-                case 1:
-                imagegif($image_p, $filename,90);
-                break; 
-                case 2:
-                imagejpeg($image_p, $filename,90);
-                break; 
-                case 3:
-                imagepng($image_p, $filename);
-                break; 
-                default:
-                return $pic;
-        }
-        return $filename; 
+	if ($logo_w>$width)
+	{
+		return $pic;
+	}
+	elseif($logo_g>=$height)
+	{
+		return $pic;
+	}        
+	/* ----------如果高为0的话，则按宽的数值等比缩小 */
+
+	if ($logo_w < $logo_g)
+	{
+		$logo_w = $width / ($height / $logo_g);
+	}
+	//if ($logo_g == 0)
+	else
+	{
+		$logo_g = $height / ($width / $logo_w);
+	}
+	
+	/* 判断是否需要拉伸图片*/
+	if ($logo_w < $cut_w)
+	{
+		$logo_w = $cut_w;
+		$logo_g = $height / ($width / $logo_w);
+	} 
+	if ($logo_g < $cut_h)
+	{
+		$logo_g = $cut_h;
+		$logo_w = $width / ($height / $logo_g);
+	}
+
+	/* -----------这个是PHP规定的 */
+	$image_p = imagecreatetruecolor($logo_w, $logo_g);
+	switch($type)
+	{ 
+		case 1:
+		$image = imagecreatefromgif($pic);
+		break; 
+		case 2:
+		$image = imagecreatefromjpeg($pic);
+		break; 
+		case 3:
+		$image = imagecreatefrompng($pic);
+		break; 
+		default:
+		return $pic;
+	}
+	/* -------------缩小图片 */
+	imagecopyresampled($image_p, $image, 0, 0, 0, 0, $logo_w, $logo_g, $width, $height);
+
+	$filename = str_replace(basename($litpic_tmp),'',$litpic_tmp);
+
+	if (!file_exists($filename))
+	{
+		mkdir($filename,777,true);
+	}
+	$filename .= basename($litpic_tmp);
+	switch($type)
+	{ 
+		case 1:
+		imagegif($image_p, $filename,90);
+		break; 
+		case 2:
+		imagejpeg($image_p, $filename,90);
+		break; 
+		case 3:
+		imagepng($image_p, $filename);
+		break; 
+		default:
+		return $pic;
+	}
+	/* 如果有一个等于0 则不进行裁剪，而等比缩放 */
+	if ($cut_w!=0 && $cut_h!=0)
+	{
+		/* 判断是否需要裁剪图片 */
+		list($width, $height,$type) = getimagesize($filename);
+		$source=imagecreatefromjpeg($filename);
+		$croped=imagecreatetruecolor($cut_w, $cut_h);
+		imagecopy($croped,$source,0,0,0,0,$logo_w,$logo_g);
+		imagejpeg($croped, $filename,90);
+	}
+	return $filename; 
 }
 
 ?>
