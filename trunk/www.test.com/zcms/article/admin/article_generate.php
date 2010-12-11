@@ -31,7 +31,15 @@ if ($_REQUEST['act'] == 'show')
 	$fields = 'title';
 	$zfields = 'id';
 }
-$sql = "select id,".$fields." from ".T.$tables." where id >0".$search;$reset = $query->query($sql);while ($row = $query->fetch_array($reset)){	$id[] = $row['id'];	$title[] = trim(addslashes($row[$fields]));}$id =  '"'.implode("\",\"",$id).'"';$title =  '"'.implode("\",\"",$title).'"';
+$sql = "select id,".$fields." from ".T.$tables." where id >0".$search;
+$reset = $query->query($sql);
+while ($row = $query->fetch_array($reset))
+{
+	$id[] = $row['id'];
+	$title[] = trim(addslashes($row[$fields]));
+}
+$id =  '"'.implode("\",\"",$id).'"';
+$title =  '"'.implode("\",\"",$title).'"';
 
 
 

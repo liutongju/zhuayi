@@ -1,0 +1,13 @@
+#
+# robots.txt for ZCMS
+#
+
+User-agent: *
+
+Disallow: /class/
+Disallow: /data/
+Disallow: /function/
+Disallow: /install/
+Disallow: /keditor/
+
+

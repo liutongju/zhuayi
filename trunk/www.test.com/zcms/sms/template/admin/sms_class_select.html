@@ -1,0 +1,22 @@
+<script>
+$(function(){
+	//-----全部选择
+	$("#searcht").click(function(){
+		var returns = '<!cid';
+		$.each($("#cid option:selected"),function(n,val){
+			returns += ','+$(val).val(); 
+		})
+		$("#sms").val(returns+'>');
+		tb_remove();
+	})
+
+})
+</script>
+<div class="division">
+		<select name="cid" id="cid" multiple size="10" >
+			{zhuayi:sms_class_list}
+			<option value="{zhuayi:echo.$fields['id']/}" <?php if ($_REQUEST['cid'] == $fields['classid']){echo 'selected="selected"';}?>>=={zhuayi:echo.$fields['classname']/}==</option>
+			{/zhuayi:sms_class_list}
+		</select><br>
+		<input type="button" class="button" id="searcht" name="dosubmit" value="选择" />
+</div>
