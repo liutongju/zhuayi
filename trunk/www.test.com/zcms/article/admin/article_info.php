@@ -32,9 +32,9 @@ $_POST['litpic'] = $upload->copy('article/litpic',time());
 $_POST['dtime'] = strtotime($_POST['dtime']);
 
 /* -----判断是否自动提取文章摘要  */
-if ($abstract ==1)
+if ($abstract ==1 && $_POST['abstract']=='')
 {
-	$_POST['abstract'] = trim(str_replace('	','',preg_replace('/\r|\n/', '',strlens($_POST['body'],0,250))));
+	$_POST['abstract'] = trim(str_replace('	','',preg_replace('/\r|\n|　/', '',strlens($_POST['body'],0,250))));
 }
 
 /* ----判断是否SEO描述为空，如果为空，则引用正文摘要  */

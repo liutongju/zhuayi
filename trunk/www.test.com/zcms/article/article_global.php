@@ -60,4 +60,8 @@ else
 {
 	$article_url = $article_index_url;
 }
+/* Ä£°æÐéÄâÂ·¾¶ */
+$path = str_replace(ZCMS_ROOT,'',$article_tpl).'/';
+
+
 ?>

@@ -1,0 +1,38 @@
+{zhuayi:include file="头部.html"/}
+<link href="{zhuayi:echo.$path/}style/single.css" rel="stylesheet" type="text/css" />
+<div class="w_960 location">
+	当前位置：
+	<a href="/">首页</a> > 网站地图
+	
+</div>
+<div class="w_960 overflow single">
+	<div class="single_left float_left">
+	{zhuayi:single_list parent_id=0}
+		<div class="title zcms"><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['title']/}</a></div>
+		{zhuayi:single_list parent_id=$fields['id']}
+		<ul>
+			<li><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['title']/}</a></li>
+		</ul>
+		{/zhuayi:single_list}
+		<ul>
+			<li><a href="/index.php?m=article&c=sitemap">网站地图</a></li>
+		</ul>
+	{/zhuayi:single_list}
+	</div>
+	<div class="single_right float_right">
+		<div class="title">网站地图</div>
+		<div class="body">
+			<div class="sitemap">
+			{zhuayi:article_class_list parent_id=0}
+				<h2><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['classname']/}</a></h2>
+				<ul>
+				{zhuayi:article_class_list parent_id=$fields['id']}
+					<li><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['classname']/}</a></li>
+				{/zhuayi:article_class_list}
+				</ul>
+			{/zhuayi:article_class_list}
+			</div>
+		</div>
+	</div>
+</div>
+{zhuayi:include file="底部.html"/}

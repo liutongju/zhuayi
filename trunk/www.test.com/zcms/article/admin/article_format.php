@@ -48,8 +48,11 @@ if (count($reset)==0)
 foreach ($reset as $val)
 {
 	$val['url'] = $fun($val['id'],$article_url);
-	$query->query("update ".T."seo set request_url = '".$fun2($val['id'])."' , url = '".$val['url']."' ,parameter=1  where aid<>0 and  tables ='".$_REQUEST['tables']."' and aid=".$val['id']);
+	$_POST['url'] = $val['url'];
+	$_POST['request_url'] = $fun2($val['id']);
+	$_POST['parameter'] = 1;
+	seo($_REQUEST['tables'],$val['id']);
 }
 $_REQUEST['page']++;
-showmsg('已经格式化《'.($startnum+$limit).'》个信息','/index.php?m=article&c=format&a=init&tables='.$_REQUEST['tables'].'&page='.$_REQUEST['page']);
+showmsg('已经格式化《'.($startnum+count($reset)).'》个信息','/index.php?m=article&c=format&a=init&tables='.$_REQUEST['tables'].'&page='.$_REQUEST['page']);
 ?>

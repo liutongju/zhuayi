@@ -68,3 +68,7 @@
 .index_center_right .article_list{padding-bottom:4px;}
 .index_center_right .article_list .article_pic_230{text-align:center;padding-top:10px;}
 .index_center_right .article_list .article_pic_230 img{margin-bottom:5px;}
+
+.links ul{width:948px;border:1px #dedede solid;border-top:0px;overflow:hidden;padding-left:10px;}
+.links ul li{padding:10px;float:left;}
+.links .title{width:939px;}

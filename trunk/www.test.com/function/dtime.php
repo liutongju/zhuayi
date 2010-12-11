@@ -34,7 +34,8 @@ function dtime($dtime,$num='0')
 			 $time = date("w",$dtime);
 			return $day[$time];
 		}
-
+		default :
+		return date($num,$dtime);
 	}
 }
 

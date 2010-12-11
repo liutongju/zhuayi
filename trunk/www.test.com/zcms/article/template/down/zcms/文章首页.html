@@ -31,7 +31,7 @@
 			<ul>
 			<?php $i=1;?>
 			{zhuayi:article_list limit=10 start=1}
-				<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a><span>(11月30日)</span></li>
+				<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a><span>({zhuayi:echo.dtime($fields['dtime'],'m月d日')/})</span></li>
 			<?php $i++;
 			if ($i%6 ==0){echo '</ul><ul>';}
 			?>
@@ -49,7 +49,7 @@
 			{zhuayi:article_list limit=4 start=12}
 				<li>
 					<a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
-					<span>(11月30日)</span>
+					<span>{zhuayi:echo.dtime($fields['dtime'],'m月d日')/}</span>
 				</li>
 			{/zhuayi:article_list}
 			</ul>
@@ -229,4 +229,14 @@
 </div>
 <div class="clear"></div>
 {/zhuayi:article_class_list}
+<div class="links w_960">
+	<div class="title zcms">
+		<span class="float_left">友情链接</span>
+	</div>
+	<ul>
+	{zhuayi:link_list}
+		<li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</li>
+	{/zhuayi:link_list}
+	</ul>
+</div>
 {zhuayi:include file="底部.html"/}
