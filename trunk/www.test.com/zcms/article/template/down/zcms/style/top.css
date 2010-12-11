@@ -46,7 +46,7 @@ a:visited{color:#666;}
 .w_960 .article_list .article_pic img{float:left;border:1px #ccc solid;padding:1px;width:62px;margin-right:5px;}
 .w_960 .article_list .article_pic .float_left{width:155px;line-height:180%;}
 .w_960 .article_list .article_pic .float_left a{color:#0356b9;}
-.w_960 .article_list .article_pic .float_left h3{height:20px;overflow:hidden;color:red;}
+.w_960 .article_list .article_pic .float_left h3{height:20px;overflow:hidden;color:red;font-size:14px}
 .w_960 .article_list .article_pic .float_left h3 a{color:red;}
 .w_960 .article_list .jiange{width:230px;height:2px;overflow:hidden;}
 .w_960 .article_list li{height:25px;line-height:25px;overflow:hidden;background:url(../images/zcms.png) 0px -457px;padding-left:10px;}

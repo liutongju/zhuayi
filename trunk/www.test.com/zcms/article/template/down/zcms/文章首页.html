@@ -3,7 +3,54 @@
 <div class="w_960 overflow">
 	<div class="index_top_left float_left">
 		<div class="flash">
-			<div id="simplegallery1"></div>
+			<script type="text/javascript">
+<!--
+var focus_width=296
+var focus_height=225
+var text_height=24
+linkarr = new Array();
+picarr = new Array();
+textarr = new Array();
+var files = "";
+var links = "";
+var texts = "";
+
+{zhuayi:article_list limit=5 litpic=1 flag="huandengpian"}
+linkarr[{zhuayi:echo.$key/}] = "{zhuayi:echo.$fields['url']/}";
+picarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.litpic($fields['litpic'],296)/}";
+textarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.$fields['title']/}";
+{/zhuayi:article_list}
+for(i=0;i<picarr.length;i++){
+  if(files=="") files = picarr[i];
+  else files += "|"+picarr[i];
+}
+for(i=0;i<linkarr.length;i++){
+  if(links=="") links = linkarr[i];
+  else links += "|"+linkarr[i];
+}
+for(i=0;i<textarr.length;i++){
+  if(texts=="") texts = textarr[i];
+  else texts += "|"+textarr[i];
+}
+
+
+var swf_height = focus_height+text_height
+function clearText(str)
+{
+	return str.substr(0, str.length - 1);
+}
+var pics=clearText(files+'|')
+var links=clearText(links+'|')
+var texts=clearText(texts+'|')
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cabjavascript:void(0)version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'"  hspace="0">');
+document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="{zhuayi:echo.$path/}/images/pixviewer.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+document.write('<embed src="{zhuayi:echo.$path/}/images/pixviewer.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+document.write('</object>');					
+//-->
+ </script>
+
 		</div>
 
 		<div class="title zcms">
