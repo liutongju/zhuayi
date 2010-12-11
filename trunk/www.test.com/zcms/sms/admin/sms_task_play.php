@@ -45,7 +45,10 @@ if ($_REQUEST['play'] != 1)
 }
 else
 {
-	$reset = 0;
+	/* 查询任务 */
+	$info = $query->one_array("select * from ".T."sms_task where id=".$_REQUEST['id']);
+	$sms_num[] = $_REQUEST['sms'];
+	$reset = $sms->sendSMS($sms_num,$info['body']);
 	/* 更新状态 */
 	if ($reset == 0)
 	{

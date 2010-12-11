@@ -26,9 +26,10 @@ else
 	$i=1;
 	foreach ($string as $val)
 	{
-		if ($query->maxnum("select count(*) from ".T."sms where sms ='".trim($val)."'")==0)
+		$val = explode('|',$val);
+		if ($query->maxnum("select count(*) from ".T."sms where sms ='".trim($val[0])."'")==0)
 		{
-			$query->query("insert into ".T."sms(cid,sms,username,dtime)values('".$_POST['cid']."','".trim($val)."','".trim($val)."','".time()."')");
+			$query->query("insert into ".T."sms(cid,sms,username,dtime)values('".$_POST['cid']."','".trim($val[0])."','".trim($val[1])."','".time()."')");
 			$i++;
 		}
 		

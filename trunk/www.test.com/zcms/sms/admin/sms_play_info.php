@@ -12,5 +12,6 @@
 $_POST['sms'] = explode(';',$_POST['sms']);
 $_POST['body'] = siconv($_POST['body']);
 echo $sms->sendSMS($_POST['sms'],$_POST['body']);
+$query->query("update ".T."sms_statistics set sms_num=sms_num+1");
 exit;
 ?>
