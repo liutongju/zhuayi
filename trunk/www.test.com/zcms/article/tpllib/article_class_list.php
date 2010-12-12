@@ -34,6 +34,7 @@ function article_class_list($atts)
 	$reset = $query->query($sql);
 	while ($row = $query->fetch_array($reset))
 	{
+		$row['channelid'] = parent_parent_id($row['id']);
 		$list[] = $row;
 	}
 	return $list;

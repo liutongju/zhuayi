@@ -20,6 +20,10 @@ function search_list($atts)
 
 	$search = ' where a.id >0';
 
+	if (!empty($start))
+	{
+		$startnum = $start;
+	}
 	
 	if (!empty($title))
 	{

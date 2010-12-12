@@ -2,7 +2,6 @@
 function litpic($litpic,$width=0,$height=0)
 {
 	global $weburl,$pic_cache;
-	
 	if ($pic_cache == 0)
 	{
 		/* ¹Ø±ÕÍ¼Æ¬»º´æ¹¦ÄÜ */

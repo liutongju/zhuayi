@@ -6,7 +6,7 @@ $flag = "推荐|tuijian
 热门|remen
 幻灯片|huandengpian";
 $source = "新浪|网易|腾讯";
-$article_tpl = "D:/web/vhosts/www.153k.com/zcms/article/template/down/zcms";
+$article_tpl = "D:/web/vhosts/www.test.com/zcms/article/template/down/mobantianxia";
 $article_class_generate = "1";
 $article_class_path = "/{catdir}/index.html";
 $article_class_time = "3600";
