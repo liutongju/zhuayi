@@ -4,8 +4,8 @@
 <title>{zhuayi:echo.$seo['seo_title']/} - {zhuayi:echo.$webname/}</title>
 <link href="{zhuayi:echo.$path/}style/top.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="{zhuayi:echo.$path/}js/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=7">
 <meta name="author" content="Zcms">
 <meta name="keywords" content="{zhuayi:echo.$seo['seo_keywords']/}">
 <meta name="description" content="{zhuayi:echo.$seo['seo_description']/}">
@@ -26,6 +26,7 @@ $(function(){
 			{zhuayi:echo.dtime(time(),"Y年m月d日G:i:s")/}　{zhuayi:echo.dtime(time(),'5')/}		</span>
 		<span class="float_right right">
 			<a href="/index.php?m=article&c=sitemap">网站地图</a> | 
+			<a href="/index.php?m=article&c=tags">Tags标签</a> | 
 			<a href='javascript:' onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('{zhuayi:echo.$weburl/}');">【设为首页】</a> | 
 			<a href="javascript:window.external.addFavorite('{zhuayi:echo.$weburl/}','{zhuayi:echo.$webname/}');">【加入收藏】</a>		</span>
 	</div>

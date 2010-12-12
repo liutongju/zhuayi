@@ -206,8 +206,8 @@ class dbQuery {
 	function halt($message = '', $sql = '') {
 		if ($this->error===false)
 		{
-			echo $message.'<br>'.$sql;
-			//error_404($message.'<br>'.$sql);
+			//echo $message.'<br>'.$sql;
+			error_404($message.'<br>'.$sql);
 			exit;
 		}
 

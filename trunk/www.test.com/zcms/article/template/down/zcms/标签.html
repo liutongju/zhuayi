@@ -2,7 +2,7 @@
 <link href="{zhuayi:echo.$path/}style/single.css" rel="stylesheet" type="text/css" />
 <div class="w_960 location">
 	当前位置：
-	<a href="/">首页</a> > {zhuayi:echo.$info['title']/}
+	<a href="/">首页</a> > Tags标签
 	
 </div>
 <div class="w_960 overflow single">
@@ -23,9 +23,13 @@
 		</ul>
 	</div>
 	<div class="single_right float_right">
-		<div class="title">{zhuayi:echo.$info['title']/}</div>
+		<div class="title">Tags标签</div>
 		<div class="body">
-			{zhuayi:echo.$info['body']/}
+			<div class="tags">
+				{zhuayi:search_list tables='article' limit=9999}
+					<a href="/article/search/tags/{zhuayi:echo.$fields['title']/}" target="_blank" <?php if ($fields['num']>1){echo 'class="inde"';}?>>{zhuayi:echo.$fields['title']/}</a>
+				{/zhuayi:search_list}
+			</div>
 		</div>
 	</div>
 </div>

@@ -2,7 +2,7 @@
 <link href="{zhuayi:echo.$path/}style/single.css" rel="stylesheet" type="text/css" />
 <div class="w_960 location">
 	当前位置：
-	<a href="/">首页</a> > 网站地图
+	<a href="/">首页</a> > Tags标签
 	
 </div>
 <div class="w_960 overflow single">
@@ -14,10 +14,13 @@
 			<li><a href="{zhuayi:echo.$fields['url']/}">{zhuayi:echo.$fields['title']/}</a></li>
 		</ul>
 		{/zhuayi:single_list}
+	{/zhuayi:single_list}
+		<ul>
+			<li><a href="/index.php?m=article&c=tags">Tags标签</a></li>
+		</ul>
 		<ul>
 			<li><a href="/index.php?m=article&c=sitemap">网站地图</a></li>
 		</ul>
-	{/zhuayi:single_list}
 	</div>
 	<div class="single_right float_right">
 		<div class="title">网站地图</div>
@@ -31,6 +34,10 @@
 				{/zhuayi:article_class_list}
 				</ul>
 			{/zhuayi:article_class_list}
+			</div>
+			<div class="sitemap_to">
+				<h2><a href="/sitemaps/baidu_1.xml" target="_blank">百度地图</a></h2>
+				<h2><a href="/sitemaps/google_1.xml" target="_blank">Google地图</a></h2>
 			</div>
 		</div>
 	</div>

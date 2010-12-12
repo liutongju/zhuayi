@@ -26,7 +26,7 @@ function article_list($atts)
 
 	if (!empty($title))
 	{
-		$search .= " and a.title like '%".$title."%'";
+		$search .= " and concat(a.title,a.tags) like '%".$title."%'";
 	}
 	
 	if (!empty($related))

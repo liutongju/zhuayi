@@ -16,7 +16,7 @@ a:hover{color:red}
 a:visited{color:#666;}
 
 .border-bottom{border-bottom:1px #ccc solid}
-.top{height:30px;line-height:30px;}
+.top{height:30px;line-height:30px;overflow:hidden;}
 .top .left{padding-left:18px;}
 .top .right{padding-right:0px;}
 
@@ -30,7 +30,7 @@ a:visited{color:#666;}
 .nav_search{width:943px;border:1px #b5d3f7 solid;border-top:0px;height:26px;background:#e9f4ff;margin:0 auto;padding:5px 0px 0px 15px;}
 .nav_search .text{border:1px #b5d3f7 solid;color:#666;width:200px;}
 .nav_search .search{height:21px;width:69px;border:0px;background-position:0px -38px;text-indent:-100px;}
-.nav_search .tags{margin:5px 0px 0px 10px}
+.nav_search .tags{margin:5px 0px 0px 10px;overflow:hidden;height:15px;width:620px;}
 .nav_search .tags b{color:#333333;}
 
 .location{height:35px;line-height:35px;padding-left:10px;width:950px;}

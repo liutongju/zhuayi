@@ -125,7 +125,7 @@ else
 
 
 /* 强制信息可以模糊匹配 */
-$_POST['parameter'] == 1;
+$_POST['parameter'] = 1;
 /* 写入SEO表 */
 $_POST['request_url'] = article_url($_POST['id']);
 /* 项目原始url，自定义url时使用 */

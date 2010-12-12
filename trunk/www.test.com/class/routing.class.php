@@ -22,9 +22,10 @@ class routing
 		/*----替换当前网站URL，使他支持'/***'发布自定义URL */
 		$this->url = str_replace($weburl,'',$this->url);
 		$this->seo();
-				
+		
 		//----格式化URL
 		$this->url = parse_url($this->url);
+		
 		$this->url_res();
 	}
 	/*----初始话应用程序 */
