@@ -5,7 +5,8 @@
 .sbul li{line-height:30px;}
 .button{margin-top:20px;}
 
-</style>	<div class="col-2">
+</style>
+<div class="col-2">
 
 	<h6>提示区：</h6>
 	<div class="sbs" id="update_tips" style="height:360px; overflow:auto;">
@@ -83,12 +84,13 @@ function generate2(id)
 		})
 	j++;
 }
-if (arr.length==0)
+if (arr.length<=1)
 {
-	alert('错误的数据来源..');
+	$("#file").append('<li style="color:red">提示： 没有可要生成的信息 </li>');
 }
 else
 {
+	//alert(arr.length);
 	generate()
 }
 </script>

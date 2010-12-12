@@ -15,7 +15,7 @@
 ?>
 		<url>
 			<loc>{zhuayi:echo.$fields['url']/}</loc>
-			<lastmod>{zhuayi:echo.dtime($fields['dtime'])/}</lastmod>
+			<lastmod>{zhuayi:echo.dtime($fields['dtime'],"Y-m-d")/}</lastmod>
 			<changefreq>{zhuayi:echo.$_REQUEST['content_changefreq']/}</changefreq>
 			<priority>{zhuayi:echo.$_REQUEST['content_priority']/}</priority>
 		</url>
