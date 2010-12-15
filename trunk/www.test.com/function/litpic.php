@@ -19,8 +19,9 @@ function litpic($litpic,$width=0,$height=0)
 	{
 		$h = '.'.$h;
 	}	$litpic_tmp = ZCMS_ROOT.'/data/litpic_tmp/'.$width.'_'.$height.'/'.$litpic_tmp.$h;
-	
-	if (!file_exists($litpic_tmp))
+
+	/* 判断图片缓存时间 */
+	if (!file_exists($litpic_tmp) || (time()-filemtime($litpic_tmp))>84600)
 	{
 		/* 判断是否远程文件 */
 		if (substr($litpic,0,1)!='/' && substr($litpic,0,strlen($weburl))!=$weburl)
@@ -39,6 +40,8 @@ function litpic($litpic,$width=0,$height=0)
 		$litpic_tmp =  breviary($litpic_tmp,ZCMS_ROOT.$litpic,$width,$height,$cut);
 		
 	}
+	/* 判断图片缓存时间 */
+	
 	return str_replace(ZCMS_ROOT,$weburl,$litpic_tmp);}
 
 /*
