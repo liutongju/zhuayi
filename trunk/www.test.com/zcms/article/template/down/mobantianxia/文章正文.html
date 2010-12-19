@@ -1,0 +1,103 @@
+<div class="wrapper vmid">
+    <!-- Container begin -->
+    <div class="container">
+{zhuayi:include filename="头部.html"/}
+    <!-- Content begin -->
+<div class="content">
+	<!-- Breadcrumb begin -->
+    	<div class="breadcrumb">
+  		当前位置：
+		<a href="/">首页</a> > 
+		<?php foreach ($info['position'] as $val){?>
+		<a href="{zhuayi:echo.$val['url']/}">{zhuayi:echo.$val['classname']/}</a> > 
+		<?php }?>
+		<a href="{zhuayi:echo.$info['url']/}">{zhuayi:echo.$info['title']/}</a> 正文 
+		</div>    <!-- Breadcrumb end -->
+    <!-- SinglePost begin -->
+	<div class="single">
+			            <h1>{zhuayi:echo.$info['title']/}</h1>
+            <div class="meta singlemeta">
+            	<span>{zhuayi:echo.dtime($info['dtime'])/}</span>
+                <span>来源:{zhuayi:echo.$info['source']/}</span>
+                <span>字号: <a href="javascript:void(0)" class="mfbig">大</a> <a href="javascript:void(0)" class="mfmid">中</a> <a href="javascript:void(0)" class="mfsml mfcurrent">小</a> </span> 
+            </div>
+            <!-- PostContent begin -->
+            <div class="entry">
+            	<p class="summary"><strong>摘要</strong>:{zhuayi:echo.$info['abstract']/}　
+                </p>
+                <div class="entrycontent">
+
+                {zhuayi:echo.$info['body']/}
+                <div class="dede_pages" style="margin-left:50px;">
+				   <ul class="pagelist">
+                       {zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile/}
+				   </ul>
+                </div>
+				<div class="ad_single ad_singlebtm ">
+                
+                
+                
+                 <!-- 内容页底部468 60广告 begin -->
+                        <script src='/plus/ad_js.php?aid=4' language='javascript'></script>                 
+                 <!-- 内容页底部468 60广告 end -->  
+                
+                
+                
+                  
+                    <div class="clear"></div>
+                    </div>
+            	</div>
+            </div>
+            <!-- PostContent end -->
+            <!-- PostFunction begin -->
+			<!-- //顶踩 -->
+          
+
+			
+                <div class="clear"></div>
+                <strong>标签:</strong>{zhuayi:echo.$info['tags']/}<br />
+                <strong>版权所有:</strong> 非特殊声明均为本站原创文章，转载请注明出处： <a class="underline" href="{zhuayi:echo.$weburl/}">{zhuayi:echo.$webname/}</a><br />
+
+            </div>
+            <!-- PostFunction end -->
+            <!-- Related Content begin -->
+            <div class="relatedrandom">
+                <div class="related">
+                    <h3>相关阅读</h3>
+                    	<ul class="rltimg">
+						  {zhuayi:article_list limit=8 cid=$info['cid'] litpic=1}
+                          <li><A href="{zhuayi:echo.$fields['url']/}" target=_blank><IMG class="border_green_2" alt="{zhuayi:echo.$fields['title']/}" src="{zhuayi:echo.litpic($fields['litpic'],146,100)/}"></A><h4><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}">{zhuayi:echo.$fields['title']/}</a></h4></li>
+                          {/zhuayi:article_list}
+                        </ul>
+                </div>  
+                <div class="random">
+                    <h3>随机推荐</h3>
+                        <ul>
+                        {zhuayi:article_list limit=8 cid=$info['cid'] litpic=1}
+                           <li><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}">{zhuayi:echo.$fields['title']/}</a></li>
+                        {/zhuayi:article_list}
+                        </ul>
+                </div> 
+		</div>
+		<!-- Related Content end -->
+		<!-- PostTool begin -->
+		
+		<!-- PostTool end -->
+		<!-- PageNavigation begin -->
+		<div class="clear"></div>
+		<div class="postnavi">
+             <div class="previous_post">上一篇：<a href="{zhuayi:echo.$info['pre']['url']/}">{zhuayi:echo.$info['pre']['title']/}</a></div>
+            <div class="next_post">下一篇：<a href="{zhuayi:echo.$info['next']['url']/}">{zhuayi:echo.$info['next']['title']/}</a></div>
+		</div>
+     <!-- PageNavigation end -->
+	 </div>
+     <!-- SinglePost end -->
+     <!-- PostComment begin -->
+ 	{zhuayi:include filename="右边.html"/}
+    <!-- Sidebar end -->
+	</div>
+    <!-- Container end -->
+{zhuayi:include filename="底部.html"/}
+<!-- /footer -->
+</body>
+</html>

@@ -1,11 +1,11 @@
 <?php
 /**
  * index.php     ZCMS 安装文件
- * 
+ *
  * @copyright    (C) 2005 - 2010  ZCMS
  * @licenes      http://www.zcms.cc
  * @lastmodify   2010-10-27
- * @author       zhuayi  
+ * @author       zhuayi
  * @QQ			 2179942
  *///----屏蔽一般错误
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
@@ -17,70 +17,88 @@ define('ZCMS_ROOT', str_replace("\\", '/', substr(dirname(__FILE__), 0, -7)));
 if(file_exists(ZCMS_ROOT.'/data/zcms.lock') ){exit('你已经安装过了<br>重新安装请删除data目录下的zcms.lock文件');}
 include_once ZCMS_ROOT.'/data/include/zcms_config.php';
 include_once ZCMS_ROOT.'/data/include/web_config.php';
-//-----载入数据库配置文件
+
+/* -----定义数据表前缀  */
+define('T', $cookievarpre);
 
 //-----载入数据库类
 include_once(ZCMS_ROOT.'/class/mysql.class.php');
 
-
-if ($_REQUEST['c'] != 'info' && $_REQUEST['c'] != 'setup')
+if ($_REQUEST['setup']=='')
 {
-	require ZCMS_ROOT.'/install/template/zcms.html';
+	require ZCMS_ROOT.'/install/1.html';
+	exit;
 }
-if ($_REQUEST['c'] == 'info')
+elseif ($_REQUEST['setup'] ==2)
 {
-	$_POST['zcms_config']['perpagenum'] = 20;
-	
-	//---判断网站域名后边有没有"/"，如果有则替换掉
-	if (substr($_POST['web_config']['weburl'],-1,1) == '/')
+	if ($_REQUEST['method'] == 'info')
 	{
-		$_POST['web_config']['weburl'] = substr($_POST['web_config']['weburl'],0,strlen($_POST['web_config']['weburl'])-1);
-	}
-	//---写入文件
-	foreach ($_POST['filename'] as $key=>$val)
-	{
+		$_POST['zcms_config']['perpagenum']=20;
+		/* 写入文件 */
 		$conent = '<?php'."\r\n";
 
-		foreach ($_POST[$val] as $keys => $vals)
+		foreach ($_POST['zcms_config'] as $keys => $vals)
 		{
-			$conent .= '$'.$keys.' = "'.$vals.'";'."\r\n"; 
+			$conent .= '$'.$keys.' = "'.$vals.'";'."\r\n";
 		}
-		
 		$conent .= '?>';
-		write(ZCMS_ROOT.'/data/include/'.$val.'.php',$conent);
+		write(ZCMS_ROOT.'/data/include/zcms_config.php',$conent);
+		$query = new dbQuery($_POST['zcms_config']['dbhost'],$_POST['zcms_config']['dbuser'],$_POST['zcms_config']['dbpw'],$_POST['zcms_config']['dbname'],'GBK');
+		//----创建数据库
+		$query->query('CREATE DATABASE IF NOT EXISTS `'.$_POST['zcms_config']['dbname'].'` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci');
+		//echo '创建数据库....<br>';
+		Header("Location:/install/?setup=3");
 	}
+	require ZCMS_ROOT.'/install/2.html';
+	exit;
+}
+elseif ($_REQUEST['setup'] ==3)
+{
 
 	$query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
-	//----安装数据库
-	$sql = handie(ZCMS_ROOT.'/install/sql/');
-	//----创建数据库
-	$query->query('CREATE DATABASE IF NOT EXISTS `'.$dbname.'` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci');
-	//echo '创建数据库....<br>';
-	$query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
-	foreach ($sql as $val)
+	if ($_REQUEST['method'] == 'info')
 	{
-		//-------创建数据表
-		echo '创建<font color=red>'.str_replace('.sql','',basename($val)).'</font>数据表...<br>';
-		//-------打开
-		$content = file_get_contents($val);
-		//------转换为数组
+		/* 写入文件 */
+		$conent = '<?php'."\r\n";
+
+		$_POST['web_config']['pic_cache']=1;
+		foreach ($_POST['web_config'] as $keys => $vals)
+		{
+			$conent .= '$'.$keys.' = "'.$vals.'";'."\r\n";
+		}
+		$conent .= '?>';
+		write(ZCMS_ROOT.'/data/include/web_config.php',$conent);
+		/* 写入管理员帐号密码。写入前先清空 */
+		$query->query('truncate table '.T.'admin');
+		/* 写入数据库 */
+		$_POST['admin']['pass'] = mymd5($_POST['admin']['pass']);
+		$_POST['admin']['gid'] = 2;
+		$query->save('admin',$_POST['admin']);
+		write(ZCMS_ROOT.'/data/zcms.lock',time());
+		showmsg('安装成功','/index.php?m=admin&c=login&a=init');
+	}
+	else
+	{
+		//echo $dbhost;
+		//----安装数据库
+		$sql = ZCMS_ROOT.'/install/install.sql';
+		$content = file_get_contents($sql);
 		$content = explode(";".chr(13),$content);
 		//------安装数据库
 		foreach ($content as $vals)
 		{
 			if (!empty($vals))
 			$query->query(str_replace('{%z%}',$cookievarpre,$vals));
-			
 		}
-		
+		if (empty($weburl))
+		{
+			$weburl = 'http://';
+		}
 	}
-	$_POST['admin']['pass'] = mymd5($_POST['admin']['pass']);
-	$_POST['admin']['gid'] = 2;
-	$query->save('admin',$_POST['admin']);
-	//echo '完成安装';
-	write(ZCMS_ROOT.'/data/zcms.lock');
-	showmsg('安装成功','/index.php?m=admin&c=login&a=init');
+	require ZCMS_ROOT.'/install/3.html';
+	exit;
 }
+
 /**
  * 写入文件
  * @ file   文件名包含路径
@@ -90,7 +108,7 @@ if ($_REQUEST['c'] == 'info')
 function write($file,$conent,$w="w")
 {
 	//-----获取写入文件路径，用来生成路径
-	$filedir = str_replace(basename($file),'',$file);	
+	$filedir = str_replace(basename($file),'',$file);
 	if (!file_exists($filedir))
 	{
 		mkdir($filedir,777,true);
@@ -108,7 +126,7 @@ function handie($filepath,$filet="")
 	while (false != ($file = readdir($handle)))
 	{
 		if ($file != "." && $file != ".." && $file != ".DS_Store")
-		{ 
+		{
 			$files[]= $filepath.'/'.$file;
 		}
 	}
@@ -144,7 +162,7 @@ function on_array($file2)
 		{
 			foreach ($f as $fs )
 			{
-				
+
 				$file3[] = $fs;
 			}
 		}
@@ -170,8 +188,15 @@ function showmsg($title='',$url='/',$time=1250,$a='init')
 	{
 		$url = "window.location.href='".$url."'";
 	}
-	//----跳转URL	
-	header("Location: /index.php?m=showmsg&a=".$a."&title=".$title."&url=".base64_encode($url).'&time='.$time); 
+	//----跳转URL
+	header("Location: /index.php?m=showmsg&a=".$a."&title=".$title."&url=".base64_encode($url).'&time='.$time);
 	exit;
 }
+
+function set_cookie($var,$val)
+{
+
+	return setcookie(T.$var,$val,0,'/',$_SERVER['HTTP_HOST']);
+}
+
 ?>

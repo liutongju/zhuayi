@@ -1,0 +1,332 @@
+{zhuayi:include file="头部.html"/}
+
+<!-- main -->
+<div class="wrapper vmid">
+<div class="home" id="main">
+
+
+<!-- 先加载内容后加载广告开始 980 60 01  广告请修改最底的js代码 -->
+<div id="mbtx" style="display:none;"></div>
+<!-- 先加载内容后加载广告结束 980 60 01 -->
+
+<!-- 先加载内容后加载广告开始 980 60 02 -->
+<div id="mbtx1" style="display:none; margin-bottom:5px;"></div>
+<!-- 先加载内容后加载广告结束 980 60 02 -->
+
+  <div class="mbtx_nav"><img src="{zhuayi:echo.$path/}/style/8gbdicomiist3nhrb1g8i1.jpg" style="float:left;">
+        <div class="mbtx_today">
+             <span class="mbtx_date"><font color="#808080">今天是：
+<script language=javascript>
+
+today=new date();
+var hours = today.gethours();
+var minutes = today.getminutes();
+var seconds = today.getseconds();
+function initarray(){
+this.length=initarray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initarray.arguments[i] }
+var d=new initarray("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+document.write(today.getyear(),"年",today.getmonth()+1,"月",today.getdate(),"日 ",d[today.getday()+1]," ");
+
+</script></font>
+&nbsp;&nbsp;&nbsp;<font color="#ff6600">公告：</font></span>
+             <span class="mbtx_line1"><a href="http://www.zcms.cc">ZCMS圣诞全新发布</a></span>
+             <span class="mbtx_line">
+                 <a href="javascript:sethomepage();" class="mbtx_news">设为主页</a>
+                 <a href="javascript:addbookmark('模板天下','http://www.mobantianxia.cn/')" class="mbtx_elite">加入收藏</a>
+             </span>
+        </div><img src="{zhuayi:echo.$path/}/style/8jwjtst8c8wczcjsnkeyud.jpg" style="float:right;">
+      </div>
+      <div>
+        <div class="mbtx_oneleft">
+          <div class="mbtx_oneleft_boxone">
+          
+<script type="text/javascript">
+<!--
+var focus_width=292
+var focus_height=280
+var text_height=24
+linkarr = new Array();
+picarr = new Array();
+textarr = new Array();
+var files = "";
+var links = "";
+var texts = "";
+
+{zhuayi:article_list limit=5 litpic=1 flag="huandengpian"}
+linkarr[{zhuayi:echo.$key/}] = "{zhuayi:echo.$fields['url']/}";
+picarr[{zhuayi:echo.$key/}]  = "{zhuayi:echo.litpic($fields['litpic'],292,280)/}";
+textarr[{zhuayi:echo.$key/}]  = '{zhuayi:echo.$fields['title']/}';
+{/zhuayi:article_list}
+for(i=0;i<picarr.length;i++){
+  if(files=="") files = picarr[i];
+  else files += "|"+picarr[i];
+}
+for(i=0;i<linkarr.length;i++){
+  if(links=="") links = linkarr[i];
+  else links += "|"+linkarr[i];
+}
+for(i=0;i<textarr.length;i++){
+  if(texts=="") texts = textarr[i];
+  else texts += "|"+textarr[i];
+}
+
+
+var swf_height = focus_height+text_height
+function clearText(str)
+{
+	return str.substr(0, str.length - 1);
+}
+var pics=clearText(files+'|')
+var links=clearText(links+'|')
+var texts=clearText(texts+'|')
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cabjavascript:void(0)version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'"  hspace="0">');
+document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="{zhuayi:echo.$path/}/images/pixviewer.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+document.write('<embed src="{zhuayi:echo.$path/}/images/pixviewer.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+document.write('</object>');					
+//-->
+ </script>
+          
+          
+          
+          </div>
+          
+        <div class="capbox" id="goodsoft" style="margin-top:5px;">
+           <div class="inhead"><strong>推荐信息</strong></div>
+        <div class="inbody">
+           <ul>
+			{zhuayi:article_list limit=3 flag="remen" litpic=1 titleen=50}
+             <li>
+                  <a href="{zhuayi:echo.$fields['url']/}" target="_blank">
+                  <img height=0 src="{zhuayi:echo.$fields['litpic']/}" alt="{zhuayi:echo.$fields['title']/}" width=0 border=0>
+                  <strong>{zhuayi:echo.$fields['title']/}</strong>
+                    <span>{zhuayi:echo.$fields['abstract']/}</span>
+                  </a> 
+             </li>
+             {/zhuayi:article_list}
+           </ul>
+        </div>
+      </div>
+   </div>
+   <div class="mbtx_onemiddle">
+      <div class="mbtx_onemiddle_boxone">
+        <div class="mbtx_onemiddle_boxtwo clearfix">
+           <div class="area">
+			   {zhuayi:article_list limit=2  titleen=50}
+               <h1><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></h1>
+                  <p>{zhuayi:echo.$fields['abstract']/}...</p>
+               {/zhuayi:article_list}
+           </div>
+           <div class="content">
+
+               <h2><strong>最新信息</strong></h2>
+
+           </div>
+
+               <ul class="mbtx_onemiddle_ultwo">
+				  {zhuayi:article_list limit=13 start=2 titleen=38}
+                  <li>
+                      <span class="mbtxtime">
+						{zhuayi:echo.dtime($fields['dtime'],"m月d日")/}
+                      </span>
+                      <span><font color="ff6200">[</font>{zhuayi:echo.$fields['classname']/}<font color="ff6200">]</font></span>
+                      <a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
+                  </li>
+                 {/zhuayi:article_list}
+
+               </ul>
+        </div>
+      </div>
+   </div>
+   <div class="mbtx_oneright">
+      <div class="mbtx_oneright_boxone">
+          <h2 class="mbtx_rightmdb5"><strong>精彩推荐</strong></h2>
+          <ul class="mbtx_oneright_ulone">
+			 {zhuayi:article_list limit=2  titlelen=14 flag="tuijian"}
+             <li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">
+                 <img src="{zhuayi:echo.litpic($fields['litpic'],95,74)/}" alt="{zhuayi:echo.$fields['title']/}" width="95" height="74" align="left"></a>
+                 <strong><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></strong><br>
+                 {zhuayi:echo.$fields['abstract']/}
+             </li>
+             {/zhuayi:article_list}
+          </ul>
+          <ul class="mbtx_oneright_ultwo">
+			 {zhuayi:article_list limit=3 start=2 titlelen=44 flag="tuijian"}
+             <li><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+            {/zhuayi:article_list}
+          </ul>
+      </div>
+      <div class="mbtx_oneright_boxone mbtx_add">
+
+          <h2 class="mbtx_rightmdb5"><strong>网站工具箱</strong><a href="http://tool.chinaz.com" target="_blank">更多&gt;&gt;</a></h2>
+          <ul class="mbtx_oneright_ulthree">
+             <li><a href="http://alexa.chinaz.com/?domain=mobantianxia.cn" target="_blank">alexa排名</a></li>
+             <li><a href="http://pr.chinaz.com/" target="_blank">pr值查询</a></li>
+             <li><a href="http://tool.chinaz.com/links/" target="_blank">死链查询</a></li>
+             <li><a href="http://www.55.la/new_logo.html" target="_blank">logo生成</a></li>
+             <li><a href="http://www.55.la" target="_blank">banner生成</a></li>
+             <li><a href="http://gif.55.la/" target="_blank">gif动画生成</a></li>
+             <li><a href="http://www.jscode.cn/" target="_blank">网页特效</a></li>
+             <li><a href="http://tool.chinaz.com/" target="_blank">更多工具</a></li>
+          </ul>
+      </div>
+   </div>
+</div>
+<div style="clear:both;"></div>
+<div class="mbtx_twobox" style="margin-bottom:10px;">
+        <h2 class="mbtx_rightmdb5"><strong>图文信息</strong></h2>
+        <ul>
+		   {zhuayi:article_list limit=12  titlelen=20 litpic=1}
+           <li>
+               <a href="{zhuayi:echo.$fields['url']/}" target="_blank">
+                  <img src="{zhuayi:echo.litpic($fields['litpic'],146,100)/}" alt="{zhuayi:echo.$fields['title']/}" width="146" height="100">
+               </a>
+               <a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a>
+           </li>
+          {/zhuayi:article_list}
+        </ul>
+</div>
+
+
+  <div class="l705">
+  {zhuayi:article_class_list parent_id=0}
+  <?php $cid = $fields['channelid'];?>
+    <div class="capbox v6 <?php if (($key+1)%2 ==0){echo 'r';}else{echo'l';}?>">
+      <div class="inhead"><a class="more" href="{zhuayi:echo.$fields['url']/}" target="_blank">更多</a><strong>{zhuayi:echo.$fields['classname']/}</strong></div>
+      <div class="inbody">
+		   {zhuayi:article_list limit=1 cid=$cid titlelen=36 litpic=1}
+           <a class="focus" href="{zhuayi:echo.$fields['url']/}"><img alt="{zhuayi:echo.$fields['title']/}" src="{zhuayi:echo.litpic($fields['litpic'],120,90)/}" width="120" height="90" border="0" />           
+           <strong>{zhuayi:echo.$fields['title']/}</strong>
+           <span>{zhuayi:echo.$fields['abstract']/}</span></a>
+           {/zhuayi:article_list}
+        <ul>         
+		   {zhuayi:article_list limit=6  titlelen=40 cid=$cid start=1}
+           <li class="list{zhuayi:echo.$key/}">
+              <span><em class="olddate">{zhuayi:echo.dtime($fields['dtime'],"m月d日")/}</em>
+              </span>
+              <b class="cat">{zhuayi:echo.$fields['classname']/}</b>
+              <a href="{zhuayi:echo.$fields['url']/}" class="arc" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a>
+           </li>
+           {/zhuayi:article_list}
+        </ul>
+      </div>
+    </div>
+
+{/zhuayi:article_class_list}
+
+  </div>
+  <div class="r250">
+    <div class="rank">
+      <div class="tabhead_2"><strong>本类信息排行</strong><span> <b id="rank1menu1" onmouseover="easytabs('3','1')" >总</b> <b id="rank1menu2" onmouseover="easytabs('3','2')">月</b> <b id="rank1menu3" onmouseover="easytabs('3','3')"> 周</b></span></div>
+      <div class="tabbody">
+         <div id="rank1content1">
+              <ul>
+				{zhuayi:article_list limit=10  titlelen=40}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+              </ul>
+         </div>
+        
+        <div id="rank1content2" style="display:none;">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 start=10}
+                    <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+ 
+              </ul>
+         </div>
+        
+        
+        <div id="rank1content3" style="display:none;">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 start=20}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+ 
+              </ul>
+         </div>        
+      </div>
+    </div>
+    <div class="rank">
+      <div class="tabhead_2"><strong>热门信息排行</strong><span> <b id="rank2menu1" onmouseover="easytabs('4','1')" >总</b> <b id="rank2menu2" onmouseover="easytabs('4','2')">月</b> <b id="rank2menu3" onmouseover="easytabs('4','3')"> 周</b></span></div>
+      <div class="tabbody">
+         <div id="rank2content1">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 flag="remen"}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+ 
+              </ul>
+         </div>
+        
+        <div id="rank2content2" style="display:none;">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 flag="remen" start=10}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+ 
+              </ul>
+         </div>
+        
+        
+        <div id="rank2content3" style="display:none;">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 flag="remen" start=20}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+ 
+              </ul>
+         </div>         
+      </div>
+    </div>
+    <div class="rank">
+      <div class="tabhead_2"><strong>信息推荐排行</strong><span> <b id="rank3menu1" onmouseover="easytabs('5','1')" >总</b> <b id="rank3menu2" onmouseover="easytabs('5','2')">月</b> <b id="rank3menu3" onmouseover="easytabs('5','3')"> 周</b></span></div>
+      <div class="tabbody">
+         <div id="rank3content1">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 flag="tuijian"}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+              </ul>
+         </div>
+        
+        <div id="rank3content2" style="display:none;">
+              <ul>
+                {zhuayi:article_list limit=10  titlelen=40 flag="tuijian" start=10}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+              </ul>
+         </div>
+        
+        
+        <div id="rank3content3" style="display:none;">
+              <ul>
+               {zhuayi:article_list limit=10  titlelen=40 flag="tuijian" start=20}
+                   <li><span class="rank_a">{zhuayi:echo.($key+1)/}</span><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" />{zhuayi:echo.$fields['title']/}</a></li>
+				{/zhuayi:article_list}
+              </ul>
+         </div> 
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>  
+  <div id="friendlink" class="capbox">
+    <div class="inhead"><strong>友情链接</strong></div>
+    <div class="inbody">
+      <ul class="flimg">
+           {zhuayi:link_list}
+           <li><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+           {/zhuayi:link_list} 
+      </ul>
+
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+{zhuayi:include filename="底部.html"/}
+</body>
+</html>

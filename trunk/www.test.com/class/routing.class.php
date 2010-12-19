@@ -116,7 +116,7 @@ class routing
 		$_REQUEST['g_file'] = ZCMS_ROOT.'/zcms/'.$_REQUEST['m'].'/'.$_REQUEST['m'].'_global.php';
 		
 		/* -----映射模块虚拟路径,主要用来载入模块里的图片，CSS作用 */
-		$_REQUEST['app_url'] = ZCMS_URL.'/zcms/'.$_REQUEST['m'].'/template/'.$_REQUEST['a'];
+		$_REQUEST['app_url'] = ZCMS_URL.'/zcms/'.$_REQUEST['m'].'/template/';
 
 	}
 	

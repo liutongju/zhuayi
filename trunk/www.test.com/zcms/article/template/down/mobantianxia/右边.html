@@ -1,0 +1,71 @@
+<div style="float:right;width:302px; overflow:hidden;">
+          <div class="col2">
+            <div class="panel panel-aside-green">
+                <div class="panel-head"><div class="inner">
+                    <h3 class="panel-head title">本站分类</h3>
+                </div></div>
+                <div class="panel-body">
+                    <ul class="hotrecommend">
+						<?php if(strpos($channelid,',')==0){$channelid=0;}else{$channelid = $info['id'];}
+						
+						?>
+                        {zhuayi:article_class_list parent_id=$channelid}
+                        <li><a href='{zhuayi:echo.$fields['url']/}' target="_blank"><img src="{zhuayi:echo.$path/}style/left_lanmu_nav.gif" />{zhuayi:echo.$fields['classname']/}</a></li>
+                        {/zhuayi:article_class_list}
+                    </ul>
+                </div>
+                <div class="panel-foot"><div></div></div>
+            </div>
+            
+            
+            
+            <div class="toprecommend">
+                <ul class="tabber">
+                    <li><a href="#" class="current">热门信息推荐</a></li>
+                </ul>
+                <div class="toprecommend-list">
+                   <ul>
+					  {zhuayi:article_list limit=8 titlelen=30}
+                      <li><a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank" style="height:63px;">
+                          <img src="{zhuayi:echo.litpic($fields['litpic'],60,40)/}" alt="{zhuayi:echo.$fields['title']/}" style="height:60px;width:40px;" />
+                          <strong>{zhuayi:echo.$fields['title']/}</strong>
+                          {zhuayi:echo.$fields['abstract']/}
+                          </a>
+                      </li>
+                      {/zhuayi:article_list}
+                   </ul>
+                </div>
+            </div>
+            
+            
+            
+            <div class="panel panel-aside-red">
+                <div class="panel-head"><div class="inner">
+                    <h3 class="panel-head title">阅读排行</h3>
+                </div></div>
+                <div class="panel-body">
+                    <ul class="toprank">
+						{zhuayi:article_list limit=10 titlelen=45}
+                        <li><em class="t-{zhuayi:echo.$key/}"></em> <a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+                        {/zhuayi:article_list}
+                        
+                    </ul>
+                </div>
+                <div class="panel-foot"><div></div></div>
+            </div>
+
+            <div class="panel panel-aside-green">
+                <div class="panel-head"><div class="inner">
+                    <h3 class="panel-head title">本类推荐</h3>
+                </div></div>
+                <div class="panel-body">
+                    <ul class="mobanlist">
+                        
+                        {zhuayi:article_list limit=10 titlelen=45 flag="tuijian" cid=$info['cid']}
+                        <li><em class="t-{zhuayi:echo.$key/}"></em> <a href="{zhuayi:echo.$fields['url']/}" title="{zhuayi:echo.$fields['title']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>
+                        {/zhuayi:article_list}
+                        
+                        
+                    </ul>
+                </div>
+                <div class="panel-foot"><div></div></div></div></div>

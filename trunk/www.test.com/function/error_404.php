@@ -2,6 +2,8 @@
 
 function error_404($title){
 	global $tpl;
+	echo $title;
+	exit;
 	header("HTTP/1.0 404 Not Found" );
 	/* 获取当前信息 */
 	$body = '<div style="background:#233040;color:#fff;font-family:\'微软雅黑\';padding-left:30px;">';

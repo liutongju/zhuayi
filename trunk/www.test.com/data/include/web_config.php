@@ -1,9 +1,5 @@
 <?php
-$webname = "ZCMS¹Ù·½²âÊÔÕ¾";
+$webname = "¹Ù·½ÑÝÊ¾Õ¾";
 $weburl = "http://www.test.com";
-$logo = "/data/logo.gif";
-$powerby = "CopyRight &#169; 2002-2010  All Rights Reserved";
-$beian = "¾©ICP±¸05079575ºÅ";
-$admin_log = "1";
 $pic_cache = "1";
 ?>

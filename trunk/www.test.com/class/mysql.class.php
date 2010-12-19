@@ -57,7 +57,7 @@ class dbQuery {
 	 * 选择数据库
 	 *
 	 * @param string $dbname
-	 * @return 
+	 * @return
 	 */
 	function select_db($dbname) {
 		return mysql_select_db($dbname, $this->link);
@@ -72,7 +72,7 @@ class dbQuery {
 	function fetch_array($query, $result_type = MYSQL_ASSOC) {
 		return @mysql_fetch_array($query, $result_type);
 	}
-	
+
 	/**
 	 * 查询SQL
 	 *
@@ -81,14 +81,14 @@ class dbQuery {
 	 * @return object
 	 */
 	function query($sql, $type = '') {
-		
+
 		$func = $type == 'UNBUFFERED' && @function_exists('mysql_unbuffered_query') ?
 			'mysql_unbuffered_query' : 'mysql_query';
 		if(!($query = $func($sql, $this->link)) && $type != 'SILENT') {
 			$this->halt('MySQL Query Error', $sql);
-		}		
+		}
 		$this->querynum++;
-		
+
 		return $query;
 	}
 	/**
@@ -230,7 +230,7 @@ class dbQuery {
 			if ($row['Extra']!='auto_increment')
 			$list[] = $row['Field'];
 		}
-		
+
 		if (!empty($where))
 		{
 			foreach ($array as $key=>$value)
@@ -288,6 +288,7 @@ class dbQuery {
 	 {
 	 	global $cookievarpre;
 		$table = $cookievarpre.$table;
+
 		$this->query("delete from $table where ".$where);
 	 }
 	 function maxnum($sql)
