@@ -1,11 +1,11 @@
 <?php
 /**
  * admin_edit.php     ZCMS 模块昔日在
- * 
+ *
  * @copyright    (C) 2005 - 2010  ZCMS
  * @licenes      http://www.zcms.cc
  * @lastmodify   2010-11-8
- * @author       zhuayi  
+ * @author       zhuayi
  * @QQ			 2179942
  */
 
@@ -26,10 +26,10 @@ else
 	}
 	/* 删除后台菜单 */
 	$query->delete("menu"," mid = ".$_REQUEST['id']);
-	
+
 	/* 设置模块为未安装 */
-	$query->query("update ".T."module set install = 0 where id =".$_REQUEST['id']);
-	
+	$query->query("delete from ".T."module where id =".$_REQUEST['id']);
+
 	showmsg('卸载成功..',ret_cookie('backurl'));
 	exit;
 }

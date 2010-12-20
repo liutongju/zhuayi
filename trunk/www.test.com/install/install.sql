@@ -112,6 +112,15 @@ CREATE TABLE IF NOT EXISTS `{%z%}module` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk COMMENT='模型表' AUTO_INCREMENT=2 ;
 
+INSERT INTO `{%z%}module` (`id`, `title`, `type`, `mark`, `author`, `version`, `install`, `dtime`, `tables`) VALUES
+(2, '广告中心', 1, 'ads', 'zhuayi', 'v1.0', 0, 0, 'ads'),
+(3, '验证码设置', 1, 'checkcode', 'zhuayi', 'v1.0', 0, 0, 'checkcode'),
+(4, '友情链接', 1, 'link', 'zhuayi', 'v1.0', 0, 0, 'link'),
+(5, '联动菜单', 1, 'linkage', 'zhuayi', 'v1.0', 0, 0, 'linkage'),
+(6, 'Baibu/Google地图', 1, 'sitemaps', 'zhuayi', 'v1.0', 0, 0, ''),
+(7, '网站内链接', 1, 'zkeylink', 'zhuayi', 'v1.0', 0, 0, 'keylink'),
+(8, '文章模块', 0, 'article', 'zhuayi', 'v1.0', 0, 0, 'article,article_class');
+
 DROP TABLE IF EXISTS `{%z%}search`;
 CREATE TABLE IF NOT EXISTS `{%z%}search` (
   `id` int(11) NOT NULL auto_increment,

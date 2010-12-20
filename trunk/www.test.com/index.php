@@ -1,11 +1,11 @@
 <?php
 /**
  * index.php     ZCMS 入口文件
- * 
+ *
  * @copyright    (C) 2005 - 2010  ZCMS
  * @licenes      http://www.zcms.cc
  * @lastmodify   2010-10-27
- * @author       zhuayi  
+ * @author       zhuayi
  * @QQ			 2179942
  */
 /* 屏蔽一般错误 */
@@ -18,7 +18,7 @@ header('Content-type: text/html; charset=gbk');
 if(!file_exists('./data/zcms.lock') ){exit('<a href="/install/">尚未安装</a>');}
 
 /* -----设施程序运行初始时间 */
-$pagestartime=microtime(); 
+$pagestartime=microtime();
 
 /* -----定义ZCMS根目录路径  */
 define('ZCMS_ROOT', str_replace("\\", '/', dirname(__FILE__)));
@@ -89,4 +89,3 @@ if(file_exists($_REQUEST['m_file']))
 /* 输出模版  */
 $tpl->LoadTemplate($_REQUEST['c_file']);
 $tpl->Display();
-
