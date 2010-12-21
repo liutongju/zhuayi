@@ -42,8 +42,8 @@ function pagelist($atts)
 	elseif (!empty($h))
 	{
 
-		$url = preg_replace('/_(.*)(.html|.php|shtml)/','_{page}$2',$url);
-
+		$url = preg_replace('/_(.*)(.html|.php|shtml)/','$2',$url);
+		$html = $url;
 	}
 	else
 	{
@@ -68,13 +68,13 @@ function pagelist($atts)
 
 	if (!empty($html))
 	{
-		$url = str_replace('.'.$h,"_{page}.".$h,$url);
+		$url = str_replace('.'.$h,"_{page}.".$h,$html);
 		//$url = str_replace('.shtml',"_{page}.shtml",$url);
 		//$url = str_replace('.php',"_{page}.php",$url);
 
 	}
 
-	echo $totalPage      = ceil($maxnum/$perpagenum);
+	$totalPage      = ceil($maxnum/$perpagenum);
 	if ($totalPage>1)
 	return  page( $totalPage , $page , $url,3,$maxnum);
 
