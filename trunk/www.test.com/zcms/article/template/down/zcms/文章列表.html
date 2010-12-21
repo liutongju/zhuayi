@@ -22,7 +22,7 @@
 			{zhuayi:echo.$fields['abstract']/}....     <a href="{zhuayi:echo.$fields['url']/}" target="_blank">[тд╤ах╚нд]</a></li>
 		</ul>
 		{/zhuayi:article_list}
-		{zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile/}
+		{zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile perpagenum=15/}
 	</div>
 	{zhuayi:include file="ср╠ъ.html"/}
 </div>

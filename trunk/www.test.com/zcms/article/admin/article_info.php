@@ -1,11 +1,11 @@
 <?php
 /**
  * admin_info.php     ZCMS 后台文章入库操作
- * 
+ *
  * @copyright    (C) 2005 - 2010  ZCMS
  * @licenes      http://www.zcms.cc
  * @lastmodify   2010-11-8
- * @author       zhuayi  
+ * @author       zhuayi
  * @QQ			 2179942
  */
 
@@ -52,7 +52,7 @@ if ($article_tags == 1 && $_POST['tags']=='' && $_POST['seo_keywords']=='')
 
 	$tags = json_decode($tags,true);
 
-	
+
 
 	if (empty($_POST['tags']))
 	$_POST['tags'] = siconv($tags['tags']);
@@ -69,11 +69,6 @@ preg_match_all("/src=[\"\']?([%+\*\w\/:\._-]+(?:jpg|gif|bmp|jpeg|png))/ism",$_PO
 
 $pic = array_flip(array_flip($array[1]));
 
-/* ----下载第一个图为缩略图  */
-if (empty($_POST['litpic']) && !empty($pic[0]))
-{
-	$_POST['litpic'] = downfile($pic[0],'article/litpic/'.date("Y-m-d"));
-}
 /*----判断是否要下载文章内容里的图片  */
 if ($downfile == 1)
 {
@@ -83,8 +78,18 @@ if ($downfile == 1)
 		$picbody = downfile($val,'article/edit/'.date("Y-m-d"));
 		if (!empty($picbody))
 		$_POST['body'] = str_replace($val,$picbody,$_POST['body']);
+		if ($key == 0)
+		$pic[0] = $picbody;
+
 	}
 
+
+}
+
+/* ----下载第一个图为缩略图  */
+if (empty($_POST['litpic']) && !empty($pic[0]))
+{
+	$_POST['litpic'] = $pic[0];
 }
 
 $_POST['body'] = addslashes($_POST['body']);
@@ -108,8 +113,8 @@ if (empty($_REQUEST['id']))
 else
 {
 	$pagename = '修改栏目';
-	
-	$query->save("article",$_POST,' id = '.$_POST['id']);	
+
+	$query->save("article",$_POST,' id = '.$_POST['id']);
 }
 
 
