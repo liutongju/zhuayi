@@ -28,17 +28,17 @@ class routing
 		if (!empty($page_reg['1']))
 		{
 			$_REQUEST['page'] = $page_reg['1'];
-			//$this->url = explode('/',$this->url);
 			$this->url = str_replace('_'.$page_reg['1'],'',$this->url);
-			$this->url;
 		}
-		//exit;
+
 		$this->seo();
 
 		//----格式化URL
 		$this->url = parse_url($this->url);
-
+		//echo '<pre>';
 		$this->url_res();
+		//print_r($this->url);
+		//exit;
 
 	}
 	/*----初始话应用程序 */
