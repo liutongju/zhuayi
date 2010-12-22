@@ -17,7 +17,7 @@ $key_highlight = "1";
 $replace_times = "3";
 $rand_push = "1";
 $article_page_len = "9999";
-$article_generate = "0";
+$article_generate = "1";
 $article_generate_time = "3600";
 $article_generate_path = "/{catdir}/{Y}-{M}/{D}/{id}.html";
 ?>

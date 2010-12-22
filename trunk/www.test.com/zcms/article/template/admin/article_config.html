@@ -13,27 +13,6 @@ $(function(){
 	
 	//----
 	
-	if ($("input[name='article_config[article_index_generate]']:checked").val()==0)
-	{
-		$(".article_index_path").css("display",'none');
-		$(".article_index_url").css("display",'');
-	}
-	else
-	{
-		$(".article_index_path").css("display",'');
-		$(".article_index_url").css("display",'none');
-	}
-	
-	if ($("input[name='article_config[article_generate]']:checked").val()==0)
-	{
-		
-		$(".article_generate_path").css("display",'none');
-	}
-	else
-	{
-		
-		$(".article_generate_path").css("display",'');
-	}
 	
 	//----
 	if ($("input[name='article_config[article_class_generate]']:checked").val()==0)
@@ -122,14 +101,14 @@ $(function(){
 <div id="div_setting_1" class="contentList pad-10">
 	<table width="100%"  class="table_form">
 		<tr>
-			<th width="150">频道页生成Html：</th>
+			<th width="150">文章首页生成Html：</th>
 			<td class="y-bg">
 				<input name="article_config[article_index_generate]" value="1" type="radio" <?php if ($article_index_generate==1){echo ' checked';}?> class="article_index_generate"> 是&nbsp;&nbsp;&nbsp;&nbsp;
 				<input name="article_config[article_index_generate]" value="0" type="radio"  <?php if ($article_index_generate==0){echo ' checked';}?> class="article_index_generate"> 否  
 			</td>
 		</tr>
 		<tr class="article_index_url">
-			<th width="150">动态URL地址：</th>
+			<th width="150">文章首页地址：</th>
 			<td class="y-bg">
 				<input type="text" class="input-text" name="article_config[article_index_url]"  value="{zhuayi:echo.$article_index_url/}" size="60" id="article_index_url">
 			</td>

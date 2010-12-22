@@ -8,11 +8,11 @@ function seo($table,$aid,$action='')
 	$_POST['url'] = str_replace('{id}',$aid,$_POST['url']);
 	/* 替换当前网站URL，使他支持'/***'发布自定义URL */
 	$_POST['url'] = str_replace($weburl,'',$_POST['url']);
-	
+
 	/* 如果为空则不入库 */
 	if ($action=='')
 	{
-		
+
 		if ($query->maxnum("select count(*) from ".T."seo where tables ='".$table."' and aid=".$aid)==0)
 		{
 

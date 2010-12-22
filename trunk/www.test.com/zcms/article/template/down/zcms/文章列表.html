@@ -11,7 +11,7 @@
 <div class="w_960 overflow">
 	<div class="float_left article_list_class">
 		<h1><a href="{zhuayi:echo.$info['url']/}">{zhuayi:echo.$info['classname']/}</a></h1>
-		{zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile/}
+		{zhuayi:pagelist  maxnum=$info['maxnum'] page=$_REQUEST['page'] html=$htmlfile perpagenum=15/}
 		{zhuayi:article_list limit=15 cid=$cid page=$_REQUEST['page']}
 		<ul>
 			<li class="list_title"><span>{zhuayi:echo.dtime($fields['dtime'])/}</span><a href="{zhuayi:echo.$fields['url']/}" target="_blank">{zhuayi:echo.$fields['title']/}</a></li>

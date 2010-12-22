@@ -1,6 +1,0 @@
-<?php
-if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
-$fields = array();
-?><h1>您还没有设置首页内容</h1>
-<h2 style="margin-left:50px;">了解详情，请查看ZCMS论坛帮助</h2>
-<h3 style="margin-left:350px;"><a href="http://www.zcms.cc">点我进入</a></h2>

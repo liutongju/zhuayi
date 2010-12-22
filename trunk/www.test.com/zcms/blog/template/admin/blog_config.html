@@ -1,0 +1,127 @@
+{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+})
+//-->
+</script>
+<form action="?m=blog&c=config_info&a=init" method="post" id="myform">
+<div class="col-tab">
+	<ul class="tabBut cu-li">
+		<li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',4,1);">基本设置</li>
+		<li id="tab_setting_2" onclick="SwapTab('setting','on','',4,2);">URL规则设置</li>
+		<li id="tab_setting_3" onclick="SwapTab('setting','on','',4,3);">内容页配置</li>
+		<li id="tab_setting_4" onclick="SwapTab('setting','on','',4,4);">SEO设置</li>
+	</ul>
+
+<div id="div_setting_1" class="contentList pad-10">
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">自动提取博文摘要：</th>
+			<td class="y-bg">
+				<input name="blog_config[abstract]" value="1" type="radio" <?php if ($abstract==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="blog_config[abstract]" value="0" type="radio"  <?php if ($abstract==0){echo ' checked';}?>> 否 
+			</td>
+		</tr>
+		<tr>
+			<th width="150">自动提取博文关键词：</th>
+			<td class="y-bg">
+				<input name="blog_config[blog_tags]" value="1" type="radio" <?php if ($blog_tags==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="blog_config[blog_tags]" value="0" type="radio"  <?php if ($blog_tags==0){echo ' checked';}?>> 否  
+				<span>开启自动提取关键词后，博文内容中Tags和SEO关键词为空的话则自动提取</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">自动下载博文图片：</th>
+			<td class="y-bg">
+				<input name="blog_config[downfile]" value="1" type="radio" <?php if ($downfile==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="blog_config[downfile]" value="0" type="radio"  <?php if ($downfile==0){echo ' checked';}?>> 否 
+				<span>开启则自动下载博文中的外部图片链接到本地</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">自动添加内容关键词链接：</th>
+			<td class="y-bg">
+				<input name="blog_config[key_highlight]" value="1" type="radio" class="key_highlight" <?php if ($key_highlight==1){echo ' checked';}?>> 是&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="blog_config[key_highlight]" value="0" type="radio" class="key_highlight" <?php if ($key_highlight==0){echo ' checked';}?>> 否 
+				
+				<span id="key_highlight">&nbsp;&nbsp;&nbsp;&nbsp;替换次数：<input type="text" class="input-text" name="blog_config[replace_times]" id="replace_times" value="{zhuayi:echo.$replace_times/}" size="5" /> 
+				<span>开启则会在博文中自动添加的网站内联链,CSS为highlight_key样式，请在对应模版中设置</span>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="div_setting_2" class="contentList pad-10 hidden">
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="150">博客首页地址：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="blog_config[blog_index_url]"  value="{zhuayi:echo.$blog_index_url/}" size="60">
+			</td>
+		</tr>
+		<tr>
+			<th width="150">分类地址规则：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="blog_config[blog_class_url]"  value="{zhuayi:echo.$blog_class_url/}" size="60"/>
+				<span><br>可用标签{catdir}==>栏目路径、{id}==>分类ID</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="150">内容地址规则：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="blog_config[blog_url]"  value="{zhuayi:echo.$blog_url/}" size="60"/>
+				<span><br>可用标签{catdir}==>栏目路径、{Y}==>年、{M}==>月、{D}==>日、{id}==>博客ID</span>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="div_setting_4" class="contentList pad-10 hidden">
+	<table width="100%"  class="table_form">
+		<tr style="display:none">
+			<th width="150">自定义URL：</th>
+			<td class="y-bg">
+			<input type="text" class="input-text" name="url" id="url" value="{zhuayi:echo.$seo['url']/}" size="60" />
+			<input name="parameter" id="parameter" value="1" size="35" type="checkbox" <?php if ($seo['parameter']==1){echo 'checked';};?> /> 模糊匹配
+			</td>
+		</tr>
+		<tr>
+			<th width="150">SEO标题：</th>
+			<td class="y-bg">
+			<input type="text" name="seo_title" id="seo_title" value="{zhuayi:echo.$seo['seo_title']/}" size="30"/></td>
+		</tr>
+		<tr>
+			<th>SEO关键词：</th>
+			<td>
+			<input type="text" name="seo_keywords" id="seo_keywords" value="{zhuayi:echo.$seo['seo_keywords']/}" size="60"/>
+			<span><br />格式: 关键词1,关键词2,关键词3(最多100个字符)</span>
+			</td>
+		</tr>
+		<tr>
+			<th>SEO描述：</th>
+			<td>
+			<textarea name="seo_description" cols="60" class="t" tabindex="1" style="width:99%;height:50px">{zhuayi:echo.$seo['seo_description']/}</textarea>
+			<span><br />文本格式,最多250个字符</span>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="bk15"></div>
+<input type="hidden" name="filename" value="blog_config"/>
+<input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="提交" />
+</form>
+<script>
+function SwapTab(name,cls_show,cls_hide,cnt,cur)
+{
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+</script>
+{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}

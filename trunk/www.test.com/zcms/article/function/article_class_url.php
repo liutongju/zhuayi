@@ -1,7 +1,0 @@
-<?php
-function article_class_url($id)
-{
-	/* ÔØÈëÅäÖÃÎÄ¼þ */
-	return '/article/class/cid/'.$id;
-}
-?>

@@ -1,22 +1,0 @@
-<?php
-if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
-$fields = array();
- include $this->CompilerInclude("/zcms/admin/template/admin/头部.html");
- ?><form name="myform" action="/index.php?m=article&c=class_info&a=init" method="post"><div class="table-list">	<table width="100%" cellspacing="0" >		<thead>			<tr>				<th width="30">序号</th>				<th width="30">序号</th>				<th align="left">分类名称</th>				<th align="left">号码数</th>				<th width="220">操作</th>			</tr>		</thead>		<tbody>		<?php
-$atts = array();
-$atts['tagname'] = 'sms_class_list';
-$blockValue = MakePublicTag($atts,$this->refObj,$fields); 
-if(is_array($blockValue) && count($blockValue) > 0){
-foreach( $blockValue as $key=>$fields )
-{
-?>			<tr>				<td align='center'><input type="checkbox" value="<?php echo $fields['id']; ?>" name="id[]" class="check"/></td>				<td align='center'><?php echo $fields['id']; ?></td>
-				<td ><?php echo $fields['classname']; ?></td>				<td ><a href="/index.php?m=sms&c=index&a=init&cid=<?php echo $fields['id']; ?>"><?php echo $fields['maxnum']; ?></a></td>
-				<td align='center'>					<a href="/index.php?m=sms&c=class_edit&a=init&id=<?php echo $fields['id']; ?>">修改</a> | 					<a href="/index.php?m=sms&c=class_del&a=init&id=<?php echo $fields['id']; ?>">删除</a>				</td>
-			</tr>		<?php
-}
-}
-?>
-		</tbody>
-	</table>
-	<div class="btn">		<input type="submit" class="button" name="dosubmit" value="排序" onclick='$(".check").attr("checked",true)'/>	</div></div></form><?php include $this->CompilerInclude("/zcms/admin/template/admin/底部.html");
- ?>

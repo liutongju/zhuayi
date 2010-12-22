@@ -14,22 +14,19 @@ verify_admin('admin_username');
 
 if (!empty($_REQUEST['id']))
 {
-	$pagename = "文章编辑";
-	$info = $query->one_array("select * from ".T."article where id =".$_REQUEST['id']);
-	$seo = $query->one_array("select * from ".T."seo where tables ='article' and aid=".$_REQUEST['id']);
+	$pagename = "博文编辑";
+	$info = $query->one_array("select * from ".T."blog where id =".$_REQUEST['id']);
+	$seo = $query->one_array("select * from ".T."seo where tables ='blog' and aid=".$_REQUEST['id']);
 }
 else
 {
-	$pagename = "文章添加";
+	$pagename = "博文添加";
 	$info['cid'] = 0;
 	$info['dtime'] = time();
 }
 
 if (empty($seo['url']))
 {
-	$seo['url'] = $article_generate_path;
+	$seo['url'] = $blog_url;
 }
-
-/* 转换来源 */
-$source = explode('|',$source);
 ?>
