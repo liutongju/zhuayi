@@ -27,4 +27,6 @@ $tips = '网址导航基于会员系统而建';
 $GLOBALS['zcms_config']['perpagenum'] = 20;
 $background = handie(ZCMS_ROOT.'/zcms/record/template/images/icon',1);
 
+/* 博文日期 */
+
 ?>

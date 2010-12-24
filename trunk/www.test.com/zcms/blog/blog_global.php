@@ -28,4 +28,5 @@ $tips = 'ZcmsBlog可基于新浪微博,并与新浪微博同步,当然您也可以选择不开启。';
 
 /* 载入配置文件 */
 include_once ZCMS_ROOT.'/zcms/blog/include/blog_config.php';
+
 ?>

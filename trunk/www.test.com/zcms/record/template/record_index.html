@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> new document </title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta name="author" content="Zcms">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="/zcms/record/template/style/style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="/zcms/admin/template/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="/zcms/admin/template/admin/js/thickbox/thickbox.js"></script>
+<script type="text/javascript" src="/zcms/record/template/js/jquery.dragsort.js"></script>
+<link href="/zcms/admin/template/admin/js/thickbox/thickbox.css" rel="stylesheet" type="text/css" />
+
+<script>
+$(function(){
+	$(".ysbj").css({'opacity':'0.2','cursor':'pointer'});
+	$(".add_record").css({'cursor':'pointer'});
+	/* 方框鼠标效果 */
+	$("#list1").dragsort({scrollSpeed:10,dragSelector: "div", dragBetween: false, dragEnd: saveOrder, placeHolderTemplate: "<li class='no_record placeHolder'><div></div></li>" });
+
+})
+function saveOrder(str)
+{
+	//alert('移动了'+$(this).attr('id'));
+	return false;
+	var data = $("#list1 li").map(function(){
+	return $(this).children().html();
+	}).get();
+	$("input[name=list1SortOrder]").val(data.join("|"));
+};
+
+</script>
+</head>
+<body>
+<div class="w_auto top"></div>
+<div class="w_960 hread">
+	<a href="/"><h1>记录</h1></a>
+	<div class="hread_nav">
+		<div class="hread_nav_top">
+			<a href="#">微博</a> |
+			<a href="#">广场</a> |
+			<a href="#">股票</a> |
+			<a href="#">手机</a> |
+			<a href="#">找人</a> |
+			<a href="#">工具</a> |
+			<a href="#">私信</a> |
+			<a href="#">通知</a> |
+			<a href="#">帐号设置</a> |
+			<a href="#">退出</a>
+		</div>
+		<div class="hread_nav_bottom">
+			<a href="#" class="add_class"></a><span>|</span>
+			{zhuayi:record_class_list}
+			<a href="#" class="my_class">{zhuayi:echo.$fields['classname']/}</a><span>|</span>
+			{/zhuayi:record_class_list}
+		</div>
+	</div>
+</div>
+<div class="w_960 center">
+	<div class="record">
+		<ul  id="list1">
+		<?php for ($i=1;$i<=48;$i++){?>
+			<li class="no_record" >
+			<?php if (empty($list[$i])){?>
+			<div class="ysbj" id="<?php echo 'record'.$i;?>"></div>
+			<a class="add_record <?php echo 'record'.$i;?>" href="#"></a>
+			<?php }else{?>
+			<div>
+				<a href="/index.php?m=record&c=show&id={zhuayi:echo.$list[$i]['id']/}" class="thickbox"><img src="{zhuayi:echo.$list[$i]['icon']/}" class="icon"/></a>
+				<a href="/index.php?m=record&c=show&id={zhuayi:echo.$list[$i]['id']/}" class="record_cl thickbox"><?php echo $list[$i]['title'];?></a>
+			</div>
+			<?php }?>
+			</li>
+		<?php }?>
+		</ul>
+	</div>
+	<div class="right">
+		<a href="#"><img src="/zcms/record/template/images/rand.png"/></a>
+		<div class="right_bg"/>
+			<div class="my_t">
+				<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/>
+				<div>
+					<h2>Fruit_Team</h2>
+					<span>粉丝数<font>2299</font></span>
+				</div>
+			</div>
+			<div class="dotted"></div>
+			<div class="title">我关注的</div>
+			<div class="user_list">
+				<ul>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+					<li>
+						<img src="http://tp4.sinaimg.cn/1874047303/50/1290614575/1"/><br>
+						<a href="#"/>Fruit_Team</a>
+					</li>
+				</ul>
+				<div><a href="#"/>更多>></a></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

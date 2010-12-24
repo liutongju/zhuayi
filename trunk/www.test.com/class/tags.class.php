@@ -19,30 +19,31 @@ class tags
 	{
 		/* -----转码字符串 */
 		$this->title = $title;
+		$this->title = str_replace('：','',$this->title);
+		$this->title = str_replace('“','',$this->title);
 		
 	}
 
 	/* -----抓取百度分词结果 */
 	function baidu()
 	{
-		$result = $this->file_get_open('http://www.baidu.com/s?wd=');
-		
-		$result .= $this->file_get_open('http://www.baidu.com/s?pn=10&wd=');
-		
+		$result = $this->file_get_open('http://74.125.71.99/search?hl=zh-CN&source=hp&biw=1366&bih=652&aq=f&aqi=&aql=&oq=&gs_rfai=&ei=utf-8&q=');
+		//$result = iconv('utf-8','gbk',$result);
+		//$tags = $this->jiequ('<div id="yui-main">','<!--}}end:yst web -->',$result);
 		$tags = $this->jiequ('<em>','</em>',$result);
 		
 		/* ---去除重复 array_flip */
 		$this->tags = array_count_values($tags);
 		
 		/* ---截取相关搜索 */
-		$xiangguan = $this->jiequ('相关搜索','</table>',$result);
+		$xiangguan = $this->jiequ('相关搜索','所有结果',$result);
 		
-		$this->keywords = $this->jiequ('">','</a>',$xiangguan[0]);
+		$this->keywords = $this->jiequ('">','</a></p>',$xiangguan[0]);
 		
 		$this->tags = $this->tags + array_flip($this->keywords);
-		
 		/* -------简单处理下数组 */
 		$this->treat();
+		
 		
 	}
 	
@@ -51,7 +52,7 @@ class tags
 	/* -----远程抓取函数 */
 	function file_get_open($url)
 	{
-		$ctx = stream_context_create(array('http' => array('timeout' => 10)));
+		$ctx = stream_context_create(array('http' => array('timeout' => 40)));
 		$result = @file_get_contents($url.trim($this->title),0, $ctx);
 		if($result)
 		{
@@ -60,7 +61,7 @@ class tags
 		}
 		else
 		{  
-			return false;
+			return $url.trim($this->title);
 		}
 	}
 	

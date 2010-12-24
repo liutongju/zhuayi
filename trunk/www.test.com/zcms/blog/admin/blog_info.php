@@ -90,6 +90,9 @@ else
 	$query->save("blog",$_POST,' id = '.$_POST['id']);
 }
 
+if (empty($_POST['request_url']))
+$_POST['request_url'] = $blog_url;
+
 blog_url($_POST['id']);
 /* 项目原始url，自定义url时使用 */
 

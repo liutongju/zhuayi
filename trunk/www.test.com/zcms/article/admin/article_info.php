@@ -121,6 +121,8 @@ else
 /* 强制信息可以模糊匹配 */
 $_POST['parameter'] = 1;
 /* 写入SEO表 */
+if (empty($_POST['request_url']))
+$_POST['request_url'] = $article_generate_path;
 article_url($_POST['id']);
 /* 项目原始url，自定义url时使用 */
 

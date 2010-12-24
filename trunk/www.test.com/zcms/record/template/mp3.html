@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function(){
 	$(".lrc").css('opacity','0.6');
-	alert($(".record_litpic").offsetHeight)
+	//alert($(".record_litpic").offsetHeight)
 	/* 获取图片的宽和高 */
 	$(".lrc").css('height','100%');
 	$(".lrc").css('height',$(".lrc").css('height')-30);
@@ -18,9 +18,7 @@ $(document).ready(function(){
 <div class="record_swf">
 	<div class="record_litpic">
 		<img src="{zhuayi:echo.$info['icon']/}" width="250" class="litpic"/>
-		<div class="lrc">
-			aaaaaaa
-		</div>
+
 		<div class="player">
 			<object data="/zcms/record/template/images/dewplayer-bubble.swf" width="250" height="65" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
 			<param name="movie" value="/zcms/record/template/images/dewplayer-bubble.swf" />
