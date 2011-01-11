@@ -227,7 +227,7 @@ class dbQuery {
 		$reset = $this->query($sql);
 		while ($row = $this->fetch_array($reset))
 		{
-			//if ($row['Extra']!='auto_increment' && $id=='')
+			if ($row['Extra']!='auto_increment' && $id=='')
 			$list[] = $row['Field'];
 		}
 
