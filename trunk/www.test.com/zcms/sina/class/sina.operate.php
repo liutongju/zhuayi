@@ -494,6 +494,7 @@
 		/* ÉÏ´«Í¼Æ¬*/
 		if (!empty($litpic))
 		{
+			/*
 			$this->snoopy->fetch('http://t.sina.com.cn/'.$uid);
 			//print_r($this->snoopy->cookies);
 			//exit;
@@ -518,6 +519,7 @@
 			echo '<pre>';
 			print_r($this->snoopy);
 			exit;
+			*/
 
 		}
 

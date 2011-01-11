@@ -19,9 +19,5 @@ else
 	$info['repeat'] = 0;
 }
 
-$task = array(
-				array('ÕÊºÅµÇÂ¼','/index.php?m=sina&c=task_login&a=init','/index.php?m=sina&c=login&a=init&act=1'),
-				array('ÂãºÅÕÚÐß','/index.php?m=sina&c=task_life&a=init','/index.php?m=sina&c=life&a=init&act=1'),
-				array('Èº·¢Î¢²©','/index.php?m=sina&c=task_t&a=init','/index.php?m=sina&c=t_info&a=init'),
-			 )
+
 ?>

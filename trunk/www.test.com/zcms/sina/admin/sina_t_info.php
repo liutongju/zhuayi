@@ -60,7 +60,7 @@ $return = $t->t_info($body['body'],$pic,$info['uid']);
 if ($return == '1')
 {
 	/* 设置该信息已发送 */
-	$query->query("update ".T."sina_content set status = 1 where id =".$body['id']);
+	//$query->query("update ".T."sina_content set status = 1 where id =".$body['id']);
 	echo '发布微博成功.';
 }
 else
