@@ -18,7 +18,7 @@ $(function(){
 		$_REQUEST['parent_id']=-1;
 	}
 ?>
-{zhuayi:menu_list limit=999 parent_id=$_REQUEST['id']}
+{zhuayi:menu_list limit=999 parent_id=$_REQUEST['id'] id=$info['purview']}
 	<div>
 		<h3 class="f14">
 			<span class="switchs on cu" title="展开与收缩"></span>{zhuayi:echo.$fields['title']/}

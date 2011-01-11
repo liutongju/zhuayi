@@ -227,7 +227,7 @@ class dbQuery {
 		$reset = $this->query($sql);
 		while ($row = $this->fetch_array($reset))
 		{
-			if ($row['Extra']!='auto_increment')
+			//if ($row['Extra']!='auto_increment' && $id=='')
 			$list[] = $row['Field'];
 		}
 
@@ -259,6 +259,8 @@ class dbQuery {
 			$sql = "insert into $table  (".implode(',',$field).") values (".implode(',',$values).")";
 			else
 			$sql = "replace into $table  (".implode(',',$field).") values (".implode(',',$values).")";
+			//echo $sql;
+			//exit;
 			$this->query($sql);
 			$info = $this->insert_id();
 		}

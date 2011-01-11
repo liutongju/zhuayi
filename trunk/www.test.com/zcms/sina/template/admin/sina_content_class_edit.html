@@ -1,0 +1,15 @@
+
+<form action="?m=sina&c=content_class_info&a=init" method="post" id="myform">
+<fieldset>
+	<legend>{zhuayi:echo.$pagename/}</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th>栏目名称：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="classname" id="classname" value="{zhuayi:echo.$info['classname']/}" size="30" /></td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="id" value="{zhuayi:echo.$info['id']/}">
+<input type="submit" class="button" id="dosubmit" name="dosubmit" value="提交" />
+</form>

@@ -41,6 +41,11 @@ define('ZCMS_TPLCACHE', ZCMS_ROOT.'/data/tpl_cache/');
 /* -----设置时区  */
 date_default_timezone_set('Asia/Shanghai');
 
+/* -----载入ZCMS缓存工厂 */
+
+include ZCMS_ROOT.'/class/cache.class.php';
+$cache = new cache();
+
 /* -----载入网站配置文件  */
 include_once ZCMS_ROOT.'/data/include/web_config.php';
 
@@ -61,10 +66,6 @@ $query = new dbQuery($dbhost,$dbuser,$dbpw,$dbname,'GBK');
 /* -----定义数据表前缀  */
 define('T', $cookievarpre);
 
-/* -----载入ZCMS缓存工厂 */
-
-include ZCMS_ROOT.'/class/cache.class.php';
-$cache = new cache();
 
 /* -----载入框架URL解析类  */
 include ZCMS_ROOT.'/class/routing.class.php';

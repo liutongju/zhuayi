@@ -1,0 +1,98 @@
+{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}
+<style>
+.sbs{}
+.sbul{margin:10px;}
+.sbul li{line-height:30px;}
+.button{margin-top:20px;}
+
+</style>
+
+<div class="col-2">
+
+	<h6>提示区：</h6>
+	<div class="sbs" id="update_tips" style="height:360px; overflow:auto;">
+		<ul class="sbul">
+			<li style="color:#009900">任务：{zhuayi:echo.$info['title']/}　<font id="timeout"></font> </li>
+		</ul>
+		<ul id="file" class="sbul"></ul>
+
+	</div>
+	</div>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}
+<script>
+/* 倒计时 */
+function timeout()
+{
+	$.get('/zcms/sina/admin/sina_timeout.php?starttime=<?php echo $info['starttime'];?>',function(data){
+		if (data  == '0')
+		{
+			$("#timeout").html('正在执行...');
+			/* 执行函数 */
+			activation();
+		}
+		else
+		{
+			$("#timeout").html('将于 '+data+' 秒后执行...')
+			setTimeout('timeout()',1000);
+		}
+	})
+}
+timeout();
+
+arr = new Array({zhuayi:echo.$id/});
+arrt = new Array({zhuayi:echo.$username/});
+arrn = new Array({zhuayi:echo.$nick/});
+i= -1;
+j = <?php echo $_REQUEST['page'];?>;
+/* 循环次数 */
+repeat = <?php echo $info['repeat'];?>;
+num = arr.length;
+if (arr[0] == '')
+{
+	tips('没有可要{zhuayi:echo.$task_name/}的帐号...',1)
+}
+<?php $_REQUEST['page']++;?>
+function activation()
+{
+	i++;
+
+	if ( num <= i)
+	{
+		j ++;
+		if (j > repeat && repeat!=0)
+		{
+			tips('{zhuayi:echo.$task_name/}完毕',1);
+		}
+		else
+		{
+			tips('{zhuayi:echo.$task_name/}完毕,等待下次执行',1);
+			setTimeout('location.replace("/index.php?m=sina&c=task_routine_play&a=init&id=<?php echo $info['id'];?>&page=<?php echo $_REQUEST['page'];?>")',3000);
+		}
+		return false;
+	}
+	if (i % 100 ==0)
+	{
+		$("#file").empty();
+	}
+
+	$.get('<?php echo $info['task'];?>id='+arr[i],function(data){
+		
+			tips('$ID：'+arr[i]+' -> 帐号： '+arrt[i]+' (昵称：'+arrn[i]+') 状态：'+data);
+			setTimeout('activation()',5000);
+	})
+	
+}
+
+function tips(title,tru)
+{
+	if (tru == 1)
+	{
+		color='red';
+	}
+	else
+	{
+		color = '#009900';
+	}
+	$("#file").append('<li style="color:'+color+'">'+title+'  </li>');
+	document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
+}
+</script>
