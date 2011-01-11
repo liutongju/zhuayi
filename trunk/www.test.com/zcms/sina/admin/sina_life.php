@@ -85,7 +85,7 @@ if ($info['status'] != 1)
 sleep($_GET['activ_time']);
 
 
-$return = $t->face_upload($info['face']);
+$return = $t->face_upload(ZCMS_ROOT.$info['face']);
 if ($return == 1)
 {
 	echo '头像上传成功<br>';
@@ -165,6 +165,6 @@ foreach ($body as $val)
 	}
 	sleep($_GET['info_time']);
 }
-$query->save("sina_account",$info);
+$query->save("sina_account",$info,' id ='.$_REQUEST['id']);
 exit;
 ?>
