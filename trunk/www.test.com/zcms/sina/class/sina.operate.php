@@ -530,6 +530,22 @@
 		exit;
 		return '1';
 	}
+	/* 判断是否死号 */
+	function dead($uid)
+	{
+		$this->snoopy->referer = 'http://t.sina.com.cn/'.$uid;
+		$this->ret_cookie();
+		$this->snoopy->fetch('http://t.sina.com.cn/'.$uid);
+		if (trim($this->snoopy->lastredirectaddr) == 'http://t.sina.com.cn/defr.php?s=1&lang=zh-cn')
+		{
+			return array('code'=>'-1','error'=>'此号已被锁定');
+		}
+		else
+		{
+			return '1';
+		}
+		exit;
+	}
 	/* 根据uid获取用户昵称 */
 	function ret_nickname($uid)
 	{

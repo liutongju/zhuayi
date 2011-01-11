@@ -33,6 +33,11 @@ function sina_account_list($atts)
 		$search .= " and a.status = '".$status."'";
 	}
 
+	if ($dead!='')
+	{
+		$search .= " and a.dead = '".$dead."'";
+	}
+
 	if ($litpic == '1')
 	{
 		$search .= " and a.litpic <> ''";

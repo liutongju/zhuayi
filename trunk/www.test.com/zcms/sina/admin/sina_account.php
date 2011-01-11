@@ -18,6 +18,7 @@ $menu = array(
 			array('¸ü»»IP?','agent'),
 			array('ÕÊºÅ¹ÜÀí','account'),
 			array('×¢²áÕÊºÅ','reg&height=300','ajax'),
+			array('ÅÅ³ıËÀºÅ','account_dead'),
 			);
 if (!empty($_REQUEST['username']))
 {
@@ -31,6 +32,11 @@ if (!empty($_REQUEST['cid']))
 if ($_REQUEST['status']!='')
 {
 	$search .= " and a.status like '".$_REQUEST['status']."'";
+}
+
+if ($_REQUEST['dead']!='')
+{
+	$search .= " and a.dead = '".$_REQUEST['dead']."'";
 }
 
 if ($_REQUEST['litpic'] == '1')
