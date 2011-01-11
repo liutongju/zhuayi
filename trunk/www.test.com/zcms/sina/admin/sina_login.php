@@ -12,6 +12,8 @@
 
 if ($_REQUEST['act']==1)
 {
+
+
 	$info = $query->one_array("select * from ".T."sina_account where id = ".$_REQUEST['id']);
 	//echo $info['pass'];
 	/* 去登录新浪微博 看看是否需要激活*/
@@ -19,16 +21,27 @@ if ($_REQUEST['act']==1)
 	$t->username = $info['username'];
 	$t->password = $info['pass'];
 	$reset = $t->login();
-	if ($reset == '-1')
+	if ($reset['code'] == '-1')
 	{
 		echo '登录失败..';
+		echo $info['no_error'] = $reset['error'];
+		$info['no'] = $info['username'] ;
 	}
 	else
 	{
-
+		$info['yes'] = $info['username'] ;
 		/* 写入COOKIE */
 		$query->query("update ".T."sina_account set cookie ='".$reset['cookie']."',uid='".$reset['uid']."' where id=".$_REQUEST['id']);
 		echo '登录成功';
+	}
+	if (!empty($_GET['tid']))
+	{
+		$info['tid'] = $_GET['tid'];
+		$info['dtime'] = time();
+		$query->save('sina_task_status',$info);
+		ignore_user_abort();
+		set_time_limit(0);
+		sleep($_GET['gap_time']);
 	}
 	exit;
 }

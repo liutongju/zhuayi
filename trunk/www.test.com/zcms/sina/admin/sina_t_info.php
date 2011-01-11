@@ -33,14 +33,13 @@ if (empty($_REQUEST['zhuaqu']))
 else
 {
 	$collect = array('163','sohu','qq');
-	$key = 1;//array_rand($collect);
-	//echo $collect[$key];
+	$key = array_rand($collect);
 	$function = 'collect_'.$collect[$key];
-	//$body = $function();
+	$body = $function();
 }
 
-$body['body'] = '教你如何在电脑右下角显示你爱人的名字';
-$body['pic'] = 'http://s1.t.itc.cn/mblog/pic/201101/11/1/m_12946808077474.jpg';
+//$body['body'] = '教你如何在电脑右下角显示你爱人的名字';
+//$body['pic'] = 'http://s1.t.itc.cn/mblog/pic/201101/11/1/m_12946808077474.jpg';
 if (!empty($body['pic']))
 {
 	$snoopy->referer = 'http://t.'.$collect[$key].'.com/';

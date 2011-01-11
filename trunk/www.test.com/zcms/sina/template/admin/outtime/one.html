@@ -1,0 +1,23 @@
+/* 倒计时 */
+outtime = '<?php echo $outtime;?>';
+timeout()
+function timeout()
+{
+	if (outtime > 0)
+	{
+		outtime--;
+		$("#timeout").html('任务将在 '+outtime+' 秒后执行');
+		setTimeout('timeout()',1000)
+	}
+	else if (outtime == 0)
+	{
+		$("#timeout").html('任务开始执行');
+		activation();
+	}
+	else
+	{
+		$("#timeout").html('<font color=red>任务已过期...</font>');
+	}
+}
+/* 循环次数 */
+repeat = '<?php echo $repeat;?>';

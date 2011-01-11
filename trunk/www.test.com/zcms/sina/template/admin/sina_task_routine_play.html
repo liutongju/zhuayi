@@ -19,33 +19,15 @@
 	</div>
 	</div>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}
 <script>
-/* 倒计时 */
-function timeout()
-{
-	$.get('/zcms/sina/admin/sina_timeout.php?starttime=<?php echo $info['starttime'];?>',function(data){
-		if (data  == '0')
-		{
-			$("#timeout").html('正在执行...');
-			/* 执行函数 */
-			activation();
-		}
-		else
-		{
-			$("#timeout").html('将于 '+data+' 秒后执行...')
-			setTimeout('timeout()',1000);
-		}
-	})
-}
-timeout();
+<?php require $outtime_tpl;?>
 
-arr = new Array({zhuayi:echo.$id/});
-arrt = new Array({zhuayi:echo.$username/});
-arrn = new Array({zhuayi:echo.$nick/});
-i= -1;
-j = <?php echo $_REQUEST['page'];?>;
-/* 循环次数 */
-repeat = <?php echo $info['repeat'];?>;
-num = arr.length;
+var arr = new Array({zhuayi:echo.$id/});
+var arrt = new Array({zhuayi:echo.$username/});
+var arrn = new Array({zhuayi:echo.$nick/});
+var i= -1;
+var j = '<?php echo $_REQUEST['page'];?>';
+
+var num = arr.length;
 if (arr[0] == '')
 {
 	tips('没有可要{zhuayi:echo.$task_name/}的帐号...',1)
@@ -74,7 +56,7 @@ function activation()
 		$("#file").empty();
 	}
 
-	$.get('<?php echo $info['task'];?>id='+arr[i],function(data){
+	$.get('<?php echo $info['task'];?>&tid=<?php echo $_REQUEST['id'];?>&id='+arr[i],function(data){
 		
 			tips('$ID：'+arr[i]+' -> 帐号： '+arrt[i]+' (昵称：'+arrn[i]+') 状态：'+data);
 			setTimeout('activation()',5000);

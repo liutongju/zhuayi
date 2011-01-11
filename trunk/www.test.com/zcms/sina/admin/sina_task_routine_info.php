@@ -15,6 +15,7 @@ verify_admin('admin_username');
 //if (!empty($_POST['fields']))
 //{
 	$_POST['fields'] = serialize($_POST['fields']);
+	$_POST['set'] = serialize($_POST['set']);
 //}
 
 //$_POST['starttime'] = strtotime($_POST['starttime']);

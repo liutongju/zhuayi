@@ -46,9 +46,14 @@ elseif ($info['uid'][0] == 'region')
 {
 	$reset = $query->query("select * from ".T."sina_account where province like '".$info['uid'][1].",%'");
 }
+elseif ($info['uid'][0] = 'news}->')
+{
+	$reset = $query->query("select * from ".T."sina_account where uid = 0 and cookie=''");
+}
 else
 {
 	echo $info['uid'][0];
+	exit;
 }
 
 while ($row = $query->fetch_array($reset))
@@ -81,4 +86,125 @@ $task_name = '微博发送';
 
 if (empty($_REQUEST['page']))
 $_REQUEST['page'] = 1;
+
+$info['set'] = unserialize($info['set']);
+if ($info['set']['title'] == 'one')
+{
+	$outtime =  strtotime($info['set']['starttime']) - time();
+	$repeat = 1;
+	$outtime_tpl = ZCMS_ROOT.'/zcms/sina/template/admin/outtime/one.html';
+}
+elseif ($info['set']['title'] == 'loop')
+{
+	$outtime = $info['set']['gap_time'];
+	$repeat = $info['repeat'];
+	$outtime_tpl = ZCMS_ROOT.'/zcms/sina/template/admin/outtime/one.html';
+}
+elseif ($info['set']['title'] == 'day')
+{
+	//echo '<pre>';
+	$strart = strtotime(date("Y-m-d ".$info['set']['day_strtime']));
+	$strart2 = $strart+86400;
+	if ($strart > time())
+	{
+		$outtime = $strart - time();
+	}
+	else
+	{
+		$outtime = $strart2 - time();
+	}
+	$repeat = 0;
+	$outtime_tpl = ZCMS_ROOT.'/zcms/sina/template/admin/outtime/one.html';
+}
+elseif ($info['set']['title'] == 'week')
+{
+	//echo '<pre>';
+	$week = $info['set']['week'];
+	$key = array_search(date('w'),$week);
+	$strart = strtotime(date("Y-m-d ".$info['set']['week_strtime']));
+	if (in_array(date('w'),$week))
+	{
+		//$strart2 = $strart+86400;
+		if ($strart > time())
+		{
+			$outtime = $strart - time();
+		}
+	}
+	if (empty($outtime))
+	{
+		foreach ($week as $key=>$val)
+		{
+			if (date('w') < $val)
+			{
+				$day_week = $val;
+				break;
+			}
+		}
+		if (empty($day_week))
+		{
+			$day_week = $week[0];
+		}
+		if ($day_week > date('w'))
+		{
+			$outtime = $strart+86400*($day_week - date('w')) - time();
+		}
+		else
+		{
+			$outtime = $strart+86400*( 7 - date('w')+ $week[0]) - time();
+		}
+	}
+	$repeat = 0;
+	$outtime_tpl = ZCMS_ROOT.'/zcms/sina/template/admin/outtime/one.html';
+}
+elseif ($info['set']['title'] == 'month')
+{
+	$month = $info['set']['month'];
+	$key = array_search(date('d'),$month);
+	$strart = strtotime(date("Y-m-d ".$info['set']['month_strtime']));
+	if (in_array(date('d'),$month))
+	{
+		//$strart2 = $strart+86400;
+		if ($strart > time())
+		{
+			$outtime = $strart - time();
+		}
+	}
+	if (empty($outtime))
+	{
+		foreach ($month as $key=>$val)
+		{
+			if (date('d') < $val)
+			{
+				$day_week = $val;
+				break;
+			}
+		}
+		if (empty($day_week))
+		{
+			$day_week = $month[0];
+		}
+		elseif (count($month)==$key)
+		{
+			$day_week = $month[0];
+		}
+		elseif (count($month) > $key)
+		{
+			$day_week = $month[$key];
+		}
+		if ($day_week > date('d'))
+		{
+			$outtime = $strart + 86400*($day_week - date("d")) - time();
+		}
+		else
+		{
+			$outtime = $strart + 86400*( date("t") - date("d") + $month[0]) - time();
+		}
+	}
+	$repeat = 0;
+	$outtime_tpl = ZCMS_ROOT.'/zcms/sina/template/admin/outtime/one.html';
+}
+else
+{
+	exit('未知任务设置');
+}
 ?>

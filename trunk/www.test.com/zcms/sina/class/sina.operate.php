@@ -94,7 +94,7 @@
 		}
 		else
 		{
-			return '-1';
+			return array('code'=>'-1','error'=>$this->snoopy->results);
 		}
 		exit;
 
@@ -208,7 +208,7 @@
 		$form['expand'] = '1';
 		$form['token'] = $token;
 		$form['lang'] = 'zh';
-		$form['invitecode'] = '4AR5BL';
+		$form['invitecode'] = '812hg8A';
 		$form['province'] = $info['province'];
 		$form['city'] = $info['city'];
 		$form['gender'] = $info['gender'];
@@ -526,9 +526,15 @@
 		$form['styleid'] = 1;
 		$form['retcode'] ='';
 		$this->snoopy->submit('http://t.sina.com.cn/mblog/publish.php?rnd=0.20888335562638238',$form);
-		echo $this->snoopy->results;
-		exit;
-		return '1';
+		if (strpos('%%'.$this->snoopy->results,'{"code":"A00006"') > 0)
+		{
+			/* 更新转发成功*/
+			return '1';
+		}
+		else
+		{
+			return array('code'=>'-1','error'=>$this->snoopy->results);
+		}
 	}
 	/* 判断是否死号 */
 	function dead($uid)
