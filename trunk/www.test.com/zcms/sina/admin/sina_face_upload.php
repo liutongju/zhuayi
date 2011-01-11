@@ -56,7 +56,7 @@ if ($_REQUEST['act']==1)
 	*/
 	$litpic = $query->one_array("select * from ".T."sina_face order by rand()");
 
-	$return = $t->face_upload($litpic['face']);
+	$return = $t->face_upload(ZCMS_ROOT.$litpic['face']);
 
 	if ($return == 1)
 	{
