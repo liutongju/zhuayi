@@ -15,8 +15,8 @@ verify_admin('admin_username');
 /* 设置返回URL */
 set_cookie("backurl",GetCurUrl(),0);
 $menu = array(
-			array('管理任务','task_account&uid='.$_REQUEST['id']),
-			array('添加任务','task_account_edit&uid='.$_REQUEST['id'],'ajax'),
+			array('管理任务','task_account&uid='.$_REQUEST['uid']),
+			array('添加任务','task_account_edit&uid='.$_REQUEST['uid'],'ajax'),
 			);
 $tips = "提示信息带回写。";
 
