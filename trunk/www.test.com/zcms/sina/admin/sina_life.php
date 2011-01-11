@@ -30,7 +30,7 @@ $info['skin'] = $skin[array_rand($skin)];
 
 /* 初始头像 */
 $litpic = $query->one_array("select * from ".T."sina_face order by rand()");
-$info['face'] = $litpic['face'];
+$info['litpic'] = $litpic['face'];
 
 /* 随机个人签名 */
 $sign = $query->one_array("select * from ".T."sina_sign order by rand() limit 0,1");
@@ -61,15 +61,13 @@ $info['uid'] = implode(',',$uid);
 
 /* 去登录*/
 $reset = $t->login();
-
+$info['cookie'] = $reset['cookie'];
+$info['uid'] = $reset['uid'];
 if ($reset['code'] == '-1')
 {
 	echo '登录失败..剩下步助停止<br>';
 	exit;
 }
-
-/* 写入COOKIE */
-$query->query("update ".T."sina_account set cookie ='".$reset['cookie']."',uid='".$reset['uid']."' where id=".$_REQUEST['id']);
 
 
 sleep($_GET['login_time']);
@@ -85,7 +83,7 @@ if ($info['status'] != 1)
 sleep($_GET['activ_time']);
 
 
-$return = $t->face_upload(ZCMS_ROOT.$info['face']);
+$return = $t->face_upload(ZCMS_ROOT.$info['litpic']);
 if ($return == 1)
 {
 	echo '头像上传成功<br>';
@@ -148,8 +146,8 @@ else
 	echo '关注失败:<font color=red>'.$reset['error'].'</font><br>';
 }
 sleep($_GET['attention_time']);
-/* 初始微博 */
 
+/* 初始微博 */
 $body = $query->arrays("select body from ".T."sina_content order by rand() limit 0,2");
 foreach ($body as $val)
 {
