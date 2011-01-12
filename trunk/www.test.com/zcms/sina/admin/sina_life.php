@@ -57,7 +57,7 @@ while ($row = $query->fetch_array($reset))
 {
 	$uid[] = $row['uid'];
 }
-$info['uid'] = implode(',',$uid);
+$info['gid'] = implode(',',$uid);
 
 /* È¥µÇÂ¼*/
 $reset = $t->login();
@@ -131,10 +131,10 @@ else
 sleep($_GET['tags_time']);
 
 
-$reset = $t->attention($info['uid'],$reset['uid']);
+$reset = $t->attention($info['gid'],$reset['uid']);
 if ($reset == '1')
 {
-	$uid = explode(',',$info['uid']);
+	$uid = explode(',',$info['gid']);
 	foreach ($uid as $val)
 	{
 		$query->query("insert into ".T."sina_attention (myid,uid)values('".$_REQUEST['id']."','".$val."')");
