@@ -17,9 +17,6 @@ $t = new sina();
 $t->username = $info['username'];
 $t->password = $info['pass'];
 
-/* 虚拟一个手机号码 */
-$mobile = $query->one_array("select * from ".T."sina_mobile order by rand() limit 0,1");
-$info['mobile'] = $mobile['mobile'];
 
 /* 虚拟一个生日 */
 $info['birthday'] = date("Y-m-d",rand(316713600,695404800));
@@ -58,110 +55,135 @@ while ($row = $query->fetch_array($reset))
 	$uid[] = $row['uid'];
 }
 $info['gid'] = implode(',',$uid);
+echo '<pre>';
+print_r($_REQUEST);
+exit;
+/* 去登录 */
+if ($_REQUEST['action_login'] == 1)
+{
+	$reset = $t->login();
+	$info['cookie'] = $reset['cookie'];
+	$info['uid'] = $reset['uid'];
 
-/* 去登录*/
-$reset = $t->login();
-$info['cookie'] = $reset['cookie'];
-$info['uid'] = $reset['uid'];
-if ($reset['code'] == '-1')
+	/* 休眠 */
+	sleep($_GET['login_time']);
+}
+if (empty($info['cookie']))
 {
 	echo '登录失败..剩下步助停止<br>';
 	exit;
 }
 
 
-sleep($_GET['login_time']);
-
-$t->cookies =  $reset['cookie'];
+$t->cookies =  $info['cookie'];
 /* 激活 */
-if ($info['status'] != 1)
+if ($info['status'] != 1 && $_REQUEST['action_activ'] == 1)
 {
 	/* 激活帐号 */
 	$return = $t->activation($info);
 	/* 激活需要验证码 暂时停止开发 */
-}
-sleep($_GET['activ_time']);
-
-
-$return = $t->face_upload(ZCMS_ROOT.$info['litpic']);
-if ($return == 1)
-{
-	echo '头像上传成功<br>';
-}
-else
-{
-	echo '头像上传失败:<font color=red>'.$return['error'].'</font><br>';
+	sleep($_GET['activ_time']);
 }
 
-sleep($_GET['face_time']);
 
-
-$return = $t->skin($info['skin']);
-if ($return == '1')
+if ($_REQUEST['action_face'] == 1)
 {
-	echo '模版更换成功<br>';
-}
-else
-{
-	echo '模版更换失败:<font color=red>'.$return['error'].'</font><br>';
-}
-sleep($_GET['skin_time']);
-
-$return = $t->myinfo($info);
-if ($return == '1')
-{
-	echo '虚拟资料成功<br>';
-}
-else
-{
-	echo '虚拟资料失败:<font color=red>'.$return['error'].'</font><br>';
-}
-sleep($_GET['info_time']);
-
-
-$return = $t->tags($info['account_tags']);
-if ($return == '1')
-{
-	echo '更新标签成功<br>';
-}
-else
-{
-	echo '更新标签失败:<font color=red>'.$return['error'].'</font><br>';
-}
-sleep($_GET['tags_time']);
-
-
-$reset = $t->attention($info['gid'],$reset['uid']);
-if ($reset == '1')
-{
-	$uid = explode(',',$info['gid']);
-	foreach ($uid as $val)
+	$return = $t->face_upload(ZCMS_ROOT.$info['litpic']);
+	if ($return == 1)
 	{
-		$query->query("insert into ".T."sina_attention (myid,uid)values('".$_REQUEST['id']."','".$val."')");
-	}
-	echo '关注成功<br>';
-}
-else
-{
-	echo '关注失败:<font color=red>'.$reset['error'].'</font><br>';
-}
-sleep($_GET['attention_time']);
-
-/* 初始微博 */
-$body = $query->arrays("select body from ".T."sina_content order by rand() limit 0,2");
-foreach ($body as $val)
-{
-	$return = $t->t_info($val['body'],$val['pic'],$reset['uid']);
-	if ($return == '1')
-	{
-		/* 设置该信息已发送 */
-		echo '发布微博成功<br>';
+		echo '头像上传成功<br>';
 	}
 	else
 	{
-		echo '发布微博失败:<font color=red>'.$return['error'].'</font><br>';
+		echo '头像上传失败:<font color=red>'.$return['error'].'</font><br>';
+	}
+
+	sleep($_GET['face_time']);
+}
+
+
+if ($_REQUEST['action_skin'] == 1)
+{
+	$return = $t->skin($info['skin']);
+	if ($return == '1')
+	{
+		echo '模版更换成功<br>';
+	}
+	else
+	{
+		echo '模版更换失败:<font color=red>'.$return['error'].'</font><br>';
+	}
+	sleep($_GET['skin_time']);
+}
+
+if ($_REQUEST['action_info'] == 1)
+{
+	$return = $t->myinfo($info);
+	if ($return == '1')
+	{
+		echo '虚拟资料成功<br>';
+	}
+	else
+	{
+		echo '虚拟资料失败:<font color=red>'.$return['error'].'</font><br>';
 	}
 	sleep($_GET['info_time']);
+}
+
+
+if ($_REQUEST['action_tags'] == 1)
+{
+	$return = $t->tags($info['account_tags']);
+	if ($return == '1')
+	{
+		echo '更新标签成功<br>';
+	}
+	else
+	{
+		echo '更新标签失败:<font color=red>'.$return['error'].'</font><br>';
+	}
+	sleep($_GET['tags_time']);
+}
+
+if ($_REQUEST['action_attention'] == 1)
+{
+	if (!empty($_REQUEST['activ_id']))
+	$_REQUEST['activ_id'] = ','.$_REQUEST['activ_id'];
+	$reset = $t->attention($info['gid'],$reset['uid']);
+	if ($reset == '1')
+	{
+		$uid = explode(',',$info['gid']);
+		foreach ($uid as $val)
+		{
+			$query->query("insert into ".T."sina_attention (myid,uid)values('".$_REQUEST['id']."','".$val."')");
+		}
+		echo '关注成功<br>';
+	}
+	else
+	{
+		echo '关注失败:<font color=red>'.$reset['error'].'</font><br>';
+	}
+	sleep($_GET['attention_time']);
+}
+
+if ($_REQUEST['action_t'] == 1)
+{
+	/* 初始微博 */
+	$body = $query->arrays("select body from ".T."sina_content order by rand() limit 0,".$_REQUEST['t_num']);
+	foreach ($body as $val)
+	{
+		$return = $t->t_info($val['body'],$val['pic'],$reset['uid']);
+		if ($return == '1')
+		{
+			/* 设置该信息已发送 */
+			echo '发布微博成功<br>';
+		}
+		else
+		{
+			echo '发布微博失败:<font color=red>'.$return['error'].'</font><br>';
+		}
+		sleep($_GET['info_time']);
+	}
 }
 $query->save("sina_account",$info,' id ='.$_REQUEST['id']);
 exit;

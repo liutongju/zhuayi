@@ -1,83 +1,63 @@
-{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}
-<style>
-.sbs{}
-.sbul{margin:10px;}
-.sbul li{line-height:30px;}
-.button{margin-top:20px;}
-
-</style>
-<div class="col-2">
-
-	<h6>提示区：</h6>
-	<div class="sbs" id="update_tips" style="height:360px; overflow:auto;">
-
-		<ul id="file" class="sbul">
-			
-		</ul>
-
-	</div>
-	</div>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}
-<script>
-arr = new Array({zhuayi:echo.$id/});
-arrt = new Array({zhuayi:echo.$username/});
-arrn = new Array({zhuayi:echo.$nick/});
-i= -1;
-num = arr.length;
-if (arr[0] == '')
-{
-	tips('没有可要激活的帐号...',1)
-}
-else
-{
-	/* 执行函数 */
-	activation()
-}
-function activation()
-{
-	i++;
-
-	if ( num <= i)
-	{
-		tips('激活完毕',1);
-		return false;
-	}
-	if (i % 100 ==0)
-	{
-		$("#file").empty();
-	}
-
-	$.get('/index.php?m=sina&c=activation&a=init&act=1&id='+arr[i],function(data){
-		/* 判断是否需要更换IP */
+<script type="text/javascript">
+<!--
+$(function(){
+	$("#code_img2").attr('src','/index.php?m=sina&c=activation&act=code&a=init&id=<?php echo $_REQUEST['id'];?>&time='+Math.random());
+	$(".ajaxform").click(function(){
+	
+	$("#jieguo").val('正在激活...');
+	/* post ajax */
+	$.post($("#myform_sina").attr('action'),$("#myform_sina").serialize(),function(data){
+		if (data == '-1')
+		{
+			$("#jieguo").val('帐号没有登录,不能激活');
+			return false;
+		}
 		if (data == '-999')
 		{
-			tips('IP被封锁了,现在去更换IP',1);
-			$.get('/index.php?m=sina&c=agent&a=init',function(data){
-				$.get('/index.php?m=sina&c=activation&a=init&act=1&id='+arr[i],function(data){
-					tips('$ID：'+arr[i]+' -> 帐号： '+arrt[i]+' (昵称：'+arrn[i]+') 激活状态：'+data);
-					setTimeout('activation()',2000);
-				})
-			});
+			$("#jieguo").val('IP被和谐了,赶快换一个吧');
+			return false;
 		}
-		else
+		if (data == '1')
 		{
-			tips('$ID：'+arr[i]+' -> 帐号： '+arrt[i]+' (昵称：'+arrn[i]+') 激活状态：'+data);
-			setTimeout('activation()',2000);
+			$("#jieguo").val('恭喜您，激活成功!');
+			tb_show(null,'{zhuayi:echo.$weburl/}/index.php?m=sina&c=reg&height=300&a=init',false)
+			return false;
 		}
+		$("#jieguo").val(data);
 	})
-	
-}
+	return false;
+	})
+})
 
-function tips(title,tru)
-{
-	if (tru == 1)
-	{
-		color='red';
-	}
-	else
-	{
-		color = '#009900';
-	}
-	$("#file").append('<li style="color:'+color+'">'+title+'  </li>');
-	document.getElementById('update_tips').scrollTop = document.getElementById('update_tips').scrollHeight;
-}
+
+//-->
+</script>
+<form action="?m=sina&c=activation&a=init&act=1" method="post" id="myform_sina">
+<fieldset>
+	<legend>当前代理IP：{zhuayi:echo.ret_cookie('agent_ip')/}</legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th>激活帐号：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="username" id="username" value="{zhuayi:echo.$info['username']/}" size="30" />
+				　　
+			</td>
+		</tr>
+		<tr>
+			<th width="100">验证码：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="code" id="code" value="{zhuayi:echo.$info['code']/}" size="20" />
+				<img src="" onclick="this.src='/index.php?m=sina&c=activation&act=code&a=init&id=<?php echo $_REQUEST['id'];?>&time='+Math.random()" style="cursor:pointer;" id="code_img2"/>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<center><input type="submit" class="button ajaxform" id="dosubmit" name="dosubmit" value="注册" /><br>
+<textarea style="color:red;width:200px;border:0px;height:20px;" id="jieguo">{zhuayi:echo.ret_cookie('activation_code')/}</textarea>
+</center>
+<input type="hidden" class="input-text" name="id" id="id" value="{zhuayi:echo.$info['id']/}" size="20" />
+</form>
+<script>
+$("#code").focus();
 </script>

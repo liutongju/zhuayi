@@ -38,6 +38,12 @@ $form['door'] = trim($_POST['code']);
 $form['after'] ='on';
 $form['pass'] = $_POST['pass'];
 $form['dtime'] = time();
+
+/* 虚拟一个手机号码 */
+$mobile = $query->one_array("select * from ".T."sina_mobile order by rand() limit 0,1");
+$form['mobile'] = $mobile['mobile'];
+
+
 /* 操作员ID */
 $form['myid'] = ret_cookie('admin_userid');
 /* 根据操作员ID 否与一个分类 */
@@ -67,9 +73,17 @@ if (strpos($return,'验证码输入有误，请重新输入')>0)
 elseif (strpos($return,'恭喜您，新浪会员注册成功!')>0)
 {
 	$form['username'] .= '@sina.cn';
+
+	$t = new sina();
+	$t->username = $form['username'];
+	$t->password = $form['pass'];
+	$reset = $t->login();
+
+	$form['cookie'] = $reset['cookie'];
+	$form['uid'] = $reset['uid'];
 	/* 写入到数据库 */
-	$query->save('sina_account',$form);
-	echo '1';
+	echo $query->save('sina_account',$form);
+
 }
 elseif (strpos($return,'很抱歉！该帐号被抢注，请选择其它帐号')>0)
 {
