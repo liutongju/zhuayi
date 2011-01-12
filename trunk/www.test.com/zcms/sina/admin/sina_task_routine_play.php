@@ -48,7 +48,7 @@ elseif ($info['uid'][0] == 'region')
 }
 elseif ($info['uid'][0] = 'news}->')
 {
-	$reset = $query->query("select * from ".T."sina_account where uid = 0 and cookie=''");
+	$reset = $query->query("select * from ".T."sina_account where status = 1 and cookie <> ''");
 }
 else
 {
