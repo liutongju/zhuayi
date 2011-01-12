@@ -183,6 +183,10 @@
 		/* 登录一次 获取token */
 
 		$this->snoopy->rawheaders["COOKIE"] = $this->cookies;
+
+		$this->snoopy->proxy_host = ret_cookie('agent_ip');
+		$this->snoopy->proxy_port = ret_cookie('agent_port');
+
 		$this->snoopy->fetch('http://t.sina.com.cn/person/full_info.php');
 
 		$reset = iconv('utf-8','gbk',$this->snoopy->results);
@@ -205,6 +209,7 @@
 		//echo $token;
 		set_cookie('token',$token);
 		$this->snoopy->referer = 'http://t.sina.com.cn/person/full_info.php';
+
 		$this->snoopy->fetch('http://t.sina.com.cn/pincode/pin1.php?r=1294800814658&lang=zh');
 		//echo '<pre>';
 		//print_r($this->snoopy->headers);
@@ -222,14 +227,14 @@
 	/* 激活帐号 */
 	function activation($info,$sina_code,$code)
 	{
-
+		$this->snoopy->rawheaders["COOKIE"] = $this->cookies;
 		$this->snoopy->referer = 'http://t.sina.com.cn/person/full_info.php';
 		$info['province'] = explode(',',$info['province']);
 		$info['city'] = $info['province'][1];
 		$info['province'] = $info['province'][0];
 		$form['nickname'] = iconv('gbk','utf-8',$info['nick']);
 		$form['expand'] = '1';
-		$form['token'] = $token;
+		$form['token'] = ret_cookie('token');
 		$form['lang'] = 'zh';
 		$form['invitecode'] = '812hg8A';
 		$form['province'] = $info['province'];
@@ -246,19 +251,21 @@
 		foreach ($cookie as $val)
 		{
 			$val = explode('=',$val,2);
-			$this->snoopy->cookies[$val[0]] = $val[1];
+			$this->snoopy->cookies[$val[0]] = trim($val[1]);
 		}
-		$snoopy->cookies["ULOGIN_IMG"] = ret_cookie('ULOGIN_IMG');
-		$snoopy->cookies["NSC_wjq_eqppm2_xfc1"] = ret_cookie('NSC_wjq_eqppm2_xfc1');
+		$this->snoopy->cookies["ULOGIN_IMG"] = trim(ret_cookie('ULOGIN_IMG'));
+		$this->snoopy->cookies["NSC_wjq_eqppm2_xfc1"] = trim(ret_cookie('NSC_wjq_eqppm2_xfc1'));
 
-
+		//echo '<pre>';
+		//exit;
 
 		//exit;
-		//$this->snoopy->proxy_host = ret_cookie('agent_ip');
-		//$this->snoopy->proxy_port = ret_cookie('agent_port');
-
+		$this->snoopy->proxy_host = ret_cookie('agent_ip');
+		$this->snoopy->proxy_port = ret_cookie('agent_port');
+		return '2';
 		/* 提交激活信息 */
 		$this->snoopy->submit('http://t.sina.com.cn/person/aj_full_info.php?rnd=0.5932313893841667',$form);
+
 		if ( $this->snoopy->results == '{"code":"A00006","data":"expand=1"}')
 		{
 			return '2';

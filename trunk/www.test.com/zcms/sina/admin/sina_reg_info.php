@@ -63,6 +63,8 @@ $form['province'] .= ','.$province['orders'];
 /* 随机一个性别 */
 $form['gender'] = rand(1,2);
 
+//echo '1103';
+//exit;
 /* 提交表单 */
 $snoopy->submit($url,$form);
 $return = $snoopy->results;

@@ -44,7 +44,7 @@ if ($_REQUEST['act']==1)
 		echo '-999';
 		exit;
 	}
-	echo $t->error($return);
+	//echo $t->error($return);
 
 
 	exit;
