@@ -23,9 +23,7 @@ $ip = explode(':',$ip);
 /* ping 一下看看是否在相应时间内 */
 $snoopy->read_timeout = 3;
 
-echo '<pre>';
-print_r($ip);
-exit;
+
 set_cookie('agent_ip',$ip[0]);
 set_cookie('agent_port',$ip[1]);
 showmsg('更换成功',ret_cookie('backurl'));
