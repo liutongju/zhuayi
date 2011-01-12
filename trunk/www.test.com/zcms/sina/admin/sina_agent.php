@@ -8,6 +8,7 @@
  * @author       zhuayi
  * @QQ			 2179942
  */
+/*
 $snoopy->fetch('http://www.proxycn.com/html_proxy/countryTT-1.html');
 $reset = $snoopy->results;
 $reset = str_substr('ID','第一页',$reset);
@@ -20,12 +21,11 @@ $ip = str_replace('onDblClick="clip(\'','',$ip);
 $ip = str_replace('\');alert(\'已拷贝到剪贴板!\')','',$ip);
 $ip = explode(':',$ip);
 
-/* ping 一下看看是否在相应时间内 */
-$snoopy->read_timeout = 3;
 
+*/
 
-set_cookie('agent_ip',$ip[0]);
-set_cookie('agent_port',$ip[1]);
+set_cookie('agent_ip',$_POST['agent_ip']);
+set_cookie('agent_port',$_POST['agent_port']);
 showmsg('更换成功',ret_cookie('backurl'));
 exit;
 ?>
