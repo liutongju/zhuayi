@@ -58,7 +58,7 @@ $task = array(
 				array('ÕÊºÅµÇÂ¼','/index.php?m=sina&c=task_login&a=init','/index.php?m=sina&c=login&a=init&act=1'),
 				array('ÂãºÅÕÚÐß','/index.php?m=sina&c=task_life&a=init','/index.php?m=sina&c=life&a=init&act=1'),
 				array('Èº·¢Î¢²©','/index.php?m=sina&c=task_t&a=init','/index.php?m=sina&c=t_info&a=init'),
-			 )
+			 );
 /*
 echo urldecode('uid=1640023754%2C1849001822%2C1736042541%2C1310393894%2C1133802607%2C1400913802%2C1729853157%2C1677720444%2C1670636083%2C1806762625%2C1648997127%2C1200139367%2C1619994554%2C1825660713%2C1007343817%2C1732509302%2C1768340073%2C1665014522%2C1878321791%2C1639127253%2C1813023245%2C1192277047%2C1732950433%2C1495169251&fromuid=1905767264');
 exit;
@@ -78,6 +78,5 @@ exit;
 //echo '<pre>';
 //print_r($snoopy);
 //exit;
-
 
 ?>

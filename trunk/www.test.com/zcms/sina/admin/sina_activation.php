@@ -37,7 +37,7 @@ if ($_REQUEST['act']==1)
 	if ($return == '2' || $return ==1)
 	{
 		echo '1';
-		$query->query("update ".T."sina_account set status = 1 where id=".$_REQUEST['id']);
+		$query->query("update ".T."sina_account set status = 1 , ip2 = '".get_ip()."' where id=".$_REQUEST['id']);
 	}
 	elseif ($return == '-999')
 	{
