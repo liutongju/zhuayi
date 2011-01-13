@@ -17,10 +17,21 @@ $(function(){
 			$("#jieguo").val('IP被和谐了,赶快换一个吧');
 			return false;
 		}
+		if (data == '-9')
+		{
+			tb_show(null,'{zhuayi:echo.$weburl/}/index.php?m=sina&c=activation&height=300&a=init&id=rand',false);
+			return false;
+		}
 		if (data == '1')
 		{
 			$("#jieguo").val('恭喜您，激活成功!');
 			tb_show(null,'{zhuayi:echo.$weburl/}/index.php?m=sina&c=reg&height=300&a=init',false)
+			return false;
+		}
+		if (data == '{"code":"R01409"}')
+		{
+			$("#jieguo").val('验证码错误,请重新输入');
+			$("#code_img2").attr('src','/index.php?m=sina&c=activation&act=code&a=init&id=<?php echo $_REQUEST['id'];?>&time='+Math.random());
 			return false;
 		}
 		$("#jieguo").val(data);
@@ -35,7 +46,7 @@ $(function(){
 </script>
 <form action="?m=sina&c=activation&a=init&act=1" method="post" id="myform_sina">
 <fieldset>
-	<legend>当前代理IP：{zhuayi:echo.ret_cookie('agent_ip')/}</legend>
+	<legend>当前代理IP：{zhuayi:echo.ret_cookie('ip')/},总共激活了 {zhuayi:echo.ret_cookie('att_num')/} 个</legend>
 	<table width="100%"  class="table_form">
 		<tr>
 			<th>激活帐号：</th>

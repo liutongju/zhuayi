@@ -40,4 +40,6 @@ $query->query("update ".T."sina_nick set nick ='".$info['nick']."', user = 1 whe
 //$snoopy->fetchform;
 //echo $snoopy->results;
 //exit;
+
+
 ?>

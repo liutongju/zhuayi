@@ -39,7 +39,7 @@ $form['after'] ='on';
 $form['pass'] = $_POST['pass'];
 $form['dtime'] = time();
 /* 获取IP */
-$form['ip'] = ret_cookie('ip');
+$form['ip'] = ret_cookie();
 
 /* 虚拟一个手机号码 */
 $mobile = $query->one_array("select * from ".T."sina_mobile order by rand() limit 0,1");

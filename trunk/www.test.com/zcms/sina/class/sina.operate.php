@@ -180,6 +180,7 @@
 	/* 获取token */
 	function token()
 	{
+		$this->login();
 		/* 登录一次 获取token */
 
 		$this->snoopy->rawheaders["COOKIE"] = $this->cookies;
