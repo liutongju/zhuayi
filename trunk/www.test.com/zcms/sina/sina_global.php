@@ -79,4 +79,7 @@ exit;
 //print_r($snoopy);
 //exit;
 
+$t = new sina();
+echo $t->test();
+exit;
 ?>

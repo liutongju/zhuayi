@@ -641,6 +641,14 @@
 
 	}
 
+	function test()
+	{
+		echo '<pre>';
+		print_r($this->snoopy);
+		return get_ip();
+
+	}
+
  }
 
 
