@@ -19,7 +19,7 @@ if ($_REQUEST['act'] == 3)
 	echo  '{CC1204}';
 	exit;
 }
-exec("E:\\web\adsl.bat");
+$cmd = exec("E:\\web\adsl.bat");
 /* 初始任务 */
 $task = array(
 				array('title'=>'初始头像','url'=>'/index.php?m=sina&c=api_face&a=init'),
