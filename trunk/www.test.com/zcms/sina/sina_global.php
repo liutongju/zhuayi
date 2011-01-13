@@ -80,6 +80,7 @@ exit;
 //exit;
 
 $t = new sina();
-echo $t->test();
+echo '<pre>';
+print_r($t->test());
 exit;
 ?>

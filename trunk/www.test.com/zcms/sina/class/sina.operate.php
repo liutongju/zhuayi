@@ -643,9 +643,8 @@
 
 	function test()
 	{
-		echo '<pre>';
-		print_r($this->snoopy);
-		return get_ip();
+		$this->snoopy->fetch('http://zhongkun888.gicp.net/test.php');
+		return $this->snoopy;
 
 	}
 
