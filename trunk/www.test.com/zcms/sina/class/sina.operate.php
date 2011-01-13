@@ -262,7 +262,7 @@
 		//exit;
 		$this->snoopy->proxy_host = ret_cookie('agent_ip');
 		$this->snoopy->proxy_port = ret_cookie('agent_port');
-		return '2';
+		//return '2';
 		/* 提交激活信息 */
 		$this->snoopy->submit('http://t.sina.com.cn/person/aj_full_info.php?rnd=0.5932313893841667',$form);
 

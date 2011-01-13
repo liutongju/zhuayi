@@ -15,7 +15,8 @@ verify_admin('admin_username');
 /* ÉèÖÃ·µ»ØURL */
 set_cookie("backurl",GetCurUrl(),0);
 $menu = array(
-			array('¸ü»»IP?','agent_edit&height=300','ajax'),
+			array('ÉèÖÃIP','agent_edit&height=300','ajax'),
+			array('¸ü»»ADSL','adsl'),
 			array('ÕÊºÅ¹ÜÀí','account'),
 			array('×¢²áÕÊºÅ','reg&height=300','ajax'),
 			array('ÅÅ³ıËÀºÅ','account_dead'),
