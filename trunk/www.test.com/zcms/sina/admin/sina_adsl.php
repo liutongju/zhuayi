@@ -9,8 +9,9 @@
  * @QQ			 2179942
  */
 $adsl = exec("E:\\web\adsl.bat");
-$reset = $snoopy->fetch('http://www.ip138.com/ip2city.asp');
-set_cookie('ip',str_substr('<center>','] </center>',$reset));
+$snoopy->fetch('http://www.ip138.com/ip2city.asp');
+$reset = $snoopy->results;
+set_cookie('ip',str_substr('<center>ÄúµÄIPµØÖ·ÊÇ£º[','] </center>',$reset));
 if ($_REQUEST['act'] == 1)
 {
 	echo '<script type="text/javascript">
