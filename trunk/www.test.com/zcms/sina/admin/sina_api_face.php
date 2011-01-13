@@ -13,7 +13,7 @@ include 'api_global.php';
 
 $litpic = $query->one_array("select * from ".T."sina_face order by rand()");
 
-$return = $t->face_upload(ZCMS_ROOT.$litpic['face']);
+$return = $t->face_upload($litpic['face']);
 if ($return == 1)
 {
 	$query->query("update ".T."sina_account set litpic = '".$litpic['face']."' where id=".$_REQUEST['id']);

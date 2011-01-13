@@ -11,7 +11,9 @@
 
 if ($_REQUEST['act'] == 2)
 {
-	$query->query("update ".T."sina_task_queue set reset = '".urldecode($_REQUEST['reset'])."' , dtime =".time()." where id=".$_REQUEST['id']);
+	$_REQUEST['id'] = explode(';',$_REQUEST['id']);
+	$query->query("update ".T."sina_task_queue set reset = '".urldecode($_REQUEST['reset'])."' , dtime =".time()." where id=".$_REQUEST['id'][1]);
+	$query->query("update ".T."sina_account set task_time = '".time()."' where id =".$_REQUEST['id'][0]);
 	exit;
 }
 if ($_REQUEST['act'] == 3)
@@ -59,7 +61,7 @@ foreach ($array as $val)
 	{
 		$search .= " and start_attention = '0' ";
 	}
-	$user = $query->one_array( "select * from ".T."sina_account where status = 1 ".$search.'  and task_time < '.(time()-600).' order by rand() limit 0, 1');
+	$user = $query->one_array( "select * from ".T."sina_account where status = 1 ".$search.'  and task_time < '.(time()-3600).' order by rand() limit 0, 1');
 	if (!empty($user['id']))
 	{
 		$task_queue['title'][] = $task[$val]['title'];
@@ -68,7 +70,7 @@ foreach ($array as $val)
 		$task_queue['url'][] = $task[$val]['url'].'&id='.$user['id'];
 		/* 写入到队列库中 */
 		$query->query("insert into ".T."sina_task_queue(uid,title,url) values('".$user['id']."','".$task[$val]['title']."','".$task[$val]['url'].'&id='.$user['id']."')");
-		$task_queue['id'][] = $query->insert_id();
+		$task_queue['id'][] = $user['id'].':'.$query->insert_id();
 	}
 }
 $title =  "'".implode("','",$task_queue['title'])."'";

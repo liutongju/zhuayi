@@ -29,7 +29,7 @@ if ($return == '1')
 		$query->query("insert into ".T."sina_attention (myid,uid)values('".$_REQUEST['id']."','".$val."')");
 	}
 	/* 更改初始关注状态 */
-	$query->query("update ".T."sina_account set start_attention where id =".$_REQUEST['id']);
+	$query->query("update ".T."sina_account set start_attention = 1 where id =".$_REQUEST['id']);
 	echo '关注成功';
 }
 else

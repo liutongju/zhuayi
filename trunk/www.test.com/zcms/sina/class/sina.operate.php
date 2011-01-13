@@ -310,13 +310,15 @@
 			$this->snoopy->cookies[$val[0]] = $val[1];
 		}
 		//$this->snoopy->rawheaders["COOKIE"] = $this->cookies;
-		$form['filename'] = basename($litpic);
+		//$form['filename'] = basename($litpic);
 		$form['name'] = 'Filedata';
 		$formfiles['Filedata'] = $litpic;
 		$this->snoopy->set_submit_multipart();
 		$this->snoopy->submit('http://t.sina.com.cn/person/myface_postjs.php',$form,$formfiles);
 		$this->snoopy->results = str_replace('<html><script>var json=','',$this->snoopy->results);
 		$this->snoopy->results = str_replace(';window.parent.scope.addImgSuccess(json);</script></html>','',$this->snoopy->results);
+		echo '<pre>';
+		print_r($this->snoopy);
 		if (strpos('%%'.$this->snoopy->results,'{"code":"A00006"') > 0)
 		{
 			/* ¸ü»»³É¹¦*/
