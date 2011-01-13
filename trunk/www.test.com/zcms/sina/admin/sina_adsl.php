@@ -10,7 +10,7 @@
  */
 $adsl = exec("E:\\web\adsl.bat");
 $reset = $snoopy->fetch('http://www.ip138.com/ip2city.asp');
-set_cookie('ip',str_substr('<center>','] </center>',$reset))
+set_cookie('ip',str_substr('<center>','] </center>',$reset));
 if ($_REQUEST['act'] == 1)
 {
 	echo '<script type="text/javascript">

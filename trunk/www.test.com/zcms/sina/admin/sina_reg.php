@@ -25,7 +25,7 @@ for ($i=1;$i<=rand(6,10);$i++)
 $year = date("Y",rand(316713600,695404800));
 
 /* 随机赋予一个名称 */
-$nick = $query->one_array("select * from ".T."sina_nick order by rand() limit 0 ,1");
+$nick = $query->one_array("select * from ".T."sina_nick where user = 0 limit 0 ,1");
 
 /* 随机一个昵称 */
 $info['nick'] = $nick['nick'];
@@ -34,6 +34,9 @@ $info['nick'] = $nick['nick'];
 /* 去查询昵称被注册了没 */
 $t = new sina();
 $info['nick'] = $t->nickname($info['nick']);
+
+/* 更新昵称表已用 */
+$query->query("update ".T."sina_nick set nick ='".$info['nick']."', user = 1 where id =".$nick['id']);
 //$snoopy->fetchform;
 //echo $snoopy->results;
 //exit;
