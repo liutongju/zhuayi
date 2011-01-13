@@ -79,8 +79,5 @@ exit;
 //print_r($snoopy);
 //exit;
 
-$t = new sina();
-echo '<pre>';
-print_r($t->test());
-exit;
+
 ?>

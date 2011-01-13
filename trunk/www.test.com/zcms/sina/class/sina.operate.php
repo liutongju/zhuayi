@@ -315,8 +315,9 @@
 		$formfiles['Filedata'] = $litpic;
 		$this->snoopy->set_submit_multipart();
 		$this->snoopy->submit('http://t.sina.com.cn/person/myface_postjs.php',$form,$formfiles);
-
-		if (strpos($this->snoopy->results,'{"code":"A00006"') > 0)
+		$this->snoopy->results = str_replace('<html><script>var json=','',$this->snoopy->results);
+		$this->snoopy->results = str_replace(';window.parent.scope.addImgSuccess(json);</script></html>','',$this->snoopy->results);
+		if (strpos('%%'.$this->snoopy->results,'{"code":"A00006"') > 0)
 		{
 			/* 更换成功*/
 			return '1';
@@ -356,8 +357,8 @@
 	/* 关注 */
 	function attention($uid,$myid)
 	{
-		$this->snoopy->proxy_host = '211.137.73.116';//;ret_cookie('agent_ip');
-		$this->snoopy->proxy_port = '80';//ret_cookie('agent_port');
+		//$this->snoopy->proxy_host = '211.137.73.116';//;ret_cookie('agent_ip');
+		//$this->snoopy->proxy_port = '80';//ret_cookie('agent_port');
 
 		$this->snoopy->referer = 'http://t.sina.com.cn/'.$uid;
 		$this->ret_cookie();
@@ -643,6 +644,8 @@
 
 	function test()
 	{
+		$this->snoopy->proxy_host = '123.120.45.56';//;ret_cookie('agent_ip');
+		$this->snoopy->proxy_port = '80';//ret_cookie('agent_port');
 		$this->snoopy->fetch('http://zhongkun888.gicp.net/test.php');
 		return $this->snoopy;
 

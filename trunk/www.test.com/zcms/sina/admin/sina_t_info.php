@@ -16,7 +16,7 @@ if (empty($_REQUEST['id']))
 }
 
 /* 判断是否需要随机抓取 */
-if (empty($_REQUEST['zhuaqu']))
+if (!empty($_REQUEST['zhuaqu']))
 {
 	/* 读取内容库 */
 	if (!empty($_REQUEST['cid']))
