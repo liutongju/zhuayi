@@ -39,7 +39,8 @@ $form['after'] ='on';
 $form['pass'] = $_POST['pass'];
 $form['dtime'] = time();
 /* 获取IP */
-$form['ip'] = get_ip();
+$form['ip'] = server_ip();
+
 /* 虚拟一个手机号码 */
 $mobile = $query->one_array("select * from ".T."sina_mobile order by rand() limit 0,1");
 $form['mobile'] = $mobile['mobile'];

@@ -31,7 +31,7 @@ if (title[0]== '')
 }
 else
 {
-	//task_queue();
+	task_queue();
 }
 
 /* 获取任务队列 */
@@ -54,7 +54,7 @@ function task_queue()
 	$.get(url[j],function(data){
 		tips(data);
 		$.get('/index.php?m=sina&c=task_queue&a=init&act=2&reset='+data+'&id='+id[j],function(data2){
-			//setTimeout('task_queue()',1000);
+			setTimeout('task_queue()',1000);
 		})
 		
 	});

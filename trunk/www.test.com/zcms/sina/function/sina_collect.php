@@ -93,4 +93,5 @@ function collect_qq()
 	$content =  strip_tags($content);
 	return array('body'=>$content,'pic'=>$pic);
 }
+
 ?>
