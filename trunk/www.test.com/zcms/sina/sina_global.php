@@ -59,25 +59,5 @@ $task = array(
 				array('ÂãºÅÕÚÐß','/index.php?m=sina&c=task_life&a=init','/index.php?m=sina&c=life&a=init&act=1'),
 				array('Èº·¢Î¢²©','/index.php?m=sina&c=task_t&a=init','/index.php?m=sina&c=t_info&a=init'),
 			 );
-/*
-echo urldecode('uid=1640023754%2C1849001822%2C1736042541%2C1310393894%2C1133802607%2C1400913802%2C1729853157%2C1677720444%2C1670636083%2C1806762625%2C1648997127%2C1200139367%2C1619994554%2C1825660713%2C1007343817%2C1732509302%2C1768340073%2C1665014522%2C1878321791%2C1639127253%2C1813023245%2C1192277047%2C1732950433%2C1495169251&fromuid=1905767264');
-exit;
-echo urldecode('tag=%E7%BD%91%E7%BB%9C%2C%E7%A8%8B%E5%BA%8F%E5%91%98');
-exit;
-//·¢Î¢²©
-/mblog/publish.php?rnd=0.07724724591070708
-·¢Î¢²©´«Í¼
-/interface/pic_upload.php?marks=1&markstr=t.sina.com.cn%2F1905767264&s=rdxt&app=miniblog&cb=http://t.sina.com.cn/upimgback.html
-echo siconv(urldecode('content=%E6%88%91%E6%9C%80%E7%88%B1%E7%9A%84%E4%BA%BA%EF%BC%8C%E4%B8%8D%E7%88%B1%E6%88%91&pic=7197b360jw6dd5657tyeoj&styleid=1&retcode='));
-exit;
-*/
-//echo siconv(urldecode("%E5%9B%9B%E5%8D%81%E5%B2%81%E4%BB%A5%E5%89%8D%EF%BC%8C%E6%88%91%E8%AF%BB%E9%81%8D%E4%BA%86%E8%83%BD%E6%89%BE%E5%88%B0%E7%9A%84%E6%89%80%E6%9C%89%E4%B8%96%E7%95%8C%E4%BC%A0%E5%AA%92%E5%87%BA%E7%89%88%E5%A8%B1%E4%B9%90%E4%B8%9A%E4%BA%BA%E7%89%A9%E7%9A%84%E4%BC%A0%E8%AE%B0%EF%BC%8C%E5%9B%9B%E5%8D%81%E5%B2%81%E4%BB%A5%E5%90%8E%E5%9F%BA%E6%9C%AC%E4%B8%8D%E5%86%8D%E8%AF%BB%E4%BA%86%E3%80%82%E5%8E%9F%E5%9B%A0%EF%BC%8C%E4%B8%80%EF%BC%8C%E7%A4%BE%E4%BC%9A%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AF%B9%E6%AF%94%E4%BB%A4%E4%BA%BA%E6%B0%94%E9%A6%81%EF%BC%8C%E4%B8%8D%E5%A6%82%E4%B8%8D%E7%9C%8B%EF%BC%9B%E4%BA%8C%EF%BC%8C%E5%9B%9B%E5%8D%81%E5%B2%81%E4%BB%A5%E5%90%8E%E5%86%8D%E4%B8%8D%E5%81%9A%E8%87%AA%E5%B7%B1%EF%BC%8C%E4%B8%80%E8%BE%88%E5%AD%90%E5%B0%B1%E6%9D%A5%E4%B8%8D%E5%8F%8A%E4%BA%86%E3%80%82',0,this,'num_2211101091512412612','²ÌÎÄÊ¤','%E5%90%8C%E6%84%9F%EF%BC%9A%E5%9B%9B%E5%8D%81%E5%B2%81%E4%BB%A5%E5%90%8E%E5%86%8D%E4%B8%8D%E5%81%9A%E8%87%AA%E5%B7%B1%EF%BC%8C%E4%B8%80%E8%BE%88%E5%AD%90%E5%B0%B1%E6%9D%A5%E4%B8%8D%E5%8F%8A%E4%BA%86%E3%80%82"));
-//exit;
-//$snoopy->offsiteok = false;
-//$snoopy->fetch('http://t.sohu.com/url.jsp?id=3ePU');
-//echo '<pre>';
-//print_r($snoopy);
-//exit;
-
-
+$skin = array('skin_060','skin_118','skin_052','skin_053','skin_054','skin_058','skin_059','skin_116','skin_117','skin_114','skin_112','skin_234','skin_046','skin_050','skin_053','skin_054','skin_234','skin_035','skin_046','skin_005','skin_018','skin_001','skin_002','skin_003','skin_004','skin_008','skin_009','skin_118','skin_052','skin_117','skin_033','skin_037','skin_040','skin_044','skin_047','skin_048','skin_007','skin_017','skin_019','skin_006','skin_011','skin_058','skin_059','skin_032','skin_034','skin_036','skin_038','skin_039','skin_042','skin_043','skin_045','skin_049','skin_050','skin_116','skin_114','skin_113','skin_051','skin_112','skin_111','skin_021','skin_023','skin_022','skin_015','skin_060','skin_061');
 ?>

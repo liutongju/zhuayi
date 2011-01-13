@@ -642,14 +642,7 @@
 
 	}
 
-	function test()
-	{
-		$this->snoopy->proxy_host = '123.120.45.56';//;ret_cookie('agent_ip');
-		$this->snoopy->proxy_port = '80';//ret_cookie('agent_port');
-		$this->snoopy->fetch('http://zhongkun888.gicp.net/test.php');
-		return $this->snoopy;
 
-	}
 
  }
 

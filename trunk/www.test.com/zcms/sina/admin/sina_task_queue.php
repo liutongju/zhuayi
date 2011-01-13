@@ -19,14 +19,15 @@ if ($_REQUEST['act'] == 3)
 	echo  '{CC1204}';
 	exit;
 }
+exec("E:\\web\adsl.bat");
 /* 初始任务 */
 $task = array(
 				array('title'=>'初始头像','url'=>'/index.php?m=sina&c=api_face&a=init'),
-				array('title'=>'初始模版','url'=>'/index.php?m=sina&c=api_face&a=init'),
-				array('title'=>'初始资料','url'=>'/index.php?m=sina&c=api_face&a=init'),
-				array('title'=>'初始标签','url'=>'/index.php?m=sina&c=api_face&a=init'),
-				array('title'=>'初始关注','url'=>'/index.php?m=sina&c=api_face&a=init'),
-				array('title'=>'发布微博','url'=>'/index.php?m=sina&c=api_face&a=init'),
+				array('title'=>'初始模版','url'=>'/index.php?m=sina&c=api_skin&a=init'),
+				array('title'=>'初始资料','url'=>'/index.php?m=sina&c=api_info&a=init'),
+				array('title'=>'初始标签','url'=>'/index.php?m=sina&c=api_tags&a=init'),
+				array('title'=>'初始关注','url'=>'/index.php?m=sina&c=api_attention&a=init'),
+				array('title'=>'发布微博','url'=>'/index.php?m=sina&c=api_weibo&a=init'),
 			 );
 /* 随机任务 */
 $j = 10;
@@ -53,6 +54,10 @@ foreach ($array as $val)
 	elseif ($val == 3)
 	{
 		$search .= " and account_tags = '' ";
+	}
+	elseif ($val == 4)
+	{
+		$search .= " and start_attention = '0' ";
 	}
 	$user = $query->one_array( "select * from ".T."sina_account where status = 1 ".$search.'  and task_time < '.(time()-600).' order by rand() limit 0, 1');
 	if (!empty($user['id']))

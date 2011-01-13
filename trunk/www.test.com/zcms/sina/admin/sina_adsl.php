@@ -8,7 +8,7 @@
  * @author       zhuayi
  * @QQ			 2179942
  */
-echo ZCMS_ROOT."/adsl.bat";
-exec("D:\\adsl.bat");
+exec("E:\\web\adsl.bat");
+showmsg('IP¸ü»»³É¹¦.',ret_cookie('backurl'));
 exit;
 ?>
