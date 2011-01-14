@@ -11,9 +11,9 @@
 
 if ($_REQUEST['act'] == 2)
 {
-	$_REQUEST['id'] = explode(';',$_REQUEST['id']);
-	$query->query("update ".T."sina_task_queue set reset = '".urldecode($_REQUEST['reset'])."' , dtime =".time()." where id=".$_REQUEST['id'][1]);
-	$query->query("update ".T."sina_account set task_time = '".time()."' where id =".$_REQUEST['id'][0]);
+	$_REQUEST['id'] = explode('-',$_REQUEST['id']);
+	
+	
 	exit;
 }
 if ($_REQUEST['act'] == 3)
@@ -21,7 +21,7 @@ if ($_REQUEST['act'] == 3)
 	echo  '{CC1204}';
 	exit;
 }
-$cmd = exec("E:\\web\adsl.bat");
+//$cmd = exec("E:\\web\adsl.bat");
 /* 初始任务 */
 $task = array(
 				array('title'=>'初始头像','url'=>'/index.php?m=sina&c=api_face&a=init'),
@@ -31,15 +31,18 @@ $task = array(
 				array('title'=>'初始关注','url'=>'/index.php?m=sina&c=api_attention&a=init'),
 				array('title'=>'发布微博','url'=>'/index.php?m=sina&c=api_weibo&a=init'),
 			 );
-/* 随机任务 */
+
+/* 队列数字 */
 $j = 10;
 for ($i= 1; $i<=$j; $i++)
 {
 	$array[] = array_rand($task);
 }
+
 /* 设置任务队列 */
 foreach ($array as $val)
 {
+	
 	/* 初始头像 */
 	if ($val == 0)
 	{
@@ -61,16 +64,23 @@ foreach ($array as $val)
 	{
 		$search .= " and start_attention = '0' ";
 	}
-	$user = $query->one_array( "select * from ".T."sina_account where status = 1 ".$search.'  and task_time < '.(time()-3600).' order by rand() limit 0, 1');
+	elseif ($val == 5)
+	{
+		$search .= " and t_time < ".(time()-3600);
+	}
+	echo  "select * from ".T."sina_account where status = 1 ".' and task_time < '.(time()-3600).$search.' order by rand() limit 0, 1<br>';
+	$user = $query->one_array( "select * from ".T."sina_account where status = 1 ".' and task_time < '.(time()-3600).$search.' order by rand() limit 0, 1');
 	if (!empty($user['id']))
 	{
 		$task_queue['title'][] = $task[$val]['title'];
 		$task_queue['userid'][] = $user['id'];
 		$task_queue['username'][] = $user['username'];
-		$task_queue['url'][] = $task[$val]['url'].'&id='.$user['id'];
+		
 		/* 写入到队列库中 */
-		$query->query("insert into ".T."sina_task_queue(uid,title,url) values('".$user['id']."','".$task[$val]['title']."','".$task[$val]['url'].'&id='.$user['id']."')");
-		$task_queue['id'][] = $user['id'].':'.$query->insert_id();
+		//$query->query("insert into ".T."sina_task_queue(uid,title,url) values('".$user['id']."','".$task[$val]['title']."','".$task[$val]['url'].'&id='.$user['id']."')");
+		$taskid = $query->insert_id();
+		$task_queue['id'][] = $user['id'].'-'.$taskid;
+		$task_queue['url'][] = $task[$val]['url'].'&id='.$user['id'].'&taskid='.$taskid;
 	}
 }
 $title =  "'".implode("','",$task_queue['title'])."'";

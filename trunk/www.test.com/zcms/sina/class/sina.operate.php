@@ -185,8 +185,8 @@
 
 		$this->snoopy->rawheaders["COOKIE"] = $this->cookies;
 
-		$this->snoopy->proxy_host = ret_cookie('agent_ip');
-		$this->snoopy->proxy_port = ret_cookie('agent_port');
+		//$this->snoopy->proxy_host = ret_cookie('agent_ip');
+		//$this->snoopy->proxy_port = ret_cookie('agent_port');
 
 		$this->snoopy->fetch('http://t.sina.com.cn/person/full_info.php');
 
@@ -207,14 +207,14 @@
 			$reset = explode('",',$reset[1]);
 			$token = str_replace(': "','',trim($reset[0]));
 		}
-		//echo $token;
+		$token;
+
 		set_cookie('token',$token);
 		$this->snoopy->referer = 'http://t.sina.com.cn/person/full_info.php';
 
 		$this->snoopy->fetch('http://t.sina.com.cn/pincode/pin1.php?r=1294800814658&lang=zh');
-		//echo '<pre>';
-		//print_r($this->snoopy->headers);
-		$cookie = str_replace('Set-Cookie: ','',$this->snoopy->headers[3]);
+
+		$cookie = str_replace('Set-Cookie: ','',$this->snoopy->headers[6]);
 		$cookie = explode(';',$cookie);
 		$cookie = explode('=',$cookie[0]);
 		set_cookie('ULOGIN_IMG',$cookie[1]);
@@ -254,6 +254,8 @@
 			$val = explode('=',$val,2);
 			$this->snoopy->cookies[$val[0]] = trim($val[1]);
 		}
+		//echo ret_cookie('ULOGIN_IMG');
+		//exit;
 		$this->snoopy->cookies["ULOGIN_IMG"] = trim(ret_cookie('ULOGIN_IMG'));
 		$this->snoopy->cookies["NSC_wjq_eqppm2_xfc1"] = trim(ret_cookie('NSC_wjq_eqppm2_xfc1'));
 
@@ -318,8 +320,8 @@
 		$this->snoopy->submit('http://t.sina.com.cn/person/myface_postjs.php',$form,$formfiles);
 		$this->snoopy->results = str_replace('<html><script>var json=','',$this->snoopy->results);
 		$this->snoopy->results = str_replace(';window.parent.scope.addImgSuccess(json);</script></html>','',$this->snoopy->results);
-		echo '<pre>';
-		print_r($this->snoopy);
+		//echo '<pre>';
+		//print_r($this->snoopy);
 		if (strpos('%%'.$this->snoopy->results,'{"code":"A00006"') > 0)
 		{
 			/* ¸ü»»³É¹¦*/

@@ -47,12 +47,19 @@ if ($return == '1')
 {
 	$info['province'] .= ','.$info['city'];
 	$query->save("sina_account",$info,' id='.$_REQUEST['id']);
-	echo '虚拟资料成功';
+	$return = '虚拟资料成功';
 }
 else
 {
-	echo $return['error'];
+	$return =  $return['error'];
 }
+
+/* 更新任务 和返回值 时间 */
+$query->query("update ".T."sina_task_queue set reset = '".$return."' , dtime =".time()." where id=".$_REQUEST['taskid']);
+
+$query->query("update ".T."sina_account set task_time = '".time()."' where id =".$_REQUEST['id']);
+
+echo $return;
 exit;
 
 ?>

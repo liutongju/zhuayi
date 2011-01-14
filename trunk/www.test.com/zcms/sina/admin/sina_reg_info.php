@@ -9,6 +9,7 @@
  * @QQ			 2179942
  */
 
+
 $snoopy->proxy_host = ret_cookie('agent_ip');
 $snoopy->proxy_port = ret_cookie('agent_port');
 
@@ -70,6 +71,7 @@ $form['gender'] = rand(1,2);
 /* 提交表单 */
 $snoopy->submit($url,$form);
 $return = $snoopy->results;
+
 if (strpos($return,'验证码输入有误，请重新输入')>0)
 {
 	echo '-1';
@@ -86,7 +88,9 @@ elseif (strpos($return,'恭喜您，新浪会员注册成功!')>0)
 	$form['cookie'] = $reset['cookie'];
 	$form['uid'] = $reset['uid'];
 	/* 写入到数据库 */
-	echo $query->save('sina_account',$form);
+	$query->save('sina_account',$form);
+	set_cookie('code_num',ret_cookie('code_num')+1);
+	echo '1';
 
 }
 elseif (strpos($return,'很抱歉！该帐号被抢注，请选择其它帐号')>0)

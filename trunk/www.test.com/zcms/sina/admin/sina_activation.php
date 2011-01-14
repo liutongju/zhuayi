@@ -31,6 +31,7 @@ if ($_REQUEST['act']==1)
 		echo '-1';
 		exit;
 	}
+
 	/* ¼¤»îÕÊºÅ */
 	$return = $t->activation($info,ret_cookie('activation_code'),$_REQUEST['code']);
 

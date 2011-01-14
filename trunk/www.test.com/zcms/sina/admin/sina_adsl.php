@@ -8,16 +8,18 @@
  * @author       zhuayi
  * @QQ			 2179942
  */
+
 $adsl = exec("E:\\web\adsl.bat");
+set_cookie('code_ip',ret_cookie('code_ip')+1);
+set_cookie('code_num',ret_cookie('code_num')+1);
+
 $snoopy->fetch('http://www.ip138.com/ip2city.asp');
 $reset = $snoopy->results;
 set_cookie('ip',str_substr('<center>ÄúµÄIPµØÖ·ÊÇ£º[','] </center>',$reset));
 if ($_REQUEST['act'] == 1)
 {
 	echo '<script type="text/javascript">
-	$(function(){
-		tb_show(null,\''.$weburl.'/index.php?m=sina&c=reg&height=300&a=init\',false)
-	})
+		window.location.href="'.$weburl.'/index.php?m=sina&c=codeing&height=300&a=init";
 	</script>';
 	echo $adsl;
 	exit;

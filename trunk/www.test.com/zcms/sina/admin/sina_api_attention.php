@@ -30,12 +30,19 @@ if ($return == '1')
 	}
 	/* 更改初始关注状态 */
 	$query->query("update ".T."sina_account set start_attention = 1 where id =".$_REQUEST['id']);
-	echo '关注成功';
+	$return = '关注成功';
 }
 else
 {
-	echo $return['error'];
+	$return =  $return['error'];
 }
+
+/* 更新任务 和返回值 时间 */
+$query->query("update ".T."sina_task_queue set reset = '".$return."' , dtime =".time()." where id=".$_REQUEST['taskid']);
+
+$query->query("update ".T."sina_account set task_time = '".time()."' where id =".$_REQUEST['id']);
+
+echo $return;
 exit;
 
 ?>

@@ -30,12 +30,18 @@ $return = $t->tags($tags);
 if ($return == '1')
 {
 	$query->query("update ".T."sina_account set account_tags = concat(account_tags,'".implode(',',explode(' ',$tags))."') where id = ".$_REQUEST['id']);
-	echo '更新标签成功';
+	$return = '更新标签成功';
 }
 else
 {
-	echo $return['error'];
+	$return =  $return['error'];
 }
-exit;
 
+/* 更新任务 和返回值 时间 */
+$query->query("update ".T."sina_task_queue set reset = '".$return."' , dtime =".time()." where id=".$_REQUEST['taskid']);
+
+$query->query("update ".T."sina_account set task_time = '".time()."' where id =".$_REQUEST['id']);
+
+echo $return;
+exit;
 ?>
