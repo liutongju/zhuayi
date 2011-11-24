@@ -44,6 +44,12 @@ class zhuayi
 	{
 		global $config;
 
+		/* 检查是否开启 rewrite */
+		if (!in_array('mod_rewrite',apache_get_modules()))
+		{
+			output::error('很抱谦,你的Apache不支持rewrite.','点击下边链接查看如何开启rewrite!');
+		}
+
 		$this->url_debug = '&'.implode('|&',$this->url_debug).'|\?'.implode('|\?',$this->url_debug);
 
 		$this->url_debug = preg_replace("#".$this->url_debug."#",'',$_SERVER["REQUEST_URI"]);
@@ -343,8 +349,7 @@ class zhuayi
 		}
 		else
 		{
-			output::error('调用函数'.$fun_name.'失败...');
-			
+			output::error('调用函数'.$fun_name.'失败...');	
 		}
 	}
 

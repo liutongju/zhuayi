@@ -20,7 +20,7 @@ class output extends zhuayi
 	{
 		if (empty($url))
 		{
-			$url = $_SERVER['HTTP_REFERER'];
+			$url = @$_SERVER['HTTP_REFERER'];
 		}
 		
 		$show['title'] = $title;
