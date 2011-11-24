@@ -10,7 +10,7 @@
 <div class="class_list">
 	<h2>入门教程</h2>
 	<ul>
-	<?php foreach($show['blog_hot_list'] as $key=>$val){?>
+	<?php foreach($show['article_hot_list'] as $key=>$val){?>
 		<li><a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>"><?php echo ($key+1).'.'.$val['title'];?></a></li>
 	<?php }?>
 	</ul>
@@ -18,7 +18,7 @@
 <div class="class_list">
 	<h2>Zhuayi更新日志</h2>
 	<ul class="data">
-	<?php foreach($show['blog_new_list'] as $key=>$val){?>
+	<?php foreach($show['article_new_list'] as $key=>$val){?>
 		<li><a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>"><?php echo $val['title'];?></a></li>
 	<?php }?>
 	</ul>

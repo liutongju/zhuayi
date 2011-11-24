@@ -486,8 +486,7 @@ class db
 		/* 遍历ID,返回导数组中*/
 		$list = $this->fetch_row($id_table,$where,'','all');
 
-		
-		$id_list = array_slice($list,$limit[0],$limit[1]);
+		$id_list = @array_slice($list,$limit[0],$limit[1]);
 
 		$id = array();
 		foreach ($id_list as $val)

@@ -19,7 +19,7 @@ class myblog_action extends zhuayi
 
 	}
 
-	/* 前端blog列表 */
+	/* 前端article列表 */
 	function index($id)
 	{
 
@@ -27,6 +27,8 @@ class myblog_action extends zhuayi
 		{
 			output::error('访问的页面不存在...','','/');
 		}
+
+		$tpl = '';
 
 		if ($id == 6)
 		{
@@ -43,11 +45,12 @@ class myblog_action extends zhuayi
 		}
 
 		$where = array();
+		
 		$perpage = 10;
 		
 		$limit = ($_GET['page']-1)*$perpage.','.$perpage;
 
-		$show['category'] = blog_modle::category(array('id'=>$id));
+		$show['category'] = article_modle::category(array('id'=>$id));
 
 		if (empty($show['category']['id']))
 		{
@@ -58,7 +61,7 @@ class myblog_action extends zhuayi
 
 		$where['cid'] = $id;
 
-		$list = blog_modle::blog_join($where,$order,$limit);
+		$list = article_modle::article_join($where,$order,$limit);
 		$show['list'] = $list['list'];
 		$show['maxnum'] = $list['maxnum'];
 
@@ -73,7 +76,7 @@ class myblog_action extends zhuayi
 	function show($id)
 	{
 		
-		$show['info'] = blog_modle::blog_join(array('id'=>$id));
+		$show['info'] = article_modle::article_join(array('id'=>$id));
 
 		
 
@@ -99,11 +102,11 @@ class myblog_action extends zhuayi
 		unset($tags);
 
 		/* 更新点击数 */
-		blog_modle::blog_update(array('click'=>$show['info']['click'],'id'=>$show['info']['id']));
+		article_modle::article_update(array('click'=>$show['info']['click'],'id'=>$show['info']['id']));
 
 		if ($show['info']['category']['id'] == '7')
 		{
-			$tpl = 'blog_plugins';
+			$tpl = 'article_plugins';
 		}
 		if ($show['info']['cid'] == 8)
 		{
@@ -115,12 +118,12 @@ class myblog_action extends zhuayi
 	function right()
 	{
 		/* 获取全部分类 */
-		$show['category_list'] = blog_modle::blog_class();
+		$show['category_list'] = article_modle::article_class();
 		/* 获取每日更新 */
-		$show['blog_new_list'] = blog_modle::blog_new_list();
+		$show['article_new_list'] = article_modle::article_new_list();
 
 		/* 获取热门分类 */
-		$show['blog_hot_list'] = blog_modle::blog_hot_list();
+		$show['article_hot_list'] = article_modle::article_hot_list();
 
 		require $this->load_tpl('myblog_right');
 	}

@@ -1,3 +1,9 @@
+2011-11-24 更新
+
+	--- 增加检查是否开启rewrite模块,zhuayi.class.php -> app
+	--- 增加关闭DEBUG模式参数 config.php $config['debug'] = true;
+	--- 增加模板变量,执行时间 = $this->timecost ,消耗内存 = $this->memory_get_usage,sql数量  = $this->sql_num
+
 2011-11-22 更新
 	
 	--- 修正文件操作类,支持SAE等数据流写入saestor:://litpic,
