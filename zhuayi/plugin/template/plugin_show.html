@@ -1,0 +1,43 @@
+<?php require $this->load_tpl('plugin_header');?>
+<div class="w100 overflow">
+	<div class="left">
+		<h2 class="title">
+			<a href="/">Zhuayi</a> <span> > 
+			<a href="/plugin/">插件库</a> > 
+			<?php echo $show['info']['title'];?></span>
+		</h2>
+		<div class="plugins">
+			<h1><?php echo $show['info']['title'];?></h1>
+			<p><?php echo html_entity_decode($show['info']['body']);?></p>
+			<ul>
+			<?php foreach ($show['info']['fun'] as $key=>$val){?>
+				<li>
+					<a href="#mao_<?php echo $key;?>"><?php echo $val['title'];?></a> 
+				</li>
+			<?php }?>
+			</ul>
+			<?php if ($show['info']['config'][0]){?>
+			<h2>配置方法:<a name="mao_<?php echo $key;?>"></a></h2>
+			<pre class="prettyprint lang-php">插件配置文件位置:<?php echo $show['info']['name'];?></pre>
+			<h2>参数解析:</h2>
+			<ul>
+			<?php foreach ($show['info']['config'] as $val){?>
+			<?php $val = explode(',',$val);?>
+				<li>
+					<span class="dist dist_left"><?php echo $val[0];?></span> <span class="dist"><?php echo $val[1];?></span>
+				</li>
+			<?php }?>
+			</ul>
+			<?php }?>
+			<?php foreach ($show['info']['fun'] as $key=>$val){?>
+				<h2><?php echo $val['title'];?><a name="mao_<?php echo $key;?>"></a></h2>
+				<pre class="prettyprint lang-php"><?php echo $val['code'];?></pre>
+				<?php echo htmlspecialchars_decode($val['body']);?>
+			<?php }?>
+		</div>
+	</div>
+	<div class="right">
+		<?php $this->load_modle('plugin_right');?>
+	</div>
+</div>
+<?php require $this->load_tpl('plugin_footer');?>

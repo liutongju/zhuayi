@@ -1,0 +1,33 @@
+<?php require $this->load_tpl('myblog_header');?>
+<div class="w100 overflow">
+	<div class="left">
+		<h2 class="title">
+			<a href="/">Zhuayi</a> <span> > 
+			<?php if ($show['category']['category'] != ''){?>
+			<a href="/myblog/<?php echo $show['category']['id'];?>"><?php echo $show['category']['category'];?></a> > 
+			<?php }?>
+			列表</span>
+		</h2>
+		<div class="blog_list border">
+		<?php foreach ($show['list'] as $val){?>
+			<div class="blog overflow">
+				<h3 class="title">
+					<a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>" title="<?php echo $val['title'];?>"><?php echo $val['title'];?></a>
+				</h3>
+				<p class="dtime"> 
+					发布时间： <?php echo $val['dtime'];?> 
+					所属分类： <a href="/myblog/<?php echo $val['category']['id'];?>"><?php echo $val['category']['category'];?></a>
+				</p>
+				<div class="box">
+					<?php echo htmlspecialchars_decode($val['body']);?>
+				</div>
+			</div>
+		<?php }?>
+		</div>
+		<div class="page"><div class="pages"><?php echo $show['page'];?></div></div>
+	</div>
+	<div class="right">
+		<?php $this->load_modle('myblog_right');?>
+	</div>
+</div>
+<?php require $this->load_tpl('myblog_footer');?>

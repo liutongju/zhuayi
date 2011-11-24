@@ -1,0 +1,17 @@
+<?php require $this->load_tpl('plugin_header');?>
+<div class="w100 overflow">
+	<div class="left">
+		<h2 class="title">
+			<a href="/">Zhuayi</a> <span> > 
+			<a href="/myblog/8">实例教程</a> > 
+			<?php echo $show['info']['title'];?></span>
+		</h2>
+		<div class="plugins">
+			<?php echo html_entity_decode($show['info']['body']);?>
+		</div>
+	</div>
+	<div class="right">
+		<?php $this->load_modle('myblog_right');?>
+	</div>
+</div>
+<?php require $this->load_tpl('plugin_footer');?>

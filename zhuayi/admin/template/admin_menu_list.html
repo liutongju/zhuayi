@@ -1,0 +1,38 @@
+<?php require $this->load_tpl('admin_header');?>
+<form name="myform" action="/admin/menu_orders/" method="post">
+<div class="table-list">
+	<table width="100%" cellspacing="0" >
+		<thead>
+			<tr>
+				<th width="30"><input type="checkbox" name="checkbox" onclick="$('input[type=checkbox]').attr('checked',$(this).attr('checked'))"/></th>
+				<th width="30">排序</th>
+				<th align='left'>菜单名称</th>
+				<th width="200">管理操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($show['menu_list'] as $key=>$val){?>
+			<tr>
+				<td align='center'>
+					<input type="checkbox" value="<?php echo $val['id'];?>" name="id[]"/>
+				</td>
+				<td align='center'>
+					<input name='orders[]' type='text' size='3' value='<?php echo $val['orders'];?>' class='input-text-c'>
+				</td>
+				<td><?php echo $val['gap'].$val['title'];?></td>
+				<td align='center'>
+					<a href="/admin/menu_edit//<?php echo $val['id'];?>/?height=350" class="thickbox">添加子菜单</a> | 
+					<a href="/admin/menu_edit/<?php echo $val['id'];?>/?height=350" class="thickbox">修改</a> | 
+					<a href="/admin/menu_del/<?php echo $val['id'];?>">删除</a>
+				</td>
+			</tr>
+		<?php }?>
+		</tbody>
+	</table>
+	<div class="btn">
+		<input type="submit" class="button"  value="排序" onclick='$(".check").attr("checked",true)'/>
+	</div>
+</div>
+</form>
+<?php require $this->load_tpl('admin_foot');?>
+

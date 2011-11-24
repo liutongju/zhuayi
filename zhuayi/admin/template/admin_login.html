@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<title>后台登录 -  Powered by Zhuayi!</title>
+<link rel="stylesheet" type="text/css" href="/zhuayi/admin/template/style/login.css">
+</head> 
+<body onload="javascript:document.myform.username.focus();">
+<div id="login_bg" class="login_box"> 
+	<div class="login_iptbox">
+   	 <form action="/admin/login_info" method="post" name="myform">
+		<input name="dosubmit" value="" type="submit" class="login_tj_btn" /><label>用户名：</label>
+		<input name="username" type="text" class="ipt" />
+		<label>密码:</label>
+		<input name="password" type="password" class="ipt" value="" />
+		<label>验证码：</label>
+		<input name="code" type="text" class="ipt ipt_reg" onfocus="document.getElementById('yzm').style.display='block'" /> 
+		<div id="yzm" class="yzm">
+			<img id='code_img' onclick='this.src=this.src+"&"+Math.random()' src='/admin/checkcode'><br />
+			<a href="javascript:document.getElementById('code_img').src='/admin/checkcode/?'+Math.random();void(0);">单击更换验证</a>
+		</div>
+     </form> 
+    </div> 
+    <div class="cr">Powered By Zhuayi &copy; 2007-2011 <a href="http://www.zhuayi.net" target="_blank">Zhuayi</a>  版权所有 Email:2179942#qq.com
+</div> 
+</div>
+
+</body> 
+</html>
