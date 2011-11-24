@@ -50,8 +50,17 @@ class zhuayi
 			output::error('很抱谦,你的Apache不支持rewrite.','点击下边链接查看如何开启rewrite!');
 		}
 
-		$this->url_debug = '&'.implode('|&',$this->url_debug).'|\?'.implode('|\?',$this->url_debug);
+		/* 检查是否开启DEBUG模式,如果关闭则删除GET参数 */
+		if ($config['debug'] === false)
+		{
+			foreach ($this->url_debug as $val)
+			{
+				unset($_GET[$val]);
+			}
+		}
 
+		/* 过滤GET参数中的Debug参数 */
+		$this->url_debug = '&'.implode('|&',$this->url_debug).'|\?'.implode('|\?',$this->url_debug);
 		$this->url_debug = preg_replace("#".$this->url_debug."#",'',$_SERVER["REQUEST_URI"]);
 
 		$controller_key = 'controller '.$this->url_debug;
@@ -319,7 +328,16 @@ class zhuayi
 		
 		if (file_exists($filename))
 		{
-			
+
+			/* 这只程序执行时间和消耗内存 */
+			$pageendtime = microtime(); 
+			$starttime = explode(" ",$this->pagestartime); 
+			$endtime = explode(" ",$pageendtime); 
+			$this->timecost= $endtime[0]-$starttime[0]+$endtime[1]-$starttime[1]; 
+			$this->timecost = sprintf("%0.2f",$this->timecost); 
+			$this->memory_get_usage = sprintf('%0.2f', memory_get_usage() / 1048576 ).' MB';
+			$this->sql_num = intval($this->db->querynum);
+
 			require $filename;
 		}
 		else

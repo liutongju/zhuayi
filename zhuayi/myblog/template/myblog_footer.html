@@ -1,17 +1,10 @@
-<?php
-$pageendtime = microtime(); 
-$starttime = explode(" ",$this->pagestartime); 
-$endtime = explode(" ",$pageendtime); 
-$totaltime = $endtime[0]-$starttime[0]+$endtime[1]-$starttime[1]; 
-$timecost = sprintf("%0.2f",$totaltime); 
-?>
 <div id="bottom" class="w980">
 	<div>
 		<span>
 			Zhuayi.net © 2011 
-			共执行 <?php echo $this->db->querynum;?> 个查询 
-			页面用时 <?php echo $timecost;?> 秒 内存占用 
-			<?php echo sprintf('%0.2f', memory_get_usage() / 1048576 );?> MB
+			共执行 <?php echo $this->sql_num;?> 个查询 
+			页面用时 <?php echo $this->timecost;?> 秒 内存占用 
+			<?php echo $this->memory_get_usage;?>
 		</span>
 		<a href="/about/">关于Zhuayi</a> · 
 		<a href="/myblog/5">Blog</a> · 
