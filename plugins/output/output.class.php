@@ -27,9 +27,9 @@ class output extends zhuayi
 		$show['msg'] = $msg;
 		$show['url'] = $url;
 
-		$tpl =  dirname(__FILE__).'/template/error.html';
+		require  dirname(__FILE__).'/template/error.html';
 
-		zhuayi::display($show,$tpl);
+		//zhuayi::display($show,$tpl);
 		exit;
 	}
 
