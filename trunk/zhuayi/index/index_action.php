@@ -23,11 +23,11 @@ class index_action extends zhuayi
 	function index()
 	{
 		//$this->file->domain(array('http://2.zhuayi.net/',ZHUAYI_ROOT));
-		$domain = array('url'=>'http://2.zhuayi.net/','root'=>ZHUAYI_ROOT.'//');
-		$reset = $this->file->write('/123/123.html','123',$domain);
+		//$domain = array('url'=>'http://2.zhuayi.net/','root'=>ZHUAYI_ROOT.'//');
+		//$reset = $this->file->write('/123/123.html','123',$domain);
 		//$reset2 = $this->file->write('123/123.html','123');
 		//$reset  = $this->file->delete('123/123.html',$domain);
-		print_r($reset);
+		print_r($this);
 		//$reset = blog_modle::blog_delete(array('id[]'=>16));
 	}
 

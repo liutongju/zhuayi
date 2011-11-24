@@ -79,7 +79,6 @@ $config['cache']['power'] = false;
  */
 $config['file']['path']['litpic']['url'] = 'http://aweinan-litpic.stor.sinaapp.com';
 $config['file']['path']['litpic']['root'] = 'saestor:://litpic';
-
 $config['file']['path']['litpic2']['url'] = 'http://aweinan-litpic2.stor.sinaapp.com';
 $config['file']['path']['litpic2']['root'] = 'saestor:://litpic2';
 
