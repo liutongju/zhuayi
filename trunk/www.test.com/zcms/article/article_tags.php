@@ -1,1 +1,0 @@
-<?php/** * article_show.php     ZCMS 文章网站地图 *  * @copyright    (C) 2005 - 2010  ZCMS * @licenes      http://www.zcms.cc * @lastmodify   2010-11-17 * @author       zhuayi   * @QQ			 2179942 *//* 设置模版 */$_REQUEST['c_file'] = $article_tpl.'/标签.html';$seo['seo_title'] = 'Tags标签';?>

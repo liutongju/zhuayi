@@ -1,1 +1,0 @@
-<?php/** * admin_index.php     ZCMS 基本配置 *  * @copyright    (C) 2005 - 2010  ZCMS * @licenes      http://www.zcms.cc * @lastmodify   2010-10-28 * @author       zhuayi   * @QQ			 2179942 */ /* 载入邮件发送类 */echo email($_POST['email_config'],$webname.'测试邮件',$webname.'测试邮件内容',$_POST['email_config']['mail_to']);exit; ?>

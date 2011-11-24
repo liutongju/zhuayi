@@ -1,1 +1,0 @@
-<?php/** * article_show.php     ZCMS ÎÄÕÂÍøÕ¾µØÍ¼ *  * @copyright    (C) 2005 - 2010  ZCMS * @licenes      http://www.zcms.cc * @lastmodify   2010-11-17 * @author       zhuayi   * @QQ			 2179942 *//* ÉèÖÃÄ£°æ */$_REQUEST['c_file'] = $article_tpl.'/ÍøÕ¾µØÍ¼.html';$seo['seo_title'] = 'ÍøÕ¾µØÍ¼';?>

@@ -1,7 +1,0 @@
-{zhuayi:include file="/zcms/admin/template/admin/头部.html"/}<form name="myform" action="/index.php?m=article&c=class_info&a=init" method="post"><div class="table-list">	<table width="100%" cellspacing="0" >		<thead>			<tr>				<th width="30">序号</th>				<th width="30">排序</th>				<th align="left">分组名称</th>				<th align="left">帐号数</th>				<th width="220">操作</th>			</tr>		</thead>		<tbody>		{zhuayi:sina_account_class_list}			<tr>				<td align='center'><input type="checkbox" value="{zhuayi:echo.$fields['id']/}" name="id[]" class="check"/></td>
-				<td align='center'>{zhuayi:echo.$fields['id']/}</td>
-				<td>{zhuayi:echo.$fields['classname']/}</td>				<td ><a href="/index.php?m=sina&c=account&a=init&cid={zhuayi:echo.$fields['id']/}">{zhuayi:echo.$fields['count']/}</a></td>
-				<td align='center'>					<a href="/index.php?m=sina&c=account_class_edit&a=init&id={zhuayi:echo.$fields['id']/}&height=230" class="thickbox">修改</a> | 					<a href="/index.php?m=sina&c=account_class_del&a=init&id={zhuayi:echo.$fields['id']/}">删除</a>				</td>
-			</tr>		{/zhuayi:sina_account_class_list}
-		</tbody>
-	</table></div></form>{zhuayi:include file="/zcms/admin/template/admin/底部.html"/}

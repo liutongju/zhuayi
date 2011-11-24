@@ -1,1 +1,0 @@
-document.write ('<b><font color="red"><a href="http://bbs.wgjz.com/thread-29446-1-1.html" target="_blank">一点很小的善心，乘以13亿，都会变成爱的海洋；一个很大的困难，除以13亿，都会变得微不足道。</font></b></a>');

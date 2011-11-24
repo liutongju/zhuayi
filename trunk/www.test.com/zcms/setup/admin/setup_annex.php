@@ -1,1 +1,0 @@
-<?php/** * admin_index.php     ZCMS 附件配置 *  * @copyright    (C) 2005 - 2010  ZCMS * @licenes      http://www.zcms.cc * @lastmodify   2010-10-28 * @author       zhuayi   * @QQ			 2179942 *//* 设置返回URL */set_cookie("backurl",GetCurUrl(),0); $pagename = '附件配置';/* 载入附件配置文件 */include_once ZCMS_ROOT.'/data/include/annex_config.php';          ?>
