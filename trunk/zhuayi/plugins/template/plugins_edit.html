@@ -1,0 +1,44 @@
+<?php require $this->load_tpl('admin_header');?>
+<script type="text/javascript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"blog_form",onerror:function(msg){}});
+	$("#title").formValidator({onshow:"请输入插件标题",onfocus:"请输入插件标题"}).inputValidator({min:2,max:60,onerror:"请输入插件标题"});
+})
+//-->
+</script>
+<form action="/plugins/info" method="post" id="blog_form" enctype="multipart/form-data">
+<fieldset>
+	<legend><?php echo $show['pagename'];?></legend>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80">插件标题：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="title" id="title" value="<?php echo $show['info']['title'];?>" size="40" />
+			</td>
+		</tr>
+		<tr>
+			<th width="80">插件名称：</th>
+			<td class="y-bg">
+				<input type="text" class="input-text" name="name" id="name" value="<?php echo $show['info']['name'];?>" size="40" />
+			</td>
+		</tr>
+		<tr>
+			<th width="80">插件简介：</th>
+			<td class="y-bg">
+				<textarea id="body" name="body" style="width:98%; height:60px;"><?php echo $show['info']['body'];?></textarea>
+			</td>
+		</tr>
+		<tr>
+			<th width="80">插件参数：</th>
+			<td class="y-bg">
+				<textarea id="body" name="config" style="width:98%; height:100px;"><?php echo $show['info']['config'];?></textarea>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+<div class="bk15"></div>
+<input type="hidden" name="id" value="<?php echo $show['info']['id'];?>">
+<input type="submit" class="button" id="button"  value="提交" />
+</form>
+<?php require $this->load_tpl('admin_foot');?>

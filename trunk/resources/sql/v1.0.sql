@@ -1,0 +1,15 @@
+delete from `z_admin_menu`;
+INSERT INTO `z_admin_menu` VALUES(1, 0, '设置', 'admin', '', '', '', 98, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(74, 73, '关键词管理', 'keyword', 'index', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(68, 16, '添加菜单', 'admin', 'menu_edit', '', '?height=350', 1, 1, 0);
+INSERT INTO `z_admin_menu` VALUES(72, 0, '关键词', 'keyword', '', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(73, 72, '关键词', 'keyword', '', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(17, 16, '后台菜单', 'admin', 'menu_list', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(16, 1, '插件', 'admin', '', '', '', 999, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(19, 1, '管理员设置', 'admin', '', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(76, 73, '导入关键词', 'keyword', 'import', '', '?height=150&width=500', 2, 1, 0);
+INSERT INTO `z_admin_menu` VALUES(23, 19, '帐号管理', 'admin', 'user_list', '', '', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(24, 19, '添加帐号', 'admin', 'add', '', '?height=310&width=450', 0, 0, 0);
+INSERT INTO `z_admin_menu` VALUES(75, 73, '添加关键词', 'keyword', 'edit', '', '?height=150&width=500', 1, 1, 0);
+INSERT INTO `z_admin_menu` VALUES(77, 73, '采集连接', 'keyword', 'collect', '', '', 3, 1, 0);
+INSERT INTO `z_admin_menu` VALUES(80, 73, '文章管理', 'keyword', 'article', '', '', 6, 0, 0);

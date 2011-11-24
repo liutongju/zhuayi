@@ -1,0 +1,1 @@
+UPDATE  `zhuayi-net`.`z_admin_menu` SET  `ajax` =  '?status=1' WHERE  `z_admin_menu`.`id` =80;

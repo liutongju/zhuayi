@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>Zhuayi - 后台管理中心</title>
+<link href="/zhuayi/admin/template/style/reset.css" rel="stylesheet" type="text/css" />
+<link href="/zhuayi/admin/template/style/system.css" rel="stylesheet" type="text/css" />
+<link href="/zhuayi/admin/template/style/table_form.css" rel="stylesheet" type="text/css" />
+<link href="/zhuayi/admin/template/style/styles2.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/thickbox/thickbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/js/thickbox/thickbox.css"/>
+<script language="javascript" type="text/javascript" src="/statics/js/form/formvalidator.js" charset="UTF-8"></script>
+<script language="javascript" type="text/javascript" src="/statics/js/form/formvalidatorregex.js" charset="UTF-8"></script>
+<script language="javascript" type="text/javascript" src="/statics/js/select.js" charset="UTF-8"></script>
+</head>
+<body>
+<?php
+$menu_id = admin_modle::admin_menu_list(array('modle'=>$this->modle,'action'=>$this->action,'par'=>implode('/',$this->fileds)));
+$menu_id = $menu_id[0];
+$show['menu'] = admin_modle::admin_menu_list(array('parent_id'=>$menu_id['parent_id']));
+if (isset($show['menu']) && is_array($show['menu'])){?>
+<div class="subnav">
+    <div class="content-menu ib-a blue line-x">
+	<?php
+		foreach ($show['menu'] as $val){
+	?>
+        <a href="/<?php echo $val['modle'].'/'.$val['action'].'/'.$val['par'].$val['ajax'];?>" class="<?php if ($menu_id['modle'].$menu_id['action'].$menu_id['par'] == $val['modle'].$val['action'].$val['par']){echo 'on';}?> <?php if (!empty($val['ajax'])){echo ' thickbox';}?>" <?php if ($val['target']=='1'){echo 'target=_blank""';}?>><em class="right_menu"><?php echo $val['title'];?></em></a><span>|</span>
+	<?php }?>
+	</div>
+</div>
+<?php }else{?>
+<div class="bk10"></div>
+<?php }?>
+<div class="pad_10">
+	<?php if (isset($show['tips'])){?>
+	<div class="explain-col">
+		温馨提示：<?php echo $show['tips'];?>
+	</div>
+	<div class="bk10"></div>
+	<?php }?>

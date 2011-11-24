@@ -1,0 +1,25 @@
+<div class="class_list">
+	<h2>文章分类</h2>
+	<ul class="folder">
+	<li><a href="/plugin">插件中心</a></li>
+	<?php foreach($show['category_list'] as $key=>$val){?>
+		<li><a href="/myblog/<?php echo $val['id'];?>"><?php echo $val['category'];?></a></li>
+	<?php }?>
+	</ul>
+</div>
+<div class="class_list">
+	<h2>入门教程</h2>
+	<ul>
+	<?php foreach($show['blog_hot_list'] as $key=>$val){?>
+		<li><a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>"><?php echo ($key+1).'.'.$val['title'];?></a></li>
+	<?php }?>
+	</ul>
+</div>
+<div class="class_list">
+	<h2>Zhuayi更新日志</h2>
+	<ul class="data">
+	<?php foreach($show['blog_new_list'] as $key=>$val){?>
+		<li><a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>"><?php echo $val['title'];?></a></li>
+	<?php }?>
+	</ul>
+</div>

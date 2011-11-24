@@ -1,0 +1,25 @@
+<?php require $this->load_tpl('myblog_header');?>
+<div class="w100 overflow">
+	<div class="left">
+		<h2 class="title">
+			<a href="/">Zhuayi</a> <span> > 
+			<a href="/myblog/<?php echo $show['info']['category']['id'];?>"><?php echo $show['info']['category']['category'];?></a> > 
+			<?php echo $show['info']['title'];?></span>
+		</h2>
+		<div class="blog_info border">
+			<h1><?php echo $show['info']['title'];?></h1>
+			<div class="body">
+				<?php echo html_entity_decode($show['info']['body']);?>
+			</div>
+			<?php if (!empty($show['info']['tags'])){?>
+			<div class="tags">
+				标签：<?php echo $show['info']['tags'];?>
+			</div>
+			<?php }?>
+		</div>
+	</div>
+	<div class="right">
+		<?php $this->load_modle('myblog_right');?>
+	</div>
+</div>
+<?php require $this->load_tpl('myblog_footer');?>
