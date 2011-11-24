@@ -28,20 +28,13 @@ class myblog_action extends zhuayi
 			output::error('访问的页面不存在...','','/');
 		}
 
-		$tpl = '';
-
-		if ($id == 6)
-		{
-			$tpl = 'myblog_update';
-		}
-
 		if ($id == 8)
 		{
-			$order = ' id asc';
+			$order = ' a.id asc';
 		}
 		else
 		{
-			$order = ' id desc';
+			$order = ' a.id desc';
 		}
 
 		$where = array();
@@ -69,16 +62,24 @@ class myblog_action extends zhuayi
 
 		$show['page'] = $page->show();
 
-		$this->display($show,$tpl);
+		$this->display($show,$show['category']['tpl']);
 	}
 
 	/* 前台show */
 	function show($id)
 	{
-		
-		$show['info'] = article_modle::article_join(array('id'=>$id));
 
-		
+		$show['info'] = article_modle::article(array('id'=>$id));
+
+		/* 获取分类 */
+		$show['info']['category'] = article_modle::parent_category(array('id'=>$show['info']['cid']));
+
+		foreach ($show['info']['category'] as $val)
+		{
+			$category[] = $val['category'];
+		}
+
+		$category = implode(' - ',array_reverse($category));
 
 		if (empty($show['info']['id']))
 		{
@@ -86,7 +87,7 @@ class myblog_action extends zhuayi
 		}
 		$show['info']['click']++;
 
-		$show['title'] = $show['info']['title'].' - '.$show['info']['category']['category'];
+		$show['title'] = $show['info']['title'].' - '.$category;
 
 		$show['info']['tags'] = explode(',',$show['info']['tags']);
 		$tags = & $show['info']['tags'];
@@ -104,10 +105,7 @@ class myblog_action extends zhuayi
 		/* 更新点击数 */
 		article_modle::article_update(array('click'=>$show['info']['click'],'id'=>$show['info']['id']));
 
-		if ($show['info']['category']['id'] == '7')
-		{
-			$tpl = 'article_plugins';
-		}
+
 		if ($show['info']['cid'] == 8)
 		{
 			$tpl = 'myblog_code';

@@ -4,7 +4,7 @@
  * Zhuayi 网站名称
  * --------------------------------
  */ 
-$config['web']['webname'] = 'Zhuayi';
+$config['web']['webname'] = 'Zhuayi php 框架';
 
 /**
  * --------------------------------

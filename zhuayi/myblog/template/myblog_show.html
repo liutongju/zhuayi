@@ -3,7 +3,9 @@
 	<div class="left">
 		<h2 class="title">
 			<a href="/">Zhuayi</a> <span> > 
-			<a href="/myblog/<?php echo $show['info']['category']['id'];?>"><?php echo $show['info']['category']['category'];?></a> > 
+			<?php foreach ($show['info']['category'] as $val){?>
+			<a href="/myblog/<?php echo $val['id'];?>"><?php echo $val['category'];?></a> > 
+			<?php }?>
 			<?php echo $show['info']['title'];?></span>
 		</h2>
 		<div class="blog_info border">
@@ -20,6 +22,7 @@
 	</div>
 	<div class="right">
 		<?php $this->load_modle('myblog_right');?>
+		<?php $this->load_modle('plugin_right');?>
 	</div>
 </div>
 <?php require $this->load_tpl('myblog_footer');?>

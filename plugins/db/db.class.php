@@ -212,7 +212,7 @@ class db
 	 * ----------------------------------------------------------------
 	 * limit 设置查询记录数
 	 *
-	 * @param string $limit 查询结果树,查询单数为空或者"1",查询列表" 0 , 30"
+	 * @param string $limit 查询结果数,查询单数为空或者"1",查询列表" 0 , 30"
 	 * @return $this
 	 * ----------------------------------------------------------------
 	 */ 
@@ -223,8 +223,70 @@ class db
 	}
 
 	/**
+	 * ----------------------------------------------------------------
+	 * factor 根据数组键值,返回SQL查询条件
+	 *
+	 * @param string $where 可为数组或(id=18)类型,只有数组才会和字段对比
+	 * @return $this
+	 * ----------------------------------------------------------------
+	 */
+	function factor($where)
+	{
+
+		if (!is_array($where))
+		{
+			if (!empty($where))
+			{
+				$where = ' where '.$where;
+			}
+			return $where;
+		}
+
+		$where2 = array();
+		foreach ($where as $key=>$val)
+		{
+			$key = explode('.',$key);
+			if (isset($key[1]))
+			{
+				$key = ' '.$key[0].'.`'.$key[1].'` ';
+			}
+			else
+			{
+				$key = ' `'.$key[0].'` ';
+			}
+			
+			/* 模糊搜索 */
+			if (preg_match('/\{%(.*?)%\}/i',$val))
+			{
+				$val = preg_replace('/\{%(.*?)%\}/i','$1',$val);
+				$where2[] = $key." like '%".$val."%'";
+			}
+			elseif (preg_match('/\{(.*?)\}/i',$val))
+			{
+
+				/* 大于 {>} 小于{<}  {in}*/
+				$val = preg_replace('/\{(.*?)\}/i','$1',$val);
+				$where2[] = $key.$val."";
+			}
+			else
+			{
+				$where2[] = $key." = '".$val."'";
+			}
+			
+		}
+
+		$where =   implode(' and ',$where2);
+
+		if (!empty($where))
+		{
+			$where = ' where '.$where;
+		}
+		return $where;
+	}
+
+	/**
 	 * ---------------------------------------
-	 * where 查询挑件
+	 * where 查询条件
 	 *
 	 * @param string $where 查询条件,可为数组
 	 * @return $this
@@ -233,46 +295,7 @@ class db
 	function where($where = '')
 	{
 
-		if (empty($where))
-		{
-			return $this;
-		}
-		elseif (is_array($where))
-		{
-
-			$where = $this->_fields($where);
-			
-			$where2 = array();
-			foreach ($where as $key=>$val)
-			{
-				
-				/* 模糊搜索 */
-				if (preg_match('/\{%(.*?)%\}/i',$val))
-				{
-					$val = preg_replace('/\{%(.*?)%\}/i','$1',$val);
-					$where2[] = ' `'.$key."` like '%".$val."%'";
-				}
-				elseif (preg_match('/\{(.*?)\}/i',$val))
-				{
-
-					/* 大于 {>} 小于{<}  {in}*/
-					$val = preg_replace('/\{(.*?)\}/i','$1',$val);
-					$where2[] = ' `'.$key."` ".$val."";
-				}
-				else
-				{
-					$where2[] = ' `'.$key."` = '".$val."'";
-				}
-				
-			}
-
-			$where = implode(' and ',$where2);
-		}
-
-		if (!empty($where))
-		{
-			$this->where = ' where '.$where;
-		}
+		$this->where =  $this->factor($where);
 
 		return $this;
 	}
@@ -388,6 +411,7 @@ class db
 	 */
 	function update($table,$array,$where)
 	{
+
 		return $this->table($table)->where($where)->edit($array);
 	}
 
@@ -400,6 +424,7 @@ class db
 	 */
 	function edit($array)
 	{
+
 		$array = $this->_fields($array);
 
 		if (empty($array))
@@ -460,7 +485,7 @@ class db
 	 * @return void
 	 * ---------------------------------------
 	 */
-	function fetch_page($table,$where = '',$order = '',$limit = ' 0,30 ')
+	function fetch_id($table,$where = '',$order = '',$limit = ' 0,30 ')
 	{
 		/* limit */
 		$limit = explode(',',$limit);
@@ -493,6 +518,7 @@ class db
 		{
 			$id[]= $val['id'];
 		}
+		return implode(',',$id);
 
 		/* 结果总数 */
 		$resule['maxnum'] = count($list);

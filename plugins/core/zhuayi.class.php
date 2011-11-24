@@ -336,7 +336,6 @@ class zhuayi
 			$this->timecost= $endtime[0]-$starttime[0]+$endtime[1]-$starttime[1]; 
 			$this->timecost = sprintf("%0.2f",$this->timecost); 
 			$this->memory_get_usage = sprintf('%0.2f', memory_get_usage() / 1048576 ).' MB';
-			$this->sql_num = intval($this->db->querynum);
 
 			require $filename;
 		}
