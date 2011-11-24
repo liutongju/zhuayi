@@ -10,7 +10,7 @@
 		<?php foreach ($show['list'] as $val){?>
 			<div class="blog overflow">
 				<h3 class="title">
-					<a href="/myblog/<?php echo $val['category']['id'];?>/<?php echo $val['id'];?>" title="<?php echo $val['title'];?>"><?php echo $val['title'];?></a>
+					<a href="/myblog/<?php echo $val['cid'];?>/<?php echo $val['id'];?>" title="<?php echo $val['title'];?>"><?php echo $val['title'];?></a>
 				</h3>
 				<p class="dtime"> 
 					发布时间： <?php echo $this->load_fun('dtime',$val['dtime']);?> 
