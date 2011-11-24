@@ -44,6 +44,13 @@ $config['web']['description'] = 'Zhuayi框架是目前最简单,学习成本最�
 
 /**
  * --------------------------------
+ * Zhuayi 是否debug模式 
+ * --------------------------------
+ */
+$config['debug'] = true;
+
+/**
+ * --------------------------------
  * Zhuayi URL路由 默认控制器
  * --------------------------------
  */
@@ -90,6 +97,5 @@ $config['file']['path']['litpic2']['root'] = 'saestor:://litpic2';
 
 $config['cache_page']['root'] = ZHUAYI_ROOT.'/data/page_cache/';
 $config['cache_page']['outtime'] = 3600;
-
 
 ?>

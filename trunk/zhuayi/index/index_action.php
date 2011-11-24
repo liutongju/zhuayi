@@ -27,9 +27,10 @@ class index_action extends zhuayi
 		//$reset = $this->file->write('/123/123.html','123',$domain);
 		//$reset2 = $this->file->write('123/123.html','123');
 		//$reset  = $this->file->delete('123/123.html',$domain);
-		$this->db->query('show databases;');
-		print_r($this);
+		//$reset = $this->db->query('show tables;');
+		//print_r($_SERVER);
 		//$reset = blog_modle::blog_delete(array('id[]'=>16));
+		$this->display($show);
 	}
 
 	function ceshi()
