@@ -1,6 +1,6 @@
 <?php
 /**
- *  发送邮件
+ *  邮件发送类
  *
  * @copyright    (C) 2005 - 2010  zhuayi
  * @licenes      http://www.zhuayi.net
