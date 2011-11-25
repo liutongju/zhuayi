@@ -171,6 +171,73 @@
  	
  	}
 
+ 	private function _file_path($filename)
+ 	{
+ 		if (strpos($filename,ZHUAYI_ROOT) === false)
+ 		{
+ 			$filename = ZHUAYI_ROOT.'/'.$filename;
+ 		}
+ 		$filename = str_replace("//", '/', $filename);
+ 		return $filename;
+ 	}
+
+ 	private function _filelist($path,$level)
+ 	{
+ 		$path = $this->_file_path($path);
+ 		//$path = $this->file_path($path);
+
+ 		$files = array($path);
+
+ 		$handle = opendir($path); 
+		while (false != ($file = readdir($handle)))
+		{
+			if ($file != "." && $file != ".." && $file != ".DS_Store")
+			{
+				$file = $path.'/'.$file;
+				
+				if ($level && is_dir($file))
+				{
+
+					$files = array_merge($files,$this->_filelist($file,$level));
+				}
+				else
+				{
+					$files = array_merge($files,array($file));
+				}
+			}
+		}
+		closedir($handle);
+		return $files;
+ 	}
+ 	
+ 	/**
+ 	 * filelist 遍历文件夹  
+ 	 *
+ 	 * @param string $path
+ 	 * @param string $is_file 是否只是文件 
+ 	 * @param string $level 是否遍历 
+ 	 * @author zhuayi
+ 	 *
+ 	 */
+ 	public function filelist($path,$is_file = false, $level=false)
+ 	{
+ 		$list = $this->_filelist($path,$level);
+
+ 		if (!$is_file)
+ 		{
+ 			return $list;
+ 		}
+ 		foreach ($list as $key=>$val)
+ 		{
+ 			if (!is_file($val))
+ 			{
+ 				unset($list[$key]);
+ 			}
+ 		}
+ 		$list = explode(",",implode(",",$list));
+ 		return $list;
+ 	}
+
  	/**
  	 * results 替换URL地址,  
  	 *
