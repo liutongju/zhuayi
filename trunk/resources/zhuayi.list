@@ -1,4 +1,5 @@
 favicon.ico
+index.php
 config.php,Zhuayi框架总配置文件
 
 plugins/checkcode/checkcode.class.php,验证码类
