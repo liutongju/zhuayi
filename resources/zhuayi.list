@@ -1,5 +1,6 @@
 config.php,Zhuayi框架总配置文件
 plugins/checkcode/checkcode.class.php,验证码类
+plugins/checkcode/font/elephant.ttf,验证码字体
 plugins/cookie/cookie.class.php,COOKIE操作类
 plugins/core/cache.class.php,memcache缓存类
 plugins/core/url.class.php,URL路由类
@@ -21,6 +22,7 @@ plugins/http/http.class.php,HTTP操作类
 plugins/http/config/http.config.php,HTTP操作类配置文件
 plugins/image/config/image.config.php,图像操作类配置文件
 plugins/image/image.class.php,图像操作类
+plugins/image/mark.png,水印图片
 plugins/ip/ip.class.php,IP操作类
 plugins/ip/IpLocation.php,IP定位地理位置文件
 plugins/ip/IpLocation.php,IP定位地理位置文件
@@ -28,5 +30,6 @@ plugins/output/output.class.php,消息输出类
 plugins/output/template/error.html,消息输出类错误模板
 plugins/output/template/404.html,消息输出类404模板
 plugins/output/template/404.html,消息输出类404模板
+plugins/output/template/logo.jpg,消息输出类LOGO
 plugins/page/page.class.php,分页类
 plugins/strings/strings.class.php,字符串处理类
