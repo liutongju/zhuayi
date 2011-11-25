@@ -12,6 +12,7 @@
 /* error debug */
 $pagestartime = microtime();
 
+
 if (isset($_GET['error_debug']))
 {
 	ini_set( "display_errors",true);
