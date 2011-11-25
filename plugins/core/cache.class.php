@@ -1,6 +1,6 @@
 <?php
 /**
- * memcache class
+ * memcache缓存类
  *
  * @package default
  * @author zhuayi

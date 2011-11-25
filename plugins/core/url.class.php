@@ -1,6 +1,6 @@
 <?php
 /**
- * url.class.php     Zhuayi URL理由类
+ * url.class.php     Zhuayi URL路由类
  *
  * @copyright    (C) 2005 - 2010  Zhuayi
  * @licenes      http://www.zhuayi.net
