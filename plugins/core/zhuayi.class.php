@@ -293,9 +293,10 @@ class zhuayi
 	
 		$filename[0] .= '_action';
 
-		if (is_callable(array($filename[0],$filename[1])))
+		if (is_callable(array($filename[0],$filename[1]),true,$callback))
 		{
-			$filename[0]::$filename[1]();
+			/* 由于php5.2以下不支持 $filename[0]::$filename[1]()调用模式,废弃,改用eval;*/
+			eval("{$filename[0]}::{$filename[1]}();");
 		}
 		else
 		{
