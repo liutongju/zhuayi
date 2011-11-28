@@ -30,11 +30,17 @@ class myblog_action extends zhuayi
 
 		if ($id == 8)
 		{
+			$show['menu'] = 'docs';
 			$order = ' a.id asc';
 		}
 		else
 		{
 			$order = ' a.id desc';
+		}
+
+		if ($id == 6)
+		{
+			$show['menu'] = 'update';
 		}
 
 		$where = array();
@@ -71,6 +77,15 @@ class myblog_action extends zhuayi
 
 		$show['info'] = article_modle::article(array('id'=>$id));
 
+		if ($show['info']['cid'] == 6)
+		{
+			$show['menu'] = 'update';
+		}
+		else if ($show['info']['cid'] == 8)
+		{
+			$show['menu'] = 'docs';
+		}
+
 		/* 获取分类 */
 		$show['info']['category'] = article_modle::parent_category(array('id'=>$show['info']['cid']));
 
@@ -104,7 +119,6 @@ class myblog_action extends zhuayi
 
 		/* 更新点击数 */
 		article_modle::article_update(array('click'=>$show['info']['click'],'id'=>$show['info']['id']));
-
 
 		if ($show['info']['cid'] == 8)
 		{

@@ -21,6 +21,7 @@ class plugin_action extends zhuayi
 
 	function index()
 	{
+		$show['menu'] = 'plugin';
 
 		$show['title'] = 'Zhuayi 插件库';
 
@@ -29,6 +30,8 @@ class plugin_action extends zhuayi
 
 	function show($id)
 	{
+		$show['menu'] = 'plugin';
+		
 		$show['info'] = plugins_modle::plugins(array('name'=>$id));
 		if (empty($show['info']['id']))
 		{

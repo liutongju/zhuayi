@@ -179,10 +179,21 @@ class db
 	 */
 	function _fields($array)
 	{
-		
+
+		$array2 = array();
+		$reset2 = array();
 		foreach ($array as $key=>$val)
 		{
-			$array[trim($key)] = trim($val);
+			$key = trim($key);
+			$key2 = explode('.',$key);
+			if (isset($key2[1]))
+			{
+				$reset2[$key] = $val;
+			}
+			else
+			{
+				$array2[$key] = $val;
+			}
 		}
 
 		$fields_key = 'cache_fields_'.$this->table;
@@ -195,9 +206,9 @@ class db
 			$this->cache->set($fields_key,$table_fields,86400);
 		}
 		
-		$fields = array_keys($array);
-	
-		$reset2 = array();
+
+		$fields = array_keys($array2);
+		
 		foreach ($table_fields as $val)
 		{
 			if (in_array($val['Field'],$fields))
@@ -205,6 +216,7 @@ class db
 				$reset2[$val['Field']] = addslashes($array[$val['Field']]);
 			}
 		}
+
 		return $reset2;
 	}
 
@@ -241,7 +253,7 @@ class db
 			}
 			return $where;
 		}
-
+		$where = $this->_fields($where);
 		$where2 = array();
 		foreach ($where as $key=>$val)
 		{
@@ -274,7 +286,7 @@ class db
 			}
 			
 		}
-
+		
 		$where =   implode(' and ',$where2);
 
 		if (!empty($where))
@@ -295,8 +307,7 @@ class db
 	function where($where = '')
 	{
 
-		$this->where =  $this->factor($where);
-
+		$this->where = $this->factor($where);
 		return $this;
 	}
 
@@ -329,6 +340,7 @@ class db
 	 */
 	function show()
 	{
+
 		$sql =  "select ".$this->fields." from ".$this->table.$this->where.$this->order;
 		
 		$reset = $this->query($sql,$this->limit,1);
@@ -344,6 +356,7 @@ class db
 	 */
 	function fetch($table,$where = '',$order = '')
 	{
+
 		return $this->table($table)->where($where)->order($order)->limit(1)->show();
 
 	}
@@ -411,7 +424,6 @@ class db
 	 */
 	function update($table,$array,$where)
 	{
-
 		return $this->table($table)->where($where)->edit($array);
 	}
 
@@ -424,7 +436,6 @@ class db
 	 */
 	function edit($array)
 	{
-
 		$array = $this->_fields($array);
 
 		if (empty($array))

@@ -18,7 +18,8 @@
 </head>
 <body>
 <?php
-$menu_id = admin_modle::admin_menu_list(array('modle'=>$this->modle,'action'=>$this->action,'par'=>implode('/',$this->fileds)));
+
+$menu_id = admin_modle::admin_menu_list(array('modle'=>$this->modle,'action'=>$this->action));
 $menu_id = $menu_id[0];
 $show['menu'] = admin_modle::admin_menu_list(array('parent_id'=>$menu_id['parent_id']));
 if (isset($show['menu']) && is_array($show['menu'])){?>

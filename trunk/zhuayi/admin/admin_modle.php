@@ -20,6 +20,7 @@ class admin_modle extends zhuayi
 	 */
 	function admin($array = array(),$order = '',$limit = '1')
 	{
+
 		if ($limit == '1')
 		{
 			$list =  $this->db->fetch('admin',$array,$order);

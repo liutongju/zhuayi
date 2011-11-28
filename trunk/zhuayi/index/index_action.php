@@ -22,15 +22,9 @@ class index_action extends zhuayi
 
 	function index()
 	{
-		$reset = $this->file->filelist('/',true,true);
-
-		foreach ($reset as $val)
-		{
-			if (strpos($val,'svn') === false)
-			{
-				echo str_replace(ZHUAYI_ROOT.'/','',$val)."\n";
-			}
-		}
+		$show['plugin_list'] = plugins_modle::plugins(array(),' id asc ','0,7');
+		$show['title'] = $this->webname;
+		$this->display($show);
 	}
 
 	function ceshi()

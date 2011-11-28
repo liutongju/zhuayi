@@ -287,7 +287,7 @@ class zhuayi
 	 * @return void
 	 * @author 
 	 **/
-	function load_modle($filename)
+	function load_modle($filename,$array='')
 	{
 		$filename = explode('_',$filename,2);
 	
@@ -295,8 +295,12 @@ class zhuayi
 
 		if (is_callable(array($filename[0],$filename[1]),true,$callback))
 		{
+			if (isset($this->variable))
+			{
+				extract($this->variable, EXTR_OVERWRITE);
+			}
 			/* 由于php5.2以下不支持 $filename[0]::$filename[1]()调用模式,废弃,改用eval;*/
-			eval("{$filename[0]}::{$filename[1]}();");
+			eval("{$filename[0]}::{$filename[1]}(\$show,\$array);");
 		}
 		else
 		{
