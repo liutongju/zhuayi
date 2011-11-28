@@ -12,6 +12,15 @@
 function pinyin($str, $ishead=0, $isclose=0)
 {
     global $pinyins;
+    
+
+    $data = ZHUAYI_ROOT.'/statics/data/pinyin.dat';
+
+    if (!file_exists($data))
+    {
+        return output::arrays('-1','缺少pinyin.dat');
+    }
+
     $restr = '';
     $str = trim(mb_convert_encoding($str, "gb2312", "utf-8"));
     $slen = strlen($str);

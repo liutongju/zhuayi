@@ -74,5 +74,12 @@ class api_action extends zhuayi
 		}
 		
 	}
+
+	/* 转换拼音 */
+	function pinyin($title)
+	{
+
+		print_r($this->load_fun('pinyin',urldecode($title)));
+	}
 }
 ?>

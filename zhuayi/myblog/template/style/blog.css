@@ -1,11 +1,5 @@
 /* ---------header begin------------*/
-html{background:#fff }
-body{margin:0 auto;width:100%;font:12px/18px Verdana, "Lucida Grande", Geneva, Arial, sans-serif;color: #666;}
-*{outline:none;}
-h1,h2,h3,h4,p,ul,li{margin:0;padding:0;font-size:12px;color:#666;}
-li{list-style:none;}
-.w960{width:960px;margin:0 auto;}
-.w100{width:100%;}
+
 .nav{background:#0c4873;height:37px;margin-top:10px;}
 .w100 .nav h1{height:37px;line-height:37px;color:#fff;width:960px;margin:0 auto;font-size:14px;}
 .overflow{overflow:hidden;}
@@ -25,7 +19,7 @@ pre{font-family:Monaco, Verdana, Sans-serif;font-size:12px;border:1px solid #D0D
 
 
 /* ---------blog left 列表 begin------------*/
-.left{width:70%;margin-left:2%;}
+.left{width:76%;margin-left:20px;}
 .left .blog_list,.left .blog_info{width:99%;background:#fff;}
 .left .blog_info{padding:10px 20px}
 .left .blog_list .blog{padding:10px 20px;height:100%;line-height:30px;font-size:14px;}
@@ -61,8 +55,9 @@ pre{font-family:Monaco, Verdana, Sans-serif;font-size:12px;border:1px solid #D0D
 .left .plugins img{border:1px #ccc solid; padding:3px;}
 
 /* ---------blog right begin------------*/
-.right{width:22%;margin-top:40px;margin-right:2%;}
+.right{width:20%;margin-right:10px;margin-top:40px;}
 .right h2{background:#47505F;border-bottom:2px solid #2F353F;color:#fff;padding:5px 0px 5px 5px;font-weight:normal;font-size:14px;text-align:center;}
+.right h2 a{color:#fff}
 .right .class_list ul{padding:5px;}
 .right .class_list ul li{border-bottom:1px solid #EEE;padding:5px 0px;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;overflow: hidden;}
 .right .class_list ul li a{color:#06C;}
@@ -78,8 +73,4 @@ pre{font-family:Monaco, Verdana, Sans-serif;font-size:12px;border:1px solid #D0D
 .page span,.page a:hover{font-weight:bold;background:#336699;color:#fff;border-color:#fff;}
 
 
-/* 底 部 */
-#bottom{border-top:1px #D8D8D8 solid;margin-top:20px;color:#787878;line-height:30px;text-align:right;}
-#bottom div{width:98%;margin:0 auto;}
-#bottom span{float:left;}
-#bottom a{color:#787878}
+

@@ -1,3 +1,12 @@
+2011-11-27 更新
+	
+	--- 修正DB的BUG
+
+2011-11-25更新
+
+	--- 增加install.php 安装程序
+	--- 修正load_modle方法在5.2版本时无法执行的BUG
+
 2011-11-24 更新
 
 	--- 增加检查是否开启rewrite模块,zhuayi.class.php -> app

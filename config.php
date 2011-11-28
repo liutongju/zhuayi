@@ -61,12 +61,23 @@ $config['url_config']['default'] = 'index';
  * Zhuayi URL路由,键值支持正则
  * --------------------------------
  */
+$config['url_config']['routing']['^\/update(\w*?)$'] = '/myblog/index/6';
+$config['url_config']['routing']['^\/docs(\w*?)$'] = '/myblog/index/8';
+
 $config['url_config']['routing']['^\/myblog\/([0-9]*?\d)\/([0-9]*?\d)'] = '/myblog/show/$2';
 $config['url_config']['routing']['^\/myblog\/([0-9]?\d)'] = '/myblog/index/$1';
 $config['url_config']['routing']['^\/myblog\/$|^\/myblog$'] = '/myblog/index/5';
 
+
 $config['url_config']['routing']['^\/plugin\/(\w*?\w)$'] = '/plugin/show/$1';
 $config['url_config']['routing']['^\/plugin\/$'] = '/plugin/index';
+
+
+/* 招商项目 */
+$config['url_config']['routing']['^\/hangye\/(.*?)$'] = '/jiameng/category/$1';
+$config['url_config']['routing']['^\/xiangmu\/(.*?)$'] = '/jiameng/show/$1';
+$config['url_config']['routing']['^\/(.*?)\/news\/([0-9]*).html$'] = '/jiameng/article/$2';
+$config['url_config']['routing']['^\/xinwen\/news\/([0-9]*).html$'] = '/jiameng/article/$1';
 
 
 /**
@@ -84,10 +95,10 @@ $config['cache']['power'] = false;
  * Zhuayi 文件写入存放地址,如果不设置则调用为当前域下
  * --------------------------------
  */
-$config['file']['path']['litpic']['url'] = 'http://aweinan-litpic.stor.sinaapp.com';
-$config['file']['path']['litpic']['root'] = 'saestor:://litpic';
-$config['file']['path']['litpic2']['url'] = 'http://aweinan-litpic2.stor.sinaapp.com';
-$config['file']['path']['litpic2']['root'] = 'saestor:://litpic2';
+$config['file']['path']['litpic']['url'] = 'http://2.zhuayi.net/data/litpic/';
+$config['file']['path']['litpic']['root'] = ZHUAYI_ROOT.'/data/litpic/';
+#$config['file']['path']['litpic2']['url'] = 'http://aweinan-litpic2.stor.sinaapp.com';
+#$config['file']['path']['litpic2']['root'] = 'saestor:://litpic2';
 
 /**
  * --------------------------------

@@ -11,7 +11,7 @@
 function image($string)
 {
 	$string = htmlspecialchars_decode($string);
-	
+
 	preg_match_all('/<\s*img\s+[^>]*?src\s*=(.*?\s)\s*(.*)>/i',$string,$img);
 	if (isset($img[1]) && !empty($img))
 	{

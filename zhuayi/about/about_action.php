@@ -20,6 +20,8 @@ class about_action extends zhuayi
 
 	function index()
 	{
+		$show['menu'] = 'about';
+		
 		$show['title'] = '关于Zhuayi';
 		$this->display($show);
 	}

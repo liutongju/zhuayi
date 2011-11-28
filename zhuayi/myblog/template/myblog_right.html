@@ -8,7 +8,7 @@
 	</ul>
 </div>
 <div class="class_list">
-	<h2>入门教程</h2>
+	<h2><a href="/myblog/8">实例教程</a></h2>
 	<ul>
 	<?php foreach($show['article_hot_list'] as $key=>$val){?>
 		<li><a href="/myblog/<?php echo $val['cid'];?>/<?php echo $val['id'];?>"><?php echo ($key+1).'.'.$val['title'];?></a></li>
@@ -16,7 +16,7 @@
 	</ul>
 </div>
 <div class="class_list">
-	<h2>Zhuayi更新日志</h2>
+	<h2><a href="/myblog/6">Zhuayi更新日志</a></h2>
 	<ul class="data">
 	<?php foreach($show['article_new_list'] as $key=>$val){?>
 		<li><a href="/myblog/<?php echo $val['cid'];?>/<?php echo $val['id'];?>"><?php echo $val['title'];?></a></li>
